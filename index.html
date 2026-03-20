@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarvesh Patil — Student · Traveller · Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F4EF; --bg2:#EFECE5; --white:#FFFFFF;
+  --ink:#1C1917; --ink2:#4B4742; --ink3:#8C8880;
+  --gold:#B5843A; --gold-lt:#F2E8D5;
+  --green:#2D5A45; --green-lt:#E0EDE7;
+  --blue:#1E3A5F; --blue-lt:#E3EBF4;
+  --red:#8B2020; --red-lt:#FBE9E9;
+  --border:rgba(28,25,23,0.10);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+/* ═══════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════ */
+*{cursor:none}
+#cursor{position:fixed;z-index:9999;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),background .2s;}
+#cursor.big{width:36px;height:36px;background:rgba(181,132,58,.15);border:1px solid var(--gold);}
+@media(max-width:900px){#cursor{display:none}*{cursor:auto}}
+
+/* ═══════════════════════════════
+   NAV
+═══════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:64px;background:rgba(247,244,239,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:height .3s var(--ease);}
+nav.shrunk{height:52px;}
+.nav-logo{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:.01em;}
+.nav-logo span{color:var(--gold);font-style:italic;}
+.nav-links{display:flex;gap:.25rem;list-style:none;align-items:center;}
+.nav-links a{font-size:.78rem;font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);text-decoration:none;padding:8px 14px;border-radius:8px;transition:color .2s,background .2s;}
+.nav-links a:hover{color:var(--ink);background:rgba(28,25,23,.05);}
+.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--ink)!important;color:var(--bg)!important;border-radius:100px!important;font-weight:500!important;text-transform:none!important;letter-spacing:.02em!important;}
+.nav-cta:hover{background:var(--gold)!important;color:white!important;}
+.nav-mobile-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;cursor:pointer;}
+.nav-mobile-btn span{width:22px;height:1.5px;background:var(--ink);display:block;transition:transform .3s,opacity .3s;}
+@media(max-width:900px){
+  nav{padding:0 1.25rem;}
+  .nav-links{display:none;position:fixed;inset:0;top:52px;background:rgba(247,244,239,.98);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;z-index:799;}
+  .nav-links.open{display:flex;}
+  .nav-links a{font-size:1.2rem;}
+  .nav-mobile-btn{display:flex;}
+  .nav-cta{margin-top:.5rem;}
+}
+
+/* ═══════════════════════════════
+   PAGE SECTIONS (SPA)
+═══════════════════════════════ */
+.page-section{display:none;min-height:100vh;padding-top:64px;}
+.page-section.active{display:block;}
+
+/* ═══════════════════════════════
+   ── HOME PAGE ──
+═══════════════════════════════ */
+.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1fr 420px;align-items:center;gap:4rem;padding:4rem 3rem 4rem;max-width:1200px;margin:0 auto;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--gold-lt);border:1px solid rgba(181,132,58,.25);border-radius:100px;padding:6px 16px;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:0;animation:fadeUp .7s var(--ease) .1s forwards;}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-name{font-family:var(--serif);font-size:clamp(3.5rem,7vw,6rem);font-weight:300;line-height:1;letter-spacing:-.02em;color:var(--ink);margin-bottom:.5rem;opacity:0;animation:fadeUp .8s var(--ease) .2s forwards;}
+.hero-name em{font-style:italic;color:var(--gold);display:block;}
+.hero-tagline{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.4rem);font-weight:300;color:var(--ink3);letter-spacing:.06em;margin-bottom:2rem;opacity:0;animation:fadeUp .8s var(--ease) .35s forwards;}
+.hero-bio{font-size:1rem;font-weight:300;color:var(--ink2);line-height:1.8;max-width:500px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s var(--ease) .45s forwards;}
+.hero-bio strong{font-weight:500;color:var(--ink);}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s var(--ease) .55s forwards;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);padding:13px 28px;border-radius:100px;font-size:.85rem;font-weight:500;text-decoration:none;transition:background .25s,transform .2s;letter-spacing:.02em;border:none;}
+.btn-primary:hover{background:var(--gold);transform:translateY(-2px);}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;color:var(--ink2);padding:13px 0;font-size:.85rem;font-weight:400;text-decoration:none;border-bottom:1px solid var(--border);transition:color .2s,border-color .2s;background:none;border-left:none;border-right:none;border-top:none;}
+.btn-secondary:hover{color:var(--gold);border-color:var(--gold);}
+.hero-stats{display:flex;gap:0;margin-top:3rem;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:white;opacity:0;animation:fadeUp .8s var(--ease) .65s forwards;}
+.hero-stat{flex:1;padding:1.25rem 1.5rem;border-right:1px solid var(--border);text-align:center;}
+.hero-stat:last-child{border-right:none;}
+.hero-stat-num{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--ink);line-height:1;display:block;}
+.hero-stat-label{font-size:.7rem;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:4px;}
+.hero-scroll{margin-top:2.5rem;display:flex;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);opacity:0;animation:fadeUp .8s var(--ease) .9s forwards;}
+.scroll-line{width:40px;height:1px;background:var(--ink3);position:relative;overflow:hidden;}
+.scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:slideRight 2s ease-in-out infinite;}
+@keyframes slideRight{0%{left:-100%}100%{left:100%}}
+/* Hero right photo */
+.hero-right{opacity:0;animation:fadeLeft .9s var(--ease) .4s forwards;position:relative;}
+.photo-card{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:3/4;background:var(--bg2);border:1px solid var(--border);}
+.photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(160deg,var(--bg2) 0%,#E8E2D8 100%);}
+.photo-img{width:100%;height:100%;object-fit:cover;}
+.photo-icon{width:72px;height:72px;border-radius:50%;background:var(--gold-lt);border:2px dashed rgba(181,132,58,.4);display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.photo-label{font-size:.78rem;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;text-align:center;max-width:160px;line-height:1.6;}
+.photo-badge{position:absolute;background:white;border-radius:14px;padding:12px 16px;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.08);display:flex;align-items:center;gap:10px;}
+.photo-badge-1{bottom:24px;left:-40px;animation:float 4s ease-in-out infinite;}
+.photo-badge-2{top:24px;right:-30px;animation:float 4s ease-in-out infinite 2s;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.badge-icon{font-size:1.4rem;}
+.badge-title{font-size:.78rem;font-weight:500;color:var(--ink);}
+.badge-sub{font-size:.68rem;color:var(--ink3);}
+.deco-ring{position:absolute;border-radius:50%;border:1px solid rgba(181,132,58,.2);pointer-events:none;}
+.deco-ring-1{width:180px;height:180px;top:-50px;right:-50px;}
+.deco-ring-2{width:100px;height:100px;bottom:60px;right:-20px;}
+
+/* About section */
+.about-section{max-width:1200px;margin:0 auto;padding:6rem 3rem;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.about-text p{font-size:1rem;font-weight:300;color:var(--ink2);line-height:1.85;margin-bottom:1.25rem;}
+.about-text p strong{font-weight:500;color:var(--ink);}
+.about-highlights{display:flex;flex-direction:column;gap:1rem;}
+.highlight-card{display:flex;align-items:flex-start;gap:1rem;background:white;border-radius:16px;padding:1.25rem;border:1px solid var(--border);transition:transform .25s var(--ease),box-shadow .25s;}
+.highlight-card:hover{transform:translateX(6px);box-shadow:0 4px 20px rgba(0,0,0,.07);}
+.highlight-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.hi-gold{background:var(--gold-lt)} .hi-green{background:var(--green-lt)} .hi-blue{background:#E8F0F8}
+.highlight-info h4{font-size:.92rem;font-weight:500;color:var(--ink);margin-bottom:2px;}
+.highlight-info p{font-size:.8rem;color:var(--ink3);line-height:1.5;}
+
+/* ═══════════════════════════════
+   ── PROJECTS PAGE ──
+═══════════════════════════════ */
+.projects-hero{background:var(--ink);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.projects-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:rgba(181,132,58,.07);pointer-events:none;}
+.ph-inner{max-width:1100px;margin:0 auto;padding:0 3rem;}
+.ph-eye{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.ph-name{font-family:var(--serif);font-size:clamp(2.6rem,6vw,4.5rem);font-weight:300;line-height:1;letter-spacing:-.02em;color:white;margin-bottom:.75rem;}
+.ph-name em{font-style:italic;color:var(--gold);}
+.ph-sub{font-size:1rem;font-weight:300;color:rgba(255,255,255,.5);max-width:500px;line-height:1.7;}
+.projects-content{max-width:1100px;margin:0 auto;padding:4rem 3rem;}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem;}
+.proj-card{background:white;border:1px solid var(--border);border-radius:20px;padding:1.75rem;text-decoration:none;display:block;transition:box-shadow .25s,transform .25s var(--ease);color:inherit;position:relative;overflow:hidden;}
+.proj-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);}
+.proj-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-4px);}
+.proj-card:hover::after{transform:scaleX(1);}
+.proj-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:rgba(181,132,58,.2);line-height:1;margin-bottom:.75rem;}
+.proj-title{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;}
+.proj-org{font-size:.78rem;color:var(--ink3);margin-bottom:.75rem;font-weight:400;}
+.proj-desc{font-size:.83rem;color:var(--ink2);line-height:1.65;margin-bottom:1.25rem;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.proj-tag{font-size:.68rem;padding:3px 10px;border-radius:100px;background:var(--gold-lt);border:1px solid rgba(181,132,58,.2);color:var(--gold);}
+.proj-arrow{position:absolute;top:1.5rem;right:1.5rem;color:var(--ink3);font-size:1rem;transition:color .2s,transform .2s;}
+.proj-card:hover .proj-arrow{color:var(--gold);transform:translate(3px,-3px);}
+/* Technical timeline in projects */
+.tech-section{background:var(--bg2);border-radius:24px;padding:3rem;margin-bottom:3rem;}
+.tech-section-title{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--ink);margin-bottom:2rem;}
+.tech-section-title em{font-style:italic;color:var(--gold);}
+.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.tech-item{background:white;border:1px solid var(--border);border-radius:16px;padding:1.25rem 1.5rem;position:relative;overflow:hidden;}
+.tech-item::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);border-radius:3px 0 0 3px;}
+.tech-item-title{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:3px;}
+.tech-item-meta{font-size:.75rem;color:var(--ink3);margin-bottom:.75rem;}
+.tech-item-bullets{display:flex;flex-direction:column;gap:4px;}
+.tech-item-bullet{font-size:.78rem;color:var(--ink2);line-height:1.55;display:flex;gap:8px;}
+.tech-item-bullet::before{content:'—';color:var(--gold);flex-shrink:0;}
+
+/* ═══════════════════════════════
+   ── TRAVELS PAGE ──
+═══════════════════════════════ */
+.travel-hero{padding:5rem 3rem 3rem;max-width:1100px;margin:0 auto;}
+.t-eyebrow{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.t-title{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.1;letter-spacing:-.03em;color:var(--ink);margin-bottom:1rem;}
+.t-title em{font-style:italic;color:var(--gold);}
+.t-sub{font-size:1.05rem;font-weight:300;color:var(--ink2);max-width:520px;line-height:1.65;}
+.t-stats{display:flex;gap:2.5rem;margin-top:2.5rem;}
+.t-stat-num{font-family:var(--serif);font-size:2rem;color:var(--ink);line-height:1;}
+.t-stat-label{font-size:.78rem;color:var(--ink3);letter-spacing:.04em;text-transform:uppercase;font-weight:500;margin-top:2px;}
+/* Map */
+.map-section{max-width:1100px;margin:0 auto;padding:0 3rem 4rem;}
+.map-container{position:relative;background:#EEF2ED;border-radius:20px;overflow:hidden;border:1px solid var(--border);}
+#world-map{width:100%;height:auto;display:block;}
+.country-path{fill:#D8DDD6;transition:fill .25s;}
+.country-visited{fill:rgba(46,107,79,.15);stroke:#2E6B4F;stroke-width:.5;}
+.country-visited:hover{fill:rgba(46,107,79,.28);cursor:pointer;}
+.map-pin-group{cursor:pointer;}
+.map-pin-group:hover .pin-circle{r:8;}
+.pin-circle{transition:r .2s;}
+.pin-pulse{animation:pulse 2.5s ease-in-out infinite;transform-origin:center;}
+@keyframes pulse{0%,100%{opacity:.4;r:12}50%{opacity:0;r:20}}
+.map-popup{position:absolute;background:white;border-radius:14px;padding:1rem 1.25rem;box-shadow:0 2px 12px rgba(0,0,0,.18);border:1px solid var(--border);min-width:200px;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;z-index:10;}
+.map-popup.visible{opacity:1;transform:translateY(0);}
+.popup-flag{font-size:1.6rem;margin-bottom:6px;}
+.popup-country{font-family:var(--serif);font-size:1.1rem;color:var(--ink);margin-bottom:2px;}
+.popup-year{font-size:.75rem;color:var(--ink3);margin-bottom:8px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;}
+.popup-desc{font-size:.82rem;color:var(--ink2);line-height:1.5;}
+.popup-cta{display:inline-block;margin-top:10px;font-size:.78rem;font-weight:500;color:var(--green);border-bottom:1px solid rgba(46,107,79,.3);padding-bottom:1px;cursor:pointer;pointer-events:all;}
+/* Country grid */
+.grid-section{max-width:1100px;margin:0 auto;padding:0 3rem 6rem;}
+.sec-divider{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;}
+.sec-div-line{flex:1;height:1px;background:var(--border);}
+.sec-div-label{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);white-space:nowrap;}
+.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
+.country-card{background:white;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.06);cursor:pointer;transition:transform .25s,box-shadow .25s;color:inherit;display:block;}
+.country-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1);}
+.card-visual{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.card-visual-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s;}
+.country-card:hover .card-visual-bg{transform:scale(1.04);}
+.card-visual-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.05) 0%,rgba(0,0,0,.35) 100%);}
+.card-flag-large{position:relative;z-index:1;font-size:3rem;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));}
+.card-body{padding:1.25rem;}
+.card-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.card-country-name{font-family:var(--serif);font-size:1.25rem;color:var(--ink);}
+.card-year-badge{font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--green);background:rgba(46,107,79,.1);padding:3px 10px;border-radius:100px;}
+.card-desc{font-size:.875rem;color:var(--ink2);line-height:1.6;margin-bottom:1rem;}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.card-tag{font-size:.72rem;color:var(--ink3);background:var(--bg);border:1px solid var(--border);padding:3px 10px;border-radius:100px;}
+/* Modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(20,18,14,.5);backdrop-filter:blur(4px);z-index:900;display:none;align-items:center;justify-content:center;padding:2rem;}
+.modal-backdrop.open{display:flex;}
+.modal{background:white;border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:modalIn .3s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes modalIn{from{opacity:0;transform:scale(.92) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-visual{height:240px;background-size:cover;background-position:center;border-radius:24px 24px 0 0;position:relative;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.9);border:none;border-radius:50%;width:36px;height:36px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink);}
+.modal-body{padding:2rem;}
+.modal-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.25rem;}
+.modal-flag{font-size:2.5rem;line-height:1;}
+.modal-title{font-family:var(--serif);font-size:2rem;color:var(--ink);line-height:1.1;letter-spacing:-.02em;}
+.modal-subtitle{font-size:.82rem;color:var(--ink3);margin-top:4px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;}
+.modal-content{font-size:.95rem;color:var(--ink2);line-height:1.75;}
+.modal-content p{margin-bottom:1rem;}
+.modal-photos-label{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:1.5rem;margin-bottom:8px;}
+.modal-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.modal-photo{aspect-ratio:1;background:var(--bg);border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--border);font-size:.72rem;color:var(--ink3);text-align:center;padding:8px;}
+
+/* ═══════════════════════════════
+   ── RESUME PAGE ──
+═══════════════════════════════ */
+.resume-hero-strip{background:var(--ink);padding:5rem 0 4rem;position:relative;overflow:hidden;}
+.resume-hero-strip::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:rgba(181,132,58,.07);pointer-events:none;}
+.rh-inner{max-width:1100px;margin:0 auto;padding:0 3rem;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:end;}
+.rh-eye{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.rh-name{font-family:var(--serif);font-size:clamp(2.8rem,6vw,4.8rem);font-weight:300;line-height:1;letter-spacing:-.02em;color:white;margin-bottom:.5rem;}
+.rh-name em{font-style:italic;color:var(--gold);}
+.rh-role{font-size:1rem;font-weight:300;color:rgba(255,255,255,.55);margin-bottom:2rem;letter-spacing:.04em;}
+.rh-meta{display:flex;flex-wrap:wrap;gap:.75rem;}
+.meta-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:7px 14px;font-size:.78rem;color:rgba(255,255,255,.7);}
+.meta-pill strong{color:white;font-weight:500;}
+.rh-stats-right{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-end;}
+.big-stat-num{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--gold);line-height:1;display:block;}
+.big-stat-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+/* Stats bar */
+.stats-bar{background:white;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;}
+.stats-bar::-webkit-scrollbar{display:none;}
+.sp{flex:1;min-width:130px;padding:1.25rem 1rem;text-align:center;border-right:1px solid var(--border);}
+.sp:last-child{border-right:none;}
+.sp-num{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:var(--ink);display:block;line-height:1;}
+.sp-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);display:block;margin-top:4px;}
+/* Resume two col */
+.resume-page-inner{max-width:1100px;margin:0 auto;padding:4rem 3rem;}
+.resume-two-col{display:grid;grid-template-columns:240px 1fr;gap:3.5rem;align-items:start;}
+.res-sidebar{position:sticky;top:80px;}
+.res-sidebar-nav{display:flex;flex-direction:column;gap:3px;margin-bottom:2rem;}
+.res-sidebar-link{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-size:.82rem;color:var(--ink2);text-decoration:none;transition:background .2s,color .2s;cursor:pointer;}
+.res-sidebar-link:hover,.res-sidebar-link.rs-active{background:var(--gold-lt);color:var(--gold);}
+.res-sidebar-link .sdot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .2s;}
+.res-sidebar-link.rs-active .sdot{background:var(--gold);}
+.res-dl{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:white;padding:12px 20px;border-radius:12px;font-size:.82rem;font-weight:500;text-decoration:none;transition:background .2s;width:100%;}
+.res-dl:hover{background:var(--gold);}
+.tag-cloud-wrap{margin-top:2rem;}
+.tag-cloud-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;display:block;}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:5px;}
+.tc-tag{font-size:.7rem;padding:3px 9px;border-radius:100px;background:var(--bg2);border:1px solid var(--border);color:var(--ink2);}
+/* Timeline */
+.res-section{margin-bottom:4rem;scroll-margin-top:80px;}
+.sec-head{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;}
+.sec-head-line{flex:1;height:1px;background:var(--border);}
+.sec-head-label{display:flex;align-items:center;gap:8px;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+.timeline{position:relative;padding-left:2rem;}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:2.25rem;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-dot{position:absolute;left:-2rem;top:8px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);transform:translateX(-4px);}
+.tl-card{background:white;border:1px solid var(--border);border-radius:18px;padding:1.5rem 1.75rem;transition:box-shadow .25s,transform .25s var(--ease);position:relative;overflow:hidden;}
+.tl-card:hover{box-shadow:0 4px 24px rgba(0,0,0,.08);transform:translateX(4px);}
+.tl-accent{position:absolute;top:0;left:0;width:3px;height:100%;border-radius:3px 0 0 3px;}
+.tl-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.5rem;flex-wrap:wrap;}
+.tl-title{font-size:1rem;font-weight:600;color:var(--ink);}
+.tl-badge{font-size:.7rem;font-weight:500;letter-spacing:.04em;padding:4px 12px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+.b-gold{background:var(--gold-lt);color:var(--gold);}
+.b-green{background:var(--green-lt);color:var(--green);}
+.b-blue{background:var(--blue-lt);color:var(--blue);}
+.b-red{background:var(--red-lt);color:var(--red);}
+.b-gray{background:var(--bg2);color:var(--ink3);}
+.tl-org{font-size:.85rem;color:var(--ink2);margin-bottom:.85rem;}
+.tl-org em{font-style:normal;color:var(--ink3);}
+.tl-sub{font-size:.78rem;color:var(--ink3);font-style:italic;margin-bottom:.85rem;line-height:1.5;}
+.tl-bullets{display:flex;flex-direction:column;gap:5px;}
+.tl-bullet{display:flex;gap:10px;font-size:.845rem;font-weight:300;color:var(--ink2);line-height:1.6;}
+.tl-bullet::before{content:'—';color:var(--gold);flex-shrink:0;}
+.tl-bullet strong{font-weight:500;color:var(--ink);}
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.skill-group{background:white;border:1px solid var(--border);border-radius:16px;padding:1.25rem 1.5rem;}
+.skill-group-label{font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.lang-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.lang-chip{font-size:.75rem;padding:5px 12px;border-radius:100px;background:var(--gold-lt);border:1px solid rgba(181,132,58,.2);color:var(--gold);font-weight:500;}
+.skill-items{display:flex;flex-direction:column;gap:8px;}
+.skill-item{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.skill-name{font-size:.82rem;color:var(--ink2);}
+.skill-bar-wrap{flex:1;height:4px;background:var(--bg2);border-radius:100px;overflow:hidden;}
+.skill-bar{height:100%;border-radius:100px;background:var(--gold);transition:width 1.2s var(--ease);}
+.skill-pct{font-size:.7rem;color:var(--ink3);min-width:28px;text-align:right;}
+/* Extra grid */
+.extra-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.extra-card{background:white;border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;}
+.extra-category{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.extra-items{display:flex;flex-direction:column;gap:4px;}
+.extra-item{font-size:.8rem;color:var(--ink2);line-height:1.55;display:flex;gap:8px;}
+.extra-item::before{content:'·';color:var(--gold);font-weight:700;flex-shrink:0;}
+
+/* ═══════════════════════════════
+   ── CONTACT PAGE ──
+═══════════════════════════════ */
+.contact-page{max-width:1100px;margin:0 auto;padding:5rem 3rem;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-left .section-label{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;}
+.contact-left .section-label-line{width:32px;height:1px;background:var(--gold);}
+.contact-left .section-label-text{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+.contact-heading{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15;letter-spacing:-.02em;color:var(--ink);margin-bottom:1.25rem;}
+.contact-heading em{font-style:italic;color:var(--gold);}
+.contact-p{font-size:1rem;font-weight:300;color:var(--ink2);line-height:1.8;margin-bottom:2rem;}
+.social-links{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;}
+.social-link{display:flex;align-items:center;gap:14px;padding:14px 18px;background:white;border:1px solid var(--border);border-radius:14px;text-decoration:none;transition:border-color .2s,transform .2s var(--ease),box-shadow .2s;color:inherit;}
+.social-link:hover{border-color:var(--gold);transform:translateX(6px);box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.social-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.s-yt{background:#FEE2E2} .s-ig{background:#FDE8F5} .s-li{background:#E1EFFE}
+.social-name{font-size:.88rem;font-weight:500;color:var(--ink);}
+.social-handle{font-size:.75rem;color:var(--ink3);}
+.social-arrow{color:var(--ink3);margin-left:auto;transition:color .2s;}
+.social-link:hover .social-arrow{color:var(--gold);}
+/* Appointment card */
+.appt-card{background:white;border-radius:24px;border:1px solid var(--border);padding:2.5rem 2rem;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.06);position:sticky;top:100px;}
+.appt-icon{font-size:3rem;margin-bottom:1rem;}
+.appt-title{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--ink);margin-bottom:.5rem;}
+.appt-sub{font-size:.88rem;color:var(--ink3);margin-bottom:1.75rem;line-height:1.65;}
+.btn-book{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:var(--bg);padding:14px 32px;border-radius:100px;font-size:.88rem;font-weight:500;text-decoration:none;transition:background .25s,transform .2s;width:100%;}
+.btn-book:hover{background:var(--gold);transform:translateY(-2px);}
+.appt-note{font-size:.72rem;color:var(--ink3);margin-top:1rem;}
+.appt-divider{height:1px;background:var(--border);margin:1.5rem 0;}
+.appt-email{font-size:.82rem;color:var(--ink2);text-align:center;}
+.appt-email a{color:var(--gold);text-decoration:none;font-weight:500;}
+
+/* ═══════════════════════════════
+   SHARED UTILITIES
+═══════════════════════════════ */
+.section-label{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;}
+.section-label-line{width:32px;height:1px;background:var(--gold);}
+.section-label-text{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+.section-heading{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15;letter-spacing:-.02em;color:var(--ink);margin-bottom:1.5rem;}
+.section-heading em{font-style:italic;color:var(--gold);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.visible{opacity:1;transform:none;}
+/* Dark projects banner */
+.dark-band{background:var(--ink);border-radius:32px;padding:5rem 3rem;margin:0 3rem;}
+.dark-band .section-heading{color:white;}
+.dark-band .section-label-text{color:rgba(247,244,239,.5);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:var(--serif);font-size:1rem;color:var(--ink2);}
+.footer-links{display:flex;gap:2rem;}
+.footer-links a{font-size:.78rem;color:var(--ink3);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:.78rem;color:var(--ink3);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:3rem 1.25rem;min-height:auto;}
+  .hero-right{display:none;}
+  .about-grid,.contact-grid,.resume-two-col,.rh-inner{grid-template-columns:1fr;}
+  .proj-grid,.tech-grid,.skills-grid,.extra-grid{grid-template-columns:1fr;}
+  .dark-band,.travel-hero,.map-section,.grid-section,.projects-content,.resume-page-inner,.contact-page{padding-left:1.25rem;padding-right:1.25rem;}
+  .dark-band{margin:0 1.25rem;}
+  .rh-inner{padding:0 1.25rem;}
+  .rh-stats-right{align-items:flex-start;flex-direction:row;}
+  .res-sidebar{display:none;}
+  footer{flex-direction:column;text-align:center;padding:2rem 1.25rem;}
+  .footer-links{justify-content:center;}
+  .modal-photos{grid-template-columns:repeat(2,1fr);}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#" onclick="showPage('home')">Sarvesh <span>Patil</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" onclick="showPage('home')" data-page="home" class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('projects')" data-page="projects">Projects</a></li>
+    <li><a href="#" onclick="showPage('travels')" data-page="travels">Travels</a></li>
+    <li><a href="#" onclick="showPage('resume')" data-page="resume">Resume</a></li>
+    <li><a href="#" onclick="showPage('contact')" data-page="contact" class="nav-cta">Book a call</a></li>
+  </ul>
+  <button class="nav-mobile-btn" id="mobileBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════════ -->
+<div class="page-section active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-tag"><span class="hero-tag-dot"></span>Open to collaborations</div>
+      <h1 class="hero-name">Sarvesh<em>Patil.</em></h1>
+      <p class="hero-tagline"><span>Student</span> · <span>Traveller</span> · <span>Creator</span></p>
+      <p class="hero-bio">Undergraduate at <strong>IIT Bombay</strong>, currently on exchange at <strong>ETH Zürich</strong>. I build things, research ideas worth pursuing, and document the world — one country at a time.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('projects')">View my work ↗</button>
+        <button class="btn-secondary" onclick="showPage('travels')">Travel journal →</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-num">9.23</span><span class="hero-stat-label">CPI</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">7</span><span class="hero-stat-label">Countries</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">AIR 974</span><span class="hero-stat-label">JEE Advanced</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">∞</span><span class="hero-stat-label">Curiosity</span></div>
+      </div>
+      <div class="hero-scroll"><div class="scroll-line"></div>Scroll to explore</div>
+    </div>
+    <div class="hero-right">
+      <div class="deco-ring deco-ring-1"></div>
+      <div class="deco-ring deco-ring-2"></div>
+      <div class="photo-badge photo-badge-2">
+        <div class="badge-icon">🏔️</div>
+        <div><div class="badge-title">ETH Zürich</div><div class="badge-sub">Semester exchange · 2024</div></div>
+      </div>
+      <div class="photo-card">
+        <img class="photo-img" src="assets/me.jpg" alt="Sarvesh Patil" loading="lazy" />
+      </div>
+      <div class="photo-badge photo-badge-1">
+        <div class="badge-icon">🎓</div>
+        <div><div class="badge-title">IIT Bombay</div><div class="badge-sub">Undergraduate · 2022–2026</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section reveal">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label"><div class="section-label-line"></div><span class="section-label-text">About me</span></div>
+        <h2 class="section-heading">Curious by nature,<br><em>driven by purpose.</em></h2>
+        <p>I'm Sarvesh — born in 2004, studying Mechanical Engineering at <strong>IIT Bombay</strong> while also spending a semester at <strong>ETH Zürich</strong>. My CPI stands at <strong>9.23</strong>, with SPI peaks of 9.78.</p>
+        <p>My work spans <strong>structural aerospace engineering, data science, and ML</strong> — from designing 120 m reusable rockets at The Rocket Corporation in Austria, to building RFM segmentation systems over 4M+ shipment records at Cogoport.</p>
+        <p>When I'm not studying or building, I'm somewhere new — camera in hand, notebook nearby, skydiving over Portugal or hiking above the Swiss Alps.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card"><div class="highlight-icon hi-gold">🎓</div><div class="highlight-info"><h4>IIT Bombay</h4><p>B.Tech Mechanical Engineering · CPI 9.23 · 2022–2026</p></div></div>
+        <div class="highlight-card"><div class="highlight-icon hi-blue">🏔️</div><div class="highlight-info"><h4>ETH Zürich</h4><p>Semester exchange · 2024 · Zürich, Switzerland</p></div></div>
+        <div class="highlight-card"><div class="highlight-icon hi-gold">🚀</div><div class="highlight-info"><h4>Structural Lead · Rocket Corporation</h4><p>120 m heavy reusable rocket · Austria · 2025–present</p></div></div>
+        <div class="highlight-card"><div class="highlight-icon hi-green">🌍</div><div class="highlight-info"><h4>7 Countries & counting</h4><p>India · Switzerland · France · Italy · Spain · Portugal · Germany</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS PREVIEW -->
+  <div class="dark-band reveal">
+    <div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Featured work</span></div>
+    <h2 class="section-heading">Things I've <em>built & explored.</em></h2>
+    <div class="proj-grid" style="margin-top:2.5rem;margin-bottom:2.5rem;">
+      <div class="proj-card" onclick="showPage('projects')" style="cursor:pointer;">
+        <span class="proj-arrow">↗</span>
+        <div class="proj-num">01</div>
+        <div class="proj-title">Heavy Reusable Rocket — Structural Lead</div>
+        <p class="proj-desc">Structural design of a 120 m reusable rocket for the Middle East. Reduced mass factor error to &lt;3% using empirical analysis and linear regression.</p>
+        <div class="proj-tags"><span class="proj-tag">Aerospace</span><span class="proj-tag">Structural Analysis</span><span class="proj-tag">Austria</span></div>
+      </div>
+      <div class="proj-card" onclick="showPage('projects')" style="cursor:pointer;">
+        <span class="proj-arrow">↗</span>
+        <div class="proj-num">02</div>
+        <div class="proj-title">Spaceport America Cup 2024</div>
+        <p class="proj-desc">Represented India at the world's largest intercollegiate rocketry competition. 2nd nationally, 19th globally in 10K ft category out of 150+ teams.</p>
+        <div class="proj-tags"><span class="proj-tag">Rocketry</span><span class="proj-tag">Competition</span><span class="proj-tag">USA</span></div>
+      </div>
+      <div class="proj-card" onclick="showPage('projects')" style="cursor:pointer;">
+        <span class="proj-arrow">↗</span>
+        <div class="proj-num">03</div>
+        <div class="proj-title">Data Analytics — Cogoport</div>
+        <p class="proj-desc">Analyzed 4M+ shipment records to build RFM segmentation. Built FastAPI backend saving 3 hrs/week per user. Boosted campaign effectiveness by 5%.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">FastAPI</span><span class="proj-tag">Data Science</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <button onclick="showPage('projects')" class="btn-primary" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(247,244,239,.85);">View all projects →</button>
+    </div>
+  </div>
+
+  <!-- TRAVEL PREVIEW -->
+  <section class="about-section reveal">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;" class="travel-preview-home">
+      <div>
+        <div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Travel journal</span></div>
+        <h2 class="section-heading">Seven countries,<br><em>countless stories.</em></h2>
+        <p style="font-size:1rem;font-weight:300;color:var(--ink2);line-height:1.8;margin-bottom:2rem;">From skydiving over Portugal to hiking the Swiss Alps — I travel to learn. Every trip has a blog, photos, and a lesson I didn't expect.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem;">
+          <span style="display:flex;align-items:center;gap:6px;background:white;border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;color:var(--ink2);">🇮🇳 India</span>
+          <span style="display:flex;align-items:center;gap:6px;background:white;border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;color:var(--ink2);">🇨🇭 Switzerland</span>
+          <span style="display:flex;align-items:center;gap:6px;background:white;border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;color:var(--ink2);">🇫🇷 France</span>
+          <span style="display:flex;align-items:center;gap:6px;background:white;border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;color:var(--ink2);">🇮🇹 Italy</span>
+          <span style="display:flex;align-items:center;gap:6px;background:white;border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;color:var(--ink2);">🇪🇸 Spain</span>
+          <span style="display:flex;align-items:center;gap:6px;background:white;border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;color:var(--ink2);">🇵🇹 Portugal</span>
+          <span style="display:flex;align-items:center;gap:6px;background:white;border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;color:var(--ink2);">🇩🇪 Germany</span>
+        </div>
+        <button class="btn-primary" onclick="showPage('travels')">Open travel journal ↗</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="grid-row:span 2;background:var(--bg2);border-radius:20px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-size:2.5rem;min-height:260px;">🏔️<span style="font-size:.7rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;">Switzerland</span></div>
+        <div style="background:var(--bg2);border-radius:20px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:2rem;padding:1.5rem;">🗼<span style="font-size:.7rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;">France</span></div>
+        <div style="background:var(--bg2);border-radius:20px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:2rem;padding:1.5rem;">🪂<span style="font-size:.7rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;">Portugal</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Sarvesh Patil</div>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('projects')">Projects</a>
+      <a href="#" onclick="showPage('travels')">Travels</a>
+      <a href="#" onclick="showPage('resume')">Resume</a>
+      <a href="#" onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 · IIT Bombay · ETH Zürich</div>
+  </footer>
+</div><!-- end home -->
+
+<!-- ══════════════════════════════════════════
+     PAGE: PROJECTS
+══════════════════════════════════════════ -->
+<div class="page-section" id="page-projects">
+  <div class="projects-hero">
+    <div class="ph-inner">
+      <p class="ph-eye">Work & Research</p>
+      <h1 class="ph-name">Things I've<br><em>built & explored.</em></h1>
+      <p class="ph-sub">From rocketry to data science — a collection of engineering projects, research, and technical experiments.</p>
+    </div>
+  </div>
+
+  <div class="projects-content">
+    <!-- Key Projects -->
+    <div class="section-label" style="margin-top:1rem;"><div class="section-label-line"></div><span class="section-label-text">Key Projects</span></div>
+    <div class="proj-grid reveal">
+      <div class="proj-card"><span class="proj-arrow">↗</span><div class="proj-num">01</div><div class="proj-title">Flat Foot Detection Hardware</div><div class="proj-org">ME6114 · Mar–Apr 2025</div><p class="proj-desc">Hardware socks with embedded pressure sensors capturing ground reaction forces. 90%+ prediction accuracy via logistic regression on 1000+ gait data-points.</p><div class="proj-tags"><span class="proj-tag">ML</span><span class="proj-tag">Hardware</span><span class="proj-tag">Biomechanics</span></div></div>
+      <div class="proj-card"><span class="proj-arrow">↗</span><div class="proj-num">02</div><div class="proj-title">Undercarriage & Fuselage Design</div><div class="proj-org">ME318 · Jan–Apr 2025</div><p class="proj-desc">64 g fuselage sustaining 58 kg axial load. PID control algorithm for precise actuation using encoder motor, sensors, multi-link system & Arduino.</p><div class="proj-tags"><span class="proj-tag">Control Systems</span><span class="proj-tag">Arduino</span><span class="proj-tag">Structural</span></div></div>
+      <div class="proj-card"><span class="proj-arrow">↗</span><div class="proj-num">03</div><div class="proj-title">Navigation & Guidance System</div><div class="proj-org">AE686 · Feb–Apr 2025</div><p class="proj-desc">Unified pipeline of 3 guidance modules with 100% success across 4 target scenarios. &lt;10 m miss distance, 95% terminal accuracy via Impact Angle algorithm.</p><div class="proj-tags"><span class="proj-tag">Guidance</span><span class="proj-tag">Simulation</span><span class="proj-tag">Aerospace</span></div></div>
+      <div class="proj-card"><span class="proj-arrow">↗</span><div class="proj-num">04</div><div class="proj-title">Predictive Maintenance — Chemical Plant</div><div class="proj-org">DS203 · Oct 2023</div><p class="proj-desc">Analyzed 200-parameter dataset. Trained model to predict vibration parameters and trigger critical alarms. Elevated plant efficiency by 4%.</p><div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Data Science</span><span class="proj-tag">Predictive ML</span></div></div>
+      <div class="proj-card"><span class="proj-arrow">↗</span><div class="proj-num">05</div><div class="proj-title">DRONEacharya — Aerial Vision Rover</div><div class="proj-org">ITSP · Apr–Aug 2023</div><p class="proj-desc">Aerial vision-guided autonomous rover for golf ball collection using drone-based detection with OpenCV and TensorFlow corner & colour detection.</p><div class="proj-tags"><span class="proj-tag">OpenCV</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">Autonomous</span></div></div>
+      <div class="proj-card"><span class="proj-arrow">↗</span><div class="proj-num">06</div><div class="proj-title">Boardlinker — Digital Boards</div><div class="proj-org">ENT603 · Nov 2023</div><p class="proj-desc">Product converting board writing to digital text using sonar sensors. Business Model Canvas built through 20+ customer discovery interviews.</p><div class="proj-tags"><span class="proj-tag">Entrepreneurship</span><span class="proj-tag">Hardware</span><span class="proj-tag">EdTech</span></div></div>
+    </div>
+
+    <!-- Technical Experience -->
+    <div class="tech-section reveal" style="margin-top:3rem;">
+      <h2 class="tech-section-title">Technical <em>Experience</em></h2>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-item-title">🚀 Spaceport America Cup 2024</div>
+          <div class="tech-item-meta">New Mexico, USA · Jun 2024</div>
+          <div class="tech-item-bullets">
+            <div class="tech-item-bullet">2nd nationally, 19th globally in 10K ft category among 150+ teams</div>
+            <div class="tech-item-bullet">Co-authored a 70-page project technical report</div>
+            <div class="tech-item-bullet">Engaged with 6000+ global rocketeers at ESRA conference</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-title">🔧 Project Agastya — Airframe & Recovery</div>
+          <div class="tech-item-meta">IIT Bombay Rocket Team · Jul 2023 – Jun 2024</div>
+          <div class="tech-item-bullets">
+            <div class="tech-item-bullet">Rocket soared to 9,200 ft at Mach 0.74, &lt;10% apogee error under 10G</div>
+            <div class="tech-item-bullet">ANSYS and SolidWorks simulations for shear stress and buckling</div>
+          </div>
+        </div>
+        <div class="tech-item" style="--tl-accent:var(--blue)">
+          <div class="tech-item-title">📐 FEA of Orthogonal Machining</div>
+          <div class="tech-item-meta">ME230 · Apr 2024</div>
+          <div class="tech-item-bullets">
+            <div class="tech-item-bullet">Analyzed stress, strain, chip formation, shear angle and cutting force</div>
+            <div class="tech-item-bullet">Pseudocolour maps for varying rake angle and workpiece material</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-title">⚙️ Jenson Mechanism Analysis</div>
+          <div class="tech-item-meta">ME232 · Mar–Apr 2024 · Guide: Prof. Amit Singh</div>
+          <div class="tech-item-bullets">
+            <div class="tech-item-bullet">Kinematic simulation, static force and dynamic motion analysis</div>
+            <div class="tech-item-bullet">Validated results using Python script for accuracy and reliability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Sarvesh Patil</div>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('travels')">Travels</a>
+      <a href="#" onclick="showPage('resume')">Resume</a>
+      <a href="#" onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 · IIT Bombay · ETH Zürich</div>
+  </footer>
+</div><!-- end projects -->
+
+<!-- ══════════════════════════════════════════
+     PAGE: TRAVELS
+══════════════════════════════════════════ -->
+<div class="page-section" id="page-travels">
+  <div class="travel-hero">
+    <p class="t-eyebrow">Around the world</p>
+    <h1 class="t-title">Where I've<br><em>wandered.</em></h1>
+    <p class="t-sub">From the beaches of Goa to skydiving over Portugal — a living record of places, moments, and stories in between.</p>
+    <div class="t-stats">
+      <div><div class="t-stat-num">7</div><div class="t-stat-label">Countries</div></div>
+      <div><div class="t-stat-num">4</div><div class="t-stat-label">Continents</div></div>
+      <div><div class="t-stat-num">20</div><div class="t-stat-label">Years old</div></div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <div class="map-container" id="mapContainer">
+      <svg id="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1000" height="500" fill="#D4E3D0"/>
+        <path class="country-path" d="M80,60 L220,55 L250,80 L240,130 L220,160 L200,180 L170,200 L140,220 L110,200 L90,170 L70,140 L65,100 Z"/>
+        <path class="country-path" d="M140,220 L170,200 L185,230 L175,250 L155,245 Z"/>
+        <path class="country-path" d="M155,250 L200,240 L230,260 L240,300 L235,360 L210,400 L185,410 L165,380 L150,340 L140,290 Z"/>
+        <path class="country-path" d="M200,20 L240,15 L260,30 L250,55 L220,55 L200,40 Z"/>
+        <path class="country-path" d="M420,60 L480,55 L510,70 L500,100 L480,115 L455,120 L430,110 L415,90 Z"/>
+        <path class="country-path" d="M400,65 L415,60 L420,75 L410,85 L398,80 Z"/>
+        <path class="country-path" d="M430,130 L490,120 L520,140 L530,180 L525,240 L510,290 L490,320 L465,320 L440,290 L425,240 L420,180 Z"/>
+        <path class="country-path" d="M500,40 L700,30 L750,55 L740,85 L650,90 L580,100 L520,90 L500,70 Z"/>
+        <path class="country-path" d="M510,100 L570,95 L585,120 L570,140 L535,145 L515,130 Z"/>
+        <ellipse class="country-path" cx="615" cy="165" rx="40" ry="55"/>
+        <path class="country-path" d="M640,70 L750,65 L770,90 L755,120 L720,130 L680,120 L650,100 Z"/>
+        <path class="country-path" d="M700,130 L740,120 L760,140 L755,165 L730,170 L700,155 Z"/>
+        <ellipse class="country-path" cx="790" cy="100" rx="18" ry="28"/>
+        <path class="country-path" d="M720,280 L810,270 L850,295 L845,360 L800,380 L745,370 L710,340 L705,300 Z"/>
+        <path class="country-path" d="M250,470 L750,470 L800,490 L200,490 Z"/>
+        <ellipse class="country-visited" cx="615" cy="165" rx="40" ry="55" data-country="india" style="cursor:pointer"/>
+        <path class="country-visited" d="M420,60 L480,55 L510,70 L500,100 L480,115 L455,120 L430,110 L415,90 Z" data-country="europe" style="cursor:pointer"/>
+        <!-- Pins -->
+        <g class="map-pin-group" data-country="india" onclick="openTravelModal('india')"><circle class="pin-pulse" cx="615" cy="165" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="615" cy="165" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
+        <g class="map-pin-group" data-country="switzerland" onclick="openTravelModal('switzerland')"><circle class="pin-pulse" cx="453" cy="85" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="453" cy="85" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
+        <g class="map-pin-group" data-country="france" onclick="openTravelModal('france')"><circle class="pin-pulse" cx="435" cy="88" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="435" cy="88" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
+        <g class="map-pin-group" data-country="italy" onclick="openTravelModal('italy')"><circle class="pin-pulse" cx="465" cy="95" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="465" cy="95" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
+        <g class="map-pin-group" data-country="spain" onclick="openTravelModal('spain')"><circle class="pin-pulse" cx="422" cy="95" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="422" cy="95" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
+        <g class="map-pin-group" data-country="portugal" onclick="openTravelModal('portugal')"><circle class="pin-pulse" cx="410" cy="97" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="410" cy="97" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
+        <g class="map-pin-group" data-country="germany" onclick="openTravelModal('germany')"><circle class="pin-pulse" cx="455" cy="73" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="455" cy="73" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
+        <text x="615" y="230" text-anchor="middle" font-family="Outfit,sans-serif" font-size="9" fill="#1A1814" opacity="0.5">India</text>
+        <text x="453" y="75" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">CH</text>
+        <text x="430" y="80" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">FR</text>
+        <text x="467" y="105" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">IT</text>
+        <text x="415" y="106" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">ES</text>
+        <text x="403" y="107" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">PT</text>
+        <text x="460" y="63" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">DE</text>
+        <rect x="16" y="16" width="120" height="34" rx="8" fill="white" opacity="0.85"/>
+        <circle cx="32" cy="33" r="5" fill="#2E6B4F"/>
+        <text x="44" y="37" font-family="Outfit,sans-serif" font-size="10" fill="#1A1814" opacity="0.7">Visited country</text>
+      </svg>
+      <div class="map-popup" id="mapPopup">
+        <div class="popup-flag" id="popupFlag"></div>
+        <div class="popup-country" id="popupCountry"></div>
+        <div class="popup-year" id="popupYear"></div>
+        <div class="popup-desc" id="popupDesc"></div>
+        <span class="popup-cta" id="popupCta">Read more →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COUNTRY GRID -->
+  <div class="grid-section">
+    <div class="sec-divider"><div class="sec-div-line"></div><span class="sec-div-label">Country stories</span><div class="sec-div-line"></div></div>
+    <div class="country-grid" id="countryGrid"></div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Sarvesh Patil</div>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('projects')">Projects</a>
+      <a href="#" onclick="showPage('resume')">Resume</a>
+      <a href="#" onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 · IIT Bombay · ETH Zürich</div>
+  </footer>
+</div><!-- end travels -->
+
+<!-- TRAVEL MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeTravelModal(event)">
+  <div class="modal" id="travelModal">
+    <div class="modal-visual" id="modalVisual"><button class="modal-close" onclick="closeTravelModalDirect()">✕</button></div>
+    <div class="modal-body">
+      <div class="modal-header">
+        <div class="modal-flag" id="modalFlag"></div>
+        <div><div class="modal-title" id="modalTitle"></div><div class="modal-subtitle" id="modalSubtitle"></div></div>
+      </div>
+      <div class="modal-content" id="modalContent"></div>
+      <div class="modal-photos-label">Memories — add your photos here</div>
+      <div class="modal-photos" id="modalPhotos"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PAGE: RESUME
+══════════════════════════════════════════ -->
+<div class="page-section" id="page-resume">
+  <div class="resume-hero-strip">
+    <div class="rh-inner">
+      <div>
+        <p class="rh-eye">Curriculum Vitae</p>
+        <h1 class="rh-name">Sarvesh<br><em>Shridhar Patil</em></h1>
+        <p class="rh-role">Mechanical Engineering · IIT Bombay · B.Tech 2026</p>
+        <div class="rh-meta">
+          <span class="meta-pill">🎓 <strong>CPI 9.23</strong> · IIT Bombay</span>
+          <span class="meta-pill">🚀 <strong>Structural Lead</strong> · Rocket Corp, Austria</span>
+          <span class="meta-pill">🏔️ <strong>ETH Zürich</strong> Exchange 2024</span>
+          <span class="meta-pill">📊 DS Minor · CMInDS | CFA L1 Candidate</span>
+        </div>
+      </div>
+      <div class="rh-stats-right">
+        <div><span class="big-stat-num">9.78</span><span class="big-stat-label">Best SPI</span></div>
+        <div><span class="big-stat-num">AIR 974</span><span class="big-stat-label">JEE Advanced</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div class="sp"><span class="sp-num">9.23</span><span class="sp-label">Current CPI</span></div>
+    <div class="sp"><span class="sp-num">99.7%</span><span class="sp-label">JEE Mains</span></div>
+    <div class="sp"><span class="sp-num">19 AA/AP</span><span class="sp-label">Top Grades</span></div>
+    <div class="sp"><span class="sp-num">150+</span><span class="sp-label">Teams beaten</span></div>
+    <div class="sp"><span class="sp-num">₹3M+</span><span class="sp-label">Budget managed</span></div>
+    <div class="sp"><span class="sp-num">₹1M+</span><span class="sp-label">Sponsorships</span></div>
+  </div>
+  <div class="resume-page-inner">
+    <div class="resume-two-col">
+      <!-- Sidebar -->
+      <aside class="res-sidebar">
+        <nav class="res-sidebar-nav">
+          <a class="res-sidebar-link rs-active" href="#res-edu"><span class="sdot"></span>Education</a>
+          <a class="res-sidebar-link" href="#res-exp"><span class="sdot"></span>Experience</a>
+          <a class="res-sidebar-link" href="#res-tech"><span class="sdot"></span>Technical</a>
+          <a class="res-sidebar-link" href="#res-proj"><span class="sdot"></span>Projects</a>
+          <a class="res-sidebar-link" href="#res-skills"><span class="sdot"></span>Skills</a>
+          <a class="res-sidebar-link" href="#res-lead"><span class="sdot"></span>Leadership</a>
+          <a class="res-sidebar-link" href="#res-extra"><span class="sdot"></span>Extracurriculars</a>
+        </nav>
+        <a href="#" class="res-dl" download>↓ Download PDF Resume</a>
+        <div class="tag-cloud-wrap">
+          <span class="tag-cloud-label">Tech Stack</span>
+          <div class="tag-cloud">
+            <span class="tc-tag">Python</span><span class="tc-tag">C++</span><span class="tc-tag">MATLAB</span><span class="tc-tag">SolidWorks</span><span class="tc-tag">ANSYS</span><span class="tc-tag">AutoCAD</span><span class="tc-tag">TensorFlow</span><span class="tc-tag">FastAPI</span><span class="tc-tag">OpenCV</span><span class="tc-tag">LaTeX</span><span class="tc-tag">Abaqus</span><span class="tc-tag">Arduino</span>
+          </div>
+        </div>
+      </aside>
+      <!-- Main -->
+      <main>
+        <!-- Education -->
+        <section class="res-section reveal" id="res-edu">
+          <div class="sec-head"><span class="sec-head-label">🎓 Education</span><div class="sec-head-line"></div></div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-accent" style="background:var(--gold)"></div><div class="tl-header"><div class="tl-title">B.Tech — Mechanical Engineering</div><span class="tl-badge b-gold">2022 – 2026</span></div><div class="tl-org">Indian Institute of Technology Bombay · Mumbai, India</div><div class="tl-bullets"><div class="tl-bullet"><strong>CPI: 9.23</strong> · Core 186 | Total 204 credits</div><div class="tl-bullet">SPI of <strong>9.78 & 9.50</strong> in consecutive semesters; 1 AP + 18 AA grades over 6 semesters</div><div class="tl-bullet">Pursuing <strong>DS Minor</strong> by CMInDS · <strong>CFA Level 1</strong> candidate</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--blue)"></div><div class="tl-header"><div class="tl-title">Semester Exchange</div><span class="tl-badge b-blue">2024</span></div><div class="tl-org">ETH Zürich · Zürich, Switzerland</div><div class="tl-bullets"><div class="tl-bullet">Selected for competitive international exchange at one of Europe's top engineering universities</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot" style="background:var(--ink3)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--ink3)"></div><div class="tl-header"><div class="tl-title">HSC — Maharashtra Board</div><span class="tl-badge b-gray">2022</span></div><div class="tl-org">Chh. Shahu Jr. College, Satara</div><div class="tl-bullets"><div class="tl-bullet"><strong>88.83%</strong> · AIR 974 JEE Advanced · <strong>99.7%ile</strong> JEE Mains · 99.91%ile MHT-CET</div><div class="tl-bullet">NTSE top 200 · KVPY SX top ranks</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot" style="background:var(--ink3)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--ink3)"></div><div class="tl-header"><div class="tl-title">SSC — Maharashtra Board</div><span class="tl-badge b-gray">2020</span></div><div class="tl-org">New English School, Satara</div><div class="tl-bullets"><div class="tl-bullet"><strong>99.60%</strong> · Certificate of merit NFLAT by RBI · A grade Drawing Grade Exam</div></div></div></div>
+          </div>
+        </section>
+        <!-- Experience -->
+        <section class="res-section reveal" id="res-exp">
+          <div class="sec-head"><span class="sec-head-label">💼 Professional Experience</span><div class="sec-head-line"></div></div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot" style="background:var(--red)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--red)"></div><div class="tl-header"><div class="tl-title">Structural Lead</div><span class="tl-badge b-red">Feb 2025 – Present</span></div><div class="tl-org">The Rocket Corporation GmbH · Austria 🇦🇹</div><div class="tl-sub">Building the first heavy reusable rocket with 50 ton LEO payload capacity.</div><div class="tl-bullets"><div class="tl-bullet">Led structural design of a <strong>120 m tall heavy reusable rocket</strong> through stress analysis & aerodynamics</div><div class="tl-bullet">Reduced structural mass factor error to <strong>&lt;3%</strong> via empirical analysis & linear regression</div><div class="tl-bullet">Driving <strong>50% launch cost reduction</strong> through financial analysis of component procurement</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot" style="background:var(--green)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--green)"></div><div class="tl-header"><div class="tl-title">Data Analyst</div><span class="tl-badge b-green">Jun – Jul 2025</span></div><div class="tl-org">Cogoport Private Limited · India 🇮🇳</div><div class="tl-sub">Digital shipment platform for international freight and logistics.</div><div class="tl-bullets"><div class="tl-bullet">Analyzed <strong>4M+ shipment records</strong> for RFM segmentation improving customer targeting</div><div class="tl-bullet">Saved <strong>3 hrs/week per user</strong> with FastAPI-based backend for agentic calls & mail pipelines</div><div class="tl-bullet">Boosted outreach effectiveness by <strong>5%</strong> via Lusha API integration</div></div></div></div>
+          </div>
+        </section>
+        <!-- Technical -->
+        <section class="res-section reveal" id="res-tech">
+          <div class="sec-head"><span class="sec-head-label">🚀 Technical Experience</span><div class="sec-head-line"></div></div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-accent" style="background:var(--gold)"></div><div class="tl-header"><div class="tl-title">Spaceport America Cup 2024</div><span class="tl-badge b-gold">Jun 2024 · USA 🇺🇸</span></div><div class="tl-sub">World's largest intercollegiate rocketry competition — 150+ teams globally.</div><div class="tl-bullets"><div class="tl-bullet"><strong>2nd nationally · 19th globally</strong> in 10K ft category · 35th overall among 150+ teams</div><div class="tl-bullet">Co-authored <strong>70-page technical report</strong> · Engaged 6000+ rocketeers at ESRA conference</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-accent" style="background:var(--gold)"></div><div class="tl-header"><div class="tl-title">Project Agastya — Airframe & Recovery</div><span class="tl-badge b-gold">Jul 2023 – Jun 2024</span></div><div class="tl-org">IIT Bombay Rocket Team</div><div class="tl-sub">Soared to 9,200 ft at Mach 0.74, &lt;10% apogee error under 10G acceleration.</div><div class="tl-bullets"><div class="tl-bullet">Reusable rocket with passive stabilisation; ANSYS & SolidWorks simulations for shear stress and buckling</div></div></div></div>
+          </div>
+        </section>
+        <!-- Projects -->
+        <section class="res-section reveal" id="res-proj">
+          <div class="sec-head"><span class="sec-head-label">🔬 Key Projects</span><div class="sec-head-line"></div></div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--blue)"></div><div class="tl-header"><div class="tl-title">Flat Foot Detection Hardware</div><span class="tl-badge b-blue">Mar–Apr 2025 · ME6114</span></div><div class="tl-bullets"><div class="tl-bullet"><strong>90%+ prediction accuracy</strong> via logistic regression on 1000+ biomechanical gait data-points</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--blue)"></div><div class="tl-header"><div class="tl-title">Undercarriage & Fuselage Design</div><span class="tl-badge b-blue">Jan–Apr 2025 · ME318</span></div><div class="tl-bullets"><div class="tl-bullet">64 g fuselage sustaining <strong>58 kg axial</strong> + 32 kg lateral load, 25 m drop impact resistance</div><div class="tl-bullet"><strong>PID control algorithm</strong> for precise actuation via encoder motor, multi-link system & Arduino</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--blue)"></div><div class="tl-header"><div class="tl-title">Navigation & Guidance System</div><span class="tl-badge b-blue">Feb–Apr 2025 · AE686</span></div><div class="tl-bullets"><div class="tl-bullet"><strong>100% success</strong> across 4 target scenarios · &lt;10 m miss distance, 95% terminal accuracy</div><div class="tl-bullet">20+ simulations optimized via <strong>Nelder–Mead</strong> method</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--blue)"></div><div class="tl-header"><div class="tl-title">Predictive Maintenance — Chemical Plant</div><span class="tl-badge b-blue">Oct 2023 · DS203</span></div><div class="tl-bullets"><div class="tl-bullet">200-parameter dataset · triggered critical alarms · <strong>4% plant efficiency gain</strong></div></div></div></div>
+          </div>
+        </section>
+        <!-- Skills -->
+        <section class="res-section reveal" id="res-skills">
+          <div class="sec-head"><span class="sec-head-label">💻 Technical Skills</span><div class="sec-head-line"></div></div>
+          <div class="skills-grid">
+            <div class="skill-group"><div class="skill-group-label">🐍 Programming</div><div class="lang-chips"><span class="lang-chip">Python</span><span class="lang-chip">C++/C</span><span class="lang-chip">MATLAB</span><span class="lang-chip">LaTeX</span></div></div>
+            <div class="skill-group"><div class="skill-group-label">📦 Libraries</div><div class="lang-chips"><span class="lang-chip">NumPy</span><span class="lang-chip">Pandas</span><span class="lang-chip">TensorFlow</span><span class="lang-chip">FastAPI</span><span class="lang-chip">OpenCV</span><span class="lang-chip">Matplotlib</span></div></div>
+            <div class="skill-group"><div class="skill-group-label">🛠️ Engineering Software</div><div class="lang-chips"><span class="lang-chip">SolidWorks</span><span class="lang-chip">ANSYS</span><span class="lang-chip">AutoCAD</span><span class="lang-chip">Abaqus</span><span class="lang-chip">Adams</span><span class="lang-chip">OpenRocket</span></div></div>
+            <div class="skill-group"><div class="skill-group-label">📊 Proficiency</div><div class="skill-items"><div class="skill-item"><span class="skill-name">Structural Analysis</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div><span class="skill-pct">92%</span></div><div class="skill-item"><span class="skill-name">Data Science / ML</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div><span class="skill-pct">82%</span></div><div class="skill-item"><span class="skill-name">CAD & Simulation</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div><span class="skill-pct">88%</span></div></div></div>
+          </div>
+        </section>
+        <!-- Leadership -->
+        <section class="res-section reveal" id="res-lead">
+          <div class="sec-head"><span class="sec-head-label">🏆 Leadership</span><div class="sec-head-line"></div></div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-accent" style="background:var(--gold)"></div><div class="tl-header"><div class="tl-title">Overall Leader — IIT Bombay Rocket Team</div><span class="tl-badge b-gold">Jun 2025 – Present</span></div><div class="tl-sub">Interdisciplinary team of 50+ students, guided by ISRO scientists.</div><div class="tl-bullets"><div class="tl-bullet">Secured <strong>₹1M+ sponsorships</strong> from ANSYS, SolidWorks, HCL · Managed <strong>₹3M+ budget</strong></div><div class="tl-bullet">Directed events with <strong>1000+ attendees</strong> · Advanced active fin control rocket development</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-accent" style="background:var(--gold)"></div><div class="tl-header"><div class="tl-title">Subsystem Head — Airframe & Recovery</div><span class="tl-badge b-gold">Aug 2024 – May 2025</span></div><div class="tl-bullets"><div class="tl-bullet">Spearheaded <strong>10+ member team</strong> · <strong>4 test launches + 2 competition flights</strong></div><div class="tl-bullet">Increased trajectory accuracy by <strong>20%</strong> · Reduced manufacturing time by <strong>60%</strong></div></div></div></div>
+          </div>
+        </section>
+        <!-- Extracurriculars -->
+        <section class="res-section reveal" id="res-extra">
+          <div class="sec-head"><span class="sec-head-label">🌟 Extracurriculars</span><div class="sec-head-line"></div></div>
+          <div class="extra-grid">
+            <div class="extra-card"><div class="extra-category" style="color:var(--blue)">🏊 Sports</div><div class="extra-items"><div class="extra-item">4+ district-level swimming medals · 2 km sea swim at Malvan Khadi</div><div class="extra-item">Gold — 50m medley relay · Silver — water polo (general championship)</div></div></div>
+            <div class="extra-card"><div class="extra-category" style="color:var(--red)">🎭 NCC & Cultural</div><div class="extra-items"><div class="extra-item">NCC Cultural Champion 2022–23 · 1st place, Bravo victory</div><div class="extra-item">Street plays on mental health & women empowerment · 'B' certificate, Ministry of Defence</div></div></div>
+            <div class="extra-card"><div class="extra-category" style="color:var(--green)">🏅 Competitions</div><div class="extra-items"><div class="extra-item">Top 55 — Tower Research Capital Annual Data Challenge</div><div class="extra-item">NTSE top 200 · KVPY SX top all-India rank</div></div></div>
+            <div class="extra-card"><div class="extra-category" style="color:var(--gold)">📺 Content</div><div class="extra-items"><div class="extra-item">YouTube channel guiding students on competitive exams & mental support</div><div class="extra-item">Puneet Sagar Abhiyan volunteer — beach & water source cleanup</div></div></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">Sarvesh Patil</div>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home')">Home</a><a href="#" onclick="showPage('projects')">Projects</a><a href="#" onclick="showPage('travels')">Travels</a><a href="#" onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 · IIT Bombay · ETH Zürich</div>
+  </footer>
+</div><!-- end resume -->
+
+<!-- ══════════════════════════════════════════
+     PAGE: CONTACT
+══════════════════════════════════════════ -->
+<div class="page-section" id="page-contact">
+  <div class="contact-page">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Get in touch</span></div>
+        <h2 class="contact-heading">Let's <em>connect.</em></h2>
+        <p class="contact-p">Whether it's a research collaboration, creative project, or just a good conversation — I'm always open to meeting interesting people. I'm currently based between Mumbai and Zürich.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@sarveshpatil_iitb" target="_blank" class="social-link"><div class="social-icon s-yt">▶️</div><div><div class="social-name">YouTube</div><div class="social-handle">@sarveshpatil — Exam guidance & student life</div></div><span class="social-arrow">↗</span></a>
+          <a href="https://instagram.com/sarvesh.patil__" target="_blank" class="social-link"><div class="social-icon s-ig">📸</div><div><div class="social-name">Instagram</div><div class="social-handle">@sarveshpatil — Travel & moments</div></div><span class="social-arrow">↗</span></a>
+          <a href="https://www.linkedin.com/in/sarvesh-patil-iitbombay" target="_blank" class="social-link"><div class="social-icon s-li">💼</div><div><div class="social-name">LinkedIn</div><div class="social-handle">Sarvesh Patil — Professional profile</div></div><span class="social-arrow">↗</span></a>
+        </div>
+        <!-- Quick facts -->
+        <div style="background:white;border:1px solid var(--border);border-radius:16px;padding:1.25rem 1.5rem;margin-top:1.5rem;">
+          <div style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.75rem;font-weight:500;">Quick facts</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:.82rem;color:var(--ink2);display:flex;gap:10px;"><span>📍</span>Mumbai, India / Zürich, Switzerland</div>
+            <div style="font-size:.82rem;color:var(--ink2);display:flex;gap:10px;"><span>🎓</span>IIT Bombay · ETH Zürich</div>
+            <div style="font-size:.82rem;color:var(--ink2);display:flex;gap:10px;"><span>🚀</span>Structural Lead · The Rocket Corporation, Austria</div>
+            <div style="font-size:.82rem;color:var(--ink2);display:flex;gap:10px;"><span>✈️</span>7 countries · Open to travel for opportunities</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="appt-card">
+          <div class="appt-icon">📅</div>
+          <h3 class="appt-title">Book a call with me</h3>
+          <p class="appt-sub">Got a project idea, research question, or just want to chat? Pick a time that works — 30 minutes, no agenda required.</p>
+          <a href="https://calendly.com/sarveshpatil" target="_blank" class="btn-book">Book an appointment →</a>
+          <p class="appt-note">Usually responds within 24 hours · Free of charge</p>
+          <div class="appt-divider"></div>
+          <p class="appt-email">Or reach me directly at<br><a href="mailto:contact.sarveshpatil@hotmail.com">contact.sarveshpatil@hotmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">Sarvesh Patil</div>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home')">Home</a><a href="#" onclick="showPage('projects')">Projects</a><a href="#" onclick="showPage('travels')">Travels</a><a href="#" onclick="showPage('resume')">Resume</a>
+    </div>
+    <div class="footer-copy">© 2025 · IIT Bombay · ETH Zürich</div>
+  </footer>
+</div><!-- end contact -->
+
+<script>
+/* ═══ CURSOR ═══ */
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cursor.style.left = e.clientX+'px'; cursor.style.top = e.clientY+'px'; });
+document.querySelectorAll('a,button,.country-card,.proj-card,.highlight-card,.social-link,.tl-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+/* ═══ NAV ═══ */
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('shrunk', window.scrollY > 40);
+});
+function toggleMobileMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function showPage(page) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const activeLink = document.querySelector(`.nav-links a[data-page="${page}"]`);
+  if(activeLink) activeLink.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('navLinks').classList.remove('open');
+  // Trigger reveals on new page
+  setTimeout(triggerReveals, 100);
+}
+// Override all nav clicks
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', e => e.preventDefault());
+});
+
+/* ═══ REVEAL ═══ */
+function triggerReveals() {
+  const reveals = document.querySelectorAll('.page-section.active .reveal');
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.08});
+  reveals.forEach(r => { r.classList.remove('visible'); obs.observe(r); });
+}
+triggerReveals();
+
+/* ═══ TRAVEL MAP ═══ */
+const countries = {
+  india:{flag:'🇮🇳',name:'India',year:'Home',gradient:'linear-gradient(135deg,#FF9933 0%,#FF6600 40%,#138808 100%)',tags:['Mumbai','Goa','Beaches','IIT Bombay'],shortDesc:'Home — where it all started. From the monsoon rains of Mumbai to the golden sands of Goa.',fullBlog:`<p>India isn't just where I was born — it's the lens through which I see the world. Growing up navigating the chaos of Mumbai shaped a certain kind of resilience in me.</p><p>Studying at IIT Bombay has been one of the great privileges of my life. The institute sits on the edge of Powai Lake, and there's something quietly magical about cycling past flamingos on your way to a thermodynamics lecture.</p><p>The food, the festivals, the languages — India is twenty countries in one.</p>`},
+  switzerland:{flag:'🇨🇭',name:'Switzerland',year:'2024 — Exchange',gradient:'linear-gradient(135deg,#E8F4FD 0%,#A8D5F0 50%,#5B9BD5 100%)',tags:['ETH Zürich','Alps','Hiking','Lakes'],shortDesc:'My semester exchange at ETH Zürich — mountain hikes, world-class research, and the most beautiful skyline I\'ve ever seen.',fullBlog:`<p>Coming to ETH Zürich for my semester exchange was a dream I hadn't quite let myself believe in. The city feels almost impossibly beautiful — trams, cobblestone lanes, and mountains on the horizon.</p><p>The academic culture here is serious and rigorous in a way that pushes you. On weekends I'd escape into the Alps — hiking above the clouds, looking down at valleys that look like they were painted.</p>`},
+  france:{flag:'🇫🇷',name:'France',year:'2024',gradient:'linear-gradient(135deg,#E8EAF0 0%,#B8C0D8 50%,#5A6EA0 100%)',tags:['Paris','Louvre','Cuisine','Architecture'],shortDesc:'A weekend in Paris — the Eiffel Tower at dusk, fresh croissants, and streets that feel like living in a film.',fullBlog:`<p>Every cliché about Paris is true, and none of it prepares you for the actual thing. I visited on a long weekend from Zürich — just three days, but each felt stretched with experience.</p><p>The Louvre is overwhelming in the best sense. The Winged Victory of Samothrace stopped me cold. What I didn't expect was how much I'd love the everyday Paris — the cafés, the bouquinistes along the Seine, the way people linger over meals.</p>`},
+  italy:{flag:'🇮🇹',name:'Italy',year:'2024',gradient:'linear-gradient(135deg,#F5F0E8 0%,#D4B896 50%,#8B6F47 100%)',tags:['Rome','Venice','Pasta','History'],shortDesc:'Rome in two days and Venice in one — ancient ruins, canal gondolas, and the best pasta of my life.',fullBlog:`<p>Italy hit different. The Colosseum is genuinely staggering in person — photographs don't capture the scale. Venice was surreal: a city with no cars, just water and stone and light bouncing off everything.</p><p>I got genuinely lost in the Venetian alleyways and it was the best kind of lost. And the food — I had not had good pasta before Italy.</p>`},
+  spain:{flag:'🇪🇸',name:'Spain',year:'2024',gradient:'linear-gradient(135deg,#FFF0D0 0%,#F4C842 50%,#E03030 100%)',tags:['Barcelona','Sagrada Família','Tapas','Gaudí'],shortDesc:'Barcelona\'s architecture, late dinners, and the impossible beauty of Gaudí\'s Sagrada Família.',fullBlog:`<p>Standing inside the Sagrada Família was one of the most disorienting and beautiful experiences of my life. The light through the stained glass turns the interior into something otherworldly.</p><p>Spanish culture runs on a different clock — dinner at 10pm, tapas until midnight. As someone from India, I felt immediately at home. Barcelona rewards slow wandering.</p>`},
+  portugal:{flag:'🇵🇹',name:'Portugal',year:'2024',gradient:'linear-gradient(135deg,#E8F0E8 0%,#7BAF7B 50%,#2D6A2D 100%)',tags:['Lisbon','Sintra','Skydiving','Fado'],shortDesc:'Lisbon\'s tiled facades, skydiving over the Atlantic, and the melancholy beauty of fado music at night.',fullBlog:`<p>Portugal felt like Europe's best-kept secret. And yes — I went skydiving here. Jumping out of a plane above the Atlantic coast at 14,000 feet is something I will never forget.</p><p>Sintra was a revelation — fairytale palaces draped across forested hills. I heard fado music live one evening in a small Alfama restaurant. It's music of longing, and it lodged somewhere deep.</p>`},
+  germany:{flag:'🇩🇪',name:'Germany',year:'2024',gradient:'linear-gradient(135deg,#F5F5F5 0%,#D4A843 50%,#2C2C2C 100%)',tags:['Munich','Berlin','Beer Gardens','History'],shortDesc:'Munich\'s beer gardens, Berlin\'s complex history, and the quiet efficiency of German trains.',fullBlog:`<p>Germany has two faces and I got to see both. Munich is warm and convivial — the English Garden vast and somehow feeling like a secret. The beer gardens have a communal spirit I found genuinely lovely.</p><p>Berlin is something else. The weight of 20th century history presses on every corner. The Holocaust Memorial, Checkpoint Charlie — history here is physical and present, demanding engagement.</p>`}
+};
+
+const grid = document.getElementById('countryGrid');
+Object.entries(countries).forEach(([key,c]) => {
+  grid.innerHTML += `<div class="country-card" onclick="openTravelModal('${key}')"><div class="card-visual"><div class="card-visual-bg" style="background:${c.gradient}"></div><div class="card-visual-overlay"></div><div class="card-flag-large">${c.flag}</div></div><div class="card-body"><div class="card-meta"><div class="card-country-name">${c.name}</div><div class="card-year-badge">${c.year}</div></div><p class="card-desc">${c.shortDesc}</p><div class="card-tags">${c.tags.map(t=>`<span class="card-tag">${t}</span>`).join('')}</div></div></div>`;
+});
+
+// Map hover
+const popup = document.getElementById('mapPopup');
+const mapContainer = document.getElementById('mapContainer');
+document.querySelectorAll('.map-pin-group').forEach(pin => {
+  pin.addEventListener('mouseenter', e => {
+    const key = pin.dataset.country; const c = countries[key]; if(!c) return;
+    document.getElementById('popupFlag').textContent = c.flag;
+    document.getElementById('popupCountry').textContent = c.name;
+    document.getElementById('popupYear').textContent = c.year;
+    document.getElementById('popupDesc').textContent = c.shortDesc.slice(0,90)+'...';
+    document.getElementById('popupCta').onclick = () => openTravelModal(key);
+    const rect = mapContainer.getBoundingClientRect();
+    const pr = pin.getBoundingClientRect();
+    let left = pr.left - rect.left + 14;
+    let top = pr.top - rect.top - 10;
+    if(left + 210 > rect.width) left -= 220;
+    popup.style.left = left+'px'; popup.style.top = top+'px';
+    popup.classList.add('visible');
+  });
+  pin.addEventListener('mouseleave', () => popup.classList.remove('visible'));
+});
+
+function openTravelModal(key) {
+  const c = countries[key]; if(!c) return;
+  document.getElementById('modalFlag').textContent = c.flag;
+  document.getElementById('modalTitle').textContent = c.name;
+  document.getElementById('modalSubtitle').textContent = c.year;
+  document.getElementById('modalVisual').style.background = c.gradient;
+  document.getElementById('modalContent').innerHTML = c.fullBlog;
+  document.getElementById('modalPhotos').innerHTML = Array(6).fill(0).map((_,i)=>`<div class="modal-photo">Add photo ${i+1}</div>`).join('');
+  document.getElementById('modalBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeTravelModal(e) { if(e.target===document.getElementById('modalBackdrop')) closeTravelModalDirect(); }
+function closeTravelModalDirect() { document.getElementById('modalBackdrop').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeTravelModalDirect(); });
+</script>
+</body>
+</html>
