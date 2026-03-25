@@ -6,6 +6,8 @@
 <title>Sarvesh Patil — Student · Traveller · Creator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+NdrbYz3S7Q0s5pYB33FY2V4kT3s7Z/tkKQTmD6j0=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7k1PvMx3NQbK5F1cPE6eS5kNR1F+5vYvHpy8wM=" crossorigin=""></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -629,51 +631,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-i
   <!-- MAP -->
   <div class="map-section">
     <div class="map-container" id="mapContainer">
-      <svg id="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-        <rect width="1000" height="500" fill="#D4E3D0"/>
-        <path class="country-path" d="M80,60 L220,55 L250,80 L240,130 L220,160 L200,180 L170,200 L140,220 L110,200 L90,170 L70,140 L65,100 Z"/>
-        <path class="country-path" d="M140,220 L170,200 L185,230 L175,250 L155,245 Z"/>
-        <path class="country-path" d="M155,250 L200,240 L230,260 L240,300 L235,360 L210,400 L185,410 L165,380 L150,340 L140,290 Z"/>
-        <path class="country-path" d="M200,20 L240,15 L260,30 L250,55 L220,55 L200,40 Z"/>
-        <path class="country-path" d="M420,60 L480,55 L510,70 L500,100 L480,115 L455,120 L430,110 L415,90 Z"/>
-        <path class="country-path" d="M400,65 L415,60 L420,75 L410,85 L398,80 Z"/>
-        <path class="country-path" d="M430,130 L490,120 L520,140 L530,180 L525,240 L510,290 L490,320 L465,320 L440,290 L425,240 L420,180 Z"/>
-        <path class="country-path" d="M500,40 L700,30 L750,55 L740,85 L650,90 L580,100 L520,90 L500,70 Z"/>
-        <path class="country-path" d="M510,100 L570,95 L585,120 L570,140 L535,145 L515,130 Z"/>
-        <ellipse class="country-path" cx="615" cy="165" rx="40" ry="55"/>
-        <path class="country-path" d="M640,70 L750,65 L770,90 L755,120 L720,130 L680,120 L650,100 Z"/>
-        <path class="country-path" d="M700,130 L740,120 L760,140 L755,165 L730,170 L700,155 Z"/>
-        <ellipse class="country-path" cx="790" cy="100" rx="18" ry="28"/>
-        <path class="country-path" d="M720,280 L810,270 L850,295 L845,360 L800,380 L745,370 L710,340 L705,300 Z"/>
-        <path class="country-path" d="M250,470 L750,470 L800,490 L200,490 Z"/>
-        <ellipse class="country-visited" cx="615" cy="165" rx="40" ry="55" data-country="india" style="cursor:pointer"/>
-        <path class="country-visited" d="M420,60 L480,55 L510,70 L500,100 L480,115 L455,120 L430,110 L415,90 Z" data-country="europe" style="cursor:pointer"/>
-        <!-- Pins -->
-        <g class="map-pin-group" data-country="india" onclick="openTravelModal('india')"><circle class="pin-pulse" cx="615" cy="165" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="615" cy="165" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
-        <g class="map-pin-group" data-country="switzerland" onclick="openTravelModal('switzerland')"><circle class="pin-pulse" cx="453" cy="85" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="453" cy="85" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
-        <g class="map-pin-group" data-country="france" onclick="openTravelModal('france')"><circle class="pin-pulse" cx="435" cy="88" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="435" cy="88" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
-        <g class="map-pin-group" data-country="italy" onclick="openTravelModal('italy')"><circle class="pin-pulse" cx="465" cy="95" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="465" cy="95" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
-        <g class="map-pin-group" data-country="spain" onclick="openTravelModal('spain')"><circle class="pin-pulse" cx="422" cy="95" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="422" cy="95" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
-        <g class="map-pin-group" data-country="portugal" onclick="openTravelModal('portugal')"><circle class="pin-pulse" cx="410" cy="97" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="410" cy="97" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
-        <g class="map-pin-group" data-country="germany" onclick="openTravelModal('germany')"><circle class="pin-pulse" cx="455" cy="73" r="12" fill="rgba(46,107,79,0.25)" stroke="none"/><circle class="pin-circle" cx="455" cy="73" r="6" fill="#2E6B4F" stroke="white" stroke-width="2"/></g>
-        <text x="615" y="230" text-anchor="middle" font-family="Outfit,sans-serif" font-size="9" fill="#1A1814" opacity="0.5">India</text>
-        <text x="453" y="75" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">CH</text>
-        <text x="430" y="80" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">FR</text>
-        <text x="467" y="105" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">IT</text>
-        <text x="415" y="106" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">ES</text>
-        <text x="403" y="107" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">PT</text>
-        <text x="460" y="63" text-anchor="middle" font-family="Outfit,sans-serif" font-size="7" fill="#1A1814" opacity="0.5">DE</text>
-        <rect x="16" y="16" width="120" height="34" rx="8" fill="white" opacity="0.85"/>
-        <circle cx="32" cy="33" r="5" fill="#2E6B4F"/>
-        <text x="44" y="37" font-family="Outfit,sans-serif" font-size="10" fill="#1A1814" opacity="0.7">Visited country</text>
-      </svg>
-      <div class="map-popup" id="mapPopup">
-        <div class="popup-flag" id="popupFlag"></div>
-        <div class="popup-country" id="popupCountry"></div>
-        <div class="popup-year" id="popupYear"></div>
-        <div class="popup-desc" id="popupDesc"></div>
-        <span class="popup-cta" id="popupCta">Read more →</span>
-      </div>
+      <div id="world-map" style="width:100%; height:550px; border-radius:20px;"></div>
     </div>
   </div>
 
@@ -945,26 +903,34 @@ Object.entries(countries).forEach(([key,c]) => {
   grid.innerHTML += `<div class="country-card" onclick="openTravelModal('${key}')"><div class="card-visual"><div class="card-visual-bg" style="background:${c.gradient}"></div><div class="card-visual-overlay"></div><div class="card-flag-large">${c.flag}</div></div><div class="card-body"><div class="card-meta"><div class="card-country-name">${c.name}</div><div class="card-year-badge">${c.year}</div></div><p class="card-desc">${c.shortDesc}</p><div class="card-tags">${c.tags.map(t=>`<span class="card-tag">${t}</span>`).join('')}</div></div></div>`;
 });
 
-// Map hover
-const popup = document.getElementById('mapPopup');
-const mapContainer = document.getElementById('mapContainer');
-document.querySelectorAll('.map-pin-group').forEach(pin => {
-  pin.addEventListener('mouseenter', e => {
-    const key = pin.dataset.country; const c = countries[key]; if(!c) return;
-    document.getElementById('popupFlag').textContent = c.flag;
-    document.getElementById('popupCountry').textContent = c.name;
-    document.getElementById('popupYear').textContent = c.year;
-    document.getElementById('popupDesc').textContent = c.shortDesc.slice(0,90)+'...';
-    document.getElementById('popupCta').onclick = () => openTravelModal(key);
-    const rect = mapContainer.getBoundingClientRect();
-    const pr = pin.getBoundingClientRect();
-    let left = pr.left - rect.left + 14;
-    let top = pr.top - rect.top - 10;
-    if(left + 210 > rect.width) left -= 220;
-    popup.style.left = left+'px'; popup.style.top = top+'px';
-    popup.classList.add('visible');
-  });
-  pin.addEventListener('mouseleave', () => popup.classList.remove('visible'));
+// Leaflet map with clickable markers
+const map = L.map('world-map', {zoomControl:true, scrollWheelZoom:true}).setView([20, 0], 2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+const travelMarkers = {
+  india:[20.5937,78.9629],
+  switzerland:[46.8182,8.2275],
+  france:[46.2276,2.2137],
+  italy:[41.8719,12.5674],
+  spain:[40.4637,-3.7492],
+  portugal:[39.3999,-8.2245],
+  germany:[51.1657,10.4515]
+};
+
+Object.entries(travelMarkers).forEach(([key, coords]) => {
+  const marker = L.circleMarker(coords, {
+    radius: 8,
+    fillColor: '#2E6B4F',
+    color: '#1F4F33',
+    weight: 2,
+    opacity: 1,
+    fillOpacity: 0.9
+  }).addTo(map);
+  marker.bindTooltip(countries[key]?.name || key, {direction:'top', offset:[0,-10]});
+  marker.on('click', () => openTravelModal(key));
 });
 
 function openTravelModal(key) {
