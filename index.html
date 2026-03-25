@@ -631,6 +631,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-i
   <!-- MAP -->
   <div class="map-section">
     <div class="map-container" id="mapContainer">
+      <img id="world-map-fallback" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1280px-World_map_-_low_resolution.svg.png" alt="World map fallback" style="width:100%; height:550px; object-fit:cover; border-radius:20px; display:block;" />
       <div id="world-map" style="width:100%; height:550px; border-radius:20px;"></div>
     </div>
   </div>
@@ -871,6 +872,10 @@ function showPage(page) {
   if(activeLink) activeLink.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
   document.getElementById('navLinks').classList.remove('open');
+  // Ensure Leaflet map renders when travels page becomes visible
+  if(page === 'travels' && typeof map !== 'undefined') {
+    setTimeout(() => map.invalidateSize(), 100);
+  }
   // Trigger reveals on new page
   setTimeout(triggerReveals, 100);
 }
@@ -893,7 +898,8 @@ const countries = {
   switzerland:{flag:'🇨🇭',name:'Switzerland',year:'2024 — Exchange',gradient:'linear-gradient(135deg,#E8F4FD 0%,#A8D5F0 50%,#5B9BD5 100%)',tags:['ETH Zürich','Alps','Hiking','Lakes'],shortDesc:'My semester exchange at ETH Zürich — mountain hikes, world-class research, and the most beautiful skyline I\'ve ever seen.',fullBlog:`<p>Coming to ETH Zürich for my semester exchange was a dream I hadn't quite let myself believe in. The city feels almost impossibly beautiful — trams, cobblestone lanes, and mountains on the horizon.</p><p>The academic culture here is serious and rigorous in a way that pushes you. On weekends I'd escape into the Alps — hiking above the clouds, looking down at valleys that look like they were painted.</p>`},
   france:{flag:'🇫🇷',name:'France',year:'2024',gradient:'linear-gradient(135deg,#E8EAF0 0%,#B8C0D8 50%,#5A6EA0 100%)',tags:['Paris','Louvre','Cuisine','Architecture'],shortDesc:'A weekend in Paris — the Eiffel Tower at dusk, fresh croissants, and streets that feel like living in a film.',fullBlog:`<p>Every cliché about Paris is true, and none of it prepares you for the actual thing. I visited on a long weekend from Zürich — just three days, but each felt stretched with experience.</p><p>The Louvre is overwhelming in the best sense. The Winged Victory of Samothrace stopped me cold. What I didn't expect was how much I'd love the everyday Paris — the cafés, the bouquinistes along the Seine, the way people linger over meals.</p>`},
   italy:{flag:'🇮🇹',name:'Italy',year:'2024',gradient:'linear-gradient(135deg,#F5F0E8 0%,#D4B896 50%,#8B6F47 100%)',tags:['Rome','Venice','Pasta','History'],shortDesc:'Rome in two days and Venice in one — ancient ruins, canal gondolas, and the best pasta of my life.',fullBlog:`<p>Italy hit different. The Colosseum is genuinely staggering in person — photographs don't capture the scale. Venice was surreal: a city with no cars, just water and stone and light bouncing off everything.</p><p>I got genuinely lost in the Venetian alleyways and it was the best kind of lost. And the food — I had not had good pasta before Italy.</p>`},
-  spain:{flag:'🇪🇸',name:'Spain',year:'2024',gradient:'linear-gradient(135deg,#FFF0D0 0%,#F4C842 50%,#E03030 100%)',tags:['Barcelona','Sagrada Família','Tapas','Gaudí'],shortDesc:'Barcelona\'s architecture, late dinners, and the impossible beauty of Gaudí\'s Sagrada Família.',fullBlog:`<p>Standing inside the Sagrada Família was one of the most disorienting and beautiful experiences of my life. The light through the stained glass turns the interior into something otherworldly.</p><p>Spanish culture runs on a different clock — dinner at 10pm, tapas until midnight. As someone from India, I felt immediately at home. Barcelona rewards slow wandering.</p>`},
+  spain:{flag:'🇪🇸',name:'Spain',year:'2024',gradient:'linear-gradient(135deg,#FFF0D0 0%,#F4C842 50%,#E03030 100%)',tags:['Barcelona','Sagrada Família','Tapas','Gaudí'],shortDesc:'Barcelona\'s architecture, late dinners, and the impossible beauty of Gaudí\'s Sagrada Família.',fullBlog:`<p>Standing inside the Sagrada Família was one of the most disorienting and beautiful experiences of my life. The light through the stained glass turns the interior into something otherworldly.</p><p>Spanish culture runs on a different clock — dinner at 10pm, tapas until midnight. As someone from India, I felt immediately at home. Barcelona rewards slow wandering.</p>`,photos:['assets/travel/spain/1.jpeg','assets/travel/spain/2.jpeg','assets/travel/spain/3.jpeg']
+  },
   portugal:{flag:'🇵🇹',name:'Portugal',year:'2024',gradient:'linear-gradient(135deg,#E8F0E8 0%,#7BAF7B 50%,#2D6A2D 100%)',tags:['Lisbon','Sintra','Skydiving','Fado'],shortDesc:'Lisbon\'s tiled facades, skydiving over the Atlantic, and the melancholy beauty of fado music at night.',fullBlog:`<p>Portugal felt like Europe's best-kept secret. And yes — I went skydiving here. Jumping out of a plane above the Atlantic coast at 14,000 feet is something I will never forget.</p><p>Sintra was a revelation — fairytale palaces draped across forested hills. I heard fado music live one evening in a small Alfama restaurant. It's music of longing, and it lodged somewhere deep.</p>`},
   germany:{flag:'🇩🇪',name:'Germany',year:'2024',gradient:'linear-gradient(135deg,#F5F5F5 0%,#D4A843 50%,#2C2C2C 100%)',tags:['Munich','Berlin','Beer Gardens','History'],shortDesc:'Munich\'s beer gardens, Berlin\'s complex history, and the quiet efficiency of German trains.',fullBlog:`<p>Germany has two faces and I got to see both. Munich is warm and convivial — the English Garden vast and somehow feeling like a secret. The beer gardens have a communal spirit I found genuinely lovely.</p><p>Berlin is something else. The weight of 20th century history presses on every corner. The Holocaust Memorial, Checkpoint Charlie — history here is physical and present, demanding engagement.</p>`}
 };
@@ -909,6 +915,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
+
+const fallback = document.getElementById('world-map-fallback');
+if(fallback) fallback.style.display='none';
 
 const travelMarkers = {
   india:[20.5937,78.9629],
@@ -940,7 +949,13 @@ function openTravelModal(key) {
   document.getElementById('modalSubtitle').textContent = c.year;
   document.getElementById('modalVisual').style.background = c.gradient;
   document.getElementById('modalContent').innerHTML = c.fullBlog;
-  document.getElementById('modalPhotos').innerHTML = Array(6).fill(0).map((_,i)=>`<div class="modal-photo">Add photo ${i+1}</div>`).join('');
+
+  const photos = Array.isArray(c.photos) && c.photos.length ? c.photos : Array(6).fill(null);
+  document.getElementById('modalPhotos').innerHTML = photos.map((src, i) => {
+    if(src) return `<div class="modal-photo"><img src="${src}" alt="${c.name} photo ${i+1}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" /></div>`;
+    return `<div class="modal-photo">Add photo ${i+1}</div>`;
+  }).join('');
+
   document.getElementById('modalBackdrop').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
