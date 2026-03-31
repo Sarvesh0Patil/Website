@@ -63,7 +63,7 @@ nav.shrunk{height:52px;}
    PAGE SECTIONS (SPA)
 ═══════════════════════════════ */
 .page-section{display:none;min-height:100vh;padding-top:64px;}
-.page-section.active{display:block;}
+.page-section.active{display:block;animation:pageIn .42s var(--ease) both;}
 
 /* ═══════════════════════════════
    ── HOME PAGE ──
@@ -182,13 +182,28 @@ nav.shrunk{height:52px;}
 .pin-circle{transition:r .2s;}
 .pin-pulse{animation:pulse 2.5s ease-in-out infinite;transform-origin:center;}
 @keyframes pulse{0%,100%{opacity:.4;r:12}50%{opacity:0;r:20}}
-.map-popup{position:absolute;background:white;border-radius:14px;padding:1rem 1.25rem;box-shadow:0 2px 12px rgba(0,0,0,.18);border:1px solid var(--border);min-width:200px;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;z-index:10;}
-.map-popup.visible{opacity:1;transform:translateY(0);}
-.popup-flag{font-size:1.6rem;margin-bottom:6px;}
-.popup-country{font-family:var(--serif);font-size:1.1rem;color:var(--ink);margin-bottom:2px;}
-.popup-year{font-size:.75rem;color:var(--ink3);margin-bottom:8px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;}
-.popup-desc{font-size:.82rem;color:var(--ink2);line-height:1.5;}
-.popup-cta{display:inline-block;margin-top:10px;font-size:.78rem;font-weight:500;color:var(--green);border-bottom:1px solid rgba(46,107,79,.3);padding-bottom:1px;cursor:pointer;pointer-events:all;}
+/* ═══════════════════════════════
+   MAP HOVER CARD
+═══════════════════════════════ */
+.map-hover-card{position:absolute;background:white;border-radius:18px;padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.18),0 2px 8px rgba(0,0,0,.08);border:1px solid var(--border);width:300px;pointer-events:none;opacity:0;transform:translateY(10px) scale(.97);transition:opacity .22s var(--ease),transform .22s var(--ease);z-index:500;}
+.map-hover-card.visible{opacity:1;transform:translateY(0) scale(1);}
+.mhc-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.mhc-flag{font-size:2rem;line-height:1;}
+.mhc-name{font-family:var(--serif);font-size:1.2rem;color:var(--ink);line-height:1.1;}
+.mhc-year{font-size:.68rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
+.mhc-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px;}
+.mhc-photo{aspect-ratio:1;border-radius:8px;overflow:hidden;}
+.mhc-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.mhc-photo-empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:var(--bg2);}
+.mhc-desc{font-size:.78rem;color:var(--ink2);line-height:1.55;}
+.mhc-cta{font-size:.72rem;font-weight:500;color:var(--green);border-bottom:1px solid rgba(45,90,69,.3);padding-bottom:1px;display:inline-block;margin-top:8px;}
+/* Map DivIcon markers */
+.map-marker-wrap{position:relative;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.map-marker-dot{width:12px;height:12px;border-radius:50%;background:var(--green);border:2.5px solid white;box-shadow:0 2px 8px rgba(0,0,0,.28);position:relative;z-index:2;transition:transform .2s var(--ease),background .2s;}
+.map-marker-ring{position:absolute;inset:0;border-radius:50%;background:rgba(45,90,69,.25);animation:markerPulse 2.2s ease-in-out infinite;}
+.map-marker-ring-2{position:absolute;inset:0;border-radius:50%;background:rgba(45,90,69,.12);animation:markerPulse 2.2s ease-in-out infinite .7s;}
+.map-marker-wrap:hover .map-marker-dot{transform:scale(1.5);background:#1F4F33;}
+@keyframes markerPulse{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(2.4);opacity:0}}
 /* Country grid */
 .grid-section{max-width:1100px;margin:0 auto;padding:0 3rem 6rem;}
 .sec-divider{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;}
@@ -383,12 +398,60 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-i
   .footer-links{justify-content:center;}
   .modal-photos{grid-template-columns:repeat(2,1fr);}
 }
+/* ═══════════════════════════════
+   SCROLL PROGRESS BAR
+═══════════════════════════════ */
+#scroll-progress{position:fixed;top:64px;left:0;height:3px;background:linear-gradient(90deg,var(--gold),#D0963A);z-index:9999;width:0%;pointer-events:none;transition:width .08s linear,top .3s var(--ease);}
+
+/* ═══════════════════════════════
+   PAGE ENTER ANIMATION
+═══════════════════════════════ */
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ═══════════════════════════════
+   TABLET  901px – 1024px
+═══════════════════════════════ */
+@media(max-width:1024px) and (min-width:901px){
+  nav{padding:0 2rem;}
+  .hero{grid-template-columns:1fr 280px;gap:2rem;padding:3rem 2rem;}
+  .photo-badge-1{left:-10px;}
+  .photo-badge-2{right:-6px;}
+  .proj-grid{grid-template-columns:repeat(2,1fr);}
+  .tech-grid,.skills-grid,.extra-grid{grid-template-columns:1fr 1fr;}
+  .about-grid{grid-template-columns:1fr;gap:2rem;}
+  .contact-grid{gap:2.5rem;}
+  .resume-two-col{grid-template-columns:190px 1fr;gap:2rem;}
+  .ph-inner,.rh-inner{padding-left:2rem;padding-right:2rem;}
+  .projects-content,.resume-page-inner,.contact-page,.about-section{padding-left:2rem;padding-right:2rem;}
+  .dark-band{margin:0 2rem;padding:4rem 2.5rem;}
+  .travel-hero,.map-section,.grid-section{padding-left:2rem;padding-right:2rem;}
+  .country-grid{grid-template-columns:repeat(2,1fr);}
+  .modal{max-width:90vw;}
+}
+
+/* ═══════════════════════════════
+   MOBILE EXTRA FIXES  ≤ 768px
+═══════════════════════════════ */
+@media(max-width:768px){
+  .travel-preview-home{grid-template-columns:1fr!important;}
+  .hero-stats{flex-wrap:wrap;}
+  .hero-stat{flex:0 0 calc(50% - 0.5px);box-sizing:border-box;}
+  .hero-stat:nth-child(n+3){border-top:1px solid var(--border);}
+  .appt-card{position:static;}
+  .extra-grid,.skills-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr!important;}
+  .modal-backdrop{align-items:flex-end;padding:0;}
+  .modal{border-radius:20px 20px 0 0;max-height:92vh;}
+  .rh-stats-right{gap:1rem;}
+}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes fadeLeft{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
+<div id="scroll-progress"></div>
 <div id="cursor"></div>
 
 <!-- ═══ NAV ═══ -->
@@ -552,7 +615,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-i
   <div class="projects-content">
     <!-- Key Projects -->
     <div class="section-label" style="margin-top:1rem;"><div class="section-label-line"></div><span class="section-label-text">Key Projects</span></div>
-    <div class="proj-grid reveal">
+    <div class="proj-grid stagger-grid">
       <div class="proj-card"><span class="proj-arrow">↗</span><div class="proj-num">01</div><div class="proj-title">Flat Foot Detection Hardware</div><div class="proj-org">ME6114 · Mar–Apr 2025</div><p class="proj-desc">Hardware socks with embedded pressure sensors capturing ground reaction forces. 90%+ prediction accuracy via logistic regression on 1000+ gait data-points.</p><div class="proj-tags"><span class="proj-tag">ML</span><span class="proj-tag">Hardware</span><span class="proj-tag">Biomechanics</span></div></div>
       <div class="proj-card"><span class="proj-arrow">↗</span><div class="proj-num">02</div><div class="proj-title">Undercarriage & Fuselage Design</div><div class="proj-org">ME318 · Jan–Apr 2025</div><p class="proj-desc">64 g fuselage sustaining 58 kg axial load. PID control algorithm for precise actuation using encoder motor, sensors, multi-link system & Arduino.</p><div class="proj-tags"><span class="proj-tag">Control Systems</span><span class="proj-tag">Arduino</span><span class="proj-tag">Structural</span></div></div>
       <div class="proj-card"><span class="proj-arrow">↗</span><div class="proj-num">03</div><div class="proj-title">Navigation & Guidance System</div><div class="proj-org">AE686 · Feb–Apr 2025</div><p class="proj-desc">Unified pipeline of 3 guidance modules with 100% success across 4 target scenarios. &lt;10 m miss distance, 95% terminal accuracy via Impact Angle algorithm.</p><div class="proj-tags"><span class="proj-tag">Guidance</span><span class="proj-tag">Simulation</span><span class="proj-tag">Aerospace</span></div></div>
@@ -640,7 +703,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-i
   <!-- COUNTRY GRID -->
   <div class="grid-section">
     <div class="sec-divider"><div class="sec-div-line"></div><span class="sec-div-label">Country stories</span><div class="sec-div-line"></div></div>
-    <div class="country-grid" id="countryGrid"></div>
+    <div class="country-grid stagger-grid" id="countryGrid"></div>
   </div>
 
   <footer>
@@ -879,14 +942,39 @@ document.querySelectorAll('a,button,.country-card,.proj-card,.highlight-card,.so
   el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
 });
 
-/* ═══ NAV ═══ */
+/* ═══ NAV + SCROLL PROGRESS + PARALLAX ═══ */
+const scrollProg = document.getElementById('scroll-progress');
 window.addEventListener('scroll', () => {
-  document.getElementById('mainNav').classList.toggle('shrunk', window.scrollY > 40);
-});
+  const y = window.scrollY;
+  // Nav shrink
+  const nav = document.getElementById('mainNav');
+  const shrunk = y > 40;
+  nav.classList.toggle('shrunk', shrunk);
+  // Scroll progress bar tracks below the nav
+  if(scrollProg) {
+    scrollProg.style.top = (shrunk ? 52 : 64) + 'px';
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if(maxScroll > 0) scrollProg.style.width = Math.min((y / maxScroll) * 100, 100) + '%';
+  }
+  // Hero parallax (only on home page, only after some scroll)
+  if(document.getElementById('page-home').classList.contains('active') && y > 60) {
+    const heroLeft = document.querySelector('.hero-left');
+    const heroRight = document.querySelector('.hero-right');
+    if(heroLeft) heroLeft.style.transform = `translateY(${y * 0.1}px)`;
+    if(heroRight) heroRight.style.transform = `translateY(${y * 0.055}px)`;
+  }
+}, {passive:true});
+
 function toggleMobileMenu() {
   document.getElementById('navLinks').classList.toggle('open');
 }
 function showPage(page) {
+  // Reset parallax transforms before switching
+  const heroLeft = document.querySelector('.hero-left');
+  const heroRight = document.querySelector('.hero-right');
+  if(heroLeft) heroLeft.style.transform = '';
+  if(heroRight) heroRight.style.transform = '';
+
   document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
@@ -894,14 +982,11 @@ function showPage(page) {
   if(activeLink) activeLink.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
   document.getElementById('navLinks').classList.remove('open');
-  // Ensure Leaflet map renders when travels page becomes visible
   if(page === 'travels' && typeof map !== 'undefined') {
     setTimeout(() => map.invalidateSize(), 100);
   }
-  // Trigger reveals on new page
-  setTimeout(triggerReveals, 100);
+  setTimeout(() => { triggerReveals(); triggerStaggerGrids(); }, 80);
 }
-// Override all nav clicks
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', e => e.preventDefault());
 });
@@ -909,10 +994,41 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 /* ═══ REVEAL ═══ */
 function triggerReveals() {
   const reveals = document.querySelectorAll('.page-section.active .reveal');
-  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.08});
+  const obs = new IntersectionObserver(entries => entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('visible');
+  }), {threshold:0.08});
   reveals.forEach(r => { r.classList.remove('visible'); obs.observe(r); });
 }
+
+/* ═══ STAGGER GRID ═══ */
+function triggerStaggerGrids() {
+  const grids = document.querySelectorAll('.page-section.active .stagger-grid');
+  // Pre-hide children immediately to avoid flash
+  grids.forEach(grid => {
+    Array.from(grid.children).forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(22px)';
+      card.style.transition = 'none';
+    });
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      obs.unobserve(e.target);
+      Array.from(e.target.children).forEach((card, i) => {
+        setTimeout(() => {
+          card.style.transition = 'opacity .55s cubic-bezier(0.22,1,0.36,1), transform .55s cubic-bezier(0.22,1,0.36,1)';
+          card.style.opacity = '1';
+          card.style.transform = 'none';
+        }, i * 100);
+      });
+    });s
+  }, {threshold:0.05});
+  grids.forEach(g => obs.observe(g));
+}
+
 triggerReveals();
+triggerStaggerGrids();
 
 /* ═══ RESOURCES COUNTDOWN ═══ */
 function updateResourcesCountdown() {
@@ -937,55 +1053,308 @@ function updateResourcesCountdown() {
 updateResourcesCountdown();
 setInterval(updateResourcesCountdown, 1000);
 
-/* ═══ TRAVEL MAP ═══ */
-const countries = {
-  india:{flag:'🇮🇳',name:'India',year:'Home',gradient:'linear-gradient(135deg,#FF9933 0%,#FF6600 40%,#138808 100%)',tags:['Mumbai','Goa','Beaches','IIT Bombay'],shortDesc:'Home — where it all started. From the monsoon rains of Mumbai to the golden sands of Goa.',fullBlog:`<p>India isn't just where I was born — it's the lens through which I see the world. Growing up navigating the chaos of Mumbai shaped a certain kind of resilience in me.</p><p>Studying at IIT Bombay has been one of the great privileges of my life. The institute sits on the edge of Powai Lake, and there's something quietly magical about cycling past flamingos on your way to a thermodynamics lecture.</p><p>The food, the festivals, the languages — India is twenty countries in one.</p>`},
-  switzerland:{flag:'🇨🇭',name:'Switzerland',year:'2026 — Exchange',gradient:'linear-gradient(135deg,#E8F4FD 0%,#A8D5F0 50%,#5B9BD5 100%)',tags:['ETH Zürich','Alps','Hiking','Lakes'],shortDesc:'My semester exchange at ETH Zürich — mountain hikes, world-class research, and the most beautiful skyline I\'ve ever seen.',fullBlog:`<p>Coming to ETH Zürich for my semester exchange was a dream I hadn't quite let myself believe in. The city feels almost impossibly beautiful — trams, cobblestone lanes, and mountains on the horizon.</p><p>The academic culture here is serious and rigorous in a way that pushes you. On weekends I'd escape into the Alps — hiking above the clouds, looking down at valleys that look like they were painted.</p>`},
-  france:{flag:'🇫🇷',name:'France',year:'2024',gradient:'linear-gradient(135deg,#E8EAF0 0%,#B8C0D8 50%,#5A6EA0 100%)',tags:['Paris','Louvre','Cuisine','Architecture'],shortDesc:'A weekend in Paris — the Eiffel Tower at dusk, fresh croissants, and streets that feel like living in a film.',fullBlog:`<p>Every cliché about Paris is true, and none of it prepares you for the actual thing. I visited on a long weekend from Zürich — just three days, but each felt stretched with experience.</p><p>The Louvre is overwhelming in the best sense. The Winged Victory of Samothrace stopped me cold. What I didn't expect was how much I'd love the everyday Paris — the cafés, the bouquinistes along the Seine, the way people linger over meals.</p>`},
-  italy:{flag:'🇮🇹',name:'Italy',year:'2024',gradient:'linear-gradient(135deg,#F5F0E8 0%,#D4B896 50%,#8B6F47 100%)',tags:['Rome','Venice','Pasta','History'],shortDesc:'Rome in two days and Venice in one — ancient ruins, canal gondolas, and the best pasta of my life.',fullBlog:`<p>Italy hit different. The Colosseum is genuinely staggering in person — photographs don't capture the scale. Venice was surreal: a city with no cars, just water and stone and light bouncing off everything.</p><p>I got genuinely lost in the Venetian alleyways and it was the best kind of lost. And the food — I had not had good pasta before Italy.</p>`},
-  spain:{flag:'🇪🇸',name:'Spain',year:'2024',gradient:'linear-gradient(135deg,#FFF0D0 0%,#F4C842 50%,#E03030 100%)',tags:['Barcelona','Sagrada Família','Tapas','Gaudí'],shortDesc:'Barcelona\'s architecture, late dinners, and the impossible beauty of Gaudí\'s Sagrada Família.',fullBlog:`<p>Standing inside the Sagrada Família was one of the most disorienting and beautiful experiences of my life. The light through the stained glass turns the interior into something otherworldly.</p><p>Spanish culture runs on a different clock — dinner at 10pm, tapas until midnight. As someone from India, I felt immediately at home. Barcelona rewards slow wandering.</p>`,photos:['assets/travel/spain/1.jpeg','assets/travel/spain/2.jpeg','assets/travel/spain/3.jpeg']
-  },
-  portugal:{flag:'🇵🇹',name:'Portugal',year:'2024',gradient:'linear-gradient(135deg,#E8F0E8 0%,#7BAF7B 50%,#2D6A2D 100%)',tags:['Lisbon','Sintra','Skydiving','Fado'],shortDesc:'Lisbon\'s tiled facades, skydiving over the Atlantic, and the melancholy beauty of fado music at night.',fullBlog:`<p>Portugal felt like Europe's best-kept secret. And yes — I went skydiving here. Jumping out of a plane above the Atlantic coast at 14,000 feet is something I will never forget.</p><p>Sintra was a revelation — fairytale palaces draped across forested hills. I heard fado music live one evening in a small Alfama restaurant. It's music of longing, and it lodged somewhere deep.</p>`},
-  germany:{flag:'🇩🇪',name:'Germany',year:'2024',gradient:'linear-gradient(135deg,#F5F5F5 0%,#D4A843 50%,#2C2C2C 100%)',tags:['Munich','Berlin','Beer Gardens','History'],shortDesc:'Munich\'s beer gardens, Berlin\'s complex history, and the quiet efficiency of German trains.',fullBlog:`<p>Germany has two faces and I got to see both. Munich is warm and convivial — the English Garden vast and somehow feeling like a secret. The beer gardens have a communal spirit I found genuinely lovely.</p><p>Berlin is something else. The weight of 20th century history presses on every corner. The Holocaust Memorial, Checkpoint Charlie — history here is physical and present, demanding engagement.</p>`}
+/* ═══ TRAVEL — DYNAMIC LOADER ═══ */
+
+// ── Built-in coordinate database (covers 100+ countries) ──
+const COORDS_DB = {
+  'Afghanistan':[34.5,69.2],'Albania':[41.3,19.8],'Algeria':[36.7,3.0],'Angola':[-8.8,13.2],
+  'Argentina':[-34.6,-58.4],'Armenia':[40.2,44.5],'Australia':[-33.9,151.2],'Austria':[48.2,16.4],
+  'Azerbaijan':[40.4,49.9],'Bahrain':[26.2,50.6],'Bangladesh':[23.7,90.4],'Belgium':[50.8,4.4],
+  'Bolivia':[-16.5,-68.1],'Bosnia':[43.8,18.4],'Brazil':[-15.8,-47.9],'Bulgaria':[42.7,23.3],
+  'Cambodia':[11.6,104.9],'Canada':[45.4,-75.7],'Chile':[-33.5,-70.6],'China':[39.9,116.4],
+  'Colombia':[4.7,-74.1],'Croatia':[45.8,16.0],'Cuba':[23.1,-82.4],'Cyprus':[35.2,33.4],
+  'Czech Republic':[50.1,14.4],'Czechia':[50.1,14.4],'Denmark':[55.7,12.6],'Ecuador':[-0.2,-78.5],
+  'Egypt':[30.0,31.2],'Estonia':[59.4,24.7],'Ethiopia':[9.0,38.7],'Finland':[60.2,25.0],
+  'France':[48.9,2.4],'Georgia':[41.7,44.8],'Germany':[52.5,13.4],'Ghana':[5.6,-0.2],
+  'Greece':[38.0,23.7],'Hungary':[47.5,19.1],'Iceland':[64.1,-21.9],'India':[19.1,72.9],
+  'Indonesia':[-6.2,106.8],'Iran':[35.7,51.4],'Iraq':[33.3,44.4],'Ireland':[53.3,-6.3],
+  'Israel':[31.8,35.2],'Italy':[41.9,12.5],'Japan':[35.7,139.7],'Jordan':[31.9,35.9],
+  'Kazakhstan':[51.2,71.5],'Kenya':[-1.3,36.8],'Kuwait':[29.4,47.9],'Kyrgyzstan':[42.9,74.6],
+  'Laos':[18.0,102.6],'Latvia':[56.9,24.1],'Lebanon':[33.9,35.5],'Lithuania':[54.7,25.3],
+  'Luxembourg':[49.6,6.1],'Malaysia':[3.1,101.7],'Maldives':[4.2,73.5],'Malta':[35.9,14.5],
+  'Mexico':[19.4,-99.1],'Moldova':[47.0,28.9],'Mongolia':[47.9,106.9],'Montenegro':[42.4,19.3],
+  'Morocco':[34.0,-6.8],'Myanmar':[16.8,96.2],'Nepal':[27.7,85.3],'Netherlands':[52.4,4.9],
+  'New Zealand':[-36.9,174.8],'Nigeria':[9.1,7.5],'North Macedonia':[42.0,21.4],
+  'Norway':[59.9,10.7],'Oman':[23.6,58.6],'Pakistan':[33.7,73.1],'Peru':[-12.0,-77.0],
+  'Philippines':[14.6,121.0],'Poland':[52.2,21.0],'Portugal':[38.7,-9.1],'Qatar':[25.3,51.5],
+  'Romania':[44.4,26.1],'Russia':[55.8,37.6],'Saudi Arabia':[24.7,46.7],'Serbia':[44.8,20.5],
+  'Singapore':[1.3,103.8],'Slovakia':[48.1,17.1],'Slovenia':[46.1,14.5],'South Africa':[-26.2,28.0],
+  'South Korea':[37.6,127.0],'Spain':[41.4,2.2],'Sri Lanka':[6.9,79.9],'Sweden':[59.3,18.1],
+  'Switzerland':[47.4,8.5],'Taiwan':[25.0,121.5],'Tanzania':[-6.8,39.3],'Thailand':[13.8,100.5],
+  'Tunisia':[36.8,10.2],'Turkey':[39.9,32.9],'UAE':[25.2,55.3],'Uganda':[0.3,32.6],
+  'UK':[51.5,-0.1],'Ukraine':[50.5,30.5],'USA':[38.9,-77.0],'Uruguay':[-34.9,-56.2],
+  'Uzbekistan':[41.3,69.2],'Venezuela':[10.5,-66.9],'Vietnam':[21.0,105.8],'Zambia':[-15.4,28.3],
+  'Zimbabwe':[-17.8,31.0]
 };
 
-const grid = document.getElementById('countryGrid');
-Object.entries(countries).forEach(([key,c]) => {
-  grid.innerHTML += `<div class="country-card" onclick="openTravelModal('${key}')"><div class="card-visual"><div class="card-visual-bg" style="background:${c.gradient}"></div><div class="card-visual-overlay"></div><div class="card-flag-large">${c.flag}</div></div><div class="card-body"><div class="card-meta"><div class="card-country-name">${c.name}</div><div class="card-year-badge">${c.year}</div></div><p class="card-desc">${c.shortDesc}</p><div class="card-tags">${c.tags.map(t=>`<span class="card-tag">${t}</span>`).join('')}</div></div></div>`;
-});
+// ── Auto-generated gradients for countries ──
+const GRADIENTS = {
+  'India':'linear-gradient(135deg,#FF9933 0%,#FF6600 40%,#138808 100%)',
+  'Switzerland':'linear-gradient(135deg,#E8F4FD 0%,#A8D5F0 50%,#5B9BD5 100%)',
+  'France':'linear-gradient(135deg,#E8EAF0 0%,#B8C0D8 50%,#5A6EA0 100%)',
+  'Italy':'linear-gradient(135deg,#F5F0E8 0%,#D4B896 50%,#8B6F47 100%)',
+  'Spain':'linear-gradient(135deg,#FFF0D0 0%,#F4C842 50%,#E03030 100%)',
+  'Portugal':'linear-gradient(135deg,#E8F0E8 0%,#7BAF7B 50%,#2D6A2D 100%)',
+  'Germany':'linear-gradient(135deg,#F5F5F5 0%,#D4A843 50%,#2C2C2C 100%)',
+  'Japan':'linear-gradient(135deg,#FFF0F0 0%,#FFB3C1 50%,#E63946 100%)',
+  'Australia':'linear-gradient(135deg,#FFF5E0 0%,#F4C430 50%,#C1440E 100%)',
+  'USA':'linear-gradient(135deg,#E8EEF8 0%,#B22234 50%,#3C3B6E 100%)',
+  'UK':'linear-gradient(135deg,#E8EEF8 0%,#CF142B 50%,#00247D 100%)',
+  'Brazil':'linear-gradient(135deg,#E8F5E0 0%,#009C3B 50%,#FEDF00 100%)',
+  'Canada':'linear-gradient(135deg,#FFE8E8 0%,#FF0000 50%,#FFFFFF 100%)',
+  'China':'linear-gradient(135deg,#FFE8E8 0%,#DE2910 50%,#FFDE00 100%)',
+  'Thailand':'linear-gradient(135deg,#F0F4FF 0%,#A51931 40%,#2D2A4A 100%)',
+  'Singapore':'linear-gradient(135deg,#FFE8E8 0%,#EF3340 50%,#FFFFFF 100%)',
+  'UAE':'linear-gradient(135deg,#E8F0E8 0%,#009A44 40%,#FF0000 100%)',
+  'Turkey':'linear-gradient(135deg,#FFE8EC 0%,#E30A17 50%,#FFFFFF 100%)',
+  'Morocco':'linear-gradient(135deg,#FFF0E0 0%,#C1272D 50%,#006233 100%)',
+  'Egypt':'linear-gradient(135deg,#FFF8E0 0%,#CE1126 40%,#000000 100%)',
+  'Greece':'linear-gradient(135deg,#E8F0FF 0%,#0D5EAF 50%,#FFFFFF 100%)',
+  'Netherlands':'linear-gradient(135deg,#FFE8E0 0%,#AE1C28 33%,#21468B 100%)',
+  'Norway':'linear-gradient(135deg,#FFE8E8 0%,#EF2B2D 50%,#002868 100%)',
+  'Sweden':'linear-gradient(135deg,#FFF8E0 0%,#006AA7 50%,#FECC02 100%)',
+  'Austria':'linear-gradient(135deg,#FFE8E8 0%,#ED2939 50%,#FFFFFF 100%)',
+  'South Korea':'linear-gradient(135deg,#FFE8EC 0%,#003478 50%,#CD2E3A 100%)',
+};
+const DEFAULT_GRADIENT = 'linear-gradient(135deg,#EDEAE4 0%,#C4BDB0 50%,#8C8880 100%)';
 
-// Leaflet map with clickable markers
-const map = L.map('world-map', {zoomControl:true, scrollWheelZoom:true}).setView([20, 0], 2);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '&copy; OpenStreetMap contributors'
+// ── Built-in fallback data (always works, even offline / file://) ──
+const BASE_COUNTRIES = {
+  india:{name:'India',flag:'🇮🇳',year:'Home',
+    gradient:GRADIENTS['India'],coords:COORDS_DB['India'],
+    tags:['Mumbai','Goa','Beaches','IIT Bombay'],
+    shortDesc:'Home — where it all started. From the monsoon rains of Mumbai to the golden sands of Goa.',
+    fullBlog:`<p>India isn't just where I was born — it's the lens through which I see the world. Growing up navigating the chaos of Mumbai shaped a certain kind of resilience in me.</p><p>Studying at IIT Bombay has been one of the great privileges of my life. The institute sits on the edge of Powai Lake, and there's something quietly magical about cycling past flamingos on your way to a thermodynamics lecture.</p><p>The food, the festivals, the languages — India is twenty countries in one.</p>`,
+    photos:[]},
+  switzerland:{name:'Switzerland',flag:'🇨🇭',year:'2026 — Exchange',
+    gradient:GRADIENTS['Switzerland'],coords:COORDS_DB['Switzerland'],
+    tags:['ETH Zürich','Alps','Hiking','Lakes'],
+    shortDesc:"My semester exchange at ETH Zürich — mountain hikes, world-class research, and the most beautiful skyline I've ever seen.",
+    fullBlog:`<p>Coming to ETH Zürich for my semester exchange was a dream I hadn't quite let myself believe in. The city feels almost impossibly beautiful — trams, cobblestone lanes, and mountains on the horizon.</p><p>The academic culture here is serious and rigorous in a way that pushes you. On weekends I'd escape into the Alps — hiking above the clouds, looking down at valleys that look like they were painted.</p>`,
+    photos:[]},
+  france:{name:'France',flag:'🇫🇷',year:'2024',
+    gradient:GRADIENTS['France'],coords:COORDS_DB['France'],
+    tags:['Paris','Louvre','Cuisine','Architecture'],
+    shortDesc:'A weekend in Paris — the Eiffel Tower at dusk, fresh croissants, and streets that feel like living in a film.',
+    fullBlog:`<p>Every cliché about Paris is true, and none of it prepares you for the actual thing. I visited on a long weekend from Zürich — just three days, but each felt stretched with experience.</p><p>The Louvre is overwhelming in the best sense. What I didn't expect was how much I'd love the everyday Paris — the cafés, the bouquinistes along the Seine, the way people linger over meals.</p>`,
+    photos:[]},
+  italy:{name:'Italy',flag:'🇮🇹',year:'2024',
+    gradient:GRADIENTS['Italy'],coords:COORDS_DB['Italy'],
+    tags:['Rome','Venice','Pasta','History'],
+    shortDesc:'Rome in two days and Venice in one — ancient ruins, canal gondolas, and the best pasta of my life.',
+    fullBlog:`<p>Italy hit different. The Colosseum is genuinely staggering in person — photographs don't capture the scale. Venice was surreal: a city with no cars, just water and stone and light bouncing off everything.</p><p>I got genuinely lost in the Venetian alleyways and it was the best kind of lost. And the food — I had not had good pasta before Italy.</p>`,
+    photos:[]},
+  spain:{name:'Spain',flag:'🇪🇸',year:'2024',
+    gradient:GRADIENTS['Spain'],coords:COORDS_DB['Spain'],
+    tags:['Barcelona','Sagrada Família','Tapas','Gaudí'],
+    shortDesc:"Barcelona's architecture, late dinners, and the impossible beauty of Gaudí's Sagrada Família.",
+    fullBlog:`<p>Standing inside the Sagrada Família was one of the most disorienting and beautiful experiences of my life. The light through the stained glass turns the interior into something otherworldly.</p><p>Spanish culture runs on a different clock — dinner at 10pm, tapas until midnight. As someone from India, I felt immediately at home. Barcelona rewards slow wandering.</p>`,
+    photos:['assets/travel/Spain/1.jpeg','assets/travel/Spain/2.jpeg','assets/travel/Spain/3.jpeg']},
+  portugal:{name:'Portugal',flag:'🇵🇹',year:'2024',
+    gradient:GRADIENTS['Portugal'],coords:COORDS_DB['Portugal'],
+    tags:['Lisbon','Sintra','Skydiving','Fado'],
+    shortDesc:"Lisbon's tiled facades, skydiving over the Atlantic, and the melancholy beauty of fado music at night.",
+    fullBlog:`<p>Portugal felt like Europe's best-kept secret. And yes — I went skydiving here. Jumping out of a plane above the Atlantic coast at 14,000 feet is something I will never forget.</p><p>Sintra was a revelation — fairytale palaces draped across forested hills. I heard fado music live one evening in a small Alfama restaurant. It's music of longing, and it lodged somewhere deep.</p>`,
+    photos:[]},
+  germany:{name:'Germany',flag:'🇩🇪',year:'2024',
+    gradient:GRADIENTS['Germany'],coords:COORDS_DB['Germany'],
+    tags:['Munich','Berlin','Beer Gardens','History'],
+    shortDesc:"Munich's beer gardens, Berlin's complex history, and the quiet efficiency of German trains.",
+    fullBlog:`<p>Germany has two faces and I got to see both. Munich is warm and convivial — the English Garden vast and somehow feeling like a secret. The beer gardens have a communal spirit I found genuinely lovely.</p><p>Berlin is something else. The weight of 20th century history presses on every corner. The Holocaust Memorial, Checkpoint Charlie — history here is physical and present, demanding engagement.</p>`,
+    photos:[]}
+};
+
+// ── Parse info.txt into a data object ──
+function parseInfoTxt(text, folderName) {
+  const parts = text.split(/\r?\n---\s*BLOG\s*---\r?\n/i);
+  const headerLines = parts[0].trim().split(/\r?\n/);
+  const blogRaw = (parts[1] || '').trim();
+
+  const data = {};
+  headerLines.forEach(line => {
+    const m = line.match(/^([^:]+):\s*(.+)/);
+    if(m) data[m[1].trim().toLowerCase()] = m[2].trim();
+  });
+
+  // Convert plain paragraphs to HTML
+  data.fullBlog = blogRaw
+    .split(/\r?\n\r?\n+/)
+    .filter(p => p.trim())
+    .map(p => `<p>${p.replace(/\r?\n/g,' ')}</p>`)
+    .join('');
+
+  // Normalise tags to array
+  data.tags = typeof data.tags === 'string'
+    ? data.tags.split(',').map(t => t.trim()).filter(Boolean)
+    : [];
+
+  // Fallbacks
+  data.name     = data.name     || folderName;
+  data.flag     = data.flag     || '🌍';
+  data.year     = data.year     || '';
+  data.short    = data.short    || data.shortdesc || '';
+  data.shortDesc = data.short;
+  data.gradient = data.gradient || GRADIENTS[folderName] || GRADIENTS[data.name] || DEFAULT_GRADIENT;
+  data.coords   = COORDS_DB[folderName] || COORDS_DB[data.name] || null;
+
+  return data;
+}
+
+// ── Detect photos by trying to load them ──
+function checkImage(src) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload  = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = src;
+  });
+}
+async function detectPhotos(folder) {
+  const found = [];
+  for(let i = 1; i <= 20; i++) {
+    const ok = await checkImage(`assets/travel/${folder}/${i}.jpeg`);
+    if(!ok) break;
+    found.push(`assets/travel/${folder}/${i}.jpeg`);
+  }
+  return found;
+}
+
+// ── Render country grid ──
+// Start with built-in data so cards always appear immediately
+let countries = Object.assign({}, BASE_COUNTRIES);
+function renderCountryGrid() {
+  const grid = document.getElementById('countryGrid');
+  grid.innerHTML = '';
+  Object.entries(countries).forEach(([key, c]) => {
+    const el = document.createElement('div');
+    el.className = 'country-card';
+    el.onclick = () => openTravelModal(key);
+    el.innerHTML = `
+      <div class="card-visual">
+        <div class="card-visual-bg" style="background:${c.gradient}"></div>
+        <div class="card-visual-overlay"></div>
+        <div class="card-flag-large">${c.flag}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-country-name">${c.name}</div>
+          <div class="card-year-badge">${c.year}</div>
+        </div>
+        <p class="card-desc">${c.shortDesc}</p>
+        <div class="card-tags">${c.tags.map(t=>`<span class="card-tag">${t}</span>`).join('')}</div>
+      </div>`;
+    grid.appendChild(el);
+  });
+  setTimeout(() => triggerStaggerGrids(), 50);
+}
+
+// ── Leaflet map ──
+const map = L.map('world-map', {zoomControl:true, scrollWheelZoom:true}).setView([25,15],2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19, attribution:'&copy; OpenStreetMap contributors'
 }).addTo(map);
-
 const fallback = document.getElementById('world-map-fallback');
 if(fallback) fallback.style.display='none';
 
-const travelMarkers = {
-  india:[20.5937,78.9629],
-  switzerland:[46.8182,8.2275],
-  france:[46.2276,2.2137],
-  italy:[41.8719,12.5674],
-  spain:[40.4637,-3.7492],
-  portugal:[39.3999,-8.2245],
-  germany:[51.1657,10.4515]
-};
+const hoverCard = document.createElement('div');
+hoverCard.className = 'map-hover-card';
+document.getElementById('mapContainer').appendChild(hoverCard);
+let hoverTimeout;
 
-Object.entries(travelMarkers).forEach(([key, coords]) => {
-  const marker = L.circleMarker(coords, {
-    radius: 8,
-    fillColor: '#2E6B4F',
-    color: '#1F4F33',
-    weight: 2,
-    opacity: 1,
-    fillOpacity: 0.9
-  }).addTo(map);
-  marker.bindTooltip(countries[key]?.name || key, {direction:'top', offset:[0,-10]});
-  marker.on('click', () => openTravelModal(key));
+const markerIcon = L.divIcon({
+  html:`<div class="map-marker-wrap"><div class="map-marker-ring-2"></div><div class="map-marker-ring"></div><div class="map-marker-dot"></div></div>`,
+  className:'', iconSize:[32,32], iconAnchor:[16,16]
 });
+
+function addMapMarker(key, c) {
+  if(!c.coords) return;
+  const marker = L.marker(c.coords, {icon: markerIcon}).addTo(map);
+
+  marker.on('mouseover', function() {
+    clearTimeout(hoverTimeout);
+    const photoHtml = [0,1,2].map(i => {
+      const src = c.photos && c.photos[i];
+      if(src) return `<div class="mhc-photo"><img src="${src}" alt="${c.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=mhc-photo-empty>${c.flag}</div>'"/></div>`;
+      return `<div class="mhc-photo"><div class="mhc-photo-empty" style="background:${c.gradient}">${c.flag}</div></div>`;
+    }).join('');
+
+    hoverCard.innerHTML = `
+      <div class="mhc-header">
+        <span class="mhc-flag">${c.flag}</span>
+        <div><div class="mhc-name">${c.name}</div><div class="mhc-year">${c.year}</div></div>
+      </div>
+      <div class="mhc-photos">${photoHtml}</div>
+      <div class="mhc-desc">${c.shortDesc}</div>
+      <span class="mhc-cta">Click to read more →</span>`;
+
+    const point = map.latLngToContainerPoint(c.coords);
+    const cw = document.getElementById('mapContainer').offsetWidth;
+    const cardW=300, cardH=230;
+    let left = point.x - cardW/2;
+    let top  = point.y - cardH - 20;
+    if(left < 8) left = 8;
+    if(left + cardW > cw-8) left = cw - cardW - 8;
+    if(top < 8) top = point.y + 24;
+    hoverCard.style.left = left+'px';
+    hoverCard.style.top  = top+'px';
+    hoverCard.classList.add('visible');
+  });
+
+  marker.on('mouseout', () => {
+    hoverTimeout = setTimeout(() => hoverCard.classList.remove('visible'), 120);
+  });
+  marker.on('click', () => openTravelModal(key));
+}
+
+// ── Main loader ──
+async function loadTravelData() {
+  // Step 1: render built-in data immediately (always works)
+  renderCountryGrid();
+  Object.entries(countries).forEach(([key, c]) => addMapMarker(key, c));
+
+  // Step 2: try to enhance with info.txt files (works on GitHub Pages / local server)
+  try {
+    const manifest = await fetch('assets/travel/manifest.json?v='+Date.now())
+      .then(r => { if(!r.ok) throw new Error(); return r.json(); });
+
+    let changed = false;
+    const entries = await Promise.all(manifest.map(async folder => {
+      try {
+        const text = await fetch(`assets/travel/${folder}/info.txt?v=`+Date.now())
+          .then(r => { if(!r.ok) throw new Error(); return r.text(); });
+        const data = parseInfoTxt(text, folder);
+        data.photos = await detectPhotos(folder);
+        const key = folder.toLowerCase().replace(/\s+/g,'_');
+        return [key, data];
+      } catch(e) { return null; }
+    }));
+
+    entries.filter(Boolean).forEach(([key, data]) => {
+      // Only update if this is a brand-new country not in BASE_COUNTRIES,
+      // OR if the file has photos that the built-in data doesn't
+      const isNew = !BASE_COUNTRIES[key];
+      const hasNewPhotos = data.photos && data.photos.length > 0 &&
+                           (!countries[key] || !countries[key].photos || countries[key].photos.length === 0);
+      if(isNew || hasNewPhotos) {
+        countries[key] = data;
+        changed = true;
+      }
+    });
+
+    // Re-render only if something new was found
+    if(changed) {
+      renderCountryGrid();
+      // Add map markers only for truly new countries
+      entries.filter(Boolean).forEach(([key, data]) => {
+        if(!BASE_COUNTRIES[key]) addMapMarker(key, data);
+      });
+    }
+  } catch(e) {
+    // fetch not available (file:// protocol) — built-in data already rendered, all good
+  }
+}
+
+loadTravelData();
 
 function openTravelModal(key) {
   const c = countries[key]; if(!c) return;

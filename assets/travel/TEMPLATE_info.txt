@@ -1,0 +1,33 @@
+name: Japan
+flag: 🇯🇵
+year: 2025
+tags: Tokyo, Kyoto, Sushi, Cherry Blossoms
+short: One sentence summary of your trip that appears on the card preview.
+
+--- BLOG ---
+
+Write your first paragraph here. No HTML needed — just plain text. Each paragraph should be separated by a blank line.
+
+Add as many paragraphs as you like. Write naturally, like a travel journal entry.
+
+The website will automatically format everything beautifully.
+
+
+HOW TO ADD A NEW COUNTRY:
+━━━━━━━━━━━━━━━━━━━━━━━━
+1. Copy this folder (e.g. rename it "Japan")
+2. Edit info.txt with your country details
+3. Add photos named 1.jpeg, 2.jpeg, 3.jpeg ... (as many as you want)
+4. Open assets/travel/manifest.json and add "Japan" to the list
+5. Push to GitHub — done!
+
+FIELD GUIDE:
+━━━━━━━━━━━
+name:   Country name shown on cards and the map
+flag:   Emoji flag (just paste it in)
+year:   When you visited — any text works (e.g. "2024", "Home", "2026 — Exchange")
+tags:   Comma-separated keywords shown as chips on the card
+short:  One sentence shown on the card preview (keep under 120 characters)
+
+Everything after --- BLOG --- is your full travel story.
+Write in plain text. Blank lines = new paragraphs.

@@ -1,0 +1,13 @@
+name: India
+flag: 🇮🇳
+year: Home
+tags: Mumbai, Goa, Beaches, IIT Bombay
+short: Home — where it all started. From the monsoon rains of Mumbai to the golden sands of Goa.
+
+--- BLOG ---
+
+India isn't just where I was born — it's the lens through which I see the world. Growing up navigating the chaos of Mumbai shaped a certain kind of resilience in me.
+
+Studying at IIT Bombay has been one of the great privileges of my life. The institute sits on the edge of Powai Lake, and there's something quietly magical about cycling past flamingos on your way to a thermodynamics lecture.
+
+The food, the festivals, the languages — India is twenty countries in one.

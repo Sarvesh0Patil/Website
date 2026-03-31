@@ -1,0 +1,11 @@
+name: France
+flag: 🇫🇷
+year: 2026
+tags: Paris, Louvre, Cuisine, Architecture
+short: A weekend in Paris — the Eiffel Tower at dusk, fresh croissants, and streets that feel like living in a film.
+
+--- BLOG ---
+
+Every cliché about Paris is true, and none of it prepares you for the actual thing. I visited on a long weekend from Zürich — just three days, but each felt stretched with experience.
+
+The Louvre is overwhelming in the best sense. The Winged Victory of Samothrace stopped me cold. What I didn't expect was how much I'd love the everyday Paris — the cafés, the bouquinistes along the Seine, the way people linger over meals.

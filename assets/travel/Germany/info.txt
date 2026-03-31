@@ -1,0 +1,11 @@
+name: Germany
+flag: 🇩🇪
+year: 2024
+tags: Munich, Berlin, Beer Gardens, History
+short: Munich's beer gardens, Berlin's complex history, and the quiet efficiency of German trains.
+
+--- BLOG ---
+
+Germany has two faces and I got to see both. Munich is warm and convivial — the English Garden vast and somehow feeling like a secret. The beer gardens have a communal spirit I found genuinely lovely.
+
+Berlin is something else. The weight of 20th century history presses on every corner. The Holocaust Memorial, Checkpoint Charlie — history here is physical and present, demanding engagement.

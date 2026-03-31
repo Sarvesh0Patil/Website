@@ -1,0 +1,11 @@
+name: Spain
+flag: 🇪🇸
+year: 2026
+tags: Barcelona, Sagrada Família, Tapas, Gaudí
+short: Barcelona's architecture, late dinners, and the impossible beauty of Gaudí's Sagrada Família.
+
+--- BLOG ---
+
+Standing inside the Sagrada Família was one of the most disorienting and beautiful experiences of my life. The light through the stained glass turns the interior into something otherworldly.
+
+Spanish culture runs on a different clock — dinner at 10pm, tapas until midnight. As someone from India, I felt immediately at home. Barcelona rewards slow wandering.
