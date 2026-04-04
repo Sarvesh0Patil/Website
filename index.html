@@ -873,10 +873,27 @@ footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-i
 <div class="page-section" id="page-resources">
   <div class="about-section" style="min-height:calc(100vh - 64px);padding-top:4rem;">
     <div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Resources</span></div>
-    <h2 class="section-heading">Resources are <em>coming soon.</em></h2>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;max-width:640px;">
-      <p style="font-size:1.1rem;font-weight:600;color:var(--ink);"><strong>Coming soon</strong></p>
-      <p id="resources-countdown" style="font-size:1rem;color:var(--ink2);margin-top:.75rem;">Loading countdown…</p>
+    <h2 class="section-heading">Resources</h2>
+
+    <!-- Resource blocks -->
+    <div style="margin-top:3rem;max-width:720px;display:flex;flex-direction:column;gap:1.5rem;">
+
+      <!-- Block 1: Inorganic chemistry modules -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+          <div>
+            <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">Chemistry · JEE Advanced</p>
+            <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Inorganic Chemistry Modules</h3>
+          </div>
+          <a href="https://ncert.nic.in/science-laboratory-manual.php?ln=en" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
+        </div>
+        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">These are the modules released by NCERT — and IITs are only allowed to set questions based on the experiments which students are supposed to do during 11th and 12th. But the current education system asks us to ignore such experimental work.</p>
+        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 1rem;">However, it is of utmost importance to master this for JEE Advanced.</p>
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
+          <p style="font-size:.82rem;color:var(--ink3);margin:0;">If you are interested, I will make a summary of this resource and share it here — but only if the target is achieved.</p>
+        </div>
+      </div>
+
     </div>
   </div>
   <footer>
@@ -1033,28 +1050,6 @@ function triggerStaggerGrids() {
 triggerReveals();
 triggerStaggerGrids();
 
-/* ═══ RESOURCES COUNTDOWN ═══ */
-function updateResourcesCountdown() {
-  const target = new Date('2026-04-05T14:00:00');
-  const now = new Date();
-  const diff = target - now;
-  const el = document.getElementById('resources-countdown');
-  if (!el) return;
-
-  if (diff <= 0) {
-    el.textContent = 'Live now!';
-    return;
-  }
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-
-  el.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s remaining until April 5, 2PM`;
-}
-updateResourcesCountdown();
-setInterval(updateResourcesCountdown, 1000);
 
 /* ═══ TRAVEL — DYNAMIC LOADER ═══ */
 
