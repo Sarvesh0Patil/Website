@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZT6FWW5KZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9ZT6FWW5KZ');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travels — Sarvesh Patil</title>
+<meta name="description" content="Sarvesh Patil's travel journal — 7 countries, skydiving in Portugal, hiking the Swiss Alps, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-sA+NdrbYz3S7Q0s5pYB33FY2V4kT3s7Z/tkKQTmD6j0=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-o9N1j7k1PvMx3NQbK5F1cPE6eS5kNR1F+5vYvHpy8wM=" crossorigin=""></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+<div id="cursor"></div>
+
+<div class="page-section">
+  <div class="travel-hero">
+    <p class="t-eyebrow">Around the world</p>
+    <h1 class="t-title">Where I've<br><em>wandered.</em></h1>
+    <p class="t-sub">From the beaches of Goa to skydiving over Portugal — a living record of places, moments, and stories in between.</p>
+    <div class="t-stats">
+      <div><div class="t-stat-num">7</div><div class="t-stat-label">Countries</div></div>
+      <div><div class="t-stat-num">4</div><div class="t-stat-label">Continents</div></div>
+      <div><div class="t-stat-num">20</div><div class="t-stat-label">Years old</div></div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <div class="map-container" id="mapContainer">
+      <img id="world-map-fallback" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1280px-World_map_-_low_resolution.svg.png" alt="World map fallback" style="width:100%;height:550px;object-fit:cover;border-radius:20px;display:block;" />
+      <div id="world-map" style="width:100%;height:550px;border-radius:20px;"></div>
+    </div>
+  </div>
+
+  <!-- COUNTRY GRID -->
+  <div class="grid-section">
+    <div class="sec-divider"><div class="sec-div-line"></div><span class="sec-div-label">Country stories</span><div class="sec-div-line"></div></div>
+    <div class="country-grid stagger-grid" id="countryGrid"></div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Sarvesh Patil</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 · IIT Bombay · ETH Zürich</div>
+  </footer>
+</div><!-- end page -->
+
+<!-- TRAVEL MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeTravelModal(event)">
+  <div class="modal" id="travelModal">
+    <div class="modal-visual" id="modalVisual"><button class="modal-close" onclick="closeTravelModalDirect()">✕</button></div>
+    <div class="modal-body">
+      <div class="modal-header">
+        <div class="modal-flag" id="modalFlag"></div>
+        <div><div class="modal-title" id="modalTitle"></div><div class="modal-subtitle" id="modalSubtitle"></div></div>
+      </div>
+      <div class="modal-content" id="modalContent"></div>
+      <div class="modal-photos-label">Memories — add your photos here</div>
+      <div class="modal-photos" id="modalPhotos"></div>
+    </div>
+  </div>
+</div>
+
+<script src="nav.js"></script>
+<script>
+/* ═══ TRAVEL — DYNAMIC LOADER ═══ */
+
+const COORDS_DB = {
+  'Afghanistan':[34.5,69.2],'Albania':[41.3,19.8],'Algeria':[36.7,3.0],'Angola':[-8.8,13.2],
+  'Argentina':[-34.6,-58.4],'Armenia':[40.2,44.5],'Australia':[-33.9,151.2],'Austria':[48.2,16.4],
+  'Azerbaijan':[40.4,49.9],'Bahrain':[26.2,50.6],'Bangladesh':[23.7,90.4],'Belgium':[50.8,4.4],
+  'Bolivia':[-16.5,-68.1],'Bosnia':[43.8,18.4],'Brazil':[-15.8,-47.9],'Bulgaria':[42.7,23.3],
+  'Cambodia':[11.6,104.9],'Canada':[45.4,-75.7],'Chile':[-33.5,-70.6],'China':[39.9,116.4],
+  'Colombia':[4.7,-74.1],'Croatia':[45.8,16.0],'Cuba':[23.1,-82.4],'Cyprus':[35.2,33.4],
+  'Czech Republic':[50.1,14.4],'Czechia':[50.1,14.4],'Denmark':[55.7,12.6],'Ecuador':[-0.2,-78.5],
+  'Egypt':[30.0,31.2],'Estonia':[59.4,24.7],'Ethiopia':[9.0,38.7],'Finland':[60.2,25.0],
+  'France':[48.9,2.4],'Georgia':[41.7,44.8],'Germany':[52.5,13.4],'Ghana':[5.6,-0.2],
+  'Greece':[38.0,23.7],'Hungary':[47.5,19.1],'Iceland':[64.1,-21.9],'India':[19.1,72.9],
+  'Indonesia':[-6.2,106.8],'Iran':[35.7,51.4],'Iraq':[33.3,44.4],'Ireland':[53.3,-6.3],
+  'Israel':[31.8,35.2],'Italy':[41.9,12.5],'Japan':[35.7,139.7],'Jordan':[31.9,35.9],
+  'Kazakhstan':[51.2,71.5],'Kenya':[-1.3,36.8],'Kuwait':[29.4,47.9],'Kyrgyzstan':[42.9,74.6],
+  'Laos':[18.0,102.6],'Latvia':[56.9,24.1],'Lebanon':[33.9,35.5],'Lithuania':[54.7,25.3],
+  'Luxembourg':[49.6,6.1],'Malaysia':[3.1,101.7],'Maldives':[4.2,73.5],'Malta':[35.9,14.5],
+  'Mexico':[19.4,-99.1],'Moldova':[47.0,28.9],'Mongolia':[47.9,106.9],'Montenegro':[42.4,19.3],
+  'Morocco':[34.0,-6.8],'Myanmar':[16.8,96.2],'Nepal':[27.7,85.3],'Netherlands':[52.4,4.9],
+  'New Zealand':[-36.9,174.8],'Nigeria':[9.1,7.5],'North Macedonia':[42.0,21.4],
+  'Norway':[59.9,10.7],'Oman':[23.6,58.6],'Pakistan':[33.7,73.1],'Peru':[-12.0,-77.0],
+  'Philippines':[14.6,121.0],'Poland':[52.2,21.0],'Portugal':[38.7,-9.1],'Qatar':[25.3,51.5],
+  'Romania':[44.4,26.1],'Russia':[55.8,37.6],'Saudi Arabia':[24.7,46.7],'Serbia':[44.8,20.5],
+  'Singapore':[1.3,103.8],'Slovakia':[48.1,17.1],'Slovenia':[46.1,14.5],'South Africa':[-26.2,28.0],
+  'South Korea':[37.6,127.0],'Spain':[41.4,2.2],'Sri Lanka':[6.9,79.9],'Sweden':[59.3,18.1],
+  'Switzerland':[47.4,8.5],'Taiwan':[25.0,121.5],'Tanzania':[-6.8,39.3],'Thailand':[13.8,100.5],
+  'Tunisia':[36.8,10.2],'Turkey':[39.9,32.9],'UAE':[25.2,55.3],'Uganda':[0.3,32.6],
+  'UK':[51.5,-0.1],'Ukraine':[50.5,30.5],'USA':[38.9,-77.0],'Uruguay':[-34.9,-56.2],
+  'Uzbekistan':[41.3,69.2],'Venezuela':[10.5,-66.9],'Vietnam':[21.0,105.8],'Zambia':[-15.4,28.3],
+  'Zimbabwe':[-17.8,31.0]
+};
+
+const GRADIENTS = {
+  'India':'linear-gradient(135deg,#FF9933 0%,#FF6600 40%,#138808 100%)',
+  'Switzerland':'linear-gradient(135deg,#E8F4FD 0%,#A8D5F0 50%,#5B9BD5 100%)',
+  'France':'linear-gradient(135deg,#E8EAF0 0%,#B8C0D8 50%,#5A6EA0 100%)',
+  'Italy':'linear-gradient(135deg,#F5F0E8 0%,#D4B896 50%,#8B6F47 100%)',
+  'Spain':'linear-gradient(135deg,#FFF0D0 0%,#F4C842 50%,#E03030 100%)',
+  'Portugal':'linear-gradient(135deg,#E8F0E8 0%,#7BAF7B 50%,#2D6A2D 100%)',
+  'Germany':'linear-gradient(135deg,#F5F5F5 0%,#D4A843 50%,#2C2C2C 100%)',
+  'Austria':'linear-gradient(135deg,#FFE8E8 0%,#ED2939 50%,#FFFFFF 100%)',
+  'USA':'linear-gradient(135deg,#E8EEF8 0%,#B22234 50%,#3C3B6E 100%)',
+};
+const DEFAULT_GRADIENT = 'linear-gradient(135deg,#EDEAE4 0%,#C4BDB0 50%,#8C8880 100%)';
+
+const BASE_COUNTRIES = {
+  india:{name:'India',flag:'🇮🇳',year:'Home',
+    gradient:GRADIENTS['India'],coords:COORDS_DB['India'],
+    tags:['Mumbai','Goa','Beaches','IIT Bombay'],
+    shortDesc:'Home — where it all started. From the monsoon rains of Mumbai to the golden sands of Goa.',
+    fullBlog:`<p>India isn't just where I was born — it's the lens through which I see the world. Growing up navigating the chaos of Mumbai shaped a certain kind of resilience in me.</p><p>Studying at IIT Bombay has been one of the great privileges of my life. The institute sits on the edge of Powai Lake, and there's something quietly magical about cycling past flamingos on your way to a thermodynamics lecture.</p><p>The food, the festivals, the languages — India is twenty countries in one.</p>`,
+    photos:[]},
+  switzerland:{name:'Switzerland',flag:'🇨🇭',year:'2026 — Exchange',
+    gradient:GRADIENTS['Switzerland'],coords:COORDS_DB['Switzerland'],
+    tags:['ETH Zürich','Alps','Hiking','Lakes'],
+    shortDesc:"My semester exchange at ETH Zürich — mountain hikes, world-class research, and the most beautiful skyline I've ever seen.",
+    fullBlog:`<p>Coming to ETH Zürich for my semester exchange was a dream I hadn't quite let myself believe in. The city feels almost impossibly beautiful — trams, cobblestone lanes, and mountains on the horizon.</p><p>The academic culture here is serious and rigorous in a way that pushes you. On weekends I'd escape into the Alps — hiking above the clouds, looking down at valleys that look like they were painted.</p>`,
+    photos:[]},
+  france:{name:'France',flag:'🇫🇷',year:'2024',
+    gradient:GRADIENTS['France'],coords:COORDS_DB['France'],
+    tags:['Paris','Louvre','Cuisine','Architecture'],
+    shortDesc:'A weekend in Paris — the Eiffel Tower at dusk, fresh croissants, and streets that feel like living in a film.',
+    fullBlog:`<p>Every cliché about Paris is true, and none of it prepares you for the actual thing. I visited on a long weekend from Zürich — just three days, but each felt stretched with experience.</p><p>The Louvre is overwhelming in the best sense. What I didn't expect was how much I'd love the everyday Paris — the cafés, the bouquinistes along the Seine, the way people linger over meals.</p>`,
+    photos:[]},
+  italy:{name:'Italy',flag:'🇮🇹',year:'2024',
+    gradient:GRADIENTS['Italy'],coords:COORDS_DB['Italy'],
+    tags:['Rome','Venice','Pasta','History'],
+    shortDesc:'Rome in two days and Venice in one — ancient ruins, canal gondolas, and the best pasta of my life.',
+    fullBlog:`<p>Italy hit different. The Colosseum is genuinely staggering in person — photographs don't capture the scale. Venice was surreal: a city with no cars, just water and stone and light bouncing off everything.</p><p>I got genuinely lost in the Venetian alleyways and it was the best kind of lost. And the food — I had not had good pasta before Italy.</p>`,
+    photos:[]},
+  spain:{name:'Spain',flag:'🇪🇸',year:'2024',
+    gradient:GRADIENTS['Spain'],coords:COORDS_DB['Spain'],
+    tags:['Barcelona','Sagrada Família','Tapas','Gaudí'],
+    shortDesc:"Barcelona's architecture, late dinners, and the impossible beauty of Gaudí's Sagrada Família.",
+    fullBlog:`<p>Standing inside the Sagrada Família was one of the most disorienting and beautiful experiences of my life. The light through the stained glass turns the interior into something otherworldly.</p><p>Spanish culture runs on a different clock — dinner at 10pm, tapas until midnight. As someone from India, I felt immediately at home. Barcelona rewards slow wandering.</p>`,
+    photos:['assets/travel/Spain/1.jpeg','assets/travel/Spain/2.jpeg','assets/travel/Spain/3.jpeg']},
+  portugal:{name:'Portugal',flag:'🇵🇹',year:'2024',
+    gradient:GRADIENTS['Portugal'],coords:COORDS_DB['Portugal'],
+    tags:['Lisbon','Sintra','Skydiving','Fado'],
+    shortDesc:"Lisbon's tiled facades, skydiving over the Atlantic, and the melancholy beauty of fado music at night.",
+    fullBlog:`<p>Portugal felt like Europe's best-kept secret. And yes — I went skydiving here. Jumping out of a plane above the Atlantic coast at 14,000 feet is something I will never forget.</p><p>Sintra was a revelation — fairytale palaces draped across forested hills. I heard fado music live one evening in a small Alfama restaurant. It's music of longing, and it lodged somewhere deep.</p>`,
+    photos:[]},
+  germany:{name:'Germany',flag:'🇩🇪',year:'2024',
+    gradient:GRADIENTS['Germany'],coords:COORDS_DB['Germany'],
+    tags:['Munich','Berlin','Beer Gardens','History'],
+    shortDesc:"Munich's beer gardens, Berlin's complex history, and the quiet efficiency of German trains.",
+    fullBlog:`<p>Germany has two faces and I got to see both. Munich is warm and convivial — the English Garden vast and somehow feeling like a secret. The beer gardens have a communal spirit I found genuinely lovely.</p><p>Berlin is something else. The weight of 20th century history presses on every corner. The Holocaust Memorial, Checkpoint Charlie — history here is physical and present, demanding engagement.</p>`,
+    photos:[]}
+};
+
+function parseInfoTxt(text, folderName) {
+  const parts = text.split(/\r?\n---\s*BLOG\s*---\r?\n/i);
+  const headerLines = parts[0].trim().split(/\r?\n/);
+  const blogRaw = (parts[1] || '').trim();
+  const data = {};
+  headerLines.forEach(line => {
+    const m = line.match(/^([^:]+):\s*(.+)/);
+    if(m) data[m[1].trim().toLowerCase()] = m[2].trim();
+  });
+  data.fullBlog = blogRaw.split(/\r?\n\r?\n+/).filter(p => p.trim()).map(p => `<p>${p.replace(/\r?\n/g,' ')}</p>`).join('');
+  data.tags = typeof data.tags === 'string' ? data.tags.split(',').map(t => t.trim()).filter(Boolean) : [];
+  data.name      = data.name     || folderName;
+  data.flag      = data.flag     || '🌍';
+  data.year      = data.year     || '';
+  data.short     = data.short    || data.shortdesc || '';
+  data.shortDesc = data.short;
+  data.gradient  = data.gradient || GRADIENTS[folderName] || GRADIENTS[data.name] || DEFAULT_GRADIENT;
+  data.coords    = COORDS_DB[folderName] || COORDS_DB[data.name] || null;
+  return data;
+}
+
+function checkImage(src) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload  = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = src;
+  });
+}
+async function detectPhotos(folder) {
+  const found = [];
+  for(let i = 1; i <= 20; i++) {
+    const ok = await checkImage(`assets/travel/${folder}/${i}.jpeg`);
+    if(!ok) break;
+    found.push(`assets/travel/${folder}/${i}.jpeg`);
+  }
+  return found;
+}
+
+let countries = Object.assign({}, BASE_COUNTRIES);
+
+function renderCountryGrid() {
+  const grid = document.getElementById('countryGrid');
+  grid.innerHTML = '';
+  Object.entries(countries).forEach(([key, c]) => {
+    const el = document.createElement('div');
+    el.className = 'country-card';
+    el.onclick = () => openTravelModal(key);
+    el.innerHTML = `
+      <div class="card-visual">
+        <div class="card-visual-bg" style="background:${c.gradient}"></div>
+        <div class="card-visual-overlay"></div>
+        <div class="card-flag-large">${c.flag}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-country-name">${c.name}</div>
+          <div class="card-year-badge">${c.year}</div>
+        </div>
+        <p class="card-desc">${c.shortDesc}</p>
+        <div class="card-tags">${c.tags.map(t=>`<span class="card-tag">${t}</span>`).join('')}</div>
+      </div>`;
+    grid.appendChild(el);
+  });
+  setTimeout(() => { window.triggerStaggerGrids && window.triggerStaggerGrids(); window.reattachCursorHovers && window.reattachCursorHovers(); }, 50);
+}
+
+/* Leaflet map */
+const map = L.map('world-map', {zoomControl:true,scrollWheelZoom:true}).setView([25,15],2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+const fallback = document.getElementById('world-map-fallback');
+if(fallback) fallback.style.display='none';
+setTimeout(() => map.invalidateSize(), 200);
+
+const hoverCard = document.createElement('div');
+hoverCard.className = 'map-hover-card';
+document.getElementById('mapContainer').appendChild(hoverCard);
+let hoverTimeout;
+
+const markerIcon = L.divIcon({
+  html:`<div class="map-marker-wrap"><div class="map-marker-ring-2"></div><div class="map-marker-ring"></div><div class="map-marker-dot"></div></div>`,
+  className:'',iconSize:[32,32],iconAnchor:[16,16]
+});
+
+function addMapMarker(key, c) {
+  if(!c.coords) return;
+  const marker = L.marker(c.coords, {icon:markerIcon}).addTo(map);
+  marker.on('mouseover', function() {
+    clearTimeout(hoverTimeout);
+    const photoHtml = [0,1,2].map(i => {
+      const src = c.photos && c.photos[i];
+      if(src) return `<div class="mhc-photo"><img src="${src}" alt="${c.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=mhc-photo-empty>${c.flag}</div>'"/></div>`;
+      return `<div class="mhc-photo"><div class="mhc-photo-empty" style="background:${c.gradient}">${c.flag}</div></div>`;
+    }).join('');
+    hoverCard.innerHTML = `
+      <div class="mhc-header">
+        <span class="mhc-flag">${c.flag}</span>
+        <div><div class="mhc-name">${c.name}</div><div class="mhc-year">${c.year}</div></div>
+      </div>
+      <div class="mhc-photos">${photoHtml}</div>
+      <div class="mhc-desc">${c.shortDesc}</div>
+      <span class="mhc-cta">Click to read more →</span>`;
+    const point = map.latLngToContainerPoint(c.coords);
+    const cw = document.getElementById('mapContainer').offsetWidth;
+    const cardW=300,cardH=230;
+    let left = point.x - cardW/2;
+    let top  = point.y - cardH - 20;
+    if(left < 8) left = 8;
+    if(left + cardW > cw-8) left = cw - cardW - 8;
+    if(top < 8) top = point.y + 24;
+    hoverCard.style.left = left+'px';
+    hoverCard.style.top  = top+'px';
+    hoverCard.classList.add('visible');
+  });
+  marker.on('mouseout', () => { hoverTimeout = setTimeout(() => hoverCard.classList.remove('visible'), 120); });
+  marker.on('click', () => openTravelModal(key));
+}
+
+async function loadTravelData() {
+  renderCountryGrid();
+  Object.entries(countries).forEach(([key, c]) => addMapMarker(key, c));
+  try {
+    const manifest = await fetch('assets/travel/manifest.json?v='+Date.now()).then(r => { if(!r.ok) throw new Error(); return r.json(); });
+    let changed = false;
+    const entries = await Promise.all(manifest.map(async folder => {
+      try {
+        const text = await fetch(`assets/travel/${folder}/info.txt?v=`+Date.now()).then(r => { if(!r.ok) throw new Error(); return r.text(); });
+        const data = parseInfoTxt(text, folder);
+        data.photos = await detectPhotos(folder);
+        const key = folder.toLowerCase().replace(/\s+/g,'_');
+        return [key, data];
+      } catch(e) { return null; }
+    }));
+    entries.filter(Boolean).forEach(([key, data]) => {
+      const isNew = !BASE_COUNTRIES[key];
+      const hasNewPhotos = data.photos && data.photos.length > 0 && (!countries[key] || !countries[key].photos || countries[key].photos.length === 0);
+      if(isNew || hasNewPhotos) { countries[key] = data; changed = true; }
+    });
+    if(changed) {
+      renderCountryGrid();
+      entries.filter(Boolean).forEach(([key, data]) => { if(!BASE_COUNTRIES[key]) addMapMarker(key, data); });
+    }
+  } catch(e) { /* file:// protocol — built-in data already rendered */ }
+}
+
+loadTravelData();
+
+function openTravelModal(key) {
+  const c = countries[key]; if(!c) return;
+  document.getElementById('modalFlag').textContent    = c.flag;
+  document.getElementById('modalTitle').textContent   = c.name;
+  document.getElementById('modalSubtitle').textContent = c.year;
+  document.getElementById('modalVisual').style.background = c.gradient;
+  document.getElementById('modalContent').innerHTML   = c.fullBlog;
+  const photos = Array.isArray(c.photos) && c.photos.length ? c.photos : Array(6).fill(null);
+  document.getElementById('modalPhotos').innerHTML = photos.map((src, i) => {
+    if(src) return `<div class="modal-photo"><img src="${src}" alt="${c.name} photo ${i+1}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" /></div>`;
+    return `<div class="modal-photo">Add photo ${i+1}</div>`;
+  }).join('');
+  document.getElementById('modalBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeTravelModal(e) { if(e.target===document.getElementById('modalBackdrop')) closeTravelModalDirect(); }
+function closeTravelModalDirect() { document.getElementById('modalBackdrop').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeTravelModalDirect(); });
+</script>
+</body>
+</html>

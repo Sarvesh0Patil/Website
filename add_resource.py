@@ -21,7 +21,7 @@ import shutil
 ROOT_DIR      = os.path.dirname(os.path.abspath(__file__))
 RESOURCES_DIR = os.path.join(ROOT_DIR, 'resources')
 PROCESSED_DIR = os.path.join(RESOURCES_DIR, 'processed')
-HTML_FILE     = os.path.join(ROOT_DIR, 'index.html')
+HTML_FILE     = os.path.join(ROOT_DIR, 'resources.html')
 INSERT_MARKER = '<!-- Resource blocks -->'
 
 
