@@ -1,0 +1,6 @@
+title: Inorganic Chemistry Modules
+description: These are the modules released by NCERT — and IITs are only allowed to set questions based on the experiments which students are supposed to do during 11th and 12th. But the current education system asks us to ignore such experimental work.
+However, it is of utmost importance to master this for JEE Advanced.
+link: https://ncert.nic.in/science-laboratory-manual.php?ln=en
+comment: If you are interested, I will make a summary of this resource and share it here — but only if the target is achieved.
+date: Chemistry · JEE Advanced

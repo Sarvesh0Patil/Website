@@ -1,0 +1,6 @@
+title: Your Resource Title Here
+description: Write a description of the resource here.
+You can continue on the next line — it will be part of the same paragraph.
+link: https://example.com
+comment: Any additional note or comment to display in the box below the description.
+date: 2026-04-05 · Chemistry · JEE Advanced
