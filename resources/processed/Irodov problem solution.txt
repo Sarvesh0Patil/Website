@@ -1,0 +1,8 @@
+title: Irodov problem solutions
+description: This folder contains solutions to all Irodov problems.
+
+Jai hind!
+
+link: https://drive.google.com/drive/folders/1YZfbZHmpPK0yrK_9yr9mDpK7DNfKOdx5?usp=sharing
+comment: All credits goes to Ankit Singhvi from IIT Madras, 2008 batch
+date: 2026-04-06 · Physics · JEE Advanced
