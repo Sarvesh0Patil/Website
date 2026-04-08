@@ -1,0 +1,909 @@
+<!--resource
+title: Important reactions from lab manuals.
+description: A collection of important chemical reactions encountered in laboratory settings. Each reaction includes a description, balanced equations, and the colour change involved.
+date: 2026-04-08 · Chemistry · JEE Advanced
+comment: Source: NCERT Laboratory Manuals (volume 1-18)
+--><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chromatic Chemistry — Dark Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08080c;
+  --surface:#101018;
+  --surface2:#16161f;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --text:#e8e6f0;
+  --muted:rgba(232,230,240,0.45);
+  --accent:#ff5c35;
+  --accent2:#ffb347;
+  --mono:#b0aec8;
+  --glow-r:rgba(255,92,53,0.15);
+  --glow-b:rgba(80,120,255,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Instrument Serif',serif;font-size:17px;line-height:1.65;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+
+/* ══ SCROLLBAR ══ */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(255,92,53,0.4);border-radius:2px}
+
+/* ══ HERO ══ */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  position:relative;overflow:hidden;padding:80px 24px 60px;text-align:center;
+}
+.grid-overlay{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(255,92,53,0.18),transparent 70%);top:-100px;left:-100px}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(80,100,255,0.14),transparent 70%);bottom:-80px;right:-80px;animation:drift2 14s ease-in-out infinite alternate}
+.orb3{width:300px;height:300px;background:radial-gradient(circle,rgba(0,180,180,0.1),transparent 70%);top:40%;left:60%;animation:drift2 10s ease-in-out infinite alternate-reverse}
+@keyframes drift2{from{transform:translate(0,0)}to{transform:translate(40px,25px)}}
+
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;opacity:0;animation:up 0.7s 0.2s forwards}
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(3rem,8vw,7rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;max-width:900px;opacity:0;animation:up 0.8s 0.4s forwards}
+.hero-title .hl{color:var(--accent)}
+.hero-sub{margin-top:28px;max-width:540px;font-size:1.1rem;color:var(--muted);font-style:italic;opacity:0;animation:up 0.8s 0.6s forwards}
+.hero-stats{margin-top:52px;display:flex;gap:48px;flex-wrap:wrap;justify-content:center;opacity:0;animation:up 0.8s 0.8s forwards}
+.stat{text-align:center}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;color:var(--accent)}
+.stat-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.hero-scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.25);opacity:0;animation:up 1s 1.2s forwards}
+.hero-scroll-hint::after{content:'';width:1px;height:44px;background:linear-gradient(to bottom,rgba(255,255,255,0.25),transparent);animation:scrollPulse 2.2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:1}50%{opacity:0.2}}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══ FILTER BAR ══ */
+.filter-section{padding:40px 24px 0;max-width:1340px;margin:0 auto}
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding-bottom:32px;border-bottom:1px solid var(--border)}
+.filter-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.filter-btn{
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+  padding:7px 16px;border:1px solid var(--border2);background:transparent;color:var(--muted);
+  border-radius:2px;cursor:pointer;transition:all 0.2s;white-space:nowrap;
+}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ══ SECTION ══ */
+.section{padding:60px 24px 20px;max-width:1340px;margin:0 auto}
+.section-head{display:flex;align-items:center;gap:20px;margin-bottom:40px}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent)}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:700;letter-spacing:-0.01em}
+.section-line{flex:1;height:1px;background:var(--border)}
+
+/* ══ GRID ══ */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1px;background:var(--border)}
+
+/* ══ CARD ══ */
+.card{
+  background:var(--surface);position:relative;overflow:hidden;cursor:pointer;
+  transition:background 0.25s,transform 0.25s;display:flex;flex-direction:column;
+}
+.card:hover{background:var(--surface2);z-index:2}
+.card:hover .card-glow{opacity:1}
+.card-glow{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.card-top{height:120px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-emoji{font-size:2.8rem;position:relative;z-index:2;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.5));animation:floatEmoji 4s ease-in-out infinite alternate}
+@keyframes floatEmoji{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+.card-stripe{position:absolute;bottom:0;left:0;right:0;height:3px}
+.card-body{padding:20px 22px 22px;flex:1;display:flex;flex-direction:column;gap:10px}
+.card-cat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent)}
+.card-name{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25}
+.card-desc{font-size:0.85rem;color:var(--muted);line-height:1.55;flex:1}
+.card-colors{display:flex;align-items:center;gap:8px;margin-top:8px}
+.swatch{width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);flex-shrink:0}
+.swatch-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)}
+.arrow-sep{font-size:10px;color:rgba(255,255,255,0.2)}
+.card-eq-preview{
+  background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:3px;
+  padding:8px 10px;font-family:'JetBrains Mono',monospace;font-size:8.5px;
+  color:var(--mono);line-height:1.7;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+  margin-top:4px;
+}
+.card-more{
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--accent);margin-top:10px;display:flex;align-items:center;gap:6px;
+}
+.card-more::after{content:'→';transition:transform 0.2s}
+.card:hover .card-more::after{transform:translateX(4px)}
+
+/* ══ MODAL ══ */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);
+  z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;pointer-events:none;transition:opacity 0.3s;
+}
+.overlay.open{opacity:1;pointer-events:all}
+.modal{
+  background:var(--surface);border:1px solid var(--border2);border-radius:6px;
+  max-width:760px;width:100%;max-height:90vh;overflow-y:auto;
+  transform:translateY(40px) scale(0.95);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-header{height:200px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.modal-header-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.2) 100%)}
+.modal-emoji-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-size:7rem;opacity:0.12;pointer-events:none;filter:blur(2px)}
+.modal-close{position:absolute;top:16px;right:16px;z-index:3;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.modal-close:hover{background:rgba(255,255,255,0.18)}
+.modal-cat{position:relative;z-index:2;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:6px}
+.modal-title{position:relative;z-index:2;font-family:'Syne',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff}
+.modal-body{padding:28px 32px 36px}
+.m-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;margin-top:26px}
+.m-label:first-child{margin-top:0}
+.m-text{color:rgba(232,230,240,0.72);font-size:0.95rem;line-height:1.72;margin-bottom:10px}
+.m-eqs{background:#0a0a10;border:1px solid var(--border);border-radius:4px;padding:18px 20px;margin-bottom:4px}
+.m-eq{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#c8c4e0;line-height:2;border-bottom:1px solid rgba(255,255,255,0.04);padding-bottom:6px;margin-bottom:6px}
+.m-eq:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.m-eq .result{color:var(--accent2);font-weight:500}
+.color-bar{display:flex;border-radius:4px;overflow:hidden;height:52px;border:1px solid var(--border);margin-top:10px}
+.cb-from,.cb-to{flex:1;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500}
+.cb-arrow{width:40px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.fact-box{margin-top:22px;border:1px solid rgba(255,180,71,0.2);background:rgba(255,180,71,0.04);border-radius:4px;padding:16px 18px;font-size:0.9rem;color:rgba(232,230,240,0.7);line-height:1.65}
+.fact-box::before{content:'⚗ ';color:var(--accent2)}
+.source-tag{margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;color:rgba(255,255,255,0.2);text-transform:uppercase}
+
+/* ══ CATEGORY COLORS ══ */
+[data-cat="equilibrium"] .card-top{background:linear-gradient(135deg,#1a0500,#5c1500,#8b2500)}
+[data-cat="equilibrium"] .card-glow{background:radial-gradient(ellipse at 50% 0%,rgba(200,70,26,0.12),transparent 70%)}
+[data-cat="equilibrium"] .card-stripe{background:linear-gradient(90deg,#c8451a,#ff7043)}
+[data-cat="redox"] .card-top{background:linear-gradient(135deg,#1a0030,#4a0080,#6b4fa0)}
+[data-cat="redox"] .card-glow{background:radial-gradient(ellipse at 50% 0%,rgba(107,79,160,0.12),transparent 70%)}
+[data-cat="redox"] .card-stripe{background:linear-gradient(90deg,#6b4fa0,#9c6fe0)}
+[data-cat="acid-base"] .card-top{background:linear-gradient(135deg,#001a1a,#005050,#0d7377)}
+[data-cat="acid-base"] .card-glow{background:radial-gradient(ellipse at 50% 0%,rgba(13,115,119,0.12),transparent 70%)}
+[data-cat="acid-base"] .card-stripe{background:linear-gradient(90deg,#0d7377,#14b8a6)}
+[data-cat="qualitative-anion"] .card-top{background:linear-gradient(135deg,#0a1a00,#204a00,#2e7d20)}
+[data-cat="qualitative-anion"] .card-glow{background:radial-gradient(ellipse at 50% 0%,rgba(46,125,32,0.12),transparent 70%)}
+[data-cat="qualitative-anion"] .card-stripe{background:linear-gradient(90deg,#2e7d20,#66bb6a)}
+[data-cat="qualitative-cation"] .card-top{background:linear-gradient(135deg,#001a30,#004080,#0060c0)}
+[data-cat="qualitative-cation"] .card-glow{background:radial-gradient(ellipse at 50% 0%,rgba(0,96,192,0.12),transparent 70%)}
+[data-cat="qualitative-cation"] .card-stripe{background:linear-gradient(90deg,#0060c0,#42a5f5)}
+[data-cat="organic"] .card-top{background:linear-gradient(135deg,#1a1000,#4a3000,#8b5500)}
+[data-cat="organic"] .card-glow{background:radial-gradient(ellipse at 50% 0%,rgba(139,85,0,0.12),transparent 70%)}
+[data-cat="organic"] .card-stripe{background:linear-gradient(90deg,#c9900a,#ffd740)}
+[data-cat="biological"] .card-top{background:linear-gradient(135deg,#1a001a,#4a0050,#9c0080)}
+[data-cat="biological"] .card-glow{background:radial-gradient(ellipse at 50% 0%,rgba(156,0,128,0.12),transparent 70%)}
+[data-cat="biological"] .card-stripe{background:linear-gradient(90deg,#9c0080,#e040fb)}
+
+/* ══ HIDDEN ══ */
+.card.hidden{display:none}
+
+/* ══ REVEAL ══ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.vis{opacity:1;transform:none}
+
+/* ══ FOOTER ══ */
+footer{border-top:1px solid var(--border);padding:40px 24px;text-align:center;margin-top:60px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2)}
+
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .hero-stats{gap:28px}
+  .modal-body{padding:20px 20px 28px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="grid-overlay"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <p class="hero-eyebrow">NCERT Laboratory Manual · Chemistry</p>
+  <h1 class="hero-title">Reactions that<br><span class="hl">change colour</span></h1>
+  <p class="hero-sub">Every chromatic transformation, precipitate, flame and indicator from all 18 laboratory manuals — in one dark compendium.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-lbl">Reactions</div></div>
+    <div class="stat"><div class="stat-num">7</div><div class="stat-lbl">Categories</div></div>
+    <div class="stat"><div class="stat-num">18</div><div class="stat-lbl">PDFs</div></div>
+  </div>
+  <div class="hero-scroll-hint">scroll</div>
+</section>
+
+<!-- FILTERS -->
+<div class="filter-section reveal">
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="equilibrium">Equilibrium</button>
+    <button class="filter-btn" data-filter="redox">Redox</button>
+    <button class="filter-btn" data-filter="acid-base">Acid–Base</button>
+    <button class="filter-btn" data-filter="qualitative-anion">Anion Tests</button>
+    <button class="filter-btn" data-filter="qualitative-cation">Cation Tests</button>
+    <button class="filter-btn" data-filter="organic">Organic</button>
+    <button class="filter-btn" data-filter="biological">Biological</button>
+  </div>
+</div>
+
+<!-- CARDS CONTAINER -->
+<main id="main" class="section">
+  <div class="section-head reveal">
+    <span class="section-num" id="countLabel">showing all</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <div class="modal-header" id="mHeader">
+      <button class="modal-close" id="mClose">✕</button>
+      <div class="modal-emoji-bg" id="mEmojiB"></div>
+      <div class="modal-header-overlay"></div>
+      <div class="modal-cat" id="mCat"></div>
+      <div class="modal-title" id="mTitle"></div>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<footer>Chromatic Chemistry · All Reactions from NCERT Lab Manuals · Dark Edition</footer>
+
+<script>
+const REACTIONS = [
+  // ══ EQUILIBRIUM ══
+  {id:1,cat:"equilibrium",catLabel:"Chemical Equilibrium",emoji:"🩸",
+   name:"Fe³⁺ + SCN⁻ → Blood-Red Complex",
+   desc:"Ferric ions react with thiocyanate to form an intensely blood-red complex. Adding more of either ion shifts equilibrium forward, deepening the colour — a vivid Le Chatelier demonstration.",
+   from:{label:"Pale yellow",hex:"#d4a820"},to:{label:"Blood red",hex:"#8b0000"},
+   eqs:[
+     "Fe³⁺(aq) + SCN⁻(aq)  ⇌  [Fe(SCN)]²⁺(aq)",
+     "More Fe³⁺ or SCN⁻  →  ↑ intensity of blood-red colour",
+   ],
+   detail:"The equilibrium between FeCl₃ and KSCN is monitored through the intensity of the blood-red [Fe(SCN)]²⁺ complex. Increasing [Fe³⁺] or [SCN⁻] shifts equilibrium right — the deep red deepens. At equilibrium the colour remains constant, demonstrating dynamic balance. The true complex is [Fe(H₂O)₅(SCN)]²⁺.",
+   fact:"Colour constancy at equilibrium is the macroscopic proof that forward and reverse rates are equal — the essence of dynamic equilibrium.",
+   source:"kelm204"},
+  {id:2,cat:"equilibrium",catLabel:"Chemical Equilibrium",emoji:"💠",
+   name:"Co²⁺: Pink ↔ Blue (Ligand Displacement)",
+   desc:"Cobalt(II) undergoes a reversible pink-to-blue transformation when chloride displaces water ligands. Adding water reverses the change, and adding more Cl⁻ turns it blue again.",
+   from:{label:"Pink (aqua)",hex:"#e91e8c"},to:{label:"Blue (chloro)",hex:"#1565c0"},
+   eqs:[
+     "[Co(H₂O)₆]²⁺ + 4Cl⁻  ⇌  [CoCl₄]²⁻ + 6H₂O",
+     "    Pink (octahedral)         Blue (tetrahedral)",
+   ],
+   detail:"In acetone, CoCl₂ gives the blue tetrahedral [CoCl₄]²⁻ complex. Adding water shifts equilibrium left, regenerating the pink octahedral aqua-complex. Concentrated HCl pushes it back to blue. The colour change is immediate and reversible, making it one of chemistry's most dramatic equilibrium demonstrations. Geometry shifts from octahedral (pink) to tetrahedral (blue).",
+   fact:"This colour-switch is the principle behind cobalt chloride humidity indicators — blue in dry air, pink in humid conditions.",
+   source:"kelm204"},
+
+  // ══ REDOX ══
+  {id:3,cat:"redox",catLabel:"Redox Titration",emoji:"🔮",
+   name:"KMnO₄ + Oxalic Acid → Self-Indicating",
+   desc:"Deep purple KMnO₄ is progressively decolourised by oxalic acid in acidic medium. A single excess drop turns the solution permanently light pink — KMnO₄ is its own indicator.",
+   from:{label:"Deep purple",hex:"#4a0080"},to:{label:"Pale pink",hex:"#ffc0cb"},
+   eqs:[
+     "2MnO₄⁻ + 5C₂O₄²⁻ + 16H⁺ → 2Mn²⁺ + 10CO₂ + 8H₂O",
+     "  Purple              Colourless",
+     "Endpoint: permanent pale pink (excess KMnO₄)",
+   ],
+   detail:"In acidic H₂SO₄ medium, MnO₄⁻ (deep purple) is reduced to Mn²⁺ (near colourless) while oxalic acid is oxidised to CO₂. The reaction requires warming to 50–60°C because Mn²⁺ formed in situ autocatalyses the reaction. The purple colour discharges with each drop until the equivalence point — then one extra drop leaves a permanent faint pink.",
+   fact:"The autocatalysis by Mn²⁺ means the reaction starts slowly but accelerates as it proceeds — a beautiful example of a self-accelerating reaction.",
+   source:"lelm106"},
+  {id:4,cat:"redox",catLabel:"Redox Titration",emoji:"⚗️",
+   name:"KMnO₄ + Mohr's Salt",
+   desc:"Iron(II) in Mohr's salt is instantly oxidised by permanganate at room temperature. The purple discharges immediately, with no heating required due to the fast reaction rate.",
+   from:{label:"Purple",hex:"#6a0dad"},to:{label:"Pale pink",hex:"#fce4ec"},
+   eqs:[
+     "MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O",
+     "Purple              Colourless",
+   ],
+   detail:"Ferrous ammonium sulphate (Mohr's salt) is a stable, readily available Fe²⁺ source. Each Fe²⁺ loses one electron, while each MnO₄⁻ gains 5. The reaction is rapid at room temperature — heating would cause Fe²⁺ to be oxidised by atmospheric oxygen, introducing error. H₂SO₄ medium prevents precipitation of iron hydroxides.",
+   fact:"Mohr's salt is named after Karl Friedrich Mohr (1806–1879), who pioneered volumetric titration methods in analytical chemistry.",
+   source:"lelm106"},
+  {id:5,cat:"redox",catLabel:"Qualitative Analysis — Redox",emoji:"🟢",
+   name:"SO₃²⁻ Decolourises KMnO₄",
+   desc:"Sulphite ion reduces acidified potassium permanganate, discharging the purple colour as Mn²⁺ is formed. A rapid decolourisation confirms the reducing power of sulphite.",
+   from:{label:"Purple",hex:"#6a0dad"},to:{label:"Colourless",hex:"#e0ddf0"},
+   eqs:[
+     "BaSO₃ + H₂SO₄ → BaSO₄ + H₂O + SO₂",
+     "2KMnO₄ + 3H₂SO₄ → K₂SO₄ + 2MnSO₄ + 3H₂O + 5[O]",
+     "SO₂ + H₂O + [O] → H₂SO₄   (Purple → Colourless)",
+   ],
+   detail:"The sulphite precipitate (BaSO₃) is dissolved in dilute H₂SO₄, releasing SO₂. This SO₂ reduces acidified permanganate, discharging its purple colour. The dichromate paper test for SO₂ also applies — K₂Cr₂O₇ paper turns green (Cr²(SO₄)₃) in the presence of SO₂.",
+   fact:"Sulphite is a common food preservative (E221) — its reducing power also prevents oxidation of food pigments, keeping dried fruits and wines looking fresh.",
+   source:"lelm107"},
+  {id:6,cat:"redox",catLabel:"Qualitative Analysis — Redox",emoji:"🟡",
+   name:"Cr₂O₇²⁻ Paper turns Green (SO₂)",
+   desc:"Potassium dichromate paper acidified with H₂SO₄ turns from orange-yellow to green in the presence of sulphur dioxide. Chromium(VI) is reduced to chromium(III) sulphate.",
+   from:{label:"Orange-yellow",hex:"#f57c00"},to:{label:"Green",hex:"#2e7d32"},
+   eqs:[
+     "K₂Cr₂O₇ + H₂SO₄ + 3SO₂ → K₂SO₄ + Cr₂(SO₄)₃ + H₂O",
+     "                          Chromium sulphate (green)",
+   ],
+   detail:"Potassium dichromate (K₂Cr₂O₇) is a strong oxidising agent with a distinctive orange-yellow colour. When SO₂ gas from a sulphite/acid reaction is passed over dichromate paper, it reduces Cr(VI) to Cr(III). Chromium(III) sulphate is green, so the paper changes colour distinctly — a simple, cheap gas detection method.",
+   fact:"The Cr(VI) → Cr(III) colour change is also the basis of breathalyser tests for alcohol, which were used historically before electronic sensors became standard.",
+   source:"lelm107"},
+
+  // ══ ACID-BASE ══
+  {id:7,cat:"acid-base",catLabel:"Acid-Base Indicator",emoji:"🍊",
+   name:"Methyl Orange: Yellow → Red",
+   desc:"Methyl orange switches from sunny yellow in neutral/alkaline to pinkish-red in acid below pH 3.1. A structural benzenoid-to-quinonoid transformation drives the vivid colour shift.",
+   from:{label:"Yellow (pH>4.4)",hex:"#ffd740"},to:{label:"Pinkish-red (pH<3.1)",hex:"#d32f2f"},
+   eqs:[
+     "Benzenoid form (yellow) + H⁺ → Quinonoid form (pinkish-red)",
+     "pH range: 3.1 (red) ← → 4.4 (yellow)",
+   ],
+   detail:"Methyl orange is a weak base existing in two resonance forms. The yellow benzenoid anion dominates at neutral/basic pH. Protonation forces a structural rearrangement to the quinonoid form — absorbing light at a different wavelength, producing pinkish-red. This sharp transition makes it ideal for strong acid vs. weak base titrations.",
+   fact:"Methyl orange is used to titrate carbonates and bicarbonates because its endpoint (pH ~4) matches the complete conversion of CO₃²⁻ to CO₂.",
+   source:"kelm206"},
+  {id:8,cat:"acid-base",catLabel:"Acid-Base Indicator",emoji:"🌸",
+   name:"Phenolphthalein: Colourless → Pink",
+   desc:"Phenolphthalein is completely invisible in acid but turns vivid pink the instant a solution turns alkaline. One drop of NaOH beyond the endpoint transforms a flask from clear to pink.",
+   from:{label:"Colourless (acid)",hex:"#2a2a3a"},to:{label:"Vivid pink (alkali)",hex:"#e91e8c"},
+   eqs:[
+     "HPh (colourless) ⇌ H⁺ + Ph⁻ (pink)",
+     "NaOH removes H⁺ → equilibrium shifts right → Pink",
+     "Excess NaOH → colourless again (far-alkaline)",
+   ],
+   detail:"Phenolphthalein (HPh) is a weak acid. In acid the protonated colourless form dominates. Alkali removes H⁺, shifting equilibrium right and increasing the pink Ph⁻ anion concentration. In very strong alkali, further structural change produces a colourless dianion — so excess NaOH bleaches the pink back to colourless. Used for weak acid / strong base titrations.",
+   fact:"Phenolphthalein was prescribed as a laxative from 1900–1997 before being withdrawn — this common indicator has a surprisingly medical history.",
+   source:"kelm206"},
+
+  // ══ ANION TESTS ══
+  {id:9,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🫐",
+   name:"I₂ + Starch → Blue-Black Complex",
+   desc:"Iodine molecules thread inside the helical coils of starch, forming a brilliant blue-black inclusion complex. Heating dissociates it; cooling restores the colour — completely reversible.",
+   from:{label:"Brown (I₂ soln)",hex:"#7a4010"},to:{label:"Deep blue-black",hex:"#1a1a6e"},
+   eqs:[
+     "I₂ + Starch helix → Starch-iodide complex (blue-black)",
+     "I⁻ + Starch + CH₃COOH → Blue complex (nitrite test)",
+   ],
+   detail:"Starch contains amylose, a helical polysaccharide. I₂ molecules insert into the helix interior, creating a charge-transfer complex that absorbs visible light strongly, producing the characteristic deep blue-black colour. The complex is reversible: heating breaks it (colour disappears), and cooling restores it. Iodide liberated in reactions (e.g., from nitrite + KI) also forms this complex.",
+   fact:"The starch-iodine test can detect iodine at concentrations as low as 2×10⁻⁵ mol/L — one of the most sensitive colorimetric tests in qualitative chemistry.",
+   source:"lelm111"},
+  {id:10,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🟣",
+   name:"S²⁻ + Sodium Nitroprusside → Purple",
+   desc:"Sulphide ion reacts with sodium nitroprusside [Na₂Fe(CN)₅NO] to form a vivid purple complex — one of the most sensitive and specific tests for S²⁻ ions.",
+   from:{label:"Colourless solution",hex:"#1a1a2e"},to:{label:"Purple complex",hex:"#6b1fa0"},
+   eqs:[
+     "Na₂S + Na₂[Fe(CN)₅NO] → Na₄[Fe(CN)₅NOS]",
+     "                          Purple complex",
+   ],
+   detail:"Sodium nitroprusside is a coordination compound [Fe(CN)₅NO]²⁻. Sulphide (S²⁻) displaces one ligand, forming the purple thionitroprusside complex Na₄[Fe(CN)₅NOS]. The test is performed in alkaline (NH₄OH) solution and is extremely sensitive. It is also used to detect sulphur in organic compounds (sodium fusion extract).",
+   fact:"Sodium nitroprusside is also used as a potent vasodilator in emergency medicine to treat hypertensive crises — releasing nitric oxide (NO) in the body.",
+   source:"lelm107"},
+  {id:11,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"⚫",
+   name:"H₂S + Pb(CH₃COO)₂ → Black PbS",
+   desc:"Hydrogen sulphide gas turns lead acetate paper black due to the formation of lead sulphide. The distinctive rotten-egg smell combined with the black test is definitive for S²⁻.",
+   from:{label:"White paper",hex:"#f5f5f5"},to:{label:"Black (PbS)",hex:"#111111"},
+   eqs:[
+     "Na₂S + H₂SO₄ → Na₂SO₄ + H₂S↑",
+     "(CH₃COO)₂Pb + H₂S → PbS + 2CH₃COOH",
+     "                      Black precipitate",
+   ],
+   detail:"Sulphide salts release H₂S gas when warmed with dilute H₂SO₄. The colourless, malodorous gas is passed over lead acetate paper — the white paper immediately turns black due to the formation of lead sulphide (PbS), one of the least soluble sulphides. The combination of smell and visual test makes this highly reliable.",
+   fact:"Lead acetate was once called 'sugar of lead' because of its sweet taste — before its extreme toxicity was understood. It should never be tasted.",
+   source:"lelm107"},
+  {id:12,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🟤",
+   name:"NO₃⁻ Brown Ring Test",
+   desc:"Nitrate gives a characteristic dark brown ring at the interface of ferrous sulphate and concentrated H₂SO₄ layers, due to formation of nitroso ferrous sulphate — the classic ring test.",
+   from:{label:"Colourless layers",hex:"#1e1e2e"},to:{label:"Dark brown ring",hex:"#5d3000"},
+   eqs:[
+     "NaNO₃ + H₂SO₄ → NaHSO₄ + HNO₃",
+     "6FeSO₄ + 3H₂SO₄ + 2HNO₃ → 3Fe₂(SO₄)₃ + 4H₂O + 2NO",
+     "FeSO₄ + NO → [Fe(NO)]SO₄  (dark brown ring)",
+   ],
+   detail:"The nitrate ring test relies on reduction of NO₃⁻ to NO by Fe²⁺ in concentrated H₂SO₄. The NO then forms the brown complex [Fe(NO)]SO₄ (nitroso ferrous sulphate) at the interface of the two liquid layers. The ring is immediately visible as a dark chocolate-brown band. Alternatively, copper turnings with conc. H₂SO₄ produce blue CuSO₄ and brown NO₂ fumes.",
+   fact:"The brown ring test was developed in the 19th century and remains one of the most elegant demonstrations in qualitative inorganic chemistry.",
+   source:"lelm107"},
+  {id:13,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🟡",
+   name:"PO₄³⁻ → Canary Yellow (Ammonium Molybdate)",
+   desc:"Phosphate ions produce a distinctive canary yellow precipitate of ammonium phosphomolybdate when treated with ammonium molybdate in concentrated nitric acid.",
+   from:{label:"Colourless",hex:"#1e1e2e"},to:{label:"Canary yellow",hex:"#fdd835"},
+   eqs:[
+     "Na₂HPO₄ + 12(NH₄)₂MoO₄ + 23HNO₃ →",
+     "  (NH₄)₃[P(Mo₃O₁₀)₄] + 2NaNO₃ + 21NH₄NO₃ + 12H₂O",
+     "  Canary yellow precipitate",
+   ],
+   detail:"Phosphate reacts with ammonium molybdate in concentrated HNO₃ to form ammonium phosphomolybdate — a distinctive canary yellow precipitate. Each oxygen of phosphate is replaced by a Mo₃O₁₀ group, forming a large heteropolyanion complex. Boiling helps form the precipitate rapidly. Arsenate gives the same test (canary yellow with molybdate) — the two must be distinguished separately.",
+   fact:"The canary yellow ammonium molybdate test for phosphate is so reliable it is used clinically to detect phosphate in blood and urine samples.",
+   source:"lelm107"},
+  {id:14,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🟠",
+   name:"Br⁻ → Orange-Brown in CCl₄ Layer",
+   desc:"Bromide ions oxidised by chlorine water release bromine, which dissolves in the organic (CCl₄) layer giving a distinctive orange-brown colour — the layer test for bromide.",
+   from:{label:"Colourless (aq)",hex:"#1e1e2e"},to:{label:"Orange-brown (CCl₄)",hex:"#bf6000"},
+   eqs:[
+     "2NaBr + Cl₂ → 2NaCl + Br₂",
+     "Br₂ dissolves in CCl₄ → orange-brown colouration",
+   ],
+   detail:"Chlorine water oxidises bromide to bromine (Br₂). Bromine is much more soluble in organic solvents (CCl₄, CHCl₃) than in water and partitions into the organic layer, giving a characteristic orange-brown colour. This layer test cleanly distinguishes Br⁻ from Cl⁻ (which remains colourless) and I⁻ (which gives violet in the organic layer).",
+   fact:"The different colours of halogens in organic solvents (Cl₂ pale yellow-green, Br₂ orange-brown, I₂ violet) reflect their increasing polarisability — a fundamentally quantum mechanical effect.",
+   source:"lelm107"},
+  {id:15,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🟣",
+   name:"I⁻ → Violet in Organic Layer",
+   desc:"Iodide ions oxidised by chlorine water release iodine, which partitions into the CCl₄ layer giving a characteristic violet/purple colour — unambiguous confirmation of I⁻ ions.",
+   from:{label:"Colourless (aq)",hex:"#1e1e2e"},to:{label:"Violet (CCl₄ layer)",hex:"#5c0099"},
+   eqs:[
+     "2NaI + Cl₂ → 2NaCl + I₂",
+     "I₂ dissolves in CCl₄ → violet/purple colouration",
+     "I₂ + Starch → Blue-black (alternate test)",
+   ],
+   detail:"Chlorine water oxidises iodide (I⁻) to iodine (I₂). The iodine partitions preferentially into the organic layer (CCl₄ or CHCl₃), giving an intense violet/purple colour due to I₂'s electronic absorption. Silver nitrate gives a yellow precipitate (AgI) insoluble in NH₄OH — a second confirmatory test. Deep violet vapours from conc. H₂SO₄ + iodide also turn starch paper blue.",
+   fact:"Iodine has a violet colour in non-polar solvents (CCl₄) because its electronic transition is unperturbed. In polar solvents (water, alcohol) the colour shifts brown due to solvent complexation.",
+   source:"lelm107"},
+  {id:16,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🟡",
+   name:"Chromyl Chloride Test (Cl⁻ → Yellow PbCrO₄)",
+   desc:"Chloride is converted to chromyl chloride (CrO₂Cl₂) with K₂Cr₂O₇ and H₂SO₄. Absorbed in NaOH, it gives chromate; acidified and treated with lead acetate, a yellow PbCrO₄ precipitate forms.",
+   from:{label:"Mixed reactants",hex:"#2a1500"},to:{label:"Yellow precipitate",hex:"#f9a825"},
+   eqs:[
+     "4NaCl + K₂Cr₂O₇ + 6H₂SO₄ → 2CrO₂Cl₂ + salts",
+     "CrO₂Cl₂ + 4NaOH → Na₂CrO₄ + 2NaCl + 2H₂O",
+     "(CH₃COO)₂Pb + Na₂CrO₄ → PbCrO₄↓ (yellow)",
+   ],
+   detail:"The chromyl chloride test is specific for chloride (bromide and iodide don't form volatile chromyl halides). Chloride is converted to volatile CrO₂Cl₂, which is swept into NaOH solution. The resulting yellow chromate solution is acidified and treated with lead acetate — a yellow PbCrO₄ precipitate confirms Cl⁻. Treatment with H₂O₂ and amyl alcohol gives a blue colour from chromium pentoxide (CrO₅).",
+   fact:"Chromyl chloride (CrO₂Cl₂) is a deep red fuming liquid — one of the few volatile chromium compounds, which is why this test works for chloride specifically.",
+   source:"lelm107"},
+  {id:17,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🔴",
+   name:"NO₂⁻ + KI/Starch → Blue (Nitrite Test)",
+   desc:"Nitrite ions release I₂ from KI in acidic solution. The liberated iodine forms a blue complex with starch — a highly sensitive detection method for nitrite.",
+   from:{label:"Colourless",hex:"#1a1a2e"},to:{label:"Blue (starch-iodide)",hex:"#1a237e"},
+   eqs:[
+     "2NaNO₂ + H₂SO₄ → Na₂SO₄ + 2HNO₂",
+     "2HNO₂ + 2KI + 2CH₃COOH → I₂ + 2KCH₃COO + 2NO + 2H₂O",
+     "I₂ + Starch → Blue complex",
+   ],
+   detail:"Nitrite in acidic medium oxidises iodide (KI) to iodine. The iodine then forms the deep blue complex with starch — an extremely sensitive double indicator. Reddish-brown NO₂ fumes also appear when nitrite is treated with warm H₂SO₄. The Griess-Ilosvay test is an alternative: nitrite diazotises sulphanilic acid, which couples with 1-naphthylamine to give a red azo dye.",
+   fact:"The Griess reagent (1858) for nitrite is still used in food testing, water quality analysis, and even as a test for cancer biomarkers.",
+   source:"lelm107"},
+  {id:18,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🔴",
+   name:"CH₃COO⁻ + FeCl₃ → Deep Red Complex",
+   desc:"Acetate ions form an intense deep red complex with neutral ferric chloride solution. On heating the complex decomposes to give a characteristic brown-red precipitate.",
+   from:{label:"Yellow (FeCl₃)",hex:"#f9a825"},to:{label:"Deep red / brown-red",hex:"#6d1010"},
+   eqs:[
+     "6CH₃COO⁻ + 3Fe³⁺ + 2H₂O → [Fe₃(OH)₂(CH₃COO)₆]⁺ + 2H⁺",
+     "On heating → Fe(OH)₂(CH₃COO) — brown-red precipitate",
+   ],
+   detail:"Neutral ferric chloride reacts with acetate ions to form a striking deep red complex ion [Fe₃(OH)₂(CH₃COO)₆]⁺. The colour is immediately visible and is diagnostic for CH₃COO⁻. Heating decomposes the complex further to give iron(III) dihydroxyacetate (brown-red precipitate). The ferric chloride must be neutral — acid prevents ionisation of acetic acid and suppresses the colour.",
+   fact:"The distinctive red colour of many rust stains on old stone buildings is partly due to similar iron–acetate/carboxylate complexes forming from atmospheric CO₂ and iron minerals.",
+   source:"kelm207"},
+  {id:19,cat:"qualitative-anion",catLabel:"Anion Test",emoji:"🟤",
+   name:"Nitrogen (Fusion) → Prussian Blue",
+   desc:"In Lassaigne's fusion test, nitrogen from organic compounds is converted to CN⁻, which reacts with Fe²⁺ and Fe³⁺ to produce the vivid Prussian blue or green-blue colouration.",
+   from:{label:"Green solution",hex:"#1b4a1b"},to:{label:"Prussian blue",hex:"#003153"},
+   eqs:[
+     "C,H,N compound + Na → NaCN (sodium extract)",
+     "6NaCN + Fe(OH)₂ → Na₄[Fe(CN)₆] + 2NaOH (boil)",
+     "Fe³⁺ + [Fe(CN)₆]⁴⁻ → Fe₄[Fe(CN)₆]₃ (Prussian blue)",
+   ],
+   detail:"The Lassaigne test for nitrogen uses sodium fusion to convert organic nitrogen to NaCN. The extract is boiled with ferrous hydroxide, oxidised with dilute H₂SO₄, and treated with ferric chloride. A Prussian blue precipitate confirms nitrogen. If both N and S are present, a blood-red colour [Fe(CNS)] may form instead of pure Prussian blue.",
+   fact:"Prussian blue (ferric hexacyanoferrate) was the first synthetic pigment ever produced — accidentally discovered in Berlin in 1704 — and is still used in printer inks today.",
+   source:"kelm207"},
+
+  // ══ CATION TESTS ══
+  {id:20,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"🔵",
+   name:"Cu²⁺ → Tetraamminecopper (Deep Blue)",
+   desc:"Excess ammonia converts copper ions into the vivid deep blue tetraamminecopper(II) complex — one of the most distinctive confirmatory tests in inorganic qualitative analysis.",
+   from:{label:"Light blue (Cu²⁺)",hex:"#1565c0"},to:{label:"Deep blue (complex)",hex:"#002984"},
+   eqs:[
+     "Cu(OH)₂·CuSO₄ + 8NH₃ → 2[Cu(NH₃)₄]SO₄ + 2OH⁻",
+     "Then + K₄[Fe(CN)₆] + CH₃COOH →",
+     "Cu₂[Fe(CN)₆] — Chocolate brown precipitate",
+   ],
+   detail:"Copper sulphide is dissolved in HNO₃, giving blue CuSO₄ solution. Excess NH₄OH first precipitates basic copper sulphate, then dissolves it in excess, forming the intensely deep blue tetraamminecopper(II) complex [Cu(NH₃)₄]²⁺. Acidification and addition of potassium ferrocyanide gives a chocolate-brown precipitate of copper ferrocyanide, confirming Cu²⁺.",
+   fact:"The tetraamminecopper(II) complex is used to dissolve cellulose (Schweitzer's reagent) in the manufacture of rayon — an industrial process relying on this coordination chemistry.",
+   source:"kelm207"},
+  {id:21,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"🔴",
+   name:"Ni²⁺ + Dimethylglyoxime → Bright Red",
+   desc:"Nickel(II) ions in alkaline solution react with dimethylglyoxime to form a brilliant rose-red precipitate — one of the most visually striking and selective precipitations in qualitative analysis.",
+   from:{label:"Green NiCl₂ soln",hex:"#1b5e20"},to:{label:"Brilliant red ppt",hex:"#c62828"},
+   eqs:[
+     "3NiS + 2HNO₃ + 6HCl → 3NiCl₂ + 2NO + 3S + 4H₂O",
+     "Ni²⁺ + 2 dmgH → Ni(dmg)₂ (bright red precipitate)",
+     "  (in NH₄OH solution)",
+   ],
+   detail:"After dissolving nickel sulphide in aqua regia and making the solution alkaline with NH₄OH, dimethylglyoxime (dmgH) is added. The reagent selectively chelates Ni²⁺ through two nitrogen donor atoms, forming a square-planar brilliant red complex stabilised by intramolecular hydrogen bonds. The selectivity for Ni²⁺ over other metals makes this one of the most reliable confirmatory tests.",
+   fact:"Dimethylglyoxime was first used to detect nickel by Ludwig Tschugaeff in 1905. The gorgeous red complex has been used to estimate nickel gravimetrically — weighing the precipitate directly.",
+   source:"kelm207"},
+  {id:22,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"🟡",
+   name:"Co²⁺ → Yellow Potassium Hexanitritocobaltate",
+   desc:"Cobalt(II) treated with potassium nitrite in acidic acetic acid solution gives a vivid yellow precipitate of potassium hexanitritocobaltate(III) — the definitive test for Co²⁺.",
+   from:{label:"Pink/blue CoCl₂",hex:"#1a237e"},to:{label:"Yellow precipitate",hex:"#f9a825"},
+   eqs:[
+     "CoS + HNO₃ + 3HCl → CoCl₂ + NOCl + S + 2H₂O",
+     "CoCl₂ + 7KNO₂ + 2CH₃COOH → K₃[Co(NO₂)₆] + salts",
+     "Potassium hexanitritocobaltate(III) — Yellow precipitate",
+   ],
+   detail:"After dissolving cobalt sulphide in aqua regia, the solution is neutralised with NH₄OH and acidified with acetic acid. Addition of solid KNO₂ gives a canary-yellow precipitate of potassium hexanitritocobaltate(III), K₃[Co(NO₂)₆]. Co(II) is oxidised to Co(III) in this process. The yellow precipitate is very characteristic — Co²⁺ is one of the most reliably identified cations by colour.",
+   fact:"The same yellow compound (Fischer's salt analogue) has been studied for its magnetic properties — Co(III) complexes are typically diamagnetic (all electrons paired).",
+   source:"kelm207"},
+  {id:23,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"🟤",
+   name:"Fe³⁺ + KSCN → Blood-Red (Confirmatory)",
+   desc:"Ferric ions react with thiocyanate to give the intensely blood-red [Fe(SCN)]²⁺ complex — used both as an equilibrium demonstration and as a highly sensitive confirmatory test for Fe³⁺.",
+   from:{label:"Yellow-brown",hex:"#7a4a00"},to:{label:"Blood red",hex:"#8b0000"},
+   eqs:[
+     "Fe³⁺ + SCN⁻ → [Fe(SCN)]²⁺  (blood red)",
+   ],
+   detail:"In Group III cation analysis, the brown ferric hydroxide precipitate is dissolved in dilute HCl. The filtrate is divided: one part receives potassium ferrocyanide K₄[Fe(CN)₆] giving a blue precipitate, and another part receives KSCN giving a blood-red colouration. Both tests confirm Fe³⁺. The KSCN test is extremely sensitive — Fe³⁺ can be detected at trace concentrations.",
+   fact:"This reaction is used in water quality analysis to detect trace iron contamination — iron gives drinking water a metallic taste at concentrations barely detectable by this test.",
+   source:"kelm207"},
+  {id:24,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"🟤",
+   name:"Fe³⁺ + K₄[Fe(CN)₆] → Prussian Blue",
+   desc:"Ferric ions react with potassium hexacyanoferrate(II) (ferrocyanide) to produce an intense Prussian blue precipitate or colouration — a highly selective and sensitive Fe³⁺ test.",
+   from:{label:"Brown Fe³⁺ soln",hex:"#5d3000"},to:{label:"Prussian blue",hex:"#003153"},
+   eqs:[
+     "4Fe³⁺ + 3[Fe(CN)₆]⁴⁻ → Fe₄[Fe(CN)₆]₃ (Prussian blue)",
+   ],
+   detail:"Ferric ions combine with ferrocyanide ions [Fe(CN)₆]⁴⁻ to form iron(III) hexacyanoferrate(II) — Prussian blue. The compound has a striking intense blue colour even at trace concentrations. In Group III analysis, the dissolved precipitate is tested: potassium ferrocyanide gives the blue precipitate, confirming Fe³⁺. If hexacyanoferrate is in excess, a soluble blue sodium complex forms.",
+   fact:"Prussian blue is FDA-approved as an antidote for thallium and caesium-137 poisoning — it traps the heavy metals in the gut and prevents their absorption.",
+   source:"kelm207"},
+  {id:25,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"🟤",
+   name:"Mn²⁺ → Brown MnO(OH)₂ (Oxidation)",
+   desc:"Manganese(II) hydroxide precipitates as white Mn(OH)₂, which rapidly turns brown on exposure to air due to oxidation to hydrated manganese dioxide MnO(OH)₂.",
+   from:{label:"White Mn(OH)₂",hex:"#e0ddf0"},to:{label:"Brown MnO(OH)₂",hex:"#7a4a00"},
+   eqs:[
+     "MnCl₂ + 2NaOH → Mn(OH)₂↓ (white) + 2NaCl",
+     "Mn(OH)₂ + [O] → MnO(OH)₂ (brown, atmospheric oxidation)",
+   ],
+   detail:"In Group IV cation analysis, manganese sulphide (flesh-coloured precipitate) is dissolved in dilute HCl. Adding excess NaOH gives white Mn(OH)₂, which almost immediately turns brown as atmospheric oxygen oxidises Mn(II) to Mn(IV) — forming hydrated manganese dioxide MnO(OH)₂. The white-to-brown transition on standing is itself diagnostic for Mn²⁺.",
+   fact:"Manganese oxidation by atmospheric oxygen is the same process responsible for the black mineral pyrolusite (MnO₂) found in ancient cave paintings — the earliest known pigment.",
+   source:"kelm207"},
+  {id:26,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"🟡",
+   name:"Pb²⁺ → Yellow PbCrO₄ Precipitate",
+   desc:"Lead ions react with potassium chromate to give a vivid yellow precipitate of lead chromate — a sharp, reliable confirmatory test after dissolving the lead sulphate in ammonium acetate.",
+   from:{label:"Colourless (Pb²⁺)",hex:"#1a1a2e"},to:{label:"Yellow PbCrO₄",hex:"#f9a825"},
+   eqs:[
+     "(NH₄)₂[Pb(CH₃COO)₄] + K₂CrO₄ → PbCrO₄↓ + salts",
+     "Yellow precipitate",
+     "Also: Pb²⁺ + 2KI → PbI₂ (yellow precipitate)",
+   ],
+   detail:"Lead sulphide is dissolved in HNO₃, giving Pb(NO₃)₂. Adding H₂SO₄ and alcohol gives white PbSO₄, confirming lead. This is dissolved in ammonium acetate. Acidification with acetic acid and addition of K₂CrO₄ gives bright yellow PbCrO₄. Alternatively, KI gives yellow lead iodide PbI₂ — this precipitate is notable for forming beautiful golden crystals when slowly cooled.",
+   fact:"Lead chromate (chrome yellow) was historically used as a paint pigment and to colour foods like turmeric — before the severe toxicity of both lead and chromate was understood.",
+   source:"kelm207"},
+  {id:27,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"💛",
+   name:"Ba²⁺ → Grassy Green Flame",
+   desc:"Barium salts impart an apple/grassy green colour to the Bunsen flame — the green is pure and vivid, and persists even when viewed through blue glass (unlike copper's blue centre).",
+   from:{label:"Colourless",hex:"#1a1a2e"},to:{label:"Apple green flame",hex:"#4caf50"},
+   eqs:[
+     "BaCO₃ (white ppt) → Ba²⁺ in flame → apple green emission",
+     "Also: Ba²⁺ + K₂CrO₄ → BaCrO₄↓ (yellow precipitate)",
+   ],
+   detail:"In Group V cation analysis, barium carbonate precipitates as white BaCO₃. The flame test with the precipitate gives a characteristic apple green colour (BaO excited-state emission). Viewed through blue glass the colour remains the same green — distinguishing it from copper's green with blue centre. Chemical confirmation: potassium chromate gives a yellow BaCrO₄ precipitate.",
+   fact:"Barium compounds are responsible for the brilliant green colour in fireworks — barium chlorate or barium nitrate produces a pure, vivid green not achievable with other elements.",
+   source:"kelm207"},
+  {id:28,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"❤️",
+   name:"Sr²⁺ → Crimson Red Flame",
+   desc:"Strontium salts produce a vivid crimson-red (carmine) flame — the most intense and pure red flame in qualitative analysis. Through blue glass it appears purple.",
+   from:{label:"Colourless",hex:"#1a1a2e"},to:{label:"Crimson red flame",hex:"#c62828"},
+   eqs:[
+     "SrCO₃ (white ppt) → Sr²⁺ in flame → crimson red emission",
+     "Sr²⁺ + (NH₄)₂SO₄ → SrSO₄↓ (white, after boiling)",
+   ],
+   detail:"In Group V analysis, strontium carbonate precipitate is tested with the flame. It gives a brilliant crimson-red colour that is viewed as purple through blue glass. Chemical confirmatory test: ammonium sulphate solution gives white SrSO₄ after heating and cooling, scratching the tube wall to induce nucleation. The flame test result is often sufficient for identification.",
+   fact:"Strontium's crimson flame makes it the key element in red emergency flares and fireworks. Strontium-90 from nuclear tests has been studied for decades as a radiological tracer.",
+   source:"kelm207"},
+  {id:29,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"🧱",
+   name:"Ca²⁺ → Brick Red Flame",
+   desc:"Calcium gives a brick red flame that appears greenish-yellow through blue glass — distinguishing it from strontium's crimson and barium's green. Chemical test: white calcium oxalate precipitate.",
+   from:{label:"Colourless",hex:"#1a1a2e"},to:{label:"Brick red flame",hex:"#bf4a10"},
+   eqs:[
+     "CaCO₃ (white ppt) → Ca²⁺ in flame → brick red emission",
+     "Ca²⁺ + (NH₄)₂C₂O₄ → CaC₂O₄↓ (white precipitate)",
+   ],
+   detail:"In Group V analysis, calcium carbonate gives a brick red flame. Crucially, this red looks greenish-yellow when viewed through blue glass — definitively distinguishing Ca²⁺ from Sr²⁺. Chemical test: ammonium oxalate solution gives a white precipitate of calcium oxalate (CaC₂O₄). Lime water [Ca(OH)₂] turns milky (CaCO₃) when CO₂ is passed through — a separate well-known test.",
+   fact:"The brick-red calcium flame is responsible for the orange-red colour of natural gas flames when calcium-containing dust is present — often seen as orange flickers in a blue flame.",
+   source:"kelm207"},
+  {id:30,cat:"qualitative-cation",catLabel:"Cation Test",emoji:"🟢",
+   name:"Cu²⁺ → Green with Blue Centre (Flame)",
+   desc:"Copper salts produce a distinctive green flame with a blue centre — recognisable even by untrained eyes. Through blue glass the colour appears the same green, unlike barium.",
+   from:{label:"Colourless",hex:"#1a1a2e"},to:{label:"Green + blue centre",hex:"#00695c"},
+   eqs:[
+     "CuSO₄ + B₂O₃ → Cu(BO₂)₂ + SO₃  (Borax: blue-green bead)",
+     "Cu²⁺ in flame → green emission with blue centre",
+   ],
+   detail:"Copper compounds give a characteristic green flame with a vivid blue centre — attributed to different excited-state emissions of CuO and Cu₂O/CuCl. The borax bead test for Cu²⁺ gives a blue-green bead in the oxidising flame (cupric metaborate). In the reducing flame, the bead becomes red and opaque (metallic copper) or colourless (cuprous metaborate).",
+   fact:"The green colour of copper-based patinas (verdigris) on old bronze statues — like the Statue of Liberty — is from basic copper carbonates and sulphates, chemically similar to the flame compounds.",
+   source:"kelm207"},
+  {id:31,cat:"qualitative-cation",catLabel:"Cobalt Nitrate Test",emoji:"🎨",
+   name:"Cobalt Nitrate Test → Green/Pink/Blue Residues",
+   desc:"Cobalt nitrate, heated with white oxide residues from the charcoal cavity test, gives distinctive colours: green with ZnO, pink with MgO, and blue with Al₂O₃ — a three-way colour fingerprint.",
+   from:{label:"White residue",hex:"#e0ddf0"},to:{label:"Green / Pink / Blue",hex:"#2e7d32"},
+   eqs:[
+     "2Co(NO₃)₂ → 2CoO + 4NO₂ + O₂",
+     "CoO + ZnO → CoO·ZnO  (Green)",
+     "CoO + MgO → CoO·MgO  (Pink)",
+     "CoO + Al₂O₃ → CoO·Al₂O₃  (Blue)",
+   ],
+   detail:"When a charcoal cavity test gives a white residue, cobalt nitrate is applied and the mixture heated strongly in a non-luminous flame. CoO formed on decomposition reacts with the white metal oxide to give coloured mixed oxides: green for Zn²⁺ (zinc oxide + cobalt oxide), pink for Mg²⁺ (magnesium oxide + cobalt oxide), and blue for Al³⁺ (aluminium oxide + cobalt oxide). The three colours are unmistakeable.",
+   fact:"The blue colour of CoO + Al₂O₃ is essentially cobalt aluminate — the same pigment known as 'cobalt blue', used in Delft pottery and fine-art paints for centuries.",
+   source:"kelm207"},
+  {id:32,cat:"qualitative-cation",catLabel:"Borax Bead Test",emoji:"🔷",
+   name:"Borax Bead: Cu²⁺ (Blue→Green / Red)",
+   desc:"Cu²⁺ imparts distinctive colours to a molten borax bead: blue-green in the cold oxidising flame, red and opaque when reduced (metallic copper), or colourless as cuprous metaborate.",
+   from:{label:"Blue-green (cold)",hex:"#0d7377"},to:{label:"Red opaque (reduced)",hex:"#c62828"},
+   eqs:[
+     "CuSO₄ + B₂O₃ → Cu(BO₂)₂ + SO₃  (blue-green)",
+     "2Cu(BO₂)₂ + 4NaBO₂ + 2C → 2Cu + 2Na₂B₄O₇ + 2CO  (red)",
+   ],
+   detail:"The borax bead becomes the medium for a high-temperature colour test. In the oxidising (non-luminous) flame, copper forms cupric metaborate Cu(BO₂)₂ — blue-green when cold, green when hot. In the reducing (luminous) flame, Cu(BO₂)₂ is reduced either to colourless CuBO₂ or to metallic copper, giving a red opaque bead. The dual colour tells a complete story of oxidation state.",
+   fact:"The borax bead test was a standard tool for miners and geologists throughout the 19th century for field identification of ore minerals — a portable, flame-and-wire laboratory.",
+   source:"kelm207"},
+
+  // ══ ORGANIC ══
+  {id:33,cat:"organic",catLabel:"Organic Functional Group Test",emoji:"🟣",
+   name:"Phenol + FeCl₃ → Violet Complex",
+   desc:"Phenol forms a vivid violet complex with neutral ferric chloride solution. Different phenols give different colours — catechol gives green, resorcinol gives fluorescent green, cresols give violet to blue.",
+   from:{label:"Colourless",hex:"#1a1a2e"},to:{label:"Violet complex",hex:"#5c0099"},
+   eqs:[
+     "6C₆H₅OH + FeCl₃ → [Fe(C₆H₅O)₆]³⁻ + 3HCl + 3H⁺",
+     "Violet complex (phenol)",
+     "Catechol → green | o-Cresol → red | Resorcinol → green fluorescent",
+   ],
+   detail:"Phenols form coloured coordination complexes with ferric iron. The violet complex from phenol is due to [Fe(C₆H₅O)₆]³⁻. The colour varies with the phenol's ring substitution: o-cresol (red), m-cresol (bluish-purple), catechol (green, rapidly darkening). Simple alcohols do not give this test — it distinguishes phenolic OH from alcoholic OH. Ferric chloride must be neutral to avoid acid suppressing ionisation.",
+   fact:"The iron-phenol complex colours depend on the electron density donated to Fe³⁺ — a classic example of how small structural changes dramatically shift coordination compound colour.",
+   source:"lelm108"},
+  {id:34,cat:"organic",catLabel:"Organic Functional Group Test",emoji:"🟠",
+   name:"Alkene + Br₂ (CCl₄) → Decolourisation",
+   desc:"The reddish-orange colour of bromine in CCl₄ is instantly discharged when an alkene is added — bromine adds across the C=C double bond, forming a colourless vicinal dibromide.",
+   from:{label:"Reddish-orange (Br₂)",hex:"#e65100"},to:{label:"Colourless (dibromide)",hex:"#1e1e2e"},
+   eqs:[
+     "R₂C=CR₂ + Br₂ (CCl₄) → R₂CBr-CBrR₂ (colourless)",
+     "Reddish-orange disappears → unsaturation confirmed",
+   ],
+   detail:"Unsaturated compounds (alkenes, alkynes) undergo electrophilic addition with bromine across the double or triple bond. The reddish-orange Br₂ solution in CCl₄ discharges immediately — a fast, unambiguous test. Alkynes react more slowly. Phenol also decolourises bromine water (substitution), but benzene does not under normal conditions. Must be confirmed with Bayer's test (alkaline KMnO₄) to exclude confusion.",
+   fact:"The bromine test distinguishes industrially important natural rubber (polyisoprene) from synthetic saturated elastomers — unsaturated rubber rapidly decolourises bromine, saturated rubbers do not.",
+   source:"lelm108"},
+  {id:35,cat:"organic",catLabel:"Organic Functional Group Test",emoji:"🟢",
+   name:"Bayer's Test: KMnO₄ Decolourised by Alkene",
+   desc:"Neutral or alkaline KMnO₄ solution (purple) is decolourised by alkenes — vicinal glycols are formed via oxidation. This is Bayer's test for unsaturation in organic compounds.",
+   from:{label:"Purple KMnO₄",hex:"#6a0dad"},to:{label:"Colourless/brown",hex:"#3a2000"},
+   eqs:[
+     "R₂C=CR₂ + KMnO₄ (alkaline) → R₂C(OH)-C(OH)R₂ + MnO₂",
+     "Purple KMnO₄ → colourless Mn²⁺/brown MnO₂",
+     "Discharge of >1 drop = positive for unsaturation",
+   ],
+   detail:"Bayer's reagent (1% KMnO₄ in 1% Na₂CO₃) oxidises alkenes and alkynes to vicinal diols. The purple permanganate is reduced to brown MnO₂ or further to colourless Mn²⁺. The alkaline conditions prevent confusion from aromatic substitution. Both bromine decolourisation AND Bayer's test positive = confirmed unsaturation. Used alongside the bromine test — each alone can give false positives.",
+   fact:"Bayer's test was pivotal in the 19th century for identifying the degree of unsaturation in terpenes and fatty acids — helping map the structures of natural product chemistry.",
+   source:"lelm108"},
+  {id:36,cat:"organic",catLabel:"Organic Functional Group Test",emoji:"🔴",
+   name:"Alcohol + Ceric Ammonium Nitrate → Red",
+   desc:"Alcohols react with ceric ammonium nitrate [(NH₄)₂Ce(NO₃)₆] to form a vivid red complex — a fast, specific test for the presence of a hydroxyl (R-OH) group.",
+   from:{label:"Yellow-orange (CAN)",hex:"#f57c00"},to:{label:"Red complex",hex:"#c62828"},
+   eqs:[
+     "(NH₄)₂[Ce(NO₃)₆] + 3ROH → [Ce(NO₃)₄(ROH)₃] + 2NH₄NO₃",
+     "Ceric ammonium nitrate → Red complex with alcohol",
+   ],
+   detail:"Ceric ammonium nitrate (CAN) is an orange-yellow reagent that forms a red coordination complex when alcoholic OH groups are present — the oxygen donates to Ce⁴⁺. The colour change from yellow-orange to vivid red is immediate and reliable. Phenols also react but give different colours. CAN is also used in the iodoform test pathway for distinguishing primary, secondary, and tertiary alcohols.",
+   fact:"Ceric ammonium nitrate (CAN) is also a powerful single-electron oxidant used in organic synthesis — the same orange-to-red complex chemistry that detects alcohols is exploited in synthesising complex molecules.",
+   source:"lelm108"},
+  {id:37,cat:"organic",catLabel:"Organic Functional Group Test",emoji:"🟡",
+   name:"Carbonyl + 2,4-DNP → Yellow/Orange Precipitate",
+   desc:"Both aldehydes and ketones react with 2,4-dinitrophenylhydrazine to give yellow, orange, or orange-red precipitates (2,4-DNP derivatives) — confirming the presence of a carbonyl group (C=O).",
+   from:{label:"Colourless solution",hex:"#1a1a2e"},to:{label:"Yellow to orange-red ppt",hex:"#e65100"},
+   eqs:[
+     "R₂C=O + (NO₂)₂C₆H₃NHNH₂ → R₂C=N-NH-C₆H₃(NO₂)₂ + H₂O",
+     "Yellow / orange / orange-red precipitate",
+     "(colour varies with conjugation of the carbonyl compound)",
+   ],
+   detail:"2,4-Dinitrophenylhydrazine (Brady's reagent) reacts with both aldehydes and ketones via condensation. The resulting 2,4-dinitrophenylhydrazone precipitates from solution. The colour of the precipitate varies from bright yellow (simple aliphatic carbonyls) to deep orange-red (conjugated/aromatic carbonyls) — the extended conjugation lowers the HOMO-LUMO gap, red-shifting the absorption. Heating in a water bath helps if precipitate doesn't appear at room temperature.",
+   fact:"The melting point of the 2,4-DNP derivative is used to identify the specific carbonyl compound — thousands of derivatives have been catalogued as solid 'fingerprints' of carbonyl compounds.",
+   source:"lelm108"},
+
+  // ══ BIOLOGICAL ══
+  {id:38,cat:"biological",catLabel:"Carbohydrate Test",emoji:"🔴",
+   name:"Fehling's/Benedict's Test → Orange-Red Cu₂O",
+   desc:"Reducing sugars reduce Cu²⁺ (blue) in Fehling's or Benedict's reagent to Cu⁺, giving a striking orange-red precipitate of copper(I) oxide. A vivid test for glucose, maltose, and other reducing sugars.",
+   from:{label:"Blue (Cu²⁺ complex)",hex:"#1565c0"},to:{label:"Orange-red Cu₂O",hex:"#e64a19"},
+   eqs:[
+     "RCHO + 2Cu²⁺ + 5OH⁻ → RCOO⁻ + Cu₂O↓ + 3H₂O",
+     "          Blue                  Orange-red precipitate",
+     "Sucrose → No reaction (non-reducing sugar)",
+   ],
+   detail:"Fehling's reagent (Cu²⁺ complexed with tartrate) is stable in alkaline solution. Reducing sugars (glucose, fructose, maltose) have free aldehyde or α-hydroxy ketone groups that reduce Cu²⁺ to Cu⁺. The orange-red Cu₂O precipitates. Benedict's reagent uses citrate instead of tartrate — more stable and convenient. Sucrose (non-reducing) gives no reaction; hydrolysis first makes it react. Sometimes a yellow cuprous hydroxide forms first, converting to orange-red Cu₂O on heating.",
+   fact:"The Fehling's test is used clinically to detect glucose in urine — a positive test historically diagnosed diabetes mellitus before modern blood glucose monitors existed.",
+   source:"lelm111"},
+  {id:39,cat:"biological",catLabel:"Carbohydrate Test",emoji:"🪞",
+   name:"Tollen's Test: Silver Mirror",
+   desc:"Reducing sugars reduce ammoniacal silver nitrate (Tollen's reagent), depositing metallic silver as a brilliant mirror on the inner surface of the test tube — the famous silver mirror reaction.",
+   from:{label:"Colourless [Ag(NH₃)₂]⁺",hex:"#1a1a2e"},to:{label:"Silver mirror (Ag⁰)",hex:"#9e9e9e"},
+   eqs:[
+     "RCHO + 2[Ag(NH₃)₂]⁺ + 2OH⁻ → 2Ag↓ + RCOONH₄ + H₂O + 3NH₃",
+     "Silver mirror deposited on tube wall",
+   ],
+   detail:"Tollen's reagent is an alkaline solution of diammine silver(I) [Ag(NH₃)₂]⁺. Reducing sugars act as electron donors, reducing Ag⁺ to metallic silver. When the reaction is gentle (warm water bath, no direct flame), the silver deposits as a smooth, brilliant mirror on the glass. Ketones do not give this test — it specifically detects aldehydes and reducing sugars. After the test, dilute HNO₃ is used to dissolve the silver to avoid explosive silver nitride formation.",
+   fact:"The silver mirror reaction is used industrially to coat glass mirrors and thermos flasks. Modern mirrors use vapour-deposited aluminium, but silver-mirror flasks are still made using this exact chemistry.",
+   source:"lelm111"},
+  {id:40,cat:"biological",catLabel:"Protein Test",emoji:"💜",
+   name:"Biuret Test: Violet Copper-Peptide Complex",
+   desc:"Proteins and peptides (two or more peptide bonds) react with alkaline copper sulphate to form a violet coordination complex — the Biuret test is the standard chemical test for proteins.",
+   from:{label:"Blue Cu²⁺ solution",hex:"#1565c0"},to:{label:"Violet complex",hex:"#6b1fa0"},
+   eqs:[
+     "Cu²⁺ + –CO–NH–CO–NH– (peptide bonds) → Violet complex",
+     "Named from biuret H₂NCONHCONH₂ which gives same test",
+   ],
+   detail:"The Biuret test relies on Cu²⁺ forming a coordination complex with the nitrogen and oxygen atoms of multiple peptide bonds. The complex absorbs at 540 nm — appearing violet. Amino acids alone (single peptide-like groups) give little colour; only compounds with ≥2 peptide bonds respond strongly. Casein and egg albumin give intense violet. The test is quantitative: more intense violet = more protein.",
+   fact:"The Biuret reagent is used in clinical biochemistry to measure total protein in blood serum — a purple absorbance reading directly translates to protein concentration via Beer-Lambert law.",
+   source:"lelm111"},
+  {id:41,cat:"biological",catLabel:"Protein Test",emoji:"💙",
+   name:"Ninhydrin Test → Blue-Violet (Ruhemann's Purple)",
+   desc:"Ninhydrin oxidises amino acids and proteins, forming a vivid blue-violet compound called Ruhemann's purple — one of the most sensitive colorimetric tests for protein and amino groups.",
+   from:{label:"Colourless protein solution",hex:"#1a1a2e"},to:{label:"Blue-violet (Ruhemann's)",hex:"#4a0080"},
+   eqs:[
+     "Ninhydrin + R-CH(NH₂)-COOH → Ruhemann's purple (blue-violet)",
+     "Proline (secondary amine) → Yellow-orange colour",
+   ],
+   detail:"Ninhydrin is a powerful oxidising agent that reacts with the free amine groups (α-amino) of amino acids and proteins. The resulting condensation product — Ruhemann's purple — is intensely coloured even at picomole concentrations. On heating, the blue colour develops. Proline (secondary amine) gives a yellow-orange product instead of blue-violet. The test responds to ammonia, primary amines, amino acids, and peptides.",
+   fact:"Ninhydrin spray on chromatography plates is used to visualise amino acids in thin-layer and paper chromatography — the sensitivity is high enough to detect fingerprints, making it a forensic tool for fingerprint development on paper.",
+   source:"lelm111"},
+  {id:42,cat:"biological",catLabel:"Protein Test",emoji:"🟡",
+   name:"Xanthoproteic Test → Yellow then Orange",
+   desc:"Aromatic amino acid residues in proteins are nitrated by concentrated HNO₃ to give a yellow colour. Adding NaOH deprotonates the nitro product, deepening the colour to intense orange.",
+   from:{label:"Colourless protein",hex:"#1a1a2e"},to:{label:"Yellow → Orange",hex:"#e65100"},
+   eqs:[
+     "Protein-ArH + HNO₃ (conc.) → Protein-ArNO₂ + H₂O (yellow)",
+     "Protein-ArNO₂ + NaOH → Protein-ArNO₂⁻ (orange salt)",
+   ],
+   detail:"Concentrated nitric acid nitrates the aromatic rings of phenylalanine, tyrosine, and tryptophan residues in proteins, giving yellow nitro derivatives. Adding NaOH forms sodium salts of the nitrophenol derivatives, which are more conjugated and absorb at longer wavelengths — producing the intensely orange colour. The yellow-to-orange shift on alkalinisation is the diagnostic two-step signature of the Xanthoproteic test.",
+   fact:"The yellow stain that concentrated HNO₃ leaves on skin is exactly the xanthoproteic reaction — the protein in skin cells is nitrated, giving the characteristic yellow colour that persists for days.",
+   source:"lelm111"},
+  {id:43,cat:"biological",catLabel:"Carbohydrate Test",emoji:"🟣",
+   name:"Molisch's Test → Deep Violet Ring",
+   desc:"All carbohydrates give a deep violet/purple ring at the interface of sulphuric acid and an α-naphthol solution — carbohydrates are dehydrated to furfural which condenses with the reagent.",
+   from:{label:"Colourless/brown solution",hex:"#1e1e2e"},to:{label:"Purple-violet ring",hex:"#6b1fa0"},
+   eqs:[
+     "Carbohydrate + H₂SO₄ → Furfural (dehydration)",
+     "Furfural + 1-Naphthol → Unstable purple condensation product",
+     "Purple ring appears at the acid-solution interface",
+   ],
+   detail:"Molisch's test is a general test for all carbohydrates. Concentrated H₂SO₄ causes dehydration of monosaccharides (or releases them from polysaccharides first) to form furfural (from pentoses) or hydroxymethylfurfural (from hexoses). These aldehydes condense with 1-naphthol to form an unstable purple condensation product at the acid/solution interface. The test is not specific — some non-carbohydrate compounds also respond.",
+   fact:"Molisch's test was developed by Austrian botanist Hans Molisch in 1886. It remains one of the first tests performed in biochemistry teaching labs — a reliable gateway reaction.",
+   source:"lelm111"},
+  {id:44,cat:"biological",catLabel:"Carbohydrate Test",emoji:"🔴",
+   name:"Seliwanoff's Test: Ketose → Red (Aldose Slower)",
+   desc:"Ketohexoses (fructose) give a vivid red colour with Seliwanoff's reagent within 2 minutes. Aldoses react much more slowly, and ketopentoses give a blue-green colour — distinguishing sugar types.",
+   from:{label:"Colourless",hex:"#1a1a2e"},to:{label:"Red (ketohexose)",hex:"#c62828"},
+   eqs:[
+     "Fructose (ketohexose) + Seliwanoff's → Red (within 2 min)",
+     "Glucose (aldose) → No colour within 2 min",
+     "Ketopentose → Blue-green colour",
+   ],
+   detail:"Seliwanoff's reagent contains resorcinol in hydrochloric acid. Ketohexoses are dehydrated rapidly to hydroxymethylfurfural by the acid, which then condenses with resorcinol to give a red product within 2 minutes. Aldoses dehydrate much more slowly — they give colour only after prolonged heating. Ketopentoses give a characteristic blue-green colour, distinguishing them from ketohexoses. This test specifically differentiates fructose from glucose.",
+   fact:"This test is named after Russian chemist Theodor Seliwanoff (1859–1938). It's used industrially to detect fructose in honey adulteration analysis — high fructose corn syrup substituted for honey gives a strongly positive test.",
+   source:"lelm111"},
+];
+
+// ── BUILD CARDS ──
+const grid = document.getElementById('grid');
+REACTIONS.forEach((r,i) => {
+  const card = document.createElement('div');
+  card.className = 'card reveal';
+  card.dataset.cat = r.cat;
+  card.style.transitionDelay = (i % 8 * 0.05) + 's';
+  card.innerHTML = `
+    <div class="card-glow"></div>
+    <div class="card-top">
+      <div class="card-emoji">${r.emoji}</div>
+    </div>
+    <div class="card-stripe"></div>
+    <div class="card-body">
+      <div class="card-cat">${r.catLabel}</div>
+      <div class="card-name">${r.name}</div>
+      <div class="card-desc">${r.desc}</div>
+      <div class="card-colors">
+        <div class="swatch" style="background:${r.from.hex}"></div>
+        <span class="swatch-label">${r.from.label}</span>
+        <span class="arrow-sep">→</span>
+        <div class="swatch" style="background:${r.to.hex}"></div>
+        <span class="swatch-label">${r.to.label}</span>
+      </div>
+      <div class="card-eq-preview">${r.eqs[0]}</div>
+      <div class="card-more">View Details</div>
+    </div>
+  `;
+  card.addEventListener('click', () => openModal(r, i));
+  grid.appendChild(card);
+});
+
+updateCount();
+
+// ── MODAL ──
+const overlay = document.getElementById('overlay');
+const mHeader = document.getElementById('mHeader');
+const mEmojiB = document.getElementById('mEmojiB');
+const mCat    = document.getElementById('mCat');
+const mTitle  = document.getElementById('mTitle');
+const mBody   = document.getElementById('mBody');
+const mClose  = document.getElementById('mClose');
+
+const headerBGs = {
+  equilibrium: 'linear-gradient(135deg,#1a0500,#5c1500,#8b2500)',
+  redox:       'linear-gradient(135deg,#1a0030,#4a0080,#7b4fa0)',
+  'acid-base': 'linear-gradient(135deg,#001a1a,#005050,#0d7377)',
+  'qualitative-anion': 'linear-gradient(135deg,#0a1a00,#204a00,#2e7d20)',
+  'qualitative-cation': 'linear-gradient(135deg,#001a30,#004080,#0060c0)',
+  organic:     'linear-gradient(135deg,#1a1000,#4a3000,#8b5500)',
+  biological:  'linear-gradient(135deg,#1a001a,#4a0050,#9c0080)',
+};
+
+function openModal(r, i) {
+  mHeader.style.background = headerBGs[r.cat];
+  mEmojiB.textContent = r.emoji;
+  mCat.textContent = r.catLabel;
+  mTitle.textContent = r.name;
+
+  const fromLight = isLight(r.from.hex);
+  const toLight   = isLight(r.to.hex);
+
+  mBody.innerHTML = `
+    <div class="m-label">Overview</div>
+    <p class="m-text">${r.detail}</p>
+
+    <div class="m-label">Colour Transformation</div>
+    <div class="color-bar">
+      <div class="cb-from" style="background:${r.from.hex};color:${fromLight?'#111':'#fff'}">${r.from.label}</div>
+      <div class="cb-arrow">→</div>
+      <div class="cb-to" style="background:${r.to.hex};color:${toLight?'#111':'#fff'}">${r.to.label}</div>
+    </div>
+
+    <div class="m-label" style="margin-top:20px">Chemical Equation(s)</div>
+    <div class="m-eqs">${r.eqs.map(eq=>`<div class="m-eq">${eq.replace(/→/g,'<span class="result">→</span>')}</div>`).join('')}</div>
+
+    <div class="fact-box">${r.fact}</div>
+    <div class="source-tag">Source: ${r.source}.pdf · NCERT Laboratory Manual</div>
+  `;
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+mClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+function isLight(hex){
+  const c = hex.replace('#','');
+  const r = parseInt(c.slice(0,2),16), g = parseInt(c.slice(2,4),16), b = parseInt(c.slice(4,6),16);
+  return (0.299*r+0.587*g+0.114*b) > 140;
+}
+
+// ── FILTER ──
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.card').forEach(card => {
+      if(f === 'all' || card.dataset.cat === f) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    updateCount();
+  });
+});
+
+function updateCount(){
+  const visible = document.querySelectorAll('.card:not(.hidden)').length;
+  const total   = document.querySelectorAll('.card').length;
+  const lbl = document.getElementById('countLabel');
+  if(lbl) lbl.textContent = visible === total ? `all ${total} reactions` : `${visible} of ${total} reactions`;
+}
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); } });
+}, {threshold:0.05, rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

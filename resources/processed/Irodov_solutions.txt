@@ -1,0 +1,6 @@
+title: Irodov book solutions
+description: This link contains solution to Irodov problems. 
+
+link: https://drive.google.com/drive/folders/1YZfbZHmpPK0yrK_9yr9mDpK7DNfKOdx5?usp=sharing
+comment: All credit goes to Ankit Singhvi from IIT Madras, 2008 batch
+date: 2026-04-06 · Physics · JEE Advanced
