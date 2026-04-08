@@ -195,9 +195,34 @@ footer{border-top:1px solid var(--border);padding:40px 24px;text-align:center;ma
   .hero-stats{gap:28px}
   .modal-body{padding:20px 20px 28px}
 }
+
+/* ══ FIXED TOP NAV ══ */
+.top-bar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:52px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;
+  background:rgba(8,8,12,0.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.top-bar-back{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);text-decoration:none;
+  transition:opacity .2s;
+}
+.top-bar-back:hover{opacity:.7}
+.top-bar-brand{
+  font-family:'Syne',sans-serif;font-size:.88rem;font-weight:600;
+  color:rgba(232,230,240,0.45);letter-spacing:.04em;
+}
 </style>
 </head>
 <body>
+
+<nav class="top-bar">
+  <a class="top-bar-back" href="../resources.html">← Resources</a>
+  <span class="top-bar-brand">Sarvesh Patil</span>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -207,7 +232,7 @@ footer{border-top:1px solid var(--border);padding:40px 24px;text-align:center;ma
   <div class="orb orb3"></div>
   <p class="hero-eyebrow">NCERT Laboratory Manual · Chemistry</p>
   <h1 class="hero-title">Reactions that<br><span class="hl">change colour</span></h1>
-  <p class="hero-sub">Every chromatic transformation, precipitate, flame and indicator from all 18 laboratory manuals — in one dark compendium.</p>
+  <p class="hero-sub">Every chromatic transformation, precipitate, flame and indicator from all 18 laboratory manuals</p>
   <div class="hero-stats">
     <div class="stat"><div class="stat-num">40+</div><div class="stat-lbl">Reactions</div></div>
     <div class="stat"><div class="stat-num">7</div><div class="stat-lbl">Categories</div></div>
