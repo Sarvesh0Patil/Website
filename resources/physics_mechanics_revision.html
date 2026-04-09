@@ -1,0 +1,1621 @@
+<!--resource
+title: Physics Mechanics — Formula Revision
+description: This contains all basic formulas without which, you should not go to the exam hall. Each formula is explained with its meaning, real-world examples, visualizations, and common pitfalls to avoid.
+
+date: 2026-04-09 · Physics · JEE Advanced
+comment: You can find sources and further reading links at the end of the page.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZT6FWW5KZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9ZT6FWW5KZ');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics Mechanics — Formula Revision</title>
+<style>
+  :root {
+    --bg-primary: #0d0f14;
+    --bg-secondary: #13161e;
+    --bg-card: #1a1e2a;
+    --bg-card-hover: #1f2535;
+    --bg-highlight: #232840;
+    --accent-primary: #7c6af7;
+    --accent-secondary: #4ecdc4;
+    --accent-warn: #f7b731;
+    --accent-danger: #e84393;
+    --accent-green: #26de81;
+    --text-primary: #e8eaf6;
+    --text-secondary: #9aa0be;
+    --text-muted: #5a6080;
+    --border: rgba(124,106,247,0.15);
+    --border-hover: rgba(124,106,247,0.4);
+    --formula-bg: #0a0c14;
+    --formula-border: rgba(78,205,196,0.3);
+    --tag-bg: rgba(124,106,247,0.15);
+    --tag-text: #a89af7;
+    --mistake-bg: rgba(232,67,147,0.08);
+    --mistake-border: rgba(232,67,147,0.3);
+    --tip-bg: rgba(38,222,129,0.07);
+    --tip-border: rgba(38,222,129,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0d0f14 0%, #13161e 50%, #0d0f14 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(124,106,247,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--tag-bg); border: 1px solid rgba(124,106,247,0.3);
+    padding: 4px 14px; border-radius: 20px;
+    font-size: 12px; color: var(--tag-text); letter-spacing: 0.05em;
+    text-transform: uppercase; margin-bottom: 1.2rem;
+  }
+  header h1 {
+    font-size: 2.6rem; font-weight: 700; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #e8eaf6 0%, #7c6af7 50%, #4ecdc4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 0.6rem;
+  }
+  header p {
+    color: var(--text-secondary); font-size: 1rem; max-width: 560px; margin: 0 auto 1.5rem;
+  }
+  .chapter-nav {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 1.5rem;
+  }
+  .chapter-nav a {
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-secondary); text-decoration: none;
+    padding: 6px 14px; border-radius: 8px; font-size: 13px;
+    transition: all 0.2s;
+  }
+  .chapter-nav a:hover {
+    border-color: var(--border-hover); color: var(--accent-primary);
+    background: var(--bg-highlight);
+  }
+
+  /* ── LAYOUT ── */
+  main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  /* ── CHAPTER SECTION ── */
+  .chapter {
+    margin-bottom: 3.5rem;
+    scroll-margin-top: 80px;
+  }
+  .chapter-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 1.5rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .chapter-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .ch1 .chapter-icon { background: rgba(124,106,247,0.15); }
+  .ch2 .chapter-icon { background: rgba(78,205,196,0.15); }
+  .ch3 .chapter-icon { background: rgba(247,183,49,0.15); }
+  .ch4 .chapter-icon { background: rgba(38,222,129,0.15); }
+  .ch5 .chapter-icon { background: rgba(232,67,147,0.15); }
+  .ch6 .chapter-icon { background: rgba(255,107,107,0.15); }
+  .ch7 .chapter-icon { background: rgba(165,94,234,0.15); }
+
+  .chapter-header h2 {
+    font-size: 1.4rem; font-weight: 600; color: var(--text-primary);
+  }
+  .chapter-header p {
+    font-size: 13px; color: var(--text-muted); margin-top: 2px;
+  }
+
+  /* ── FORMULA GRID ── */
+  .formula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── FORMULA CARD ── */
+  .formula-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .formula-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    border-radius: 14px 14px 0 0;
+  }
+  .ch1 .formula-card::before { background: linear-gradient(90deg, #7c6af7, transparent); }
+  .ch2 .formula-card::before { background: linear-gradient(90deg, #4ecdc4, transparent); }
+  .ch3 .formula-card::before { background: linear-gradient(90deg, #f7b731, transparent); }
+  .ch4 .formula-card::before { background: linear-gradient(90deg, #26de81, transparent); }
+  .ch5 .formula-card::before { background: linear-gradient(90deg, #e84393, transparent); }
+  .ch6 .formula-card::before { background: linear-gradient(90deg, #ff6b6b, transparent); }
+  .ch7 .formula-card::before { background: linear-gradient(90deg, #a55eea, transparent); }
+
+  .formula-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+  }
+
+  .formula-name {
+    font-size: 13px; font-weight: 600; color: var(--text-secondary);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem;
+  }
+
+  .formula-box {
+    background: var(--formula-bg);
+    border: 1px solid var(--formula-border);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 1.15rem;
+    color: #4ecdc4;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.03em;
+    word-break: break-all;
+  }
+
+  .formula-desc {
+    font-size: 13.5px; color: var(--text-secondary); margin-bottom: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .terms-title {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 6px;
+  }
+
+  .terms-grid {
+    display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.8rem;
+  }
+  .term-pill {
+    background: rgba(124,106,247,0.1);
+    border: 1px solid rgba(124,106,247,0.2);
+    color: #a89af7; font-size: 12px; padding: 3px 9px;
+    border-radius: 6px; font-family: 'Courier New', monospace;
+  }
+
+  .example {
+    background: rgba(78,205,196,0.05);
+    border-left: 2px solid rgba(78,205,196,0.4);
+    border-radius: 0 6px 6px 0;
+    padding: 0.6rem 0.8rem;
+    font-size: 12.5px; color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .example strong { color: #4ecdc4; font-weight: 500; }
+
+  /* ── VISUALIZATION ── */
+  .viz-section {
+    margin: 1.5rem 0 0.5rem;
+  }
+  .viz-title {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 10px;
+  }
+  .viz-container {
+    background: var(--formula-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  svg text { font-family: 'Segoe UI', sans-serif; }
+
+  /* ── FULL-WIDTH VIZ ── */
+  .chapter-viz {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .chapter-viz-title {
+    font-size: 13px; font-weight: 600; color: var(--text-secondary);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem;
+  }
+
+  /* ── CANVAS INTERACTIVE ── */
+  canvas {
+    display: block;
+    border-radius: 8px;
+  }
+  .controls {
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .control-group label {
+    font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 3px;
+  }
+  .control-group input[type="range"] {
+    width: 120px; accent-color: var(--accent-primary);
+  }
+  .control-group span {
+    font-size: 12px; color: var(--accent-secondary); font-family: monospace;
+  }
+
+  /* ── MISTAKES SECTION ── */
+  .mistakes-section {
+    background: var(--bg-card);
+    border: 1px solid rgba(232,67,147,0.25);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+  .mistakes-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;
+  }
+  .mistakes-header h2 { font-size: 1.3rem; font-weight: 600; }
+  .mistake-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+  .mistake-card {
+    background: var(--mistake-bg);
+    border: 1px solid var(--mistake-border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .mistake-card h4 {
+    font-size: 13px; color: #e84393; margin-bottom: 5px; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .mistake-card h4::before { content: '✕'; font-size: 10px; }
+  .mistake-card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
+  .fix-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; color: #26de81;
+    background: rgba(38,222,129,0.08);
+    border: 1px solid rgba(38,222,129,0.2);
+    border-radius: 5px; padding: 2px 8px; margin-top: 4px;
+  }
+  .fix-tag::before { content: '✓'; }
+
+  /* ── SOURCES FOOTER ── */
+  .sources-section {
+    margin-top: 2.5rem;
+    padding: 1.2rem 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .sources-section h3 { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+  .sources-section a {
+    color: var(--accent-primary); font-size: 12px; text-decoration: none;
+  }
+  .sources-section a:hover { text-decoration: underline; }
+  .source-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .source-pill {
+    background: var(--tag-bg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 3px 10px; font-size: 12px;
+  }
+
+  /* ── SCROLL ── */
+  html { scroll-behavior: smooth; }
+
+  /* ── STICKY NAV ── */
+  .sticky-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,20,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 1.5rem;
+    display: flex; gap: 8px; overflow-x: auto;
+  }
+  .sticky-bar::-webkit-scrollbar { height: 0; }
+  .sticky-bar a {
+    text-decoration: none; color: var(--text-muted);
+    font-size: 12px; white-space: nowrap;
+    padding: 4px 12px; border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+  }
+  .sticky-bar a:hover {
+    color: var(--accent-primary); background: var(--bg-highlight);
+    border-color: var(--border);
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    .formula-grid { grid-template-columns: 1fr; }
+    .mistake-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">⚛ Physics Mechanics</div>
+  <h1>Mechanics Formula Revision</h1>
+  <p>Chapter-wise formulas with meanings, real-world examples, visualizations, and common pitfalls</p>
+  <nav class="chapter-nav">
+    <a href="#kinematics">1. Kinematics</a>
+    <a href="#newton">2. Newton's Laws</a>
+    <a href="#work-energy">3. Work & Energy</a>
+    <a href="#momentum">4. Momentum</a>
+    <a href="#circular">5. Circular Motion</a>
+    <a href="#gravitation">6. Gravitation</a>
+    <a href="#rotation">7. Rotation</a>
+    <a href="#mistakes">⚠ Common Mistakes</a>
+  </nav>
+</header>
+
+<nav class="sticky-bar">
+  <a href="#kinematics">1 · Kinematics</a>
+  <a href="#newton">2 · Newton's Laws</a>
+  <a href="#work-energy">3 · Work & Energy</a>
+  <a href="#momentum">4 · Momentum</a>
+  <a href="#circular">5 · Circular Motion</a>
+  <a href="#gravitation">6 · Gravitation</a>
+  <a href="#rotation">7 · Rotation</a>
+  <a href="#mistakes">⚠ Mistakes</a>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════
+     CHAPTER 1: KINEMATICS
+═══════════════════════════════════════════════ -->
+<section class="chapter ch1" id="kinematics">
+  <div class="chapter-header">
+    <div class="chapter-icon">📐</div>
+    <div>
+      <h2>Chapter 1 — Kinematics</h2>
+      <p>Motion described by displacement, velocity, acceleration and time — without asking why</p>
+    </div>
+  </div>
+
+  <!-- Interactive projectile visualization -->
+  <div class="chapter-viz">
+    <div class="chapter-viz-title">🎯 Interactive — Projectile Motion Simulator</div>
+    <canvas id="projectileCanvas" width="700" height="200" style="width:100%; background:#0a0c14; border-radius:8px;"></canvas>
+    <div class="controls">
+      <div class="control-group">
+        <label>Initial speed (m/s)</label>
+        <input type="range" id="v0" min="10" max="50" value="25" oninput="drawProjectile()">
+        <span id="v0val">25</span> m/s
+      </div>
+      <div class="control-group">
+        <label>Angle (°)</label>
+        <input type="range" id="angle" min="10" max="80" value="45" oninput="drawProjectile()">
+        <span id="angleval">45</span>°
+      </div>
+      <div class="control-group" style="margin-left:auto;">
+        <label>Range</label>
+        <span id="range_out" style="font-size:14px; color:#f7b731;">— m</span>
+      </div>
+      <div class="control-group">
+        <label>Max height</label>
+        <span id="height_out" style="font-size:14px; color:#4ecdc4;">— m</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <div class="formula-name">First Equation of Motion</div>
+      <div class="formula-box">v = u + at</div>
+      <p class="formula-desc">Links final velocity to initial velocity with constant acceleration over time. The simplest SUVAT equation.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">v = final velocity (m/s)</span>
+        <span class="term-pill">u = initial velocity (m/s)</span>
+        <span class="term-pill">a = acceleration (m/s²)</span>
+        <span class="term-pill">t = time (s)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A car accelerating from 0 to 20 m/s at 4 m/s² takes t = 5 s to reach speed.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Displacement–Time</div>
+      <div class="formula-box">s = ut + ½at²</div>
+      <p class="formula-desc">Total distance covered by an accelerating object. The ½at² term captures how acceleration builds up distance over time.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">s = displacement (m)</span>
+        <span class="term-pill">u = initial velocity (m/s)</span>
+        <span class="term-pill">a = acceleration (m/s²)</span>
+        <span class="term-pill">t = time (s)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A ball dropped from rest (u=0): in 3s it falls s = ½ × 9.8 × 9 = 44.1 m.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Velocity–Displacement</div>
+      <div class="formula-box">v² = u² + 2as</div>
+      <p class="formula-desc">Relates velocity and displacement without needing time — useful when time is unknown or irrelevant.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">v = final velocity (m/s)</span>
+        <span class="term-pill">u = initial velocity (m/s)</span>
+        <span class="term-pill">a = acceleration (m/s²)</span>
+        <span class="term-pill">s = displacement (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Braking car from 30 m/s to 0 with a = −6 m/s² stops in s = 75 m.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Average Velocity</div>
+      <div class="formula-box">s = ((u + v)/2) × t</div>
+      <p class="formula-desc">Displacement equals the average of initial and final velocity multiplied by time — only valid under uniform acceleration.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">u = initial velocity (m/s)</span>
+        <span class="term-pill">v = final velocity (m/s)</span>
+        <span class="term-pill">t = time (s)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Cyclist goes from 2 m/s to 8 m/s in 10 s → covers s = 50 m.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Projectile — Horizontal Range</div>
+      <div class="formula-box">R = u²sin(2θ) / g</div>
+      <p class="formula-desc">Horizontal distance a projectile travels before landing. Maximum range is at θ = 45°.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">R = range (m)</span>
+        <span class="term-pill">u = launch speed (m/s)</span>
+        <span class="term-pill">θ = launch angle</span>
+        <span class="term-pill">g = 9.8 m/s²</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A footballer kicks at 20 m/s, 45° → R = 400/9.8 ≈ 40.8 m downfield.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Projectile — Max Height</div>
+      <div class="formula-box">H = u²sin²θ / (2g)</div>
+      <p class="formula-desc">Maximum altitude reached when the vertical component of velocity becomes zero.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">H = max height (m)</span>
+        <span class="term-pill">u = launch speed (m/s)</span>
+        <span class="term-pill">θ = launch angle</span>
+        <span class="term-pill">g = 9.8 m/s²</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Cricket ball thrown at 30 m/s, 60°: H = 900×0.75/19.6 ≈ 34.4 m.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CHAPTER 2: NEWTON'S LAWS
+═══════════════════════════════════════════════ -->
+<section class="chapter ch2" id="newton">
+  <div class="chapter-header">
+    <div class="chapter-icon">⚡</div>
+    <div>
+      <h2>Chapter 2 — Newton's Laws of Motion</h2>
+      <p>The three fundamental laws that describe how forces cause or prevent change in motion</p>
+    </div>
+  </div>
+
+  <!-- Newton's Laws Visual -->
+  <div class="chapter-viz">
+    <div class="chapter-viz-title">📊 Newton's Three Laws — Visual Summary</div>
+    <svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+      <!-- Law 1 -->
+      <rect x="10" y="10" width="210" height="110" rx="10" fill="#1a1e2a" stroke="rgba(124,106,247,0.3)" stroke-width="1"/>
+      <text x="115" y="36" text-anchor="middle" font-size="11" fill="#7c6af7" font-weight="600">Law 1 — Inertia</text>
+      <text x="115" y="58" text-anchor="middle" font-size="10" fill="#9aa0be">If F_net = 0, then a = 0</text>
+      <!-- static block -->
+      <rect x="75" y="70" width="50" height="28" rx="4" fill="#232840" stroke="rgba(124,106,247,0.4)" stroke-width="1"/>
+      <text x="100" y="89" text-anchor="middle" font-size="10" fill="#a89af7">block</text>
+      <!-- arrows both sides equal -->
+      <line x1="58" y1="84" x2="75" y2="84" stroke="#7c6af7" stroke-width="2" marker-end="url(#arrowR)"/>
+      <line x1="142" y1="84" x2="125" y2="84" stroke="#7c6af7" stroke-width="2" marker-end="url(#arrowL)"/>
+      <text x="45" y="88" text-anchor="middle" font-size="9" fill="#7c6af7">F</text>
+      <text x="155" y="88" text-anchor="middle" font-size="9" fill="#7c6af7">F</text>
+      <text x="115" y="118" text-anchor="middle" font-size="9" fill="#5a6080">Equal forces → no acceleration</text>
+
+      <!-- Law 2 -->
+      <rect x="245" y="10" width="210" height="110" rx="10" fill="#1a1e2a" stroke="rgba(78,205,196,0.3)" stroke-width="1"/>
+      <text x="350" y="36" text-anchor="middle" font-size="11" fill="#4ecdc4" font-weight="600">Law 2 — F = ma</text>
+      <text x="350" y="58" text-anchor="middle" font-size="10" fill="#9aa0be">Net force causes acceleration</text>
+      <rect x="310" y="68" width="50" height="28" rx="4" fill="#232840" stroke="rgba(78,205,196,0.4)" stroke-width="1"/>
+      <text x="335" y="87" text-anchor="middle" font-size="10" fill="#4ecdc4">block</text>
+      <line x1="363" y1="82" x2="395" y2="82" stroke="#4ecdc4" stroke-width="2.5" marker-end="url(#arrowRT)"/>
+      <text x="400" y="87" text-anchor="middle" font-size="9" fill="#4ecdc4">F →a</text>
+      <text x="350" y="118" text-anchor="middle" font-size="9" fill="#5a6080">Larger F → larger a</text>
+
+      <!-- Law 3 -->
+      <rect x="480" y="10" width="210" height="110" rx="10" fill="#1a1e2a" stroke="rgba(247,183,49,0.3)" stroke-width="1"/>
+      <text x="585" y="36" text-anchor="middle" font-size="11" fill="#f7b731" font-weight="600">Law 3 — Action-Reaction</text>
+      <text x="585" y="58" text-anchor="middle" font-size="10" fill="#9aa0be">F_AB = −F_BA</text>
+      <rect x="510" y="68" width="45" height="28" rx="4" fill="#232840" stroke="rgba(247,183,49,0.3)" stroke-width="1"/>
+      <text x="532" y="87" text-anchor="middle" font-size="9" fill="#f7b731">A</text>
+      <rect x="635" y="68" width="45" height="28" rx="4" fill="#232840" stroke="rgba(247,183,49,0.3)" stroke-width="1"/>
+      <text x="657" y="87" text-anchor="middle" font-size="9" fill="#f7b731">B</text>
+      <line x1="556" y1="82" x2="633" y2="82" stroke="#f7b731" stroke-width="1.5" marker-end="url(#arrowRY)" marker-start="url(#arrowLY)"/>
+      <text x="585" y="118" text-anchor="middle" font-size="9" fill="#5a6080">Always equal, opposite, different bodies</text>
+
+      <defs>
+        <marker id="arrowR" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#7c6af7"/>
+        </marker>
+        <marker id="arrowL" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto">
+          <path d="M6,0 L0,3 L6,6 Z" fill="#7c6af7"/>
+        </marker>
+        <marker id="arrowRT" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#4ecdc4"/>
+        </marker>
+        <marker id="arrowRY" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#f7b731"/>
+        </marker>
+        <marker id="arrowLY" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#f7b731"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <div class="formula-name">Newton's 2nd Law</div>
+      <div class="formula-box">F = ma</div>
+      <p class="formula-desc">Net force on an object equals its mass times acceleration. The central equation of classical mechanics.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">F = net force (N)</span>
+        <span class="term-pill">m = mass (kg)</span>
+        <span class="term-pill">a = acceleration (m/s²)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Pushing a 10 kg trolley with 50 N gives a = 5 m/s². Double the mass → half the acceleration.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Weight</div>
+      <div class="formula-box">W = mg</div>
+      <p class="formula-desc">Gravitational force on an object. Weight is a force, mass is not — a common confusion point.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">W = weight (N)</span>
+        <span class="term-pill">m = mass (kg)</span>
+        <span class="term-pill">g = 9.8 m/s²</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A 70 kg person weighs 70 × 9.8 = 686 N on Earth, but only 112 N on the Moon (g ≈ 1.6).</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Friction Force</div>
+      <div class="formula-box">f = μN</div>
+      <p class="formula-desc">Maximum friction force is proportional to the normal contact force. μ (mu) depends on the surfaces in contact.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">f = friction force (N)</span>
+        <span class="term-pill">μ = coefficient of friction</span>
+        <span class="term-pill">N = normal force (N)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A 20 kg box on a floor (μ = 0.4): f = 0.4 × 196 = 78.4 N to slide it.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Normal Force (incline)</div>
+      <div class="formula-box">N = mg·cos θ</div>
+      <p class="formula-desc">Component of gravity perpendicular to an inclined surface — the surface pushes back with this force.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">N = normal force (N)</span>
+        <span class="term-pill">m = mass (kg)</span>
+        <span class="term-pill">θ = angle of incline</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A 50 kg crate on a 30° ramp: N = 50 × 9.8 × cos30° = 424 N.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Net Force on Incline</div>
+      <div class="formula-box">F_net = mg·sin θ − f</div>
+      <p class="formula-desc">Force pulling an object down the slope minus friction opposing that motion.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">mg·sinθ = component along slope</span>
+        <span class="term-pill">f = μmg·cosθ</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Whether a box slides depends on whether mg·sinθ exceeds μmg·cosθ, i.e. tanθ > μ.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Atwood Machine</div>
+      <div class="formula-box">a = (m₁−m₂)g / (m₁+m₂)</div>
+      <p class="formula-desc">Acceleration of two unequal masses over a frictionless pulley. Net force divided by total mass.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">m₁, m₂ = two masses (kg)</span>
+        <span class="term-pill">g = 9.8 m/s²</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Masses of 3 kg and 5 kg: a = (2 × 9.8)/8 = 2.45 m/s².</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CHAPTER 3: WORK & ENERGY
+═══════════════════════════════════════════════ -->
+<section class="chapter ch3" id="work-energy">
+  <div class="chapter-header">
+    <div class="chapter-icon">⚡</div>
+    <div>
+      <h2>Chapter 3 — Work, Energy & Power</h2>
+      <p>Energy is the capacity to do work; power is the rate at which work is done</p>
+    </div>
+  </div>
+
+  <!-- Energy bar chart interactive -->
+  <div class="chapter-viz">
+    <div class="chapter-viz-title">🎢 Energy Transformation — Ball Sliding Down a Ramp</div>
+    <canvas id="energyCanvas" width="700" height="160" style="width:100%; background:#0a0c14; border-radius:8px;"></canvas>
+    <div class="controls">
+      <div class="control-group">
+        <label>Height h (m)</label>
+        <input type="range" id="height" min="1" max="20" value="10" oninput="drawEnergy()">
+        <span id="hval">10</span> m
+      </div>
+      <div class="control-group">
+        <label>Mass m (kg)</label>
+        <input type="range" id="mass" min="1" max="20" value="5" oninput="drawEnergy()">
+        <span id="mval">5</span> kg
+      </div>
+      <div class="control-group">
+        <label>Position on ramp</label>
+        <input type="range" id="pos" min="0" max="100" value="0" oninput="drawEnergy()">
+        <span id="posval">Top</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <div class="formula-name">Work Done</div>
+      <div class="formula-box">W = F·d·cos θ</div>
+      <p class="formula-desc">Energy transferred when a force moves an object. Only the component of force in the direction of motion counts.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">W = work (J)</span>
+        <span class="term-pill">F = force (N)</span>
+        <span class="term-pill">d = displacement (m)</span>
+        <span class="term-pill">θ = angle between F and d</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Pulling a suitcase with 40 N at 30° over 10 m: W = 40×10×cos30° = 346 J. Lifting vertically: θ = 0°, so cosθ = 1.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Kinetic Energy</div>
+      <div class="formula-box">KE = ½mv²</div>
+      <p class="formula-desc">Energy an object has due to its motion. Doubling speed quadruples KE — why speed limits matter.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">KE = kinetic energy (J)</span>
+        <span class="term-pill">m = mass (kg)</span>
+        <span class="term-pill">v = velocity (m/s)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A 1000 kg car at 30 m/s has KE = ½×1000×900 = 450,000 J — massive braking distance needed.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Gravitational Potential Energy</div>
+      <div class="formula-box">GPE = mgh</div>
+      <p class="formula-desc">Energy stored by an object by virtue of its height above a reference point. Converts to KE as it falls.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">GPE = potential energy (J)</span>
+        <span class="term-pill">m = mass (kg)</span>
+        <span class="term-pill">g = 9.8 m/s²</span>
+        <span class="term-pill">h = height (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A 60 kg person on a 10 m diving board: GPE = 60×9.8×10 = 5880 J, fully converted to KE at water impact.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Elastic (Spring) Potential Energy</div>
+      <div class="formula-box">EPE = ½kx²</div>
+      <p class="formula-desc">Energy stored in a compressed or stretched spring. Depends on the spring constant and the square of extension.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">EPE = elastic PE (J)</span>
+        <span class="term-pill">k = spring constant (N/m)</span>
+        <span class="term-pill">x = extension/compression (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A bow with k = 500 N/m drawn back 0.3 m stores EPE = ½×500×0.09 = 22.5 J — launched into the arrow as KE.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Work–Energy Theorem</div>
+      <div class="formula-box">W_net = ΔKE = ½mv² − ½mu²</div>
+      <p class="formula-desc">The net work done on an object equals its change in kinetic energy. Unifies force and energy perspectives.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">W_net = net work (J)</span>
+        <span class="term-pill">v = final speed (m/s)</span>
+        <span class="term-pill">u = initial speed (m/s)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Braking a car from 20 m/s to rest: the brakes must do negative work = −½mv² to remove all KE.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Power</div>
+      <div class="formula-box">P = W/t = Fv</div>
+      <p class="formula-desc">Rate of doing work. Also equals force × velocity when force and velocity are in the same direction.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">P = power (W)</span>
+        <span class="term-pill">W = work (J)</span>
+        <span class="term-pill">t = time (s)</span>
+        <span class="term-pill">F = force (N)</span>
+        <span class="term-pill">v = velocity (m/s)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A car engine maintaining 1000 N at 30 m/s produces P = 30,000 W = 30 kW of mechanical power.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Efficiency</div>
+      <div class="formula-box">η = (useful output / total input) × 100%</div>
+      <p class="formula-desc">Fraction of input energy that is converted to useful output. No machine is 100% efficient due to friction and heat losses.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">η = efficiency (%)</span>
+        <span class="term-pill">useful output (J)</span>
+        <span class="term-pill">total input (J)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A motor using 500 J to lift a box (doing 400 J of useful work): η = 80%.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Hooke's Law</div>
+      <div class="formula-box">F = kx</div>
+      <p class="formula-desc">The restoring force in a spring is proportional to its extension — valid within the elastic limit only.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">F = restoring force (N)</span>
+        <span class="term-pill">k = spring constant (N/m)</span>
+        <span class="term-pill">x = extension (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A spring with k = 200 N/m extended by 0.05 m exerts F = 10 N. Used in vehicle suspensions.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CHAPTER 4: MOMENTUM
+═══════════════════════════════════════════════ -->
+<section class="chapter ch4" id="momentum">
+  <div class="chapter-header">
+    <div class="chapter-icon">🎯</div>
+    <div>
+      <h2>Chapter 4 — Momentum & Impulse</h2>
+      <p>Momentum is conserved in all collisions; impulse links force and change in momentum</p>
+    </div>
+  </div>
+
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <div class="formula-name">Momentum</div>
+      <div class="formula-box">p = mv</div>
+      <p class="formula-desc">Quantity of motion an object has. A vector — direction matters. Conserved when no external forces act.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">p = momentum (kg·m/s)</span>
+        <span class="term-pill">m = mass (kg)</span>
+        <span class="term-pill">v = velocity (m/s)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A 0.15 kg cricket ball at 40 m/s has p = 6 kg·m/s — a bowler imparts this in ~0.1 s of contact.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Conservation of Momentum</div>
+      <div class="formula-box">m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂</div>
+      <p class="formula-desc">Total momentum before a collision equals total momentum after, provided no external forces act on the system.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">u = initial velocity</span>
+        <span class="term-pill">v = final velocity</span>
+        <span class="term-pill">m = mass of each object</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Billiard ball collisions — the cueball stops, the target moves away with exactly the same momentum.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Impulse</div>
+      <div class="formula-box">J = FΔt = Δp</div>
+      <p class="formula-desc">Impulse is the change in momentum. A large force over a short time (crash) or small force over long time produce the same Δp.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">J = impulse (N·s)</span>
+        <span class="term-pill">F = average force (N)</span>
+        <span class="term-pill">Δt = contact time (s)</span>
+        <span class="term-pill">Δp = change in momentum</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Airbags increase Δt of collision → smaller F on body for same Δp. Saves lives.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Elastic Collision (1D)</div>
+      <div class="formula-box">v₁ = (m₁−m₂)u₁ / (m₁+m₂)<br/>v₂ = 2m₁u₁ / (m₁+m₂)</div>
+      <p class="formula-desc">In a perfectly elastic collision, both momentum AND kinetic energy are conserved.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">v₁, v₂ = final velocities</span>
+        <span class="term-pill">m₁, m₂ = masses</span>
+        <span class="term-pill">u₁ = initial velocity of m₁</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Newton's cradle — perfectly elastic collisions transfer momentum through a chain of steel balls.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Perfectly Inelastic Collision</div>
+      <div class="formula-box">v = (m₁u₁ + m₂u₂) / (m₁+m₂)</div>
+      <p class="formula-desc">Objects stick together after collision. Momentum conserved, but KE is lost to heat/deformation.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">v = common final velocity</span>
+        <span class="term-pill">m₁u₁, m₂u₂ = initial momenta</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Train wagons coupling together. Two-car pile-ups where cars crumple and stick.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Coefficient of Restitution</div>
+      <div class="formula-box">e = (v₂ − v₁) / (u₁ − u₂)</div>
+      <p class="formula-desc">Ratio of relative speed after to before collision. e = 1: perfectly elastic; e = 0: perfectly inelastic.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">e = coefficient (0 to 1)</span>
+        <span class="term-pill">v = post-collision velocities</span>
+        <span class="term-pill">u = pre-collision velocities</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A tennis ball vs. a rubber ball — the tennis ball has higher e, bouncing more elastically.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CHAPTER 5: CIRCULAR MOTION
+═══════════════════════════════════════════════ -->
+<section class="chapter ch5" id="circular">
+  <div class="chapter-header">
+    <div class="chapter-icon">🔄</div>
+    <div>
+      <h2>Chapter 5 — Circular Motion</h2>
+      <p>Objects moving in circles always accelerate toward the centre — centripetal acceleration</p>
+    </div>
+  </div>
+
+  <!-- Circular motion animated -->
+  <div class="chapter-viz">
+    <div class="chapter-viz-title">🌀 Circular Motion — Centripetal Force Diagram</div>
+    <canvas id="circularCanvas" width="700" height="200" style="width:100%; background:#0a0c14; border-radius:8px;"></canvas>
+  </div>
+
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <div class="formula-name">Angular Velocity</div>
+      <div class="formula-box">ω = 2π/T = 2πf</div>
+      <p class="formula-desc">Rate of angular change — how many radians per second the object rotates. Links to period T and frequency f.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">ω = angular velocity (rad/s)</span>
+        <span class="term-pill">T = period (s)</span>
+        <span class="term-pill">f = frequency (Hz)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Earth completes one rotation in T = 86400 s → ω = 2π/86400 ≈ 7.27×10⁻⁵ rad/s.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Linear ↔ Angular Speed</div>
+      <div class="formula-box">v = ωr</div>
+      <p class="formula-desc">Tangential (linear) speed of a point on a rotating object. Increases with radius — why the outer edge of a disc moves faster.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">v = linear speed (m/s)</span>
+        <span class="term-pill">ω = angular velocity (rad/s)</span>
+        <span class="term-pill">r = radius (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Merry-go-round edge at r = 2 m, ω = 1 rad/s → v = 2 m/s. Outer seats feel faster!</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Centripetal Acceleration</div>
+      <div class="formula-box">a = v²/r = ω²r</div>
+      <p class="formula-desc">Acceleration directed toward the centre, always perpendicular to velocity. Not slowing the object — changing its direction.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">a = centripetal acceleration (m/s²)</span>
+        <span class="term-pill">v = speed (m/s)</span>
+        <span class="term-pill">r = radius (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A car cornering at 15 m/s on a 50 m radius bend: a = 225/50 = 4.5 m/s² needed from friction.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Centripetal Force</div>
+      <div class="formula-box">F = mv²/r = mω²r</div>
+      <p class="formula-desc">Net force needed to maintain circular motion. NOT a new force — provided by friction, tension, gravity, or normal force.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">F = centripetal force (N)</span>
+        <span class="term-pill">m = mass (kg)</span>
+        <span class="term-pill">v = speed (m/s)</span>
+        <span class="term-pill">r = radius (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Moon (m = 7.3×10²² kg, v = 1022 m/s, r = 3.84×10⁸ m): F = gravity pulls it in a circle.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Conical Pendulum</div>
+      <div class="formula-box">tan θ = v²/(rg) = ω²r/g</div>
+      <p class="formula-desc">Angle a conical pendulum makes with vertical, balancing horizontal centripetal force and vertical weight component.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">θ = half-angle from vertical</span>
+        <span class="term-pill">r = radius of circle</span>
+        <span class="term-pill">g = 9.8 m/s²</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Fairground swing rides — the chains angle outward as rotation speed increases.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Minimum Speed at Top (Loop)</div>
+      <div class="formula-box">v_min = √(gr)</div>
+      <p class="formula-desc">Minimum speed at the top of a loop where gravity alone provides centripetal force (normal force = 0).</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">v_min = minimum speed (m/s)</span>
+        <span class="term-pill">g = 9.8 m/s²</span>
+        <span class="term-pill">r = loop radius (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Rollercoaster loop of r = 10 m: v_min = √(9.8×10) = 9.9 m/s ≈ 35.6 km/h minimum speed at top.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CHAPTER 6: GRAVITATION
+═══════════════════════════════════════════════ -->
+<section class="chapter ch6" id="gravitation">
+  <div class="chapter-header">
+    <div class="chapter-icon">🌍</div>
+    <div>
+      <h2>Chapter 6 — Gravitation</h2>
+      <p>Newton's universal law of gravitation governs planetary orbits, tides, and weight</p>
+    </div>
+  </div>
+
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <div class="formula-name">Newton's Law of Gravitation</div>
+      <div class="formula-box">F = Gm₁m₂ / r²</div>
+      <p class="formula-desc">Every mass attracts every other mass. Force falls off with the square of separation — an inverse-square law.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">G = 6.67×10⁻¹¹ N·m²/kg²</span>
+        <span class="term-pill">m₁, m₂ = masses (kg)</span>
+        <span class="term-pill">r = separation (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Doubling the distance between Earth and a satellite reduces gravity to ¼ — not ½.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Gravitational Field Strength</div>
+      <div class="formula-box">g = GM / r²</div>
+      <p class="formula-desc">Field strength at distance r from a mass M — numerically equals the free-fall acceleration at that point.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">g = field strength (N/kg or m/s²)</span>
+        <span class="term-pill">G = 6.67×10⁻¹¹</span>
+        <span class="term-pill">M = central mass (kg)</span>
+        <span class="term-pill">r = distance from centre (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> At Earth's surface g = 9.8 m/s². At r = 2R (double radius), g = 9.8/4 = 2.45 m/s².</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Gravitational Potential Energy</div>
+      <div class="formula-box">U = −GMm / r</div>
+      <p class="formula-desc">Negative because gravity is attractive — energy is released as objects move closer. Zero at infinity.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">U = gravitational PE (J)</span>
+        <span class="term-pill">G = gravitational constant</span>
+        <span class="term-pill">M = large mass, m = small mass</span>
+        <span class="term-pill">r = separation (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A satellite in a lower orbit has more negative GPE — paradoxically it moves faster but has less total energy.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Orbital Speed</div>
+      <div class="formula-box">v = √(GM/r)</div>
+      <p class="formula-desc">Speed for a circular orbit at radius r. Gravity provides the exact centripetal force needed — no engine required.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">v = orbital speed (m/s)</span>
+        <span class="term-pill">G = 6.67×10⁻¹¹</span>
+        <span class="term-pill">M = planet mass (kg)</span>
+        <span class="term-pill">r = orbital radius (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> ISS orbits at ~400 km altitude (r ≈ 6.77×10⁶ m) at v ≈ 7660 m/s ≈ 27,600 km/h.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Kepler's Third Law</div>
+      <div class="formula-box">T² ∝ r³ &nbsp; (T² = 4π²r³/GM)</div>
+      <p class="formula-desc">Period of orbit squared is proportional to the cube of the orbital radius. Holds for all bodies orbiting the same central mass.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">T = orbital period (s)</span>
+        <span class="term-pill">r = orbital radius (m)</span>
+        <span class="term-pill">G, M = gravitational constant, central mass</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Mars is 1.52× further from the Sun than Earth: T_Mars = T_Earth × 1.52^(3/2) ≈ 1.87 years.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Escape Velocity</div>
+      <div class="formula-box">v_esc = √(2GM/r)</div>
+      <p class="formula-desc">Minimum speed to escape a planet's gravity permanently — KE must overcome negative GPE.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">v_esc = escape velocity (m/s)</span>
+        <span class="term-pill">G = 6.67×10⁻¹¹</span>
+        <span class="term-pill">M = planet mass, r = planet radius</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Earth's escape velocity ≈ 11.2 km/s. Moon's low gravity gives only ~2.4 km/s — why Moon has no atmosphere.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CHAPTER 7: ROTATIONAL MOTION
+═══════════════════════════════════════════════ -->
+<section class="chapter ch7" id="rotation">
+  <div class="chapter-header">
+    <div class="chapter-icon">🌀</div>
+    <div>
+      <h2>Chapter 7 — Rotational Motion</h2>
+      <p>Rotational analogues of Newton's laws — torque, angular momentum, and moment of inertia</p>
+    </div>
+  </div>
+
+  <!-- Rotational analogy table -->
+  <div class="chapter-viz">
+    <div class="chapter-viz-title">🔄 Linear ↔ Rotational Analogy</div>
+    <svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+      <!-- Headers -->
+      <rect x="10" y="10" width="330" height="30" rx="6" fill="rgba(165,94,234,0.15)" stroke="rgba(165,94,234,0.3)" stroke-width="1"/>
+      <text x="175" y="30" text-anchor="middle" font-size="12" fill="#a55eea" font-weight="600">Linear</text>
+      <rect x="360" y="10" width="330" height="30" rx="6" fill="rgba(78,205,196,0.15)" stroke="rgba(78,205,196,0.3)" stroke-width="1"/>
+      <text x="525" y="30" text-anchor="middle" font-size="12" fill="#4ecdc4" font-weight="600">Rotational</text>
+
+      <!-- Row 1 -->
+      <text x="175" y="65" text-anchor="middle" font-size="11" fill="#9aa0be">Displacement: x (m)</text>
+      <text x="525" y="65" text-anchor="middle" font-size="11" fill="#9aa0be">Angular displacement: θ (rad)</text>
+      <!-- Row 2 -->
+      <text x="175" y="90" text-anchor="middle" font-size="11" fill="#9aa0be">Mass: m (kg)</text>
+      <text x="525" y="90" text-anchor="middle" font-size="11" fill="#9aa0be">Moment of inertia: I (kg·m²)</text>
+      <!-- Row 3 -->
+      <text x="175" y="115" text-anchor="middle" font-size="11" fill="#9aa0be">Force: F (N)</text>
+      <text x="525" y="115" text-anchor="middle" font-size="11" fill="#9aa0be">Torque: τ (N·m)</text>
+      <!-- Row 4 -->
+      <text x="175" y="140" text-anchor="middle" font-size="11" fill="#9aa0be">Momentum: p = mv</text>
+      <text x="525" y="140" text-anchor="middle" font-size="11" fill="#9aa0be">Angular momentum: L = Iω</text>
+
+      <!-- divider -->
+      <line x1="340" y1="45" x2="340" y2="150" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <div class="formula-name">Torque</div>
+      <div class="formula-box">τ = r × F = rF·sin θ</div>
+      <p class="formula-desc">Rotational equivalent of force. The turning effect of a force about a pivot. Maximised when force is perpendicular to the lever arm.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">τ = torque (N·m)</span>
+        <span class="term-pill">r = lever arm length (m)</span>
+        <span class="term-pill">F = applied force (N)</span>
+        <span class="term-pill">θ = angle between r and F</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A 30 N force at 0.5 m from a door hinge (perpendicular) gives τ = 15 N·m. Push near the hinge → much less torque.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Moment of Inertia</div>
+      <div class="formula-box">I = Σmr²</div>
+      <p class="formula-desc">Rotational inertia — resistance to change in rotation. Depends on how mass is distributed relative to the axis.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">I = moment of inertia (kg·m²)</span>
+        <span class="term-pill">m = mass of each element (kg)</span>
+        <span class="term-pill">r = distance from axis (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Solid sphere: I = 2/5 mr². Hollow sphere: I = 2/3 mr². Hollow is harder to spin because mass is further from axis.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Rotational Newton's 2nd Law</div>
+      <div class="formula-box">τ = Iα</div>
+      <p class="formula-desc">Net torque equals moment of inertia times angular acceleration — exact rotational analogue of F = ma.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">τ = net torque (N·m)</span>
+        <span class="term-pill">I = moment of inertia (kg·m²)</span>
+        <span class="term-pill">α = angular acceleration (rad/s²)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A flywheel (I = 0.5 kg·m²) subjected to 10 N·m torque accelerates at α = 20 rad/s².</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Angular Momentum</div>
+      <div class="formula-box">L = Iω</div>
+      <p class="formula-desc">Conserved when no external torque acts. Explains why spinning objects resist changing their axis of rotation.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">L = angular momentum (kg·m²/s)</span>
+        <span class="term-pill">I = moment of inertia (kg·m²)</span>
+        <span class="term-pill">ω = angular velocity (rad/s)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Ice skater pulls in arms (↓I) → ω increases. L = Iω = constant. Rapid spin achieved without external torque.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Rotational Kinetic Energy</div>
+      <div class="formula-box">KE_rot = ½Iω²</div>
+      <p class="formula-desc">Energy stored in rotation. A rolling object has both translational and rotational KE simultaneously.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">KE_rot = rotational KE (J)</span>
+        <span class="term-pill">I = moment of inertia (kg·m²)</span>
+        <span class="term-pill">ω = angular velocity (rad/s)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> Total KE of a rolling ball = ½mv² + ½Iω². A hollow cylinder rolls slower down a ramp than a solid one.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Rolling without Slipping</div>
+      <div class="formula-box">v = ωr &nbsp; (translational = rotational)</div>
+      <p class="formula-desc">When rolling without slipping, the contact point is momentarily at rest. Linear velocity of centre = ωr.</p>
+      <div class="terms-title">Terms</div>
+      <div class="terms-grid">
+        <span class="term-pill">v = speed of centre (m/s)</span>
+        <span class="term-pill">ω = angular velocity (rad/s)</span>
+        <span class="term-pill">r = radius of object (m)</span>
+      </div>
+      <div class="example"><strong>Real world:</strong> A wheel of radius 0.3 m rotating at ω = 10 rad/s rolls at v = 3 m/s ≈ 10.8 km/h.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     COMMON MISTAKES
+═══════════════════════════════════════════════ -->
+<section class="mistakes-section" id="mistakes">
+  <div class="mistakes-header">
+    <span style="font-size:24px;">⚠️</span>
+    <h2>Common Mistakes in Mechanics</h2>
+  </div>
+  <div class="mistake-grid">
+
+    <div class="mistake-card">
+      <h4>Confusing mass and weight</h4>
+      <p>Mass (kg) is the amount of matter. Weight (N) is the gravitational force on it. They are not the same thing, and differ on other planets.</p>
+      <span class="fix-tag">Always: W = mg, not W = m</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Mixing up distance and displacement</h4>
+      <p>Distance is scalar (total path), displacement is vector (shortest path from start to end). Average speed ≠ average velocity.</p>
+      <span class="fix-tag">Displacement considers direction</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Applying SUVAT to non-constant acceleration</h4>
+      <p>SUVAT equations (v = u + at, etc.) are only valid when acceleration is uniform. Do NOT use them if acceleration varies with time.</p>
+      <span class="fix-tag">Check: is a constant throughout?</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Forgetting the ½ in KE and EPE</h4>
+      <p>KE = ½mv² and EPE = ½kx² both have the factor of ½. A very common slip that doubles or halves the answer.</p>
+      <span class="fix-tag">Both have ½ — always check</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Not drawing a free-body diagram</h4>
+      <p>Jumping straight into equations without identifying all forces leads to missing gravity, normal force, or friction. FBD is non-negotiable.</p>
+      <span class="fix-tag">Draw FBD for every mechanics problem</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Mixing sine and cosine on inclines</h4>
+      <p>Along an incline: F_parallel = mg·sinθ. Perpendicular (normal): N = mg·cosθ. Swapping these is one of the most common errors in A-level.</p>
+      <span class="fix-tag">Parallel → sin; Perpendicular → cos</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Treating centripetal force as a separate force</h4>
+      <p>Centripetal force is not a new type of force. It is provided by friction, tension, gravity, or the normal force — never add it separately in an FBD.</p>
+      <span class="fix-tag">Ask: what force provides centripetal?</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Inconsistent sign conventions</h4>
+      <p>Choosing upward as +ve in one step and then downward as +ve in another breaks everything. Set a direction at the start and stick to it.</p>
+      <span class="fix-tag">Define +/− at the start, never change</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Adding vector magnitudes directly</h4>
+      <p>Velocity and force are vectors. You cannot add 3 m/s north + 4 m/s east = 7 m/s. You must resolve into components and use Pythagoras.</p>
+      <span class="fix-tag">Always resolve vectors into components</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Forgetting units and significant figures</h4>
+      <p>Using km/h instead of m/s, or g instead of kg, corrupts every formula. Always convert to SI units before substituting.</p>
+      <span class="fix-tag">Convert to SI first, always</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Confusing velocity and speed at top of loop</h4>
+      <p>At the top of a vertical loop, v_min = √(gr) gives SPEED. Students often forget to check direction and conserve energy to find bottom speed too.</p>
+      <span class="fix-tag">Use energy conservation + Newton at top</span>
+    </div>
+
+    <div class="mistake-card">
+      <h4>Assuming KE is conserved in all collisions</h4>
+      <p>KE is only conserved in perfectly elastic collisions. In most real collisions (inelastic), KE is lost to heat, sound, or deformation.</p>
+      <span class="fix-tag">Momentum always conserved; KE may not be</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOURCES -->
+<div class="sources-section">
+  <h3>📚 Sources & Further Revision</h3>
+  <div class="source-list" style="margin-top:8px;">
+    <span class="source-pill"><a href="https://physicscatalyst.com/article/physics-mechanics-formula-sheet/" target="_blank">PhysicsCatalyst</a></span>
+    <span class="source-pill"><a href="https://www.wiingy.com/resources/ap-physics-c-mechanics-formula-sheet/" target="_blank">Wiingy AP Physics</a></span>
+    <span class="source-pill"><a href="https://learnbyteaching.ai/learn/physics/common-mistakes/" target="_blank">LearnByTeaching</a></span>
+    <span class="source-pill"><a href="https://www.physicsforums.com/insights/frequently-made-errors-mechanics-kinematics/" target="_blank">PhysicsForums</a></span>
+    <span class="source-pill"><a href="https://ibphysics.org/" target="_blank">IBPhysics.org</a></span>
+    <span class="source-pill"><a href="https://www.dummies.com/article/academics-the-arts/science/physics/10-common-mistakes-people-make-when-solving-physics-problems-149127/" target="_blank">Physics For Dummies</a></span>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ──────────────────────────────────
+// PROJECTILE MOTION SIMULATOR
+// ──────────────────────────────────
+function drawProjectile() {
+  const canvas = document.getElementById('projectileCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const v0 = parseFloat(document.getElementById('v0').value);
+  const angDeg = parseFloat(document.getElementById('angle').value);
+  document.getElementById('v0val').textContent = v0;
+  document.getElementById('angleval').textContent = angDeg;
+
+  const g = 9.8;
+  const ang = angDeg * Math.PI / 180;
+  const vx = v0 * Math.cos(ang);
+  const vy = v0 * Math.sin(ang);
+  const T = 2 * vy / g;
+  const R = vx * T;
+  const Hmax = vy * vy / (2 * g);
+
+  document.getElementById('range_out').textContent = R.toFixed(1) + ' m';
+  document.getElementById('height_out').textContent = Hmax.toFixed(1) + ' m';
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Ground
+  ctx.fillStyle = 'rgba(124,106,247,0.08)';
+  ctx.fillRect(0, H - 20, W, 20);
+  ctx.strokeStyle = 'rgba(124,106,247,0.3)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, H-20); ctx.lineTo(W, H-20); ctx.stroke();
+
+  // Trajectory
+  const margin = 40;
+  const scaleX = (W - margin*2) / Math.max(R, 1);
+  const scaleY = (H - margin - 20) / Math.max(Hmax * 1.15, 1);
+  const scale = Math.min(scaleX, scaleY);
+
+  ctx.beginPath();
+  ctx.strokeStyle = '#7c6af7';
+  ctx.lineWidth = 2;
+  const steps = 120;
+  for (let i = 0; i <= steps; i++) {
+    const t = (T * i) / steps;
+    const x = margin + vx * t * scale;
+    const y = H - 20 - (vy * t - 0.5 * g * t * t) * scale;
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+
+  // Dashed height line
+  const peakX = margin + vx * (vy / g) * scale;
+  const peakY = H - 20 - Hmax * scale;
+  ctx.setLineDash([4, 4]);
+  ctx.strokeStyle = 'rgba(78,205,196,0.5)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(peakX, peakY); ctx.lineTo(peakX, H-20); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Labels
+  ctx.fillStyle = '#4ecdc4';
+  ctx.font = '11px monospace';
+  ctx.fillText('H = ' + Hmax.toFixed(1) + ' m', peakX + 5, peakY + 14);
+
+  // Launch arrow
+  const ax = margin, ay = H - 20;
+  const arrowLen = 30;
+  ctx.strokeStyle = '#f7b731';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(ax, ay);
+  ctx.lineTo(ax + arrowLen * Math.cos(ang), ay - arrowLen * Math.sin(ang));
+  ctx.stroke();
+
+  // Range label at bottom
+  ctx.fillStyle = '#f7b731';
+  ctx.font = '11px monospace';
+  const endX = margin + R * scale;
+  if (endX < W - 10) {
+    ctx.fillText('R = ' + R.toFixed(1) + ' m', margin + endX/2, H - 4);
+    ctx.strokeStyle = 'rgba(247,183,49,0.3)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(margin, H-22); ctx.lineTo(endX, H-22); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // Start dot
+  ctx.fillStyle = '#7c6af7';
+  ctx.beginPath(); ctx.arc(margin, H-20, 4, 0, Math.PI*2); ctx.fill();
+}
+
+// ──────────────────────────────────
+// ENERGY TRANSFORMATION
+// ──────────────────────────────────
+function drawEnergy() {
+  const canvas = document.getElementById('energyCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const h = parseFloat(document.getElementById('height').value);
+  const m = parseFloat(document.getElementById('mass').value);
+  const pos = parseFloat(document.getElementById('pos').value) / 100;
+  document.getElementById('hval').textContent = h;
+  document.getElementById('mval').textContent = m;
+  document.getElementById('posval').textContent = pos === 0 ? 'Top' : pos === 1 ? 'Bottom' : Math.round(pos*100) + '%';
+
+  const g = 9.8;
+  const totalE = m * g * h;
+  const gpe = totalE * (1 - pos);
+  const ke = totalE * pos;
+
+  ctx.clearRect(0, 0, W, H);
+
+  const barW = 60, barMaxH = H - 50, barY = 20;
+  const centers = [120, 260, 400];
+
+  // Bar 1: GPE
+  const gpeH = (gpe / totalE) * barMaxH;
+  ctx.fillStyle = 'rgba(124,106,247,0.2)';
+  ctx.fillRect(centers[0] - barW/2, barY, barW, barMaxH);
+  ctx.fillStyle = '#7c6af7';
+  ctx.fillRect(centers[0] - barW/2, barY + barMaxH - gpeH, barW, gpeH);
+  ctx.fillStyle = '#a89af7'; ctx.font = '12px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('GPE', centers[0], barY + barMaxH + 18);
+  ctx.fillText(gpe.toFixed(0) + ' J', centers[0], barY + barMaxH - gpeH - 6);
+
+  // Bar 2: KE
+  const keH = (ke / totalE) * barMaxH;
+  ctx.fillStyle = 'rgba(78,205,196,0.2)';
+  ctx.fillRect(centers[1] - barW/2, barY, barW, barMaxH);
+  ctx.fillStyle = '#4ecdc4';
+  ctx.fillRect(centers[1] - barW/2, barY + barMaxH - keH, barW, keH);
+  ctx.fillStyle = '#4ecdc4';
+  ctx.fillText('KE', centers[1], barY + barMaxH + 18);
+  ctx.fillText(ke.toFixed(0) + ' J', centers[1], barY + barMaxH - keH - 6);
+
+  // Bar 3: Total (constant)
+  ctx.fillStyle = 'rgba(247,183,49,0.2)';
+  ctx.fillRect(centers[2] - barW/2, barY, barW, barMaxH);
+  ctx.fillStyle = '#f7b731';
+  ctx.fillRect(centers[2] - barW/2, barY, barW, barMaxH);
+  ctx.fillStyle = '#f7b731';
+  ctx.fillText('Total E', centers[2], barY + barMaxH + 18);
+  ctx.fillText(totalE.toFixed(0) + ' J', centers[2], barY - 6);
+
+  // Labels on right
+  ctx.fillStyle = '#5a6080'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('GPE = mgh(1−pos)', 480, 50);
+  ctx.fillText('KE = mgh·pos', 480, 70);
+  ctx.fillText('Total = ' + totalE.toFixed(0) + ' J (constant)', 480, 90);
+  ctx.fillText('m = ' + m + ' kg, h = ' + h + ' m', 480, 110);
+
+  // Speed
+  const v = Math.sqrt(2 * ke / m);
+  ctx.fillStyle = '#4ecdc4'; ctx.font = '12px monospace';
+  ctx.fillText('v = ' + v.toFixed(2) + ' m/s', 480, 140);
+}
+
+// ──────────────────────────────────
+// CIRCULAR MOTION ANIMATION
+// ──────────────────────────────────
+let circAngle = 0;
+function drawCircular() {
+  const canvas = document.getElementById('circularCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const cx = 180, cy = H/2, r = 70;
+  circAngle += 0.025;
+
+  // Circle path
+  ctx.strokeStyle = 'rgba(78,205,196,0.2)';
+  ctx.lineWidth = 1.5;
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Ball position
+  const bx = cx + r * Math.cos(circAngle);
+  const by = cy + r * Math.sin(circAngle);
+
+  // Radius line
+  ctx.strokeStyle = 'rgba(124,106,247,0.4)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(bx, by); ctx.stroke();
+
+  // Centripetal force arrow (toward centre)
+  const fLen = 35;
+  const dx = (cx - bx) / r, dy = (cy - by) / r;
+  ctx.strokeStyle = '#e84393';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(bx, by);
+  ctx.lineTo(bx + dx * fLen, by + dy * fLen);
+  ctx.stroke();
+  // arrowhead
+  const ax = bx + dx * fLen, ay = by + dy * fLen;
+  const perp = [-dy, dx];
+  ctx.fillStyle = '#e84393';
+  ctx.beginPath();
+  ctx.moveTo(ax, ay);
+  ctx.lineTo(ax - dx*8 + perp[0]*4, ay - dy*8 + perp[1]*4);
+  ctx.lineTo(ax - dx*8 - perp[0]*4, ay - dy*8 - perp[1]*4);
+  ctx.closePath(); ctx.fill();
+
+  // Velocity arrow (tangent)
+  const vLen = 35;
+  const tx = -Math.sin(circAngle), ty = Math.cos(circAngle);
+  ctx.strokeStyle = '#4ecdc4';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(bx, by);
+  ctx.lineTo(bx + tx * vLen, by + ty * vLen);
+  ctx.stroke();
+  const vx2 = bx + tx * vLen, vy2 = by + ty * vLen;
+  ctx.fillStyle = '#4ecdc4';
+  ctx.beginPath();
+  ctx.moveTo(vx2, vy2);
+  ctx.lineTo(vx2 - tx*8 + (-ty)*4, vy2 - ty*8 + tx*4);
+  ctx.lineTo(vx2 - tx*8 - (-ty)*4, vy2 - ty*8 - tx*4);
+  ctx.closePath(); ctx.fill();
+
+  // Centre dot
+  ctx.fillStyle = '#7c6af7';
+  ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI*2); ctx.fill();
+
+  // Ball
+  ctx.fillStyle = '#7c6af7';
+  ctx.beginPath(); ctx.arc(bx, by, 10, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = 'rgba(124,106,247,0.6)'; ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  // Labels
+  ctx.fillStyle = '#e84393'; ctx.font = '12px sans-serif';
+  ctx.fillText('F_c (centripetal)', bx + dx * fLen + 5, by + dy * fLen - 5);
+  ctx.fillStyle = '#4ecdc4';
+  ctx.fillText('v (velocity)', vx2 + 5, vy2);
+  ctx.fillStyle = '#a89af7'; ctx.font = '11px sans-serif';
+  ctx.fillText('r', cx + (bx-cx)/2 - 8, cy + (by-cy)/2);
+
+  // Info panel
+  const px = 370, py = 20;
+  ctx.fillStyle = 'rgba(26,30,42,0.9)';
+  ctx.fillRect(px - 10, py - 10, 330, 160);
+  ctx.strokeStyle = 'rgba(124,106,247,0.2)'; ctx.lineWidth = 1;
+  ctx.strokeRect(px - 10, py - 10, 330, 160);
+
+  ctx.fillStyle = '#9aa0be'; ctx.font = '12px monospace';
+  ctx.textAlign = 'left';
+  const lines = [
+    ['v = ωr', '#4ecdc4'],
+    ['a = v²/r  (toward centre)', '#e84393'],
+    ['F_c = mv²/r  (centripetal)', '#e84393'],
+    ['ω = 2π/T  (angular velocity)', '#a89af7'],
+    ['Key: v is TANGENTIAL', '#f7b731'],
+    ['     F_c is INWARD', '#f7b731'],
+    ['     No "centrifugal force"!', '#f7b731'],
+  ];
+  lines.forEach(([text, color], i) => {
+    ctx.fillStyle = color;
+    ctx.fillText(text, px, py + i * 21);
+  });
+
+  requestAnimationFrame(drawCircular);
+}
+
+// Init
+window.onload = function() {
+  drawProjectile();
+  drawEnergy();
+  drawCircular();
+};
+</script>
+
+</body>
+</html>
