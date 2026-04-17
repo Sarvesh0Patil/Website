@@ -16,6 +16,80 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* ── Search bar ── */
+  .res-search-wrap {
+    position: relative;
+    max-width: 720px;
+    margin-top: 2rem;
+  }
+  .res-search-wrap svg {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink3);
+    pointer-events: none;
+    width: 16px;
+    height: 16px;
+  }
+  #res-search {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: .75rem 1rem .75rem 2.75rem;
+    font-family: inherit;
+    font-size: .92rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .2s;
+  }
+  #res-search::placeholder { color: var(--ink3); }
+  #res-search:focus { border-color: var(--gold); }
+
+  /* ── Filter pills ── */
+  .res-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1rem;
+    max-width: 720px;
+  }
+  .res-filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .35rem .9rem;
+    font-family: inherit;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--ink2);
+    cursor: pointer;
+    transition: background .18s, border-color .18s, color .18s;
+  }
+  .res-filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .res-filter-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #000;
+  }
+
+  /* ── No results message ── */
+  #res-empty {
+    display: none;
+    font-size: .92rem;
+    color: var(--ink3);
+    margin-top: 1.5rem;
+    max-width: 720px;
+  }
+
+  /* ── Resource block hidden state ── */
+  .resource-block { transition: opacity .15s; }
+  .resource-block.hidden { display: none; }
+</style>
 </head>
 <body>
 
@@ -27,115 +101,148 @@
     <div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Resources</span></div>
     <h2 class="section-heading">Resources</h2>
 
-    <div style="margin-top:3rem;max-width:720px;display:flex;flex-direction:column;gap:1.5rem;">
-<!-- Resource blocks -->
+    <!-- Search bar -->
+    <div class="res-search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input id="res-search" type="search" placeholder="Search resources — mechanics, organic, Irodov…" autocomplete="off">
+    </div>
+
+    <!-- Filter pills -->
+    <div class="res-filters">
+      <button class="res-filter-btn active" data-filter="all">All</button>
+      <button class="res-filter-btn" data-filter="physics">Physics</button>
+      <button class="res-filter-btn" data-filter="chemistry">Chemistry</button>
+      <button class="res-filter-btn" data-filter="maths">Maths</button>
+      <button class="res-filter-btn" data-filter="advanced">JEE Advanced</button>
+    </div>
+
+    <!-- No results -->
+    <p id="res-empty">No resources match your search.</p>
+
+    <div id="res-list" style="margin-top:1.5rem;max-width:720px;display:flex;flex-direction:column;gap:1.5rem;">
+
       <!-- Physics Mechanics — Formula Revision -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-          <div>
-            <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-09 · Physics · JEE Advanced</p>
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Physics Mechanics — Formula Revision</h3>
+      <div class="resource-block" data-category="physics" data-tags="mechanics formula revision jee advanced kinematics dynamics">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-09 · Physics · JEE Advanced</p>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Physics Mechanics — Formula Revision</h3>
+            </div>
+            <a href="https://www.sarveshpatil.in/resources/physics_mechanics_revision.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
           </div>
-          <a href="https://www.sarveshpatil.in/resources/physics_mechanics_revision.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
-        </div>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This contains all basic formulas without which, you should not go to the exam hall. Each formula is explained with its meaning, real-world examples, visualizations, and common pitfalls to avoid.</p>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
-          <p style="font-size:.82rem;color:var(--ink3);margin:0;">You can find sources and further reading links at the end of the page.</p>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This contains all basic formulas without which, you should not go to the exam hall. Each formula is explained with its meaning, real-world examples, visualizations, and common pitfalls to avoid.</p>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
+            <p style="font-size:.82rem;color:var(--ink3);margin:0;">You can find sources and further reading links at the end of the page.</p>
+          </div>
         </div>
       </div>
 
-      <!-- Important reactions from lab manuals. -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-          <div>
-            <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-08 · Chemistry · JEE Advanced</p>
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Important reactions from lab manuals.</h3>
+      <!-- Important reactions from lab manuals -->
+      <div class="resource-block" data-category="chemistry" data-tags="reactions lab manual chemical colour change equations jee advanced">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-08 · Chemistry · JEE Advanced</p>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Important reactions from lab manuals.</h3>
+            </div>
+            <a href="https://www.sarveshpatil.in/resources/chemical_reactions_dark.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
           </div>
-          <a href="https://www.sarveshpatil.in/resources/chemical_reactions_dark.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
-        </div>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">A collection of important chemical reactions encountered in laboratory settings. Each reaction includes a description, balanced equations, and the colour change involved.</p>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
-          <p style="font-size:.82rem;color:var(--ink3);margin:0;">Source: NCERT Laboratory Manuals (volume 1-18)</p>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">A collection of important chemical reactions encountered in laboratory settings. Each reaction includes a description, balanced equations, and the colour change involved.</p>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
+            <p style="font-size:.82rem;color:var(--ink3);margin:0;">Source: NCERT Laboratory Manuals (volume 1-18)</p>
+          </div>
         </div>
       </div>
 
       <!-- Irodov book solutions -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-          <div>
-            <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-06 · Physics · JEE Advanced</p>
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Irodov book solutions</h3>
+      <div class="resource-block" data-category="physics" data-tags="irodov solutions book problems physics jee advanced iit">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-06 · Physics · JEE Advanced</p>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Irodov book solutions</h3>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1YZfbZHmpPK0yrK_9yr9mDpK7DNfKOdx5?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
           </div>
-          <a href="https://drive.google.com/drive/folders/1YZfbZHmpPK0yrK_9yr9mDpK7DNfKOdx5?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
-        </div>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This link contains solution to Irodov problems.</p>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
-          <p style="font-size:.82rem;color:var(--ink3);margin:0;">All credit goes to Ankit Singhvi from IIT Madras, 2008 batch</p>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This link contains solution to Irodov problems.</p>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
+            <p style="font-size:.82rem;color:var(--ink3);margin:0;">All credit goes to Ankit Singhvi from IIT Madras, 2008 batch</p>
+          </div>
         </div>
       </div>
 
       <!-- Irodov problem solutions -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-          <div>
-            <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-06 · Physics · JEE Advanced</p>
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Irodov problem solutions</h3>
+      <div class="resource-block" data-category="physics" data-tags="irodov problems solutions physics jee advanced iit madras">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-06 · Physics · JEE Advanced</p>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Irodov problem solutions</h3>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1YZfbZHmpPK0yrK_9yr9mDpK7DNfKOdx5?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
           </div>
-          <a href="https://drive.google.com/drive/folders/1YZfbZHmpPK0yrK_9yr9mDpK7DNfKOdx5?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
-        </div>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This folder contains solutions to all Irodov problems.</p>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">Jai hind!</p>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
-          <p style="font-size:.82rem;color:var(--ink3);margin:0;">All credits goes to Ankit Singhvi from IIT Madras, 2008 batch</p>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This folder contains solutions to all Irodov problems.</p>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">Jai hind!</p>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
+            <p style="font-size:.82rem;color:var(--ink3);margin:0;">All credits goes to Ankit Singhvi from IIT Madras, 2008 batch</p>
+          </div>
         </div>
       </div>
 
-
-      <!-- Organic chemisty - My notes -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-          <div>
-            <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-05 · Chemistry · JEE Advanced</p>
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Organic chemisty - My notes</h3>
+      <!-- Organic chemistry - My notes -->
+      <div class="resource-block" data-category="chemistry" data-tags="organic chemistry notes pdf jee advanced revision reactions mechanisms">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">2026-04-05 · Chemistry · JEE Advanced</p>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Organic chemisty - My notes</h3>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1PoCNtCn2WAxpW202xLCYolzFwSEHrdUg?usp=drive_link" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
           </div>
-          <a href="https://drive.google.com/drive/folders/1PoCNtCn2WAxpW202xLCYolzFwSEHrdUg?usp=drive_link" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
-        </div>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This folder contains 10 pdf files. These are my notes.</p>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">Feel free to use them for JEE advanced revision</p>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
-          <p style="font-size:.82rem;color:var(--ink3);margin:0;">43 days remaining for JEE Advanced 2026. Let's go!</p>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This folder contains 10 pdf files. These are my notes.</p>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">Feel free to use them for JEE advanced revision</p>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
+            <p style="font-size:.82rem;color:var(--ink3);margin:0;">43 days remaining for JEE Advanced 2026. Let's go!</p>
+          </div>
         </div>
       </div>
 
       <!-- Inorganic Chemistry Modules -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-          <div>
-            <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">Chemistry · JEE Advanced</p>
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Inorganic Chemistry Modules</h3>
+      <div class="resource-block" data-category="chemistry" data-tags="inorganic chemistry modules ncert experiments jee advanced lab">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">Chemistry · JEE Advanced</p>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Inorganic Chemistry Modules</h3>
+            </div>
+            <a href="https://ncert.nic.in/science-laboratory-manual.php?ln=en" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
           </div>
-          <a href="https://ncert.nic.in/science-laboratory-manual.php?ln=en" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
-        </div>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">These are the modules released by NCERT — and IITs are only allowed to set questions based on the experiments which students are supposed to do during 11th and 12th. But the current education system asks us to ignore such experimental work.</p>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">However, it is of utmost importance to master this for JEE Advanced.</p>
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
-          <p style="font-size:.82rem;color:var(--ink3);margin:0;">If you are interested, I will make a summary of this resource and share it here — but only if the target is achieved.</p>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">These are the modules released by NCERT — and IITs are only allowed to set questions based on the experiments which students are supposed to do during 11th and 12th. But the current education system asks us to ignore such experimental work.</p>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">However, it is of utmost importance to master this for JEE Advanced.</p>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;">
+            <p style="font-size:.82rem;color:var(--ink3);margin:0;">If you are interested, I will make a summary of this resource and share it here — but only if the target is achieved.</p>
+          </div>
         </div>
       </div>
 
       <!-- Chemicals and Their Colors -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
-          <div>
-            <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">Chemistry · JEE Advanced</p>
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Chemicals and Their Colors</h3>
+      <div class="resource-block" data-category="chemistry" data-tags="chemicals colours colors inorganic identification jee advanced">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:2rem;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.5rem;">Chemistry · JEE Advanced</p>
+              <h3 style="font-size:1.2rem;font-weight:700;color:var(--ink);margin:0 0 1rem;">Chemicals and Their Colors</h3>
+            </div>
+            <a href="https://drive.google.com/file/d/1N5Ma2tkdl86aLvOGqTmOiAu0HLWeM42T/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
           </div>
-          <a href="https://drive.google.com/file/d/1N5Ma2tkdl86aLvOGqTmOiAu0HLWeM42T/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#000;font-size:.78rem;font-weight:700;padding:.45rem 1rem;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Open resource ↗</a>
+          <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This is the summary of chemistry modules.</p>
         </div>
-        <p style="font-size:.92rem;color:var(--ink2);line-height:1.7;margin:0 0 .75rem;">This is the summary of chemistry modules.</p>
       </div>
 
-    </div>
+    </div><!-- end #res-list -->
   </div>
 
   <footer>
@@ -151,5 +258,66 @@
 </div><!-- end page -->
 
 <script src="nav.js"></script>
+<script>
+(function () {
+  const searchInput  = document.getElementById('res-search');
+  const filterBtns   = document.querySelectorAll('.res-filter-btn');
+  const blocks       = document.querySelectorAll('.resource-block');
+  const emptyMsg     = document.getElementById('res-empty');
+
+  let activeFilter = 'all';
+
+  function normalize(str) {
+    return str.toLowerCase().replace(/[^a-z0-9\s]/g, ' ');
+  }
+
+  function applyFilters() {
+    const query = normalize(searchInput.value.trim());
+    const terms = query.split(/\s+/).filter(Boolean);
+    let visible = 0;
+
+    blocks.forEach(function (block) {
+      const category = block.dataset.category || '';
+      const tags     = normalize(block.dataset.tags || '');
+      const text     = normalize(block.textContent);
+      const haystack = category + ' ' + tags + ' ' + text;
+
+      // Category filter
+      let passFilter = false;
+      if (activeFilter === 'all') {
+        passFilter = true;
+      } else if (activeFilter === 'advanced') {
+        passFilter = haystack.includes('advanced');
+      } else {
+        passFilter = category === activeFilter;
+      }
+
+      // Search filter — every term must appear somewhere
+      const passSearch = terms.length === 0 || terms.every(function (t) {
+        return haystack.includes(t);
+      });
+
+      const show = passFilter && passSearch;
+      block.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+
+    emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  // Filter buttons
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  // Search input
+  searchInput.addEventListener('input', applyFilters);
+})();
+</script>
 </body>
 </html>
