@@ -1,0 +1,1091 @@
+<!--resource
+title: Maths important formulas 
+description: This is interactive page for all students to revise important formulas for JEE maths.
+
+date: 2026-04-18 · MATHS · JEE Advanced
+comment: Prepare Well
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZT6FWW5KZ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9ZT6FWW5KZ');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Mathematics Interactive Formula Reference</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <style>
+        :root {
+            --bg-base:        #0D0F17;
+            --bg-surface:     #12151F;
+            --bg-card:        #181C2A;
+            --bg-elevated:    #1E2336;
+            --border:         #252A3D;
+            --border-bright:  #2E3450;
+            --text-primary:   #E8ECF5;
+            --text-secondary: #8A91AA;
+            --text-muted:     #4A5270;
+            --accent:         #3FFFA2;
+            --accent-dim:     #1A7A4E;
+            --accent-glow:    rgba(63, 255, 162, 0.12);
+            --amber:          #F5A623;
+            --amber-dim:      #7A520B;
+            --amber-glow:     rgba(245, 166, 35, 0.10);
+            --blue:           #5B8CFF;
+            --blue-dim:       #1C3A80;
+            --blue-glow:      rgba(91, 140, 255, 0.10);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+        }
+
+        /* Grain overlay for texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg-surface); }
+        ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* Sidebar */
+        #sidebar {
+            background: var(--bg-surface);
+            width: 272px;
+            height: 100%;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 40;
+            transition: transform 0.3s ease;
+        }
+        @media (min-width: 1024px) {
+            #sidebar { position: relative; transform: none !important; }
+        }
+
+        .sidebar-header {
+            padding: 28px 24px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+            border-radius: 8px;
+            padding: 4px 10px;
+            margin-bottom: 12px;
+        }
+        .logo-dot {
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .logo-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .sidebar-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+        .sidebar-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        nav { flex: 1; overflow-y: auto; padding: 16px 12px 16px; }
+
+        .nav-section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0 12px;
+            margin: 12px 0 6px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: transparent;
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.15s ease;
+            margin-bottom: 2px;
+        }
+        .nav-item:hover {
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            border-color: var(--border);
+        }
+        .nav-item.active {
+            background: var(--accent-glow);
+            border-color: var(--accent-dim);
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .nav-item.mega-btn {
+            background: var(--amber-glow);
+            border-color: var(--amber-dim);
+            color: var(--amber);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .nav-item.mega-btn:hover {
+            background: rgba(245, 166, 35, 0.18);
+        }
+        .nav-item.mega-btn.active {
+            background: rgba(245, 166, 35, 0.2);
+            border-color: var(--amber);
+            color: var(--amber);
+        }
+        .nav-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        /* Main */
+        main {
+            flex: 1;
+            height: 100vh;
+            overflow-y: auto;
+            padding-top: 0;
+            background: var(--bg-base);
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 1023px) {
+            main { padding-top: 64px; }
+        }
+
+        .content-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 48px 32px;
+        }
+        @media (max-width: 768px) {
+            .content-wrap { padding: 24px 16px; }
+        }
+
+        /* Mobile topbar */
+        #mobileBar {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 20px;
+            z-index: 50;
+            align-items: center;
+            justify-content: space-between;
+        }
+        @media (max-width: 1023px) {
+            #mobileBar { display: flex; }
+        }
+        .mobile-logo { font-weight: 800; font-size: 16px; color: var(--text-primary); }
+        #mobileMenuBtn {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .card-header {
+            background: var(--bg-elevated);
+            border-bottom: 1px solid var(--border);
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .card-icon {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+        .card-icon.green { background: var(--accent-glow); }
+        .card-icon.amber { background: var(--amber-glow); }
+        .card-icon.blue  { background: var(--blue-glow); }
+
+        /* Chart */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 38vh;
+            min-height: 280px;
+            max-height: 480px;
+        }
+
+        /* Formula table */
+        table { width: 100%; border-collapse: collapse; }
+        thead th {
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+        tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: var(--bg-elevated); }
+        td { padding: 16px 20px; vertical-align: middle; }
+        .formula-cell {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: var(--accent);
+        }
+        .desc-cell {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .chapter-cell {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+        }
+
+        /* KaTeX color override */
+        .katex { color: var(--accent) !important; }
+        .katex-display { margin: 4px 0 !important; overflow-x: auto; }
+
+        /* Shortcut / notes items */
+        .shortcut-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 24px;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+        .shortcut-item:last-child { border-bottom: none; }
+        .shortcut-arrow {
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--amber);
+            margin-top: 2px;
+        }
+        .shortcut-text {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .shortcut-text .katex { color: var(--amber) !important; }
+
+        .note-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 24px;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+        .note-item:last-child { border-bottom: none; }
+        .note-bullet {
+            flex-shrink: 0;
+            font-size: 18px;
+            color: var(--blue);
+            line-height: 1.3;
+        }
+        .note-text {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.65;
+        }
+
+        /* Overview page extras */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+        }
+        .stat-accent { color: var(--accent); }
+
+        /* Chapter header */
+        .chapter-topbar {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .chapter-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .chapter-title {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+        .weightage-badge {
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-dim);
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .weightage-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--accent-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .weightage-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -0.03em;
+        }
+
+        /* Mega search */
+        #megaSearch {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: 'Sora', sans-serif;
+            outline: none;
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+        #megaSearch:focus { border-color: var(--accent-dim); }
+        #megaSearch::placeholder { color: var(--text-muted); }
+
+        /* Scrollable mega table */
+        .mega-scroll {
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            background: var(--accent);
+            color: #0D0F17;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 10px 22px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+            transition: opacity 0.15s;
+            font-family: 'Sora', sans-serif;
+        }
+        .cta-btn:hover { opacity: 0.88; }
+
+        /* Info boxes */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        @media (max-width: 640px) { .info-grid { grid-template-columns: 1fr; } }
+
+        .info-box {
+            border-radius: 12px;
+            padding: 22px;
+            border: 1px solid;
+        }
+        .info-box.blue-box {
+            background: var(--blue-glow);
+            border-color: var(--blue-dim);
+        }
+        .info-box.amber-box {
+            background: var(--amber-glow);
+            border-color: var(--amber-dim);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .info-box-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .info-box.blue-box .info-box-title { color: var(--blue); }
+        .info-box.amber-box .info-box-title { color: var(--amber); }
+        .info-box ul {
+            list-style: disc;
+            padding-left: 18px;
+            space-y: 8px;
+        }
+        .info-box.blue-box li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .info-box.amber-box p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        /* Page load fade */
+        #mainContent { animation: fadeIn 0.2s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile top bar -->
+    <div id="mobileBar">
+        <span class="mobile-logo">JEE Maths</span>
+        <button id="mobileMenuBtn">☰ Menu</button>
+    </div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-badge">
+                <div class="logo-dot"></div>
+                <span class="logo-text">Live Revision</span>
+            </div>
+            <div class="sidebar-title">JEE Maths</div>
+            <div class="sidebar-sub">// formula_hub v2.0</div>
+        </div>
+        <nav id="navContainer"></nav>
+    </aside>
+
+    <!-- Main -->
+    <main>
+        <div class="content-wrap" id="mainContent"></div>
+    </main>
+
+    <script>
+        const jeeData = [
+            { id: "overview", name: "Dashboard Overview", type: "dashboard" },
+            { id: "mega", name: "MEGA QUICK REFERENCE", type: "mega" },
+            {
+                id: "ch1", name: "1. Sets, Relations & Functions", weightage: "4–5%", weight_val: 4.5,
+                core: [
+                    { formula: "n(A \\cup B) = n(A) + n(B) - n(A \\cap B)", desc: "Inclusion-Exclusion (2 sets)" },
+                    { formula: "n(A \\cup B \\cup C) = n(A)+n(B)+n(C) - n(A \\cap B) - n(B \\cap C) - n(C \\cap A) + n(A \\cap B \\cap C)", desc: "Inclusion-Exclusion (3 sets)" },
+                    { formula: "f(x) = f(-x)", desc: "Even Function condition" },
+                    { formula: "f(-x) = -f(x)", desc: "Odd Function condition" }
+                ],
+                shortcuts: ["If $f(x)$ is periodic with period $T$, then $f(ax+b)$ has period $\\frac{T}{|a|}$.", "Total functions from A (m elements) to B (n elements) = $n^m$."],
+                notes: ["For invertibility, function MUST be bijective (One-One & Onto).", "Define domain strictly before finding the range."]
+            },
+            {
+                id: "ch2", name: "2. Complex Numbers", weightage: "5–6%", weight_val: 5.5,
+                core: [
+                    { formula: "z = x + iy, \\quad |z| = \\sqrt{x^2 + y^2}", desc: "Algebraic form & Modulus" },
+                    { formula: "z = r(\\cos \\theta + i \\sin \\theta) = re^{i\\theta}", desc: "Polar and Euler Form" },
+                    { formula: "z \\bar{z} = |z|^2", desc: "Property of Conjugate" },
+                    { formula: "z^n = r^n(\\cos n\\theta + i \\sin n\\theta)", desc: "De Moivre's Theorem" }
+                ],
+                shortcuts: ["Roots of unity: $1 + \\omega + \\omega^2 = 0$ and $\\omega^3 = 1$.", "Distance between $z_1$ and $z_2$ is $|z_1 - z_2|$."],
+                notes: ["Argument $\\arg(z)$ must be given as Principal Argument: $(-\\pi, \\pi]$.", "Geometrically, $|z - z_0| = r$ is a circle centered at $z_0$ with radius $r$."]
+            },
+            {
+                id: "ch3", name: "3. Quadratic Equations", weightage: "4–5%", weight_val: 4.5,
+                core: [
+                    { formula: "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}", desc: "Quadratic Formula" },
+                    { formula: "\\alpha + \\beta = \\frac{-b}{a}, \\quad \\alpha\\beta = \\frac{c}{a}", desc: "Sum & Product of roots" },
+                    { formula: "D = b^2 - 4ac", desc: "Discriminant" }
+                ],
+                shortcuts: ["If roots are reciprocal, then $a = c$.", "If one root is $p + iq$, other is $p - iq$ (for real coefficients)."],
+                notes: ["$D > 0$: real & distinct. $D = 0$: real & equal. $D < 0$: imaginary conjugates.", "Root location checks need conditions on $D$, $a \\cdot f(k)$, and vertex."]
+            },
+            {
+                id: "ch4", name: "4. Sequences & Series", weightage: "4–5%", weight_val: 4.5,
+                core: [
+                    { formula: "S_n = \\frac{n}{2}[2a + (n-1)d]", desc: "Sum of AP" },
+                    { formula: "S_n = \\frac{a(1-r^n)}{1-r}", desc: "Sum of GP" }
+                ],
+                shortcuts: ["AM $\\geq$ GM $\\geq$ HM is heavily used in inequalities."],
+                notes: ["Telescoping series is a frequent trick for summation."]
+            },
+            {
+                id: "ch5", name: "5. Permutations & Combinations", weightage: "4–5%", weight_val: 4.5,
+                core: [
+                    { formula: "^nP_r = \\frac{n!}{(n-r)!}", desc: "Arrangements" },
+                    { formula: "^nC_r = \\frac{n!}{r!(n-r)!}", desc: "Selections" }
+                ],
+                shortcuts: ["Non-negative integral solutions of $x_1+...+x_r=n$: $^{n+r-1}C_{r-1}$."],
+                notes: ["Distinguish carefully between identical and distinct objects."]
+            },
+            {
+                id: "ch6", name: "6. Binomial Theorem", weightage: "3–4%", weight_val: 3.5,
+                core: [{ formula: "T_{r+1} = ^nC_r x^{n-r} y^r", desc: "General Term of $(x+y)^n$" }],
+                shortcuts: ["Sum of all binomial coefficients = $2^n$."],
+                notes: ["Terms independent of $x$ appear every exam."]
+            },
+            {
+                id: "ch7", name: "7. Matrices & Determinants", weightage: "7–8%", weight_val: 7.5,
+                core: [
+                    { formula: "A^{-1} = \\frac{1}{|A|} \\text{adj}(A)", desc: "Inverse Matrix" },
+                    { formula: "|AB| = |A||B|", desc: "Determinant of product" }
+                ],
+                shortcuts: ["$|adj(A)| = |A|^{n-1}$ for an $n \\times n$ matrix."],
+                notes: ["Determinant properties can vastly simplify calculations."]
+            },
+            {
+                id: "ch8", name: "8. Straight Lines", weightage: "4–5%", weight_val: 4.5,
+                core: [
+                    { formula: "y - y_1 = m(x - x_1)", desc: "Point-Slope Form" },
+                    { formula: "d = \\frac{|ax_1 + by_1 + c|}{\\sqrt{a^2 + b^2}}", desc: "Distance: point to line" }
+                ],
+                shortcuts: ["Area of triangle from vertices = $\\frac{1}{2}|det|$ form."],
+                notes: ["Orthocenter, Centroid, Circumcenter geometry is crucial."]
+            },
+            {
+                id: "ch9", name: "9. Circles", weightage: "4–5%", weight_val: 4.5,
+                core: [{ formula: "(x-h)^2 + (y-k)^2 = r^2", desc: "Standard Equation" }],
+                shortcuts: ["Tangent at $(x_1, y_1)$: replace $x^2 \\to xx_1$, $y^2 \\to yy_1$ ($T=0$)."],
+                notes: ["Tangency condition: distance from center = radius."]
+            },
+            {
+                id: "ch10", name: "10. Conic Sections", weightage: "6–7%", weight_val: 6.5,
+                core: [
+                    { formula: "y^2 = 4ax", desc: "Parabola (standard)" },
+                    { formula: "\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1", desc: "Ellipse (standard)" }
+                ],
+                shortcuts: ["Parametric coordinates make tangent/normal equations easier."],
+                notes: ["Eccentricity relates $a, b, c$ and defines the conic shape."]
+            },
+            {
+                id: "ch11", name: "11. Limits, Continuity & Differentiability", weightage: "6–7%", weight_val: 6.5,
+                core: [
+                    { formula: "\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1, \\quad \\lim_{x \\to 0} \\frac{\\tan x}{x} = 1", desc: "Standard Trig Limits" },
+                    { formula: "\\lim_{x \\to 0} \\frac{e^x - 1}{x} = 1, \\quad \\lim_{x \\to 0} \\frac{\\ln(1+x)}{x} = 1", desc: "Exponential/Log Limits" },
+                    { formula: "\\lim_{x \\to a} [f(x)]^{g(x)} = e^{\\lim_{x \\to a} g(x)[f(x)-1]}", desc: "Limit of $1^{\\infty}$ form" }
+                ],
+                shortcuts: ["L'Hopital: for $\\frac{0}{0}$ or $\\frac{\\infty}{\\infty}$ forms, limit = $\\lim \\frac{f'(x)}{g'(x)}$.", "Maclaurin expansions are often faster than L'Hopital."],
+                notes: ["Continuity at $x=a$ requires LHL = RHL = $f(a)$.", "Differentiability implies continuity; reverse is false ($y=|x|$ at $x=0$)."]
+            },
+            {
+                id: "ch12", name: "12. Differentiation", weightage: "3–4%", weight_val: 3.5,
+                core: [{ formula: "(uv)' = u'v + uv'", desc: "Product Rule" }],
+                shortcuts: ["Logarithmic differentiation for $f(x)^{g(x)}$ forms."],
+                notes: ["Apply chain rule systematically — don't skip steps."]
+            },
+            {
+                id: "ch13", name: "13. Application of Derivatives", weightage: "6–7%", weight_val: 6.5,
+                core: [{ formula: "f'(x) = 0", desc: "Critical points condition" }],
+                shortcuts: ["Derivative sign changes identify local maxima/minima."],
+                notes: ["Rolle's and LMVT theorem conditions are frequently tested theoretically."]
+            },
+            {
+                id: "ch14", name: "14. Indefinite Integration", weightage: "4–5%", weight_val: 4.5,
+                core: [{ formula: "\\int u v dx = u \\int v dx - \\int \\left(u' \\int v dx\\right) dx", desc: "Integration by Parts (ILATE)" }],
+                shortcuts: ["$\\int e^x[f(x) + f'(x)] dx = e^x f(x) + C$"],
+                notes: ["Substitution is the key — identify function and its derivative."]
+            },
+            {
+                id: "ch15", name: "15. Definite Integration", weightage: "8–9%", weight_val: 8.5,
+                core: [
+                    { formula: "\\int_{a}^{b} f(x) dx = \\int_{a}^{b} f(a+b-x) dx", desc: "King's Rule (most powerful)" },
+                    { formula: "\\int_{-a}^{a} f(x) dx = 0 \\text{ (odd)}, \\quad 2\\int_{0}^{a} f(x) dx \\text{ (even)}", desc: "Even/Odd Property" },
+                    { formula: "\\frac{d}{dx} \\int_{g(x)}^{h(x)} f(t) dt = f(h(x))h'(x) - f(g(x))g'(x)", desc: "Newton-Leibniz Formula" }
+                ],
+                shortcuts: ["$\\int_{0}^{\\pi/2} \\frac{\\sin^n x}{\\sin^n x + \\cos^n x} dx = \\frac{\\pi}{4}$ for any real $n$.", "Wallis' Formula is fastest for $\\sin^m x \\cos^n x$ integrals on $[0, \\pi/2]$."],
+                notes: ["Check for discontinuities within the integration limits.", "King's rule is often applied iteratively by adding original + transformed integral."]
+            },
+            {
+                id: "ch16", name: "16. Differential Equations", weightage: "4–5%", weight_val: 4.5,
+                core: [{ formula: "\\frac{dy}{dx} + Py = Q \\implies \\text{I.F.} = e^{\\int P dx}", desc: "Linear D.E." }],
+                shortcuts: ["Homogeneous D.E.: substitute $y = vx$."],
+                notes: ["Always determine degree and order first."]
+            },
+            {
+                id: "ch17", name: "17. Vector Algebra", weightage: "5–6%", weight_val: 5.5,
+                core: [
+                    { formula: "\\vec{a} \\cdot \\vec{b} = |a||b|\\cos\\theta", desc: "Dot Product" },
+                    { formula: "[\\vec{a}\\; \\vec{b}\\; \\vec{c}] = \\vec{a} \\cdot (\\vec{b} \\times \\vec{c})", desc: "Scalar Triple Product" }
+                ],
+                shortcuts: ["If scalar triple product = 0, vectors are coplanar."],
+                notes: ["Cross product is anti-commutative: $\\vec{a} \\times \\vec{b} = -\\vec{b} \\times \\vec{a}$."]
+            },
+            {
+                id: "ch18", name: "18. 3D Geometry", weightage: "6–7%", weight_val: 6.5,
+                core: [{ formula: "\\frac{x-x_1}{a} = \\frac{y-y_1}{b} = \\frac{z-z_1}{c}", desc: "Symmetric Line Equation" }],
+                shortcuts: ["Shortest distance between skew lines uses scalar triple product."],
+                notes: ["Direction cosines satisfy $l^2+m^2+n^2=1$."]
+            },
+            {
+                id: "ch19", name: "19. Probability", weightage: "5–6%", weight_val: 5.5,
+                core: [
+                    { formula: "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)", desc: "Addition Theorem" },
+                    { formula: "P(A|B) = \\frac{P(A \\cap B)}{P(B)}", desc: "Conditional Probability" }
+                ],
+                shortcuts: ["Bayes' Theorem for reverse/posterior probability."],
+                notes: ["Identify: mutually exclusive vs independent events — they're different!"]
+            },
+            {
+                id: "ch20", name: "20. Trigonometry", weightage: "4–5%", weight_val: 4.5,
+                core: [
+                    { formula: "\\sin^2\\theta + \\cos^2\\theta = 1", desc: "Pythagorean Identity" },
+                    { formula: "\\sin 2\\theta = 2\\sin\\theta\\cos\\theta", desc: "Double Angle" }
+                ],
+                shortcuts: ["Max value of $a\\sin\\theta + b\\cos\\theta$ is $\\sqrt{a^2+b^2}$."],
+                notes: ["Domain and range of Inverse Trig functions are critical."]
+            },
+            {
+                id: "ch21", name: "21. Math Reasoning", weightage: "2–3%", weight_val: 2.5,
+                core: [{ formula: "\\sim(p \\lor q) \\equiv \\sim p \\land \\sim q", desc: "De Morgan's Law" }],
+                shortcuts: ["Truth tables solve almost any reasoning problem quickly."],
+                notes: ["Tautology = always true; Fallacy = always false."]
+            }
+        ];
+
+        let currentChart = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSidebar();
+            loadContent('overview');
+            document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+                document.getElementById('sidebar').classList.toggle('-translate-x-full');
+            });
+        });
+
+        function renderSidebar() {
+            const c = document.getElementById('navContainer');
+            let html = '';
+
+            html += `<button onclick="loadContent('overview')" id="nav-overview" class="nav-item active">
+                        <span>📊 Dashboard</span>
+                     </button>`;
+
+            html += `<button onclick="loadContent('mega')" id="nav-mega" class="nav-item mega-btn">
+                        <span>⚡ Mega Reference</span>
+                        <span style="font-size:10px;">ALL</span>
+                     </button>`;
+
+            html += `<div class="nav-section-label">Chapters</div>`;
+
+            jeeData.forEach(item => {
+                if (item.id !== 'overview' && item.id !== 'mega') {
+                    const shortName = item.name.replace(/^\d+\.\s*/, '');
+                    html += `<button onclick="loadContent('${item.id}')" id="nav-${item.id}" class="nav-item">
+                                <span style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:160px;">${item.name}</span>
+                                <span class="nav-badge">${item.weightage}</span>
+                             </button>`;
+                }
+            });
+            c.innerHTML = html;
+        }
+
+        function updateActiveNav(id) {
+            document.querySelectorAll('.nav-item').forEach(el => {
+                el.classList.remove('active');
+                if (el.id === 'nav-mega') el.classList.add('mega-btn');
+            });
+            const el = document.getElementById(`nav-${id}`);
+            if (el) {
+                el.classList.add('active');
+                if (id === 'mega') el.classList.add('mega-btn');
+            }
+            if (window.innerWidth < 1024) {
+                document.getElementById('sidebar').classList.add('-translate-x-full');
+            }
+        }
+
+        function loadContent(id) {
+            updateActiveNav(id);
+            const area = document.getElementById('mainContent');
+            const data = jeeData.find(d => d.id === id);
+
+            if (id === 'overview') renderOverview(area);
+            else if (id === 'mega') renderMega(area);
+            else if (data) renderChapter(data, area);
+
+            renderMathInElement(area, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true }
+                ],
+                throwOnError: false
+            });
+        }
+
+        function renderOverview(area) {
+            const chaps = jeeData.filter(d => d.weight_val);
+            const total = chaps.length;
+            const high = chaps.filter(d => d.weight_val >= 6).length;
+
+            area.innerHTML = `
+                <div style="margin-bottom:32px;">
+                    <div class="chapter-tag">DASHBOARD</div>
+                    <h2 style="font-size:30px;font-weight:800;letter-spacing:-0.04em;color:var(--text-primary);line-height:1.2;margin-bottom:8px;">JEE Mathematics Hub</h2>
+                    <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;max-width:640px;">Navigate chapters from the sidebar, study core formulas rendered in LaTeX, master shortcuts for speed, and use the Mega Reference for rapid-search during practice sessions.</p>
+                </div>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Chapters</div>
+                        <div class="stat-value">${total} <span style="font-size:14px;color:var(--text-muted);font-weight:400;">topics</span></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">High Weightage (&ge;6%)</div>
+                        <div class="stat-value stat-accent">${high} <span style="font-size:14px;color:var(--accent-dim);font-weight:400;">chapters</span></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Top Priority</div>
+                        <div class="stat-value" style="font-size:16px;margin-top:4px;">Definite Integration</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">📊</div>
+                        <div>
+                            <div class="card-title">Topic Weightage Analysis</div>
+                            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Historical distribution across JEE Mains & Advanced</div>
+                        </div>
+                    </div>
+                    <div style="padding:24px;">
+                        <div class="chart-container">
+                            <canvas id="weightageChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-box blue-box">
+                        <div class="info-box-title">How to use this tool</div>
+                        <ul>
+                            <li><strong>Prioritize:</strong> Use the chart to identify high-ROI chapters like Definite Integration and Matrices.</li>
+                            <li><strong>Formula cards:</strong> Every chapter shows formulas clearly rendered — memorize these first.</li>
+                            <li><strong>Shortcuts:</strong> Learn exam-day tricks that save 30–60 seconds per problem.</li>
+                        </ul>
+                    </div>
+                    <div class="info-box amber-box">
+                        <div class="info-box-title">⚡ Pro Exam Tip</div>
+                        <p>Don't just memorize — understand applications. Use the Mega Reference for rapid look-up during mock tests.</p>
+                        <button onclick="loadContent('mega')" class="cta-btn">Open Mega Reference →</button>
+                    </div>
+                </div>
+            `;
+            drawChart();
+        }
+
+        function drawChart() {
+            const ctx = document.getElementById('weightageChart');
+            if (!ctx) return;
+            if (currentChart) currentChart.destroy();
+
+            const sorted = jeeData.filter(d => d.weight_val).sort((a, b) => b.weight_val - a.weight_val);
+            const labels = sorted.map(d => {
+                const name = d.name.replace(/^\d+\.\s*/, '');
+                return name.length > 14 ? name.substring(0, 14) + '…' : name;
+            });
+            const values = sorted.map(d => d.weight_val);
+
+            currentChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: 'Weightage (%)',
+                        data: values,
+                        backgroundColor: values.map(v => v >= 7 ? '#3FFFA2' : v >= 5.5 ? '#5B8CFF' : '#2E3450'),
+                        borderRadius: 5,
+                        hoverBackgroundColor: '#F5A623'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1E2336',
+                            borderColor: '#252A3D',
+                            borderWidth: 1,
+                            titleColor: '#E8ECF5',
+                            bodyColor: '#3FFFA2',
+                            callbacks: { label: ctx => ctx.parsed.y + '%' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#252A3D' },
+                            ticks: { color: '#4A5270', font: { family: 'JetBrains Mono', size: 11 } },
+                            title: { display: true, text: 'Weightage (%)', color: '#4A5270' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                color: '#4A5270',
+                                font: { family: 'JetBrains Mono', size: 10 },
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderChapter(data, area) {
+            const name = data.name.replace(/^\d+\.\s*/, '');
+
+            let html = `
+                <div class="chapter-topbar">
+                    <div>
+                        <span class="chapter-tag">CHAPTER REVIEW</span>
+                        <div class="chapter-title">${data.name}</div>
+                    </div>
+                    <div class="weightage-badge">
+                        <div class="weightage-label">JEE Weightage</div>
+                        <div class="weightage-value">${data.weightage}</div>
+                    </div>
+                </div>
+                <p style="font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.6;">Master the formulas below before moving on to shortcuts. Understanding application beats rote memorization.</p>
+            `;
+
+            if (data.core?.length) {
+                html += `<div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">🔑</div>
+                        <div class="card-title">Must-Know Formulas</div>
+                    </div>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead><tr>
+                                <th style="width:50%">Formula</th>
+                                <th>Description</th>
+                            </tr></thead>
+                            <tbody>`;
+                data.core.forEach(f => {
+                    html += `<tr>
+                        <td class="formula-cell">$$${f.formula}$$</td>
+                        <td class="desc-cell">${f.desc}</td>
+                    </tr>`;
+                });
+                html += `</tbody></table></div></div>`;
+            }
+
+            if (data.shortcuts?.length) {
+                html += `<div class="card">
+                    <div class="card-header">
+                        <div class="card-icon amber">⚡</div>
+                        <div class="card-title">Shortcuts & Tricks</div>
+                    </div>
+                    <div>`;
+                data.shortcuts.forEach(s => {
+                    html += `<div class="shortcut-item">
+                        <span class="shortcut-arrow">→</span>
+                        <span class="shortcut-text">${s}</span>
+                    </div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            if (data.notes?.length) {
+                html += `<div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">📌</div>
+                        <div class="card-title">Key Notes & Common Mistakes</div>
+                    </div>
+                    <div>`;
+                data.notes.forEach(n => {
+                    html += `<div class="note-item">
+                        <span class="note-bullet">·</span>
+                        <span class="note-text">${n}</span>
+                    </div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            area.innerHTML = html;
+        }
+
+        function renderMega(area) {
+            let rows = '';
+            jeeData.forEach(chap => {
+                if (chap.core) {
+                    chap.core.forEach(f => {
+                        const name = chap.name.replace(/^\d+\.\s*/, '');
+                        rows += `<tr>
+                            <td class="chapter-cell">${name}</td>
+                            <td class="formula-cell" style="font-size:13px;">$${f.formula}$</td>
+                            <td class="desc-cell">${f.desc}</td>
+                        </tr>`;
+                    });
+                }
+            });
+
+            area.innerHTML = `
+                <div style="margin-bottom:28px;">
+                    <span class="chapter-tag">ALL CHAPTERS</span>
+                    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.04em;color:var(--text-primary);">⚡ Mega Quick Reference</h2>
+                    <p style="font-size:14px;color:var(--text-muted);margin-top:8px;">Every formula, searchable. Use during mock tests for rapid lookup.</p>
+                </div>
+                <input type="text" id="megaSearch" placeholder="Search: 'integration', 'tangent', 'binomial'…">
+                <div class="card">
+                    <div class="mega-scroll">
+                        <table id="megaTable">
+                            <thead>
+                                <tr>
+                                    <th style="width:22%">Chapter</th>
+                                    <th style="width:44%">Formula</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="megaBody">${rows}</tbody>
+                        </table>
+                        <div id="noResults" style="display:none;padding:40px;text-align:center;color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:13px;">// no results found</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('megaSearch').addEventListener('input', function () {
+                const term = this.value.toLowerCase();
+                const rows = document.querySelectorAll('#megaBody tr');
+                let visible = 0;
+                rows.forEach(r => {
+                    const match = r.innerText.toLowerCase().includes(term);
+                    r.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+                document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+                document.getElementById('megaTable').style.display = visible === 0 ? 'none' : 'table';
+            });
+        }
+    </script>
+</body>
+</html>
