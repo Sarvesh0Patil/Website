@@ -41,10 +41,19 @@
   /* ── 4. Custom cursor ── */
   var cursor = document.getElementById('cursor');
   if (cursor) {
+    /* Hide until mouse enters so it doesn't sit at (0,0) on load */
+    cursor.style.opacity = '0';
+
     document.addEventListener('mousemove', function (e) {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top  = e.clientY + 'px';
+      cursor.style.left    = e.clientX + 'px';
+      cursor.style.top     = e.clientY + 'px';
+      cursor.style.opacity = '1';
     });
+
+    /* Hide when mouse leaves the window, show when it returns */
+    document.addEventListener('mouseleave', function () { cursor.style.opacity = '0'; });
+    document.addEventListener('mouseenter', function () { cursor.style.opacity = '1'; });
+
     function attachCursorHovers() {
       document.querySelectorAll(
         'a,button,.country-card,.proj-card,.highlight-card,.social-link,.tl-card'

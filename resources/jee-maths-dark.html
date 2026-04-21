@@ -32,6 +32,7 @@ comment: Prepare Well
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 
+    <link rel="stylesheet" href="../styles.css">
     <style>
         :root {
             --bg-base:        #0D0F17;
@@ -62,6 +63,7 @@ comment: Prepare Well
             font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
             overflow: hidden;
             height: 100vh;
+            padding-top: 64px;
             display: flex;
         }
 
@@ -86,14 +88,14 @@ comment: Prepare Well
         #sidebar {
             background: var(--bg-surface);
             width: 272px;
-            height: 100%;
+            height: calc(100vh - 64px);
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
             border-right: 1px solid var(--border);
             position: fixed;
             left: 0;
-            top: 0;
+            top: 64px;
             z-index: 40;
             transition: transform 0.3s ease;
         }
@@ -239,7 +241,7 @@ comment: Prepare Well
         #mobileBar {
             display: none;
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 64px; left: 0; right: 0;
             background: var(--bg-surface);
             border-bottom: 1px solid var(--border);
             padding: 14px 20px;
@@ -565,6 +567,8 @@ comment: Prepare Well
     </style>
 </head>
 <body>
+<div id="scroll-progress"></div>
+<div id="cursor"></div>
 
     <!-- Mobile top bar -->
     <div id="mobileBar">
@@ -1087,5 +1091,6 @@ comment: Prepare Well
             });
         }
     </script>
+<script src="../nav.js"></script>
 </body>
 </html>

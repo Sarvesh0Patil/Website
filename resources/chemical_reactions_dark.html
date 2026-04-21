@@ -20,6 +20,7 @@ comment: Source: NCERT Laboratory Manuals (volume 1-18)
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chromatic Chemistry — Dark Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
 <style>
 :root{
   --bg:#08080c;
@@ -206,33 +207,11 @@ footer{border-top:1px solid var(--border);padding:40px 24px;text-align:center;ma
   .modal-body{padding:20px 20px 28px}
 }
 
-/* ══ FIXED TOP NAV ══ */
-.top-bar{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  height:52px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 2rem;
-  background:rgba(8,8,12,0.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-}
-.top-bar-back{
-  display:inline-flex;align-items:center;gap:.45rem;
-  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--accent);text-decoration:none;
-  transition:opacity .2s;
-}
-.top-bar-back:hover{opacity:.7}
-.top-bar-brand{
-  font-family:'Syne',sans-serif;font-size:.88rem;font-weight:600;
-  color:rgba(232,230,240,0.45);letter-spacing:.04em;
-}
 </style>
 </head>
 <body>
-
-<nav class="top-bar">
-  <a class="top-bar-back" href="../resources.html">← Resources</a>
-  <span class="top-bar-brand">Sarvesh Patil</span>
-</nav>
+<div id="scroll-progress"></div>
+<div id="cursor"></div>
 
 <!-- HERO -->
 <section class="hero">
@@ -940,5 +919,6 @@ const observer = new IntersectionObserver(entries => {
 }, {threshold:0.05, rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+<script src="../nav.js"></script>
 </body>
 </html>
