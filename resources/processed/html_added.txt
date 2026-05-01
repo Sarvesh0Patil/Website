@@ -1,3 +1,4 @@
 chemical_reactions_dark.html
 physics_mechanics_revision.html
 jee-maths-dark.html
+resource_template copy.html

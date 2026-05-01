@@ -1,0 +1,1191 @@
+<!--resource
+title: Physics Irodov — 48-Day JEE Advanced 2026 Master Plan
+description: A comprehensive 48-day study plan covering all topics of Irodov's "Problems in General Physics" to prepare for JEE Advanced 2026. Each day features 5 core problems and 1 bonus problem, with a focus on conceptual understanding and problem-solving skills.
+date: 2026-05-01 · Physics · JEE Advanced
+comment: Keep on solving!
+-->
+
+
+<!DOCTYPE html>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZT6FWW5KZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9ZT6FWW5KZ');
+</script>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irodov — JEE Advanced 2026 Master Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080b12;
+  --surface: #0c1018;
+  --card: #111620;
+  --border: #1a2035;
+  --border2: #22293d;
+  --text: #dde4f2;
+  --muted: #4e5a78;
+  --muted2: #7b8ab0;
+
+  --mech: #f59e0b;
+  --thermo: #ef4444;
+  --em: #a78bfa;
+  --waves: #22d3ee;
+  --optics: #34d399;
+  --modern: #fb923c;
+  --rev: #94a3b8;
+
+  --mech-bg: rgba(245,158,11,0.08);
+  --thermo-bg: rgba(239,68,68,0.08);
+  --em-bg: rgba(167,139,250,0.08);
+  --waves-bg: rgba(34,211,238,0.08);
+  --optics-bg: rgba(52,211,153,0.08);
+  --modern-bg: rgba(251,146,60,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* ── LAYOUT ── */
+.app{display:flex;min-height:100vh;}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:230px;flex-shrink:0;
+  background:var(--surface);
+  border-right:1px solid var(--border);
+  position:fixed;top:0;left:0;bottom:0;
+  overflow-y:auto;z-index:200;
+  display:flex;flex-direction:column;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+}
+.sidebar::-webkit-scrollbar{width:4px;}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);}
+
+.sb-header{padding:20px 16px 16px;border-bottom:1px solid var(--border);}
+.sb-brand{font-size:12px;font-weight:800;letter-spacing:-.2px;line-height:1.3;}
+.sb-brand span{color:var(--mech);}
+.sb-date{font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:4px;}
+.sb-exam{margin-top:10px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:6px;padding:7px 10px;}
+.sb-exam-label{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#ef4444;font-family:'IBM Plex Mono',monospace;}
+.sb-exam-date{font-size:12px;font-weight:700;color:#f87171;margin-top:1px;}
+.sb-exam-days{font-size:10px;color:var(--muted);margin-top:2px;}
+
+.sb-overall{padding:14px 16px;border-bottom:1px solid var(--border);}
+.sb-overall-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'IBM Plex Mono',monospace;margin-bottom:6px;}
+.sb-overall-nums{display:flex;justify-content:space-between;margin-bottom:6px;}
+.sb-num{font-size:14px;font-weight:800;color:var(--text);}
+.sb-num-label{font-size:9px;color:var(--muted);margin-top:1px;}
+.progress-bar{height:5px;background:var(--border);border-radius:100px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:100px;transition:width .3s ease;}
+
+.sb-nav{padding:10px 10px 20px;flex:1;}
+.sb-section-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:10px 8px 5px;font-family:'IBM Plex Mono',monospace;}
+.nav-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:7px;cursor:pointer;transition:all .15s;text-decoration:none;margin-bottom:1px;}
+.nav-item:hover{background:rgba(255,255,255,.05);}
+.nav-item.active{background:rgba(255,255,255,.07);}
+.nav-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.nav-text{font-size:11px;font-weight:600;color:var(--muted2);flex:1;}
+.nav-item:hover .nav-text,.nav-item.active .nav-text{color:var(--text);}
+.nav-count{font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--muted);background:var(--border);padding:2px 6px;border-radius:4px;}
+.mini-progress{height:2px;background:var(--border);border-radius:100px;overflow:hidden;margin-top:3px;}
+.mini-fill{height:100%;border-radius:100px;transition:width .3s;}
+
+/* ── MAIN ── */
+.main{margin-left:230px;flex:1;padding:0;}
+
+/* ── TOP BAR ── */
+.topbar{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:18px 32px;
+  position:sticky;top:0;z-index:100;
+}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.topbar-title{font-size:18px;font-weight:800;letter-spacing:-.3px;}
+.topbar-title span{color:var(--mech);}
+.topbar-meta{font-size:11px;color:var(--muted);margin-top:2px;}
+.topbar-stats{display:flex;gap:12px;flex-wrap:wrap;}
+.tstat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;text-align:center;}
+.tstat-num{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:var(--mech);}
+.tstat-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:1px;}
+
+/* ── CONTENT ── */
+.content{padding:24px 32px 80px;}
+
+/* ── CHAPTER HEADER ── */
+.chapter-header{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 20px;
+  border-radius:12px;
+  margin-bottom:16px;
+  border:1px solid var(--border);
+}
+.chapter-icon{font-size:22px;}
+.chapter-title{font-size:16px;font-weight:800;letter-spacing:-.2px;}
+.chapter-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.chapter-badge{margin-left:auto;font-size:10px;font-family:'IBM Plex Mono',monospace;padding:4px 10px;border-radius:6px;font-weight:600;}
+.chap-prog{margin-top:8px;}
+
+/* ── DAY GRID ── */
+.days-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px;margin-bottom:32px;}
+
+/* ── DAY CARD ── */
+.day-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  transition:transform .15s,border-color .2s;
+}
+.day-card:hover{transform:translateY(-2px);}
+.day-card.completed{border-color:rgba(52,211,153,.2);background:rgba(52,211,153,.03);}
+
+.card-top{
+  padding:13px 15px 10px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:8px;
+}
+.card-day-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.5px;}
+.card-date{font-size:9px;color:var(--muted);margin-top:1px;font-family:'IBM Plex Mono',monospace;}
+.card-title{font-size:12px;font-weight:700;line-height:1.35;margin-top:2px;}
+.card-actions{display:flex;gap:6px;align-items:center;flex-shrink:0;}
+.mark-all-btn{font-size:9px;font-family:'IBM Plex Mono',monospace;background:none;border:1px solid var(--border);color:var(--muted);padding:3px 8px;border-radius:5px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.mark-all-btn:hover{border-color:var(--muted2);color:var(--text);}
+.done-badge{font-size:9px;background:rgba(52,211,153,.15);color:#34d399;border:1px solid rgba(52,211,153,.3);padding:3px 8px;border-radius:5px;font-family:'IBM Plex Mono',monospace;display:none;}
+.day-card.completed .done-badge{display:block;}
+.day-card.completed .mark-all-btn{display:none;}
+
+/* problems */
+.problems-section{padding:10px 15px 8px;}
+.section-label{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.prob-row{display:flex;align-items:flex-start;gap:8px;padding:4px 0;cursor:pointer;}
+.prob-row input[type=checkbox]{
+  appearance:none;width:14px;height:14px;border:1.5px solid var(--border2);border-radius:3px;
+  cursor:pointer;flex-shrink:0;margin-top:1px;transition:all .15s;position:relative;
+}
+.prob-row input[type=checkbox]:checked{background:#34d399;border-color:#34d399;}
+.prob-row input[type=checkbox]:checked::after{content:'✓';position:absolute;top:-2px;left:1px;font-size:10px;color:#080b12;font-weight:900;}
+.prob-content{flex:1;}
+.prob-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;}
+.prob-desc{font-size:11px;color:var(--muted2);margin-top:1px;line-height:1.4;}
+.prob-row.done .prob-num,.prob-row.done .prob-desc{opacity:.4;text-decoration:line-through;}
+
+/* difficulty pips */
+.diff-pips{display:inline-flex;gap:2px;margin-left:6px;vertical-align:middle;}
+.pip{width:5px;height:5px;border-radius:50%;background:var(--border2);}
+.pip.e{background:#34d399;}.pip.m{background:#f59e0b;}.pip.h{background:#ef4444;}
+
+/* bonus */
+.bonus-section{background:rgba(251,146,60,.04);border-top:1px solid rgba(251,146,60,.1);padding:10px 15px 12px;}
+.bonus-label{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#fb923c;font-family:'IBM Plex Mono',monospace;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.bonus-label::after{content:'';flex:1;height:1px;background:rgba(251,146,60,.15);}
+.bonus-prob-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#fb923c;}
+
+/* tip */
+.tip-box{background:rgba(255,255,255,.025);border-left:2px solid var(--muted);padding:7px 12px;margin:0 15px 12px;border-radius:0 6px 6px 0;font-size:11px;color:var(--muted2);line-height:1.5;}
+
+/* chapter color theming */
+.chapter-mech .card-day-num{color:var(--mech);}
+.chapter-mech .prob-num{color:var(--mech);}
+.chapter-mech .mark-all-btn:hover,.chapter-mech .mark-all-btn:hover{border-color:var(--mech);color:var(--mech);}
+
+.chapter-thermo .card-day-num{color:var(--thermo);}
+.chapter-thermo .prob-num{color:var(--thermo);}
+
+.chapter-em .card-day-num{color:var(--em);}
+.chapter-em .prob-num{color:var(--em);}
+
+.chapter-waves .card-day-num{color:var(--waves);}
+.chapter-waves .prob-num{color:var(--waves);}
+
+.chapter-optics .card-day-num{color:var(--optics);}
+.chapter-optics .prob-num{color:var(--optics);}
+
+.chapter-modern .card-day-num{color:var(--modern);}
+.chapter-modern .prob-num{color:var(--modern);}
+
+/* chapter header colors */
+.ch-mech{background:var(--mech-bg);border-color:rgba(245,158,11,.2);}
+.ch-thermo{background:var(--thermo-bg);border-color:rgba(239,68,68,.2);}
+.ch-em{background:var(--em-bg);border-color:rgba(167,139,250,.2);}
+.ch-waves{background:var(--waves-bg);border-color:rgba(34,211,238,.2);}
+.ch-optics{background:var(--optics-bg);border-color:rgba(52,211,153,.2);}
+.ch-modern{background:var(--modern-bg);border-color:rgba(251,146,60,.2);}
+
+.badge-mech{background:rgba(245,158,11,.15);color:var(--mech);border:1px solid rgba(245,158,11,.3);}
+.badge-thermo{background:rgba(239,68,68,.15);color:var(--thermo);border:1px solid rgba(239,68,68,.3);}
+.badge-em{background:rgba(167,139,250,.15);color:var(--em);border:1px solid rgba(167,139,250,.3);}
+.badge-waves{background:rgba(34,211,238,.15);color:var(--waves);border:1px solid rgba(34,211,238,.3);}
+.badge-optics{background:rgba(52,211,153,.15);color:var(--optics);border:1px solid rgba(52,211,153,.3);}
+.badge-modern{background:rgba(251,146,60,.15);color:var(--modern);border:1px solid rgba(251,146,60,.3);}
+
+/* Countdown */
+.countdown-bar{
+  background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(239,68,68,.05));
+  border:1px solid rgba(239,68,68,.2);
+  border-radius:10px;
+  padding:14px 20px;
+  margin-bottom:24px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.cd-left{font-size:12px;font-weight:600;color:#f87171;}
+.cd-left span{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:800;display:block;margin-bottom:2px;}
+.cd-right{display:flex;gap:14px;}
+.cd-stat{text-align:center;}
+.cd-stat-num{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:var(--text);}
+.cd-stat-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;}
+
+/* Section anchors */
+.section-anchor{scroll-margin-top:80px;}
+
+@media(max-width:768px){
+  .sidebar{display:none;}
+  .main{margin-left:0;}
+  .content,.topbar{padding-left:16px;padding-right:16px;}
+  .days-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="sb-header">
+    <div class="sb-brand">Irodov <span>×</span> JEE Advanced</div>
+    <div class="sb-date">Plan starts: 23 Mar 2026</div>
+    <div class="sb-exam">
+      <div class="sb-exam-label">🎯 Exam Date</div>
+      <div class="sb-exam-date">May 17, 2026</div>
+      <div class="sb-exam-days" id="days-left-sb">— days to go</div>
+    </div>
+  </div>
+
+  <div class="sb-overall">
+    <div class="sb-overall-label">Overall Progress</div>
+    <div class="sb-overall-nums">
+      <div><div class="sb-num" id="sb-probs">0</div><div class="sb-num-label">Problems</div></div>
+      <div><div class="sb-num" id="sb-days">0</div><div class="sb-num-label">Days Done</div></div>
+      <div><div class="sb-num" id="sb-pct">0%</div><div class="sb-num-label">Complete</div></div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="overall-prog" style="width:0%;background:linear-gradient(90deg,var(--mech),var(--optics))"></div></div>
+  </div>
+
+  <div class="sb-nav">
+    <div class="sb-section-label">Chapters</div>
+    <div id="nav-items"></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <div class="topbar-title">Irodov <span>48-Day</span> JEE Advanced 2026</div>
+        <div class="topbar-meta">All topics · 5 problems/day + 1 bonus · March 23 → May 9</div>
+      </div>
+      <div class="topbar-stats">
+        <div class="tstat"><div class="tstat-num" id="ts-probs">0/288</div><div class="tstat-label">Problems Done</div></div>
+        <div class="tstat"><div class="tstat-num" id="ts-days">0/48</div><div class="tstat-label">Days Done</div></div>
+        <div class="tstat"><div class="tstat-num" id="ts-streak">🔥 0</div><div class="tstat-label">Streak</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" id="content">
+    <div class="countdown-bar">
+      <div class="cd-left">
+        <span id="cd-days">--</span>
+        Days until JEE Advanced 2026
+      </div>
+      <div class="cd-right">
+        <div class="cd-stat"><div class="cd-stat-num">48</div><div class="cd-stat-label">Study Days</div></div>
+        <div class="cd-stat"><div class="cd-stat-num">240</div><div class="cd-stat-label">Core Probs</div></div>
+        <div class="cd-stat"><div class="cd-stat-num">48</div><div class="cd-stat-label">Bonus Probs</div></div>
+        <div class="cd-stat"><div class="cd-stat-num">7</div><div class="cd-stat-label">Day Buffer</div></div>
+      </div>
+    </div>
+    <div id="chapters-container"></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ─────────────────────────────────────────
+//  DATA
+// ─────────────────────────────────────────
+const EXAM_DATE = new Date('2026-05-17');
+const START_DATE = new Date('2026-03-23');
+
+function dateFor(dayNum){
+  const d = new Date(START_DATE);
+  d.setDate(d.getDate() + dayNum - 1);
+  return d.toLocaleDateString('en-IN',{day:'numeric',month:'short',weekday:'short'});
+}
+
+// E=easy M=medium H=hard(bonus)
+const chapters = [
+  {
+    id:'mech', title:'Mechanics', icon:'⚙️',
+    color:'var(--mech)', cls:'mech', headerCls:'ch-mech', badgeCls:'badge-mech',
+    days:[1,2,3,4,5,6,7,8,9,10,11,12],
+    sub:'Kinematics · NLM · Energy · Momentum · Rotation · Gravitation · Fluids'
+  },
+  {
+    id:'thermo', title:'Thermodynamics', icon:'🌡️',
+    color:'var(--thermo)', cls:'thermo', headerCls:'ch-thermo', badgeCls:'badge-thermo',
+    days:[13,14,15,16,17,18,19],
+    sub:'Ideal Gas · First & Second Law · Kinetic Theory · Heat Transfer'
+  },
+  {
+    id:'em', title:'Electricity & Magnetism', icon:'⚡',
+    color:'var(--em)', cls:'em', headerCls:'ch-em', badgeCls:'badge-em',
+    days:[20,21,22,23,24,25,26,27,28,29,30,31],
+    sub:'Electrostatics · Circuits · Magnetism · EMI · AC Circuits'
+  },
+  {
+    id:'waves', title:'Oscillations & Waves', icon:'〜',
+    color:'var(--waves)', cls:'waves', headerCls:'ch-waves', badgeCls:'badge-waves',
+    days:[32,33,34,35,36,37],
+    sub:'SHM · Damped Osc. · Mechanical Waves · Sound · Doppler'
+  },
+  {
+    id:'optics', title:'Optics', icon:'🔭',
+    color:'var(--optics)', cls:'optics', headerCls:'ch-optics', badgeCls:'badge-optics',
+    days:[38,39,40,41,42],
+    sub:'Geometrical Optics · Interference · Diffraction · Polarization'
+  },
+  {
+    id:'modern', title:'Modern Physics', icon:'⚛️',
+    color:'var(--modern)', cls:'modern', headerCls:'ch-modern', badgeCls:'badge-modern',
+    days:[43,44,45,46,47,48],
+    sub:'Photoelectric · Bohr Model · X-rays · Nuclear · Final Mock'
+  }
+];
+
+const days = [
+// ── MECHANICS ──
+{
+  day:1, chap:'mech', title:'Kinematics — Linear Motion',
+  probs:[
+    {n:'1.3', d:'Particle decelerates uniformly; find distance before stopping', diff:'E'},
+    {n:'1.5', d:'Find average velocity over two equal time intervals', diff:'E'},
+    {n:'1.8', d:'Two cars start from same point in opposite directions; when are they 100m apart?', diff:'E'},
+    {n:'1.11', d:'Ball thrown vertically up in an elevator accelerating upward', diff:'M'},
+    {n:'1.14', d:'Projectile — find range, max height and time of flight', diff:'M'},
+  ],
+  bonus:{n:'1.16', d:'v = α√x; find acceleration as function of x and then of t'},
+  tip:'Always write equations for x(t) and v(t) explicitly. Avoid jumping to formulas.'
+},
+{
+  day:2, chap:'mech', title:'Kinematics — Variable Acceleration',
+  probs:[
+    {n:'1.17', d:'a = α – βv; solve to find v(t) using separation of variables', diff:'E'},
+    {n:'1.20', d:'v = v₀ – αt³; find total distance until particle stops', diff:'E'},
+    {n:'1.22', d:'Given v(x) = α + βx; find acceleration as function of x', diff:'M'},
+    {n:'1.24', d:'s = αt – βt³; find time when velocity is zero and acceleration at that moment', diff:'M'},
+    {n:'1.26', d:'Particle: x = at – bt²; find when speed is maximum', diff:'M'},
+  ],
+  bonus:{n:'1.31', d:'Particle on parabola y = ax²; given v_x = const, find full acceleration vector'},
+  tip:'Use calculus: a = v·dv/dx when expressing a as function of position. Draw v-x graphs.'
+},
+{
+  day:3, chap:'mech', title:'Circular & Curvilinear Kinematics',
+  probs:[
+    {n:'1.36', d:'Point on rim of rolling wheel — find velocity and acceleration', diff:'E'},
+    {n:'1.38', d:'Rotating disk with angular acceleration α — find full acceleration of rim point', diff:'E'},
+    {n:'1.41', d:'φ = a + bt²; find tangential and normal acceleration at given t', diff:'M'},
+    {n:'1.44', d:'Particle on Archimedean spiral r = aφ; find radius of curvature', diff:'M'},
+    {n:'1.52', d:'Velocity vector makes angle θ with position vector; find centripetal acceleration', diff:'M'},
+  ],
+  bonus:{n:'1.34', d:'Spiral path r = ae^(bφ); find full acceleration vector at any point'},
+  tip:'Decompose: aτ = dv/dt (tangential), aₙ = v²/R (normal). R = (1 + y\'²)^(3/2) / |y″| for any curve.'
+},
+{
+  day:4, chap:'mech', title:'Projectile Motion & Relative Motion',
+  probs:[
+    {n:'1.54', d:'Boat crosses river; find minimum time and minimum displacement paths', diff:'E'},
+    {n:'1.58', d:'Ball thrown at 30° — find velocity direction after 1 second', diff:'E'},
+    {n:'1.60', d:'Ball thrown from tower; find speed and direction when it hits ground', diff:'M'},
+    {n:'1.63', d:'Two balls thrown simultaneously from same height; find when/where they meet', diff:'M'},
+    {n:'1.66', d:'Projectile on inclined plane; find range along slope', diff:'M'},
+  ],
+  bonus:{n:'1.67', d:'Find optimal angle to maximise range on inclined plane — elegant calculus result'},
+  tip:'Inclined projectile: rotate axes along slope. Take x along slope, y perpendicular. Very clean algebra.'
+},
+{
+  day:5, chap:'mech', title:'Newton\'s Laws — Force & Equilibrium',
+  probs:[
+    {n:'1.76', d:'Block on horizontal surface of accelerating elevator — find normal force', diff:'E'},
+    {n:'1.83', d:'Classic Atwood machine — find acceleration and tension', diff:'E'},
+    {n:'1.85', d:'Block on rough incline with given μ — find acceleration', diff:'M'},
+    {n:'1.88', d:'Two blocks on table connected by string over edge — find acceleration', diff:'M'},
+    {n:'1.91', d:'Three bodies in a chain — find tension in each string', diff:'M'},
+  ],
+  bonus:{n:'1.87', d:'Wedge + block system on smooth floor; find accelerations using constraint method'},
+  tip:'Draw FBD for EACH body separately. Write N2L for each. Apply constraint: length of string = constant → differentiate twice.'
+},
+{
+  day:6, chap:'mech', title:'Friction, Wedge & Circular Motion',
+  probs:[
+    {n:'1.92', d:'Block on rough wedge — find minimum force to prevent sliding', diff:'E'},
+    {n:'1.94', d:'Rough incline; find μ given measured acceleration', diff:'E'},
+    {n:'1.96', d:'Block stacked on another; lower block pulled — find condition for no slipping', diff:'M'},
+    {n:'1.104', d:'Car on banked road — find max and min safe speed', diff:'M'},
+    {n:'1.106', d:'Conical pendulum — find tension and cone angle as function of ω', diff:'M'},
+  ],
+  bonus:{n:'1.107', d:'Particle on inner surface of rotating cone; find minimum ω for contact to be maintained'},
+  tip:'Banked road: at max speed tan(θ + φ) = v²/Rg, at min speed tan(θ – φ) = v²/Rg, where φ = arctan(μ).'
+},
+{
+  day:7, chap:'mech', title:'Work, Energy & Power',
+  probs:[
+    {n:'1.118', d:'Work done by gravity on curved path — verify path independence', diff:'E'},
+    {n:'1.120', d:'Spring compressed by x — find speed of block when fully released', diff:'E'},
+    {n:'1.124', d:'Variable force F = –αx²; find work done over displacement d', diff:'M'},
+    {n:'1.127', d:'Block slides down rough incline of length L; find speed at bottom', diff:'M'},
+    {n:'1.131', d:'Block on spring on rough floor — find how far it moves before stopping', diff:'M'},
+  ],
+  bonus:{n:'1.130', d:'Engine delivers constant power P; find velocity as function of time (no friction first, then with friction)'},
+  tip:'Work-energy theorem: ΣW = ΔKE. Friction work is always negative: W_f = –μmg·d. Spring PE = ½kx².'
+},
+{
+  day:8, chap:'mech', title:'Potential Energy & Conservation Laws',
+  probs:[
+    {n:'1.133', d:'U(x) = ax² – bx; find equilibrium position and small oscillation frequency', diff:'E'},
+    {n:'1.135', d:'Two particles interact via U(r) — find force and stable equilibrium', diff:'E'},
+    {n:'1.138', d:'Ball thrown from surface — find escape condition using energy', diff:'M'},
+    {n:'1.142', d:'Particle in field U = –a/r; classify motion (bound vs unbound)', diff:'M'},
+    {n:'1.147', d:'Given U(x) graph — identify turning points and type of motion', diff:'M'},
+  ],
+  bonus:{n:'1.145', d:'Particle in 2D potential U = α(x² + y²); find shape of orbit from energy and momentum'},
+  tip:'At equilibrium dU/dx = 0. Stability: d²U/dx² > 0. Turning points: E = U(x). Brilliant JEE topic.'
+},
+{
+  day:9, chap:'mech', title:'Momentum, Impulse & Collisions',
+  probs:[
+    {n:'1.152', d:'Body explodes into two fragments — find velocities using momentum conservation', diff:'E'},
+    {n:'1.155', d:'Head-on elastic collision — derive velocity exchange formula', diff:'E'},
+    {n:'1.158', d:'Bullet embeds in block on spring — find maximum compression', diff:'M'},
+    {n:'1.160', d:'Ball bounces off floor with coefficient of restitution e', diff:'M'},
+    {n:'1.165', d:'Elastic collision at angle — find scattering angles of both particles', diff:'M'},
+  ],
+  bonus:{n:'1.177', d:'Chain on frictionless table; end hangs over edge — find speed as function of overhang'},
+  tip:'For elastic: conserve both p and KE. For perfectly inelastic: only conserve p. e = (v_sep)/(v_approach).'
+},
+{
+  day:10, chap:'mech', title:'Angular Momentum & Torque',
+  probs:[
+    {n:'1.234', d:'Find angular momentum of moving particle about a fixed point', diff:'E'},
+    {n:'1.237', d:'Torque of gravity on a uniform rod leaning against a wall', diff:'E'},
+    {n:'1.240', d:'Skater pulls arms in — find new angular velocity using L conservation', diff:'M'},
+    {n:'1.244', d:'Particle under central force — prove L = constant (area law)', diff:'M'},
+    {n:'1.250', d:'Find MI of rod about various axes using parallel axis theorem', diff:'M'},
+  ],
+  bonus:{n:'1.248', d:'Spinning top in gravity — derive and explain precession angular velocity Ω = Mgd/Iω'},
+  tip:'L = r × p = Iω. τ = dL/dt. Parallel axis: I = I_cm + Md². Perpendicular axis (lamina only): Iz = Ix + Iy.'
+},
+{
+  day:11, chap:'mech', title:'Rolling Motion & Rotation',
+  probs:[
+    {n:'1.253', d:'Compare rolling speed of solid cylinder vs hollow sphere down same incline', diff:'E'},
+    {n:'1.255', d:'Disk on rough surface — find condition for rolling without slipping', diff:'E'},
+    {n:'1.258', d:'Ball rolls down incline — find acceleration and friction force', diff:'M'},
+    {n:'1.261', d:'Spool pulled by thread at angle θ — find acceleration of center', diff:'M'},
+    {n:'1.263', d:'Man walks toward center of rotating platform — find new angular speed', diff:'M'},
+  ],
+  bonus:{n:'1.267', d:'Disk rolling on table reaches edge and falls — find where it lands (rotation continues in air)'},
+  tip:'Rolling: v_cm = ωR. Total KE = ½mv² (1 + I/mR²). On incline: a = g sinθ / (1 + I/mR²). Friction is static for rolling!'
+},
+{
+  day:12, chap:'mech', title:'Gravitation & Fluid Mechanics',
+  probs:[
+    {n:'1.200', d:'Gravitational field inside a uniform spherical shell — prove it is zero', diff:'E'},
+    {n:'1.202', d:'Field and potential at any point inside/outside a uniform sphere', diff:'E'},
+    {n:'1.215', d:'Circular orbit — find speed, period, and total mechanical energy', diff:'M'},
+    {n:'1.326', d:'Efflux velocity from hole in tank — Torricelli\'s theorem derivation', diff:'M'},
+    {n:'1.330', d:'Stokes\' law — find terminal velocity of sphere falling in viscous fluid', diff:'M'},
+  ],
+  bonus:{n:'1.213', d:'Straight tunnel through Earth\'s center — show it is SHM and find period'},
+  tip:'Gravitational Gauss law: g·4πr² = –4πGM_in. For fluid: Bernoulli + continuity equation are your tools.'
+},
+
+// ── THERMODYNAMICS ──
+{
+  day:13, chap:'thermo', title:'Ideal Gas Laws & Equation of State',
+  probs:[
+    {n:'2.1', d:'Find temperature if gas is heated at constant volume from p₁ to p₂', diff:'E'},
+    {n:'2.2', d:'Barometric formula — find pressure at altitude h', diff:'E'},
+    {n:'2.5', d:'Gas in sealed container heated; find mass of gas that escapes', diff:'M'},
+    {n:'2.8', d:'Mixture of two gases — find molar mass and specific heats', diff:'M'},
+    {n:'2.10', d:'Van der Waals gas — find critical temperature and pressure', diff:'M'},
+  ],
+  bonus:{n:'2.15', d:'Gas in piston with spring attached — find final state after heating'},
+  tip:'PV = nRT. For mixtures: total pressure = sum of partial pressures. Know all three specific heats: Cp, Cv, γ.'
+},
+{
+  day:14, chap:'thermo', title:'First Law of Thermodynamics',
+  probs:[
+    {n:'2.26', d:'Gas heated at constant pressure — find Q, W, and ΔU', diff:'E'},
+    {n:'2.28', d:'Isochoric process — find heat supplied and change in internal energy', diff:'E'},
+    {n:'2.30', d:'Gas undergoes polytropic process PVⁿ = const — find work done', diff:'M'},
+    {n:'2.33', d:'Given P-V diagram with two processes — find net work and heat', diff:'M'},
+    {n:'2.37', d:'Cyclic process on P-V diagram — find efficiency', diff:'M'},
+  ],
+  bonus:{n:'2.41', d:'Gas in container with diathermal wall expands against atmosphere — find final temperature'},
+  tip:'ΔU = nCvΔT for any process (ideal gas). W = ∫PdV. Q = ΔU + W. Signs: Q>0 absorbed, W>0 done BY gas.'
+},
+{
+  day:15, chap:'thermo', title:'Adiabatic & Thermodynamic Processes',
+  probs:[
+    {n:'2.43', d:'Adiabatic expansion — find temperature drop and work done', diff:'E'},
+    {n:'2.46', d:'Speed of sound in ideal gas — derive from adiabatic bulk modulus', diff:'E'},
+    {n:'2.49', d:'Gas compressed adiabatically by given ratio — find T and P change', diff:'M'},
+    {n:'2.52', d:'Isothermal vs adiabatic compression — compare work required', diff:'M'},
+    {n:'2.56', d:'Polytropic process n=1 (isothermal) and n=γ (adiabatic) — derive work formulas', diff:'M'},
+  ],
+  bonus:{n:'2.62', d:'Find entropy change in free expansion of ideal gas into vacuum'},
+  tip:'Adiabatic: TV^(γ-1)=const, TP^(-γ/(γ-1))=const. γ = Cp/Cv = 5/3 (monatomic), 7/5 (diatomic).'
+},
+{
+  day:16, chap:'thermo', title:'Second Law & Carnot Cycle',
+  probs:[
+    {n:'2.116', d:'Carnot engine — find efficiency from given source and sink temperatures', diff:'E'},
+    {n:'2.118', d:'Refrigerator COP — find heat pumped per unit work input', diff:'E'},
+    {n:'2.120', d:'Carnot cycle on P-V diagram — identify each process and find net work', diff:'M'},
+    {n:'2.123', d:'Irreversible process — show entropy of universe increases', diff:'M'},
+    {n:'2.127', d:'Two bodies at different T brought into contact — find entropy change', diff:'M'},
+  ],
+  bonus:{n:'2.125', d:'Derive maximum possible efficiency of any heat engine operating between T₁ and T₂'},
+  tip:'Carnot η = 1 – T_cold/T_hot. Entropy: ΔS = ∫dQ_rev/T. For irreversible: ΔS_universe > 0.'
+},
+{
+  day:17, chap:'thermo', title:'Kinetic Theory of Gases',
+  probs:[
+    {n:'2.64', d:'Find mean free path of gas molecules at given T and P', diff:'E'},
+    {n:'2.67', d:'Maxwell speed distribution — find most probable, mean, and rms speeds', diff:'E'},
+    {n:'2.70', d:'Number of molecules striking unit area per second — derive flux formula', diff:'M'},
+    {n:'2.75', d:'Viscosity of gas from kinetic theory — dependence on T', diff:'M'},
+    {n:'2.79', d:'Thermal conductivity of gas — compare with viscosity expression', diff:'M'},
+  ],
+  bonus:{n:'2.77', d:'Derive diffusion coefficient D = (1/3)⟨v⟩λ and find numerical value at STP'},
+  tip:'v_rms = √(3RT/M), v_mean = √(8RT/πM), v_mp = √(2RT/M). Ratio: v_mp : v_mean : v_rms = 1 : 1.13 : 1.22'
+},
+{
+  day:18, chap:'thermo', title:'Heat Transfer & Phase Change',
+  probs:[
+    {n:'2.160', d:'Heat conduction through composite slab — find temperature at interface', diff:'E'},
+    {n:'2.162', d:'Cylindrical shell conductor — find radial heat flow rate', diff:'E'},
+    {n:'2.165', d:'Newton\'s law of cooling — find temperature as function of time', diff:'M'},
+    {n:'2.168', d:'Stefan-Boltzmann law — find power radiated by black body at given T', diff:'M'},
+    {n:'2.172', d:'Body cools by radiation — find time to cool from T₁ to T₂', diff:'M'},
+  ],
+  bonus:{n:'2.181', d:'Non-uniform temperature rod: solve heat equation for steady-state profile'},
+  tip:'Fourier law: dQ/dt = –kA·dT/dx. Stefan: P = εσAT⁴. Thermal resistance R = L/kA (slabs in series add R).'
+},
+{
+  day:19, chap:'thermo', title:'Thermodynamics — Integrated Review',
+  probs:[
+    {n:'2.20', d:'Gas heated in two stages: first at const V, then const P — find total Q', diff:'E'},
+    {n:'2.38', d:'Cyclic process — find work done and efficiency from P-V diagram', diff:'M'},
+    {n:'2.55', d:'Gas expands in T-s diagram — find work done (area under curve)', diff:'M'},
+    {n:'2.149', d:'Joule-Thomson effect — show enthalpy is conserved', diff:'M'},
+    {n:'2.254', d:'Magnetic work on gas — generalized first law', diff:'M'},
+  ],
+  bonus:{n:'2.257', d:'Adiabatic demagnetization — find temperature achievable and entropy analysis'},
+  tip:'Review: For every thermodynamic problem, identify: process type → find work → find ΔU → get Q. Draw P-V or T-S diagram first.'
+},
+
+// ── ELECTRICITY & MAGNETISM ──
+{
+  day:20, chap:'em', title:'Electrostatics — Coulomb\'s Law & Electric Field',
+  probs:[
+    {n:'3.1', d:'Force between two point charges — Coulomb\'s law calculation', diff:'E'},
+    {n:'3.2', d:'Three charges on a line — find net force on the middle charge', diff:'E'},
+    {n:'3.4', d:'Electric field on the axis of a uniformly charged ring', diff:'M'},
+    {n:'3.7', d:'Electric field along the axis of a uniformly charged disk', diff:'M'},
+    {n:'3.10', d:'Field of infinite uniformly charged wire — direct integration', diff:'M'},
+  ],
+  bonus:{n:'3.15', d:'Electric dipole in non-uniform field — find force and torque acting on it'},
+  tip:'E = kq/r² for point charge. Superpose fields as vectors. Symmetry arguments save enormous calculation time.'
+},
+{
+  day:21, chap:'em', title:'Gauss\'s Law & Charge Distributions',
+  probs:[
+    {n:'3.19', d:'Field inside and outside a uniformly charged sphere — apply Gauss\'s law', diff:'E'},
+    {n:'3.22', d:'Infinite plane of charge — find field using Gauss\'s law', diff:'E'},
+    {n:'3.25', d:'Cylindrical volume charge distribution — field at any point', diff:'M'},
+    {n:'3.28', d:'Two oppositely charged parallel planes — find field in all regions', diff:'M'},
+    {n:'3.32', d:'Non-uniformly charged sphere ρ = ρ₀r — find field everywhere', diff:'M'},
+  ],
+  bonus:{n:'3.42', d:'Cavity inside a uniformly charged sphere — field inside cavity is uniform (prove it)'},
+  tip:'Gauss: ∮E·dA = Q_enc/ε₀. Choose Gaussian surface to match symmetry: sphere, cylinder, or pillbox.'
+},
+{
+  day:22, chap:'em', title:'Electric Potential & Potential Energy',
+  probs:[
+    {n:'3.46', d:'Potential due to a uniformly charged ring — on axis and at center', diff:'E'},
+    {n:'3.49', d:'Work done in moving charge between two points in a field', diff:'E'},
+    {n:'3.52', d:'Equipotential surfaces of dipole — sketch and find equations', diff:'M'},
+    {n:'3.101', d:'Charge in combined field of two point charges — find equilibrium', diff:'M'},
+    {n:'3.105', d:'Potential energy of charge distribution — assembly energy of sphere', diff:'M'},
+  ],
+  bonus:{n:'3.108', d:'Potential inside and outside a charged spherical conductor — prove constant inside'},
+  tip:'V = kq/r. E = –∇V. For a conductor in equilibrium: E_inside = 0, surface is equipotential, charge on outer surface only.'
+},
+{
+  day:23, chap:'em', title:'Capacitors & Dielectrics',
+  probs:[
+    {n:'3.110', d:'Capacitance of a parallel plate capacitor with and without dielectric', diff:'E'},
+    {n:'3.112', d:'Capacitors in series and parallel — find equivalent capacitance', diff:'E'},
+    {n:'3.115', d:'Energy stored in capacitor — find energy density in terms of E-field', diff:'M'},
+    {n:'3.120', d:'Dielectric slab inserted — find new charge, field, and energy', diff:'M'},
+    {n:'3.125', d:'Spherical capacitor — find capacitance and electric field between shells', diff:'M'},
+  ],
+  bonus:{n:'3.142', d:'Force between capacitor plates — virtual work method gives F = ε₀E²A/2'},
+  tip:'C = ε₀A/d (parallel plate). Energy U = ½CV² = Q²/2C. Dielectric: C → κC, E → E/κ (isolated), V stays same if connected to battery.'
+},
+{
+  day:24, chap:'em', title:'Current Electricity I — Basic Circuits',
+  probs:[
+    {n:'3.147', d:'Ohm\'s law — find current, resistance and power in simple circuit', diff:'E'},
+    {n:'3.150', d:'Resistors in series and parallel — find equivalent resistance', diff:'E'},
+    {n:'3.152', d:'Internal resistance of battery — find terminal voltage at different loads', diff:'M'},
+    {n:'3.160', d:'Wheatstone bridge — find condition for balance and current in galvanometer', diff:'M'},
+    {n:'3.163', d:'Potentiometer circuit — find unknown EMF using balance condition', diff:'M'},
+  ],
+  bonus:{n:'3.169', d:'Ladder network of identical resistors — find equivalent resistance using recursion'},
+  tip:'KVL: ΣV = 0 around any loop. KCL: ΣI = 0 at any junction. Power: P = VI = I²R = V²/R.'
+},
+{
+  day:25, chap:'em', title:'Current Electricity II — Kirchhoff & RC Circuits',
+  probs:[
+    {n:'3.170', d:'Multi-loop circuit — apply Kirchhoff\'s laws to find all currents', diff:'E'},
+    {n:'3.175', d:'RC circuit charging — find current and voltage as function of time', diff:'E'},
+    {n:'3.178', d:'RC circuit discharging — find time constant and energy dissipated in R', diff:'M'},
+    {n:'3.182', d:'Two capacitors connected by resistor — find charge redistribution and heat', diff:'M'},
+    {n:'3.190', d:'Thevenin\'s theorem — find equivalent circuit seen by a resistor', diff:'M'},
+  ],
+  bonus:{n:'3.209', d:'Find current distribution in a 3D resistor network (cube of resistors)'},
+  tip:'RC time constant τ = RC. At t=0 capacitor = short circuit (wire). At t=∞ capacitor = open circuit. Q(t) = Q₀(1–e^(–t/RC)).'
+},
+{
+  day:26, chap:'em', title:'Magnetic Force & Biot-Savart Law',
+  probs:[
+    {n:'3.219', d:'Force on current-carrying wire in uniform magnetic field', diff:'E'},
+    {n:'3.222', d:'Magnetic field at center of circular current loop', diff:'E'},
+    {n:'3.225', d:'Magnetic field on axis of circular loop — Biot-Savart integration', diff:'M'},
+    {n:'3.230', d:'Two parallel wires carrying currents — find force per unit length', diff:'M'},
+    {n:'3.232', d:'Charged particle in uniform B-field — circular motion, cyclotron frequency', diff:'M'},
+  ],
+  bonus:{n:'3.237', d:'Velocity selector and mass spectrometer — find radius of curvature in combined E and B fields'},
+  tip:'F = qv×B. F on wire = IL×B. Biot-Savart: dB = μ₀I dl×r̂/4πr². Right-hand rule for direction.'
+},
+{
+  day:27, chap:'em', title:'Ampere\'s Law & Magnetic Materials',
+  probs:[
+    {n:'3.242', d:'Magnetic field inside and outside long straight wire using Ampere\'s law', diff:'E'},
+    {n:'3.245', d:'Solenoid — find field inside using Ampere\'s law', diff:'E'},
+    {n:'3.248', d:'Toroid — field inside and outside using Ampere\'s law', diff:'M'},
+    {n:'3.252', d:'Magnetic field of infinite sheet of current', diff:'M'},
+    {n:'3.255', d:'Diamagnetic vs paramagnetic material in B-field — compare behavior', diff:'M'},
+  ],
+  bonus:{n:'3.266', d:'Hall effect — derive Hall coefficient and find carrier concentration from measurement'},
+  tip:'Ampere: ∮B·dl = μ₀I_enc. For solenoid: B = μ₀nI. For toroid: B = μ₀NI/2πR. Hall voltage: V_H = IB/ned.'
+},
+{
+  day:28, chap:'em', title:'Electromagnetic Induction',
+  probs:[
+    {n:'3.288', d:'EMF induced in rod moving on rails in uniform B-field', diff:'E'},
+    {n:'3.291', d:'Faraday\'s law — find induced EMF when B changes with time', diff:'E'},
+    {n:'3.295', d:'Rotating coil in uniform B — find EMF as function of angle', diff:'M'},
+    {n:'3.299', d:'Eddy current braking — find retarding force on moving conductor', diff:'M'},
+    {n:'3.303', d:'Self-inductance of solenoid — derive L = μ₀n²V', diff:'M'},
+  ],
+  bonus:{n:'3.307', d:'Mutual inductance of two coaxial solenoids — derive M and coupling coefficient k'},
+  tip:'Faraday: ε = –dΦ/dt. Lenz: induced current opposes change. Motional EMF: ε = BLv. Self-induction: ε = –L·dI/dt.'
+},
+{
+  day:29, chap:'em', title:'Inductance & LR Circuits',
+  probs:[
+    {n:'3.311', d:'LR circuit switched on — find current as function of time', diff:'E'},
+    {n:'3.314', d:'Energy stored in inductor — find in terms of current and inductance', diff:'E'},
+    {n:'3.316', d:'LR circuit switched off — find current decay and energy dissipated', diff:'M'},
+    {n:'3.318', d:'Two coupled inductors — find mutual inductance from energy method', diff:'M'},
+    {n:'3.323', d:'LC circuit — find oscillation frequency and energy exchange', diff:'M'},
+  ],
+  bonus:{n:'3.331', d:'LCR circuit transient — find overdamped, critically damped and underdamped conditions'},
+  tip:'τ = L/R for LR circuit. LC: ω₀ = 1/√LC. Energy oscillates between L (magnetic) and C (electric). Analogy to SHM.'
+},
+{
+  day:30, chap:'em', title:'AC Circuits & Resonance',
+  probs:[
+    {n:'3.326', d:'RLC series AC circuit — find impedance and phase angle', diff:'E'},
+    {n:'3.328', d:'AC circuit: find current amplitude and phase relative to voltage', diff:'E'},
+    {n:'3.334', d:'Resonance in RLC circuit — find resonant frequency and Q-factor', diff:'M'},
+    {n:'3.372', d:'Transformer — find voltage ratio and current ratio with efficiency', diff:'M'},
+    {n:'3.378', d:'Power in AC circuit — find real power, reactive power, power factor', diff:'M'},
+  ],
+  bonus:{n:'3.392', d:'Electromagnetic wave — find E and B amplitudes from given intensity; Poynting vector'},
+  tip:'Impedance Z = √(R² + (XL–XC)²). Resonance: XL = XC → ω₀ = 1/√LC. Power factor = cos φ = R/Z.'
+},
+{
+  day:31, chap:'em', title:'Electricity & Magnetism — Final Review',
+  probs:[
+    {n:'3.130', d:'Charge distribution on two connected spheres — find surface charge densities', diff:'E'},
+    {n:'3.200', d:'Steady current in resistive medium — find current distribution', diff:'M'},
+    {n:'3.257', d:'Magnetic field of a finite straight wire — compare with infinite wire', diff:'M'},
+    {n:'3.263', d:'Circular loop in non-uniform field — net force on the loop', diff:'M'},
+    {n:'3.382', d:'Electromagnetic induction in rotating disk (Faraday disk) — find EMF', diff:'M'},
+  ],
+  bonus:{n:'3.390', d:'Electromagnetic momentum — find momentum of field between capacitor and surrounding B-field'},
+  tip:'Review all 4 Maxwell\'s equations. Know their physical meaning: Gauss (E), Gauss (B), Faraday, Ampere-Maxwell.'
+},
+
+// ── OSCILLATIONS & WAVES ──
+{
+  day:32, chap:'waves', title:'Simple Harmonic Motion — Basics',
+  probs:[
+    {n:'4.1', d:'Spring-mass system — find period, amplitude and phase from initial conditions', diff:'E'},
+    {n:'4.4', d:'Simple pendulum — find period for small oscillations', diff:'E'},
+    {n:'4.7', d:'SHM: given x(t) = A cos(ωt + φ), find velocity and acceleration', diff:'M'},
+    {n:'4.10', d:'Block on spring on incline — find equilibrium and show SHM about it', diff:'M'},
+    {n:'4.15', d:'Two springs in series and parallel — find effective spring constant and period', diff:'M'},
+  ],
+  bonus:{n:'4.25', d:'Physical pendulum — find period of compound pendulum; find centre of oscillation'},
+  tip:'SHM: a = –ω²x. Period T = 2π/ω. Energy: E = ½mω²A². At equilibrium, KE is max; at extreme, PE is max.'
+},
+{
+  day:33, chap:'waves', title:'SHM — Energy, Superposition & Special Cases',
+  probs:[
+    {n:'4.28', d:'SHM energy — find fraction of total energy that is kinetic at given displacement', diff:'E'},
+    {n:'4.32', d:'Superposition of two SHMs: x₁ = A cos ωt, x₂ = A cos(ωt+φ) — find resultant', diff:'E'},
+    {n:'4.35', d:'LC circuit — show it is analogous to SHM; identify q(t) and dq/dt', diff:'M'},
+    {n:'4.40', d:'Torsional pendulum — find period from given torsional constant', diff:'M'},
+    {n:'4.45', d:'Liquid in U-tube oscillates — find natural frequency', diff:'M'},
+  ],
+  bonus:{n:'4.55', d:'Ball in spherical bowl oscillates — find period; show result for different surface shapes'},
+  tip:'Superposition: if same ω, use phasor addition. Resultant A² = A₁² + A₂² + 2A₁A₂cosφ. Phase difference φ shifts the resultant.'
+},
+{
+  day:34, chap:'waves', title:'Damped & Forced Oscillations',
+  probs:[
+    {n:'4.60', d:'Damped SHM — find how amplitude decreases with time', diff:'E'},
+    {n:'4.62', d:'Logarithmic decrement — find damping from successive amplitudes', diff:'E'},
+    {n:'4.65', d:'Q-factor of oscillator — physical meaning and formula', diff:'M'},
+    {n:'4.95', d:'Forced oscillations — find steady-state amplitude as function of driving frequency', diff:'M'},
+    {n:'4.98', d:'Resonance: find driving frequency for maximum amplitude', diff:'M'},
+  ],
+  bonus:{n:'4.100', d:'Power absorbed in forced oscillation — show resonance at ω = ω₀ for power (not amplitude)'},
+  tip:'Under-damped: x = Ae^(–βt)cos(ω\'t+φ). ω\' = √(ω₀²–β²). At resonance amplitude: A_res = F₀/2mβω₀ (large Q).'
+},
+{
+  day:35, chap:'waves', title:'Mechanical Waves — Transverse & Longitudinal',
+  probs:[
+    {n:'4.121', d:'Transverse wave on string — find wave speed from tension and linear density', diff:'E'},
+    {n:'4.123', d:'Wave equation y = A sin(kx – ωt) — find velocity and acceleration of particle', diff:'E'},
+    {n:'4.125', d:'Energy carried by a transverse wave — derive power formula P = ½μω²A²v', diff:'M'},
+    {n:'4.134', d:'Reflection and transmission of wave at boundary — find coefficients', diff:'M'},
+    {n:'4.135', d:'Standing wave on string — find nodes, antinodes and modes', diff:'M'},
+  ],
+  bonus:{n:'4.147', d:'Group velocity vs phase velocity in a dispersive medium — find v_g = v_p + k·dv_p/dk'},
+  tip:'Wave speed v = √(T/μ) on string. Standing wave: y = 2A sin(kx)cos(ωt). Nodes at kx = nπ. Antinodes between them.'
+},
+{
+  day:36, chap:'waves', title:'Sound Waves & Doppler Effect',
+  probs:[
+    {n:'4.150', d:'Speed of sound in air — find from temperature dependence', diff:'E'},
+    {n:'4.153', d:'Intensity and loudness — find dB level at given distance from source', diff:'E'},
+    {n:'4.157', d:'Open and closed pipes — find fundamental and overtone frequencies', diff:'M'},
+    {n:'4.160', d:'Doppler effect — source moving toward stationary observer', diff:'M'},
+    {n:'4.165', d:'Doppler effect — both source and observer moving', diff:'M'},
+  ],
+  bonus:{n:'4.175', d:'Sonic boom and Mach cone — derive half-angle of cone when v_source > v_sound'},
+  tip:'Doppler: f\' = f(v ± v_obs)/(v ∓ v_source). Sign: use + when moving toward each other in numerator/denominator.'
+},
+{
+  day:37, chap:'waves', title:'Standing Waves, Resonance & Beats',
+  probs:[
+    {n:'4.176', d:'Resonance in organ pipe — find resonant lengths for closed and open pipe', diff:'E'},
+    {n:'4.179', d:'Beats — two tuning forks of slightly different frequencies; find beat frequency', diff:'E'},
+    {n:'4.182', d:'Vibrating string with fixed ends — find all resonant frequencies (harmonics)', diff:'M'},
+    {n:'4.185', d:'Kundt\'s tube experiment — find wavelength and speed of sound', diff:'M'},
+    {n:'4.187', d:'Superposition of two waves with different frequencies — find envelope frequency', diff:'M'},
+  ],
+  bonus:{n:'4.174', d:'Acoustic interferometer — find path difference for constructive/destructive interference of sound'},
+  tip:'Beats: f_beat = |f₁–f₂|. Open pipe: f_n = nv/2L. Closed pipe: f_n = (2n–1)v/4L (odd harmonics only).'
+},
+
+// ── OPTICS ──
+{
+  day:38, chap:'optics', title:'Reflection & Plane/Spherical Mirrors',
+  probs:[
+    {n:'5.1', d:'Reflection at plane mirror — find image position, size and nature', diff:'E'},
+    {n:'5.5', d:'Concave mirror — find image for object beyond focal length', diff:'E'},
+    {n:'5.10', d:'Mirror formula and magnification — derive from geometry', diff:'M'},
+    {n:'5.15', d:'Two mirrors at angle θ — find number of images formed', diff:'M'},
+    {n:'5.20', d:'Convex mirror in car — find minimum mirror size to see full view', diff:'M'},
+  ],
+  bonus:{n:'5.30', d:'Equivalent mirror — find focal length of equivalent mirror for mirror–lens combination'},
+  tip:'Mirror: 1/v + 1/u = 1/f. Sign convention: all distances from pole, positive in direction of reflected ray. Magnification m = –v/u.'
+},
+{
+  day:39, chap:'optics', title:'Refraction, Lenses & Prisms',
+  probs:[
+    {n:'5.35', d:'Snell\'s law — find critical angle for total internal reflection', diff:'E'},
+    {n:'5.38', d:'Thin lens formula — find image position and magnification', diff:'E'},
+    {n:'5.42', d:'Lens maker\'s equation — find focal length from radii of curvature and n', diff:'M'},
+    {n:'5.48', d:'Prism — find angle of minimum deviation and refractive index', diff:'M'},
+    {n:'5.55', d:'Combination of two thin lenses — find equivalent focal length', diff:'M'},
+  ],
+  bonus:{n:'5.65', d:'Chromatic aberration — find longitudinal and lateral aberration; achromatic doublet condition'},
+  tip:'Lens: 1/v – 1/u = 1/f. Prism deviation δ = (n–1)A for small angles. At minimum deviation: r₁ = r₂ = A/2.'
+},
+{
+  day:40, chap:'optics', title:'Wave Optics — Interference',
+  probs:[
+    {n:'5.100', d:'Young\'s double slit — find fringe width and position of bright/dark fringes', diff:'E'},
+    {n:'5.103', d:'YDSE with one slit covered by thin film — find shift in fringe pattern', diff:'E'},
+    {n:'5.106', d:'Thin film interference — find condition for bright and dark bands', diff:'M'},
+    {n:'5.109', d:'Newton\'s rings — find radius of rings and verify relationship with wavelength', diff:'M'},
+    {n:'5.112', d:'Michelson interferometer — find distance moved for given fringe shift', diff:'M'},
+  ],
+  bonus:{n:'5.120', d:'Interference from N slits — derive intensity pattern and find principal maxima condition'},
+  tip:'Path diff Δ = d sinθ. Fringe width β = λD/d. Optical path = n × physical path. For thin film: 2nt cosθ = mλ or (m+½)λ.'
+},
+{
+  day:41, chap:'optics', title:'Diffraction',
+  probs:[
+    {n:'5.130', d:'Single slit diffraction — find position of first minimum', diff:'E'},
+    {n:'5.133', d:'Single slit — find angular width of central maximum', diff:'E'},
+    {n:'5.136', d:'Diffraction grating — find wavelength from given angle of first-order maximum', diff:'M'},
+    {n:'5.139', d:'Resolving power of grating — find minimum resolvable wavelength separation', diff:'M'},
+    {n:'5.142', d:'Fraunhofer vs Fresnel diffraction — identify conditions for each', diff:'M'},
+  ],
+  bonus:{n:'5.150', d:'Diffraction from circular aperture — Rayleigh criterion for resolution; find min angular separation'},
+  tip:'Single slit: minima at sinθ = mλ/a. Grating: maxima at d sinθ = mλ. Resolving power R = λ/δλ = mN (m = order, N = slits).'
+},
+{
+  day:42, chap:'optics', title:'Polarization & Optics Review',
+  probs:[
+    {n:'5.155', d:'Malus\'s law — find transmitted intensity through polarizer at angle θ', diff:'E'},
+    {n:'5.156', d:'Brewster\'s angle — find polarizing angle for glass-air interface', diff:'E'},
+    {n:'5.157', d:'Wave plates — find phase difference introduced by quarter-wave plate', diff:'M'},
+    {n:'5.158', d:'Optical activity — find rotation of plane of polarization in sugar solution', diff:'M'},
+    {n:'5.159', d:'Double refraction in calcite — find ordinary and extraordinary ray behavior', diff:'M'},
+  ],
+  bonus:{n:'5.160', d:'Saccharimeter — find concentration of sugar from angle of rotation using known specific rotation'},
+  tip:'Malus: I = I₀cos²θ. Brewster: tanθ_B = n₂/n₁ (reflected ray is fully polarized). Quarter-wave plate: δ = π/2, converts linear to circular polarization.'
+},
+
+// ── MODERN PHYSICS ──
+{
+  day:43, chap:'modern', title:'Photoelectric Effect & de Broglie Waves',
+  probs:[
+    {n:'6.1', d:'Photoelectric effect — find maximum KE of emitted electrons', diff:'E'},
+    {n:'6.3', d:'Threshold frequency and work function — find for given metal', diff:'E'},
+    {n:'6.6', d:'de Broglie wavelength of electron accelerated through potential V', diff:'M'},
+    {n:'6.9', d:'Compton scattering — find shift in wavelength at given scattering angle', diff:'M'},
+    {n:'6.12', d:'Photon momentum — find recoil of atom emitting photon', diff:'M'},
+  ],
+  bonus:{n:'6.15', d:'Wave-particle duality: find de Broglie wavelength of electron in circular orbit (Bohr quantization condition)'},
+  tip:'KE_max = hf – φ. de Broglie: λ = h/p = h/√(2meV). Compton: Δλ = (h/m_e c)(1–cosθ). Know: h = 6.626×10⁻³⁴ J·s.'
+},
+{
+  day:44, chap:'modern', title:'Bohr Model & Atomic Spectra',
+  probs:[
+    {n:'6.16', d:'Bohr model of hydrogen — find radius, velocity and energy of nth orbit', diff:'E'},
+    {n:'6.18', d:'Hydrogen spectrum — find wavelength of Hα line in Balmer series', diff:'E'},
+    {n:'6.20', d:'Hydrogen-like ions (He⁺, Li²⁺) — scale Bohr results', diff:'M'},
+    {n:'6.23', d:'Ionization energy from nth level — find and compare with experiment', diff:'M'},
+    {n:'6.27', d:'Franck-Hertz experiment — find excitation energy from stopping potential', diff:'M'},
+  ],
+  bonus:{n:'6.30', d:'Correspondence principle — show Bohr frequency approaches classical frequency for large n'},
+  tip:'Bohr: E_n = –13.6/n² eV (H). r_n = 0.529n² Å. Lyman (UV): n→1. Balmer (visible): n→2. Paschen (IR): n→3.'
+},
+{
+  day:45, chap:'modern', title:'X-rays & Characteristic Radiation',
+  probs:[
+    {n:'6.100', d:'X-ray tube — find minimum wavelength (cutoff) from accelerating voltage', diff:'E'},
+    {n:'6.103', d:'Bragg\'s law — find crystal spacing from X-ray diffraction pattern', diff:'E'},
+    {n:'6.106', d:'Characteristic X-rays — Kα, Kβ lines: find energy from transition levels', diff:'M'},
+    {n:'6.109', d:'Moseley\'s law — find atomic number from given Kα wavelength', diff:'M'},
+    {n:'6.112', d:'Compton scattering in X-rays — find recoil kinetic energy of electron', diff:'M'},
+  ],
+  bonus:{n:'6.115', d:'X-ray absorption edge — find binding energy of K-electron from absorption threshold wavelength'},
+  tip:'Min wavelength: λ_min = hc/eV. Bragg: 2d sinθ = nλ. Moseley: √f = a(Z–b). Kα corresponds to L→K transition.'
+},
+{
+  day:46, chap:'modern', title:'Nuclear Physics & Radioactivity',
+  probs:[
+    {n:'6.116', d:'Radioactive decay law — find activity and number of nuclei remaining after time t', diff:'E'},
+    {n:'6.119', d:'Half-life and mean life — derive relationship t_½ = ln2/λ', diff:'E'},
+    {n:'6.122', d:'Binding energy per nucleon — find for given isotope using mass defect', diff:'M'},
+    {n:'6.126', d:'Alpha and beta decay — write equations and find Q-value', diff:'M'},
+    {n:'6.130', d:'Nuclear fission — find energy released per fission event', diff:'M'},
+  ],
+  bonus:{n:'6.136', d:'Nuclear fusion — calculate energy released in p-p chain and compare with fission; find solar luminosity'},
+  tip:'Activity A = λN = A₀e^(–λt). t_½ = 0.693/λ. Binding energy = Δm·c². 1 u = 931.5 MeV/c². Nuclear radius r = r₀A^(1/3).'
+},
+{
+  day:47, chap:'modern', title:'Full Mixed Revision — All Chapters',
+  probs:[
+    {n:'1.104', d:'[MECH] Banked road — find max and min speed (most tested circular motion)', diff:'M'},
+    {n:'2.116', d:'[THERMO] Carnot efficiency — core second law application', diff:'M'},
+    {n:'3.334', d:'[EM] LCR resonance — find Q-factor and bandwidth', diff:'M'},
+    {n:'4.100', d:'[WAVES] Power in forced oscillation — resonance condition', diff:'M'},
+    {n:'5.100', d:'[OPTICS] Young\'s double slit — full analysis', diff:'M'},
+  ],
+  bonus:{n:'6.30', d:'[MODERN] Correspondence principle and classical limit of quantum mechanics'},
+  tip:'Mixed revision: identify which chapter each problem belongs to BEFORE solving. This mimics the JEE paper experience.'
+},
+{
+  day:48, chap:'modern', title:'Final Mock — JEE Pattern (Timed 2.5 hrs)',
+  probs:[
+    {n:'1.258', d:'[MECH] Ball rolls down rough incline — find acceleration and friction', diff:'M'},
+    {n:'2.52', d:'[THERMO] Isothermal vs adiabatic compression — compare work done', diff:'M'},
+    {n:'3.295', d:'[EM] Rotating coil in B-field — find peak EMF and average power', diff:'M'},
+    {n:'4.165', d:'[WAVES] Doppler effect — moving source and observer', diff:'M'},
+    {n:'5.136', d:'[OPTICS] Diffraction grating — find wavelength from spectrum', diff:'M'},
+  ],
+  bonus:{n:'6.122', d:'[MODERN] Nuclear binding energy — find using semi-empirical mass formula'},
+  tip:'⏱️ TIMED: 30 min per problem max. Read all 5 first, start with your strongest topic. JEE Advanced is 3 hours — this is your dress rehearsal. All the best! 🎯'
+}
+];
+
+// ─────────────────────────────────────────
+//  STATE MANAGEMENT
+// ─────────────────────────────────────────
+let state = {};
+try { state = JSON.parse(localStorage.getItem('irodov48v2') || '{}'); } catch(e) {}
+function save(){ try{ localStorage.setItem('irodov48v2', JSON.stringify(state)); }catch(e){} }
+
+function keyP(day, idx){ return `d${day}_p${idx}`; }
+function keyB(day){ return `d${day}_b`; }
+function isDayDone(day){
+  const d = days.find(x=>x.day===day);
+  return d.probs.every((_,i)=>state[keyP(day,i)]) && state[keyB(day)];
+}
+
+// ─────────────────────────────────────────
+//  RENDER
+// ─────────────────────────────────────────
+function diffPips(diff){
+  const map = {E:'e',M:'m',H:'h'};
+  const labels = {E:'Easy',M:'Medium',H:'Hard'};
+  return `<span class="diff-pips" title="${labels[diff]}"><span class="pip ${map[diff]}"></span></span>`;
+}
+
+function renderDay(d){
+  const done = isDayDone(d.day);
+  return `
+  <div class="day-card chapter-${d.chap} ${done?'completed':''}" id="card-${d.day}">
+    <div class="card-top">
+      <div style="flex:1">
+        <div class="card-day-num">DAY ${d.day}</div>
+        <div class="card-date">${dateFor(d.day)}</div>
+        <div class="card-title">${d.title}</div>
+      </div>
+      <div class="card-actions">
+        <div class="done-badge">✓ DONE</div>
+        <button class="mark-all-btn" onclick="markAll(${d.day},event)">Mark All</button>
+      </div>
+    </div>
+
+    <div class="problems-section">
+      <div class="section-label">5 Problems</div>
+      ${d.probs.map((p,i)=>`
+      <div class="prob-row ${state[keyP(d.day,i)]?'done':''}" id="row-${d.day}-${i}">
+        <input type="checkbox" id="cb-${d.day}-${i}" ${state[keyP(d.day,i)]?'checked':''}
+          onchange="toggleP(${d.day},${i},this.checked)">
+        <label for="cb-${d.day}-${i}" class="prob-content" style="cursor:pointer">
+          <div class="prob-num">${p.n} ${diffPips(p.diff)}</div>
+          <div class="prob-desc">${p.d}</div>
+        </label>
+      </div>`).join('')}
+    </div>
+
+    <div class="bonus-section">
+      <div class="bonus-label">⭐ Bonus — Hard Problem</div>
+      <div class="prob-row ${state[keyB(d.day)]?'done':''}" id="row-${d.day}-b">
+        <input type="checkbox" id="cb-${d.day}-b" ${state[keyB(d.day)]?'checked':''}
+          onchange="toggleB(${d.day},this.checked)">
+        <label for="cb-${d.day}-b" class="prob-content" style="cursor:pointer">
+          <div class="bonus-prob-num">${d.bonus.n} ${diffPips('H')}</div>
+          <div class="prob-desc">${d.bonus.d}</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="tip-box">💡 ${d.tip}</div>
+  </div>`;
+}
+
+function renderChapters(){
+  const container = document.getElementById('chapters-container');
+  let html = '';
+  chapters.forEach(ch=>{
+    const chDays = days.filter(d=>d.chap===ch.id);
+    const totalP = chDays.reduce((a,d)=>a+d.probs.length+1,0);
+    html += `
+    <div class="section-anchor" id="sec-${ch.id}">
+      <div class="chapter-header ${ch.headerCls}">
+        <div class="chapter-icon">${ch.icon}</div>
+        <div style="flex:1">
+          <div class="chapter-title">${ch.title}</div>
+          <div class="chapter-sub">${ch.sub}</div>
+          <div class="chap-prog">
+            <div class="progress-bar" style="margin-top:8px"><div class="progress-fill" id="prog-${ch.id}" style="width:0%;background:${ch.color}"></div></div>
+          </div>
+        </div>
+        <div class="chapter-badge ${ch.badgeCls}" id="badge-${ch.id}">Days ${ch.days[0]}–${ch.days[ch.days.length-1]}</div>
+      </div>
+      <div class="days-grid">
+        ${chDays.map(d=>renderDay(d)).join('')}
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function renderNav(){
+  const nav = document.getElementById('nav-items');
+  let html = '';
+  chapters.forEach(ch=>{
+    html += `
+    <a class="nav-item" href="#sec-${ch.id}" id="nav-${ch.id}">
+      <div class="nav-dot" style="background:${ch.color}"></div>
+      <div style="flex:1">
+        <div class="nav-text">${ch.title}</div>
+        <div class="mini-progress"><div class="mini-fill" id="mini-${ch.id}" style="width:0%;background:${ch.color}"></div></div>
+      </div>
+      <div class="nav-count" id="navc-${ch.id}">0/${chapters.find(c=>c.id===ch.id).days.length}</div>
+    </a>`;
+  });
+  nav.innerHTML = html;
+}
+
+// ─────────────────────────────────────────
+//  STATS UPDATE
+// ─────────────────────────────────────────
+function updateStats(){
+  let totalSolved = 0, totalProbs = 0, daysDone = 0;
+
+  chapters.forEach(ch=>{
+    const chDays = days.filter(d=>d.chap===ch.id);
+    let chSolved = 0, chTotal = 0, chDaysDone = 0;
+    chDays.forEach(d=>{
+      d.probs.forEach((_,i)=>{ chTotal++; totalProbs++; if(state[keyP(d.day,i)]){chSolved++;totalSolved++;} });
+      chTotal++; totalProbs++;
+      if(state[keyB(d.day)]){chSolved++;totalSolved++;}
+      if(isDayDone(d.day)){chDaysDone++;daysDone++;}
+    });
+    const pct = chTotal ? Math.round(chSolved/chTotal*100) : 0;
+    const el = document.getElementById(`prog-${ch.id}`);
+    if(el) el.style.width = pct+'%';
+    const mini = document.getElementById(`mini-${ch.id}`);
+    if(mini) mini.style.width = pct+'%';
+    const nc = document.getElementById(`navc-${ch.id}`);
+    if(nc) nc.textContent = `${chDaysDone}/${ch.days.length}`;
+  });
+
+  const pct = Math.round(totalSolved/totalProbs*100);
+  document.getElementById('overall-prog').style.width = pct+'%';
+  document.getElementById('sb-probs').textContent = totalSolved;
+  document.getElementById('sb-days').textContent = daysDone;
+  document.getElementById('sb-pct').textContent = pct+'%';
+  document.getElementById('ts-probs').textContent = `${totalSolved}/${totalProbs}`;
+  document.getElementById('ts-days').textContent = `${daysDone}/48`;
+
+  // Streak
+  let streak = 0;
+  for(let i=0;i<days.length;i++){
+    if(isDayDone(days[i].day)) streak++;
+    else break;
+  }
+  document.getElementById('ts-streak').textContent = `🔥 ${streak}`;
+}
+
+// ─────────────────────────────────────────
+//  INTERACTIONS
+// ─────────────────────────────────────────
+function toggleP(day, idx, val){
+  state[keyP(day,idx)] = val;
+  save();
+  const row = document.getElementById(`row-${day}-${idx}`);
+  if(row) row.className = `prob-row ${val?'done':''}`;
+  refreshCard(day);
+  updateStats();
+}
+
+function toggleB(day, val){
+  state[keyB(day)] = val;
+  save();
+  const row = document.getElementById(`row-${day}-b`);
+  if(row) row.className = `prob-row ${val?'done':''}`;
+  refreshCard(day);
+  updateStats();
+}
+
+function markAll(day, e){
+  e.stopPropagation();
+  const d = days.find(x=>x.day===day);
+  const allDone = isDayDone(day);
+  d.probs.forEach((_,i)=>{
+    state[keyP(day,i)] = !allDone;
+    const cb = document.getElementById(`cb-${day}-${i}`);
+    const row = document.getElementById(`row-${day}-${i}`);
+    if(cb) cb.checked = !allDone;
+    if(row) row.className = `prob-row ${!allDone?'done':''}`;
+  });
+  state[keyB(day)] = !allDone;
+  const cbb = document.getElementById(`cb-${day}-b`);
+  const rowb = document.getElementById(`row-${day}-b`);
+  if(cbb) cbb.checked = !allDone;
+  if(rowb) rowb.className = `prob-row ${!allDone?'done':''}`;
+  save();
+  refreshCard(day);
+  updateStats();
+}
+
+function refreshCard(day){
+  const done = isDayDone(day);
+  const card = document.getElementById(`card-${day}`);
+  if(!card) return;
+  const d = days.find(x=>x.day===day);
+  card.className = `day-card chapter-${d.chap} ${done?'completed':''}`;
+}
+
+// ─────────────────────────────────────────
+//  COUNTDOWN
+// ─────────────────────────────────────────
+function updateCountdown(){
+  const now = new Date();
+  const diff = Math.ceil((EXAM_DATE - now)/(1000*60*60*24));
+  const el = document.getElementById('cd-days');
+  const sb = document.getElementById('days-left-sb');
+  if(el) el.textContent = diff > 0 ? diff : 'TODAY!';
+  if(sb) sb.textContent = diff > 0 ? `${diff} days to go` : 'Exam is today! 🎯';
+}
+
+// ─────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────
+renderNav();
+renderChapters();
+updateStats();
+updateCountdown();
+setInterval(updateCountdown, 60000);
+</script>
+</body>
+</html>
