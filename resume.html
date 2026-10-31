@@ -12,15 +12,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resume — Sarvesh Patil</title>
-<meta name="description" content="Sarvesh Patil's resume — IIT Bombay, ETH Zürich, Rocket Corporation, Cogoport, CPI 9.23, AIR 974.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Sarvesh Patil's resume — Accenture Strategy & Consulting, IIT Bombay, ETH Zürich, Rocket Corporation, and Cogoport.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div id="scroll-progress"></div>
-<div id="cursor"></div>
 
 <div class="page-section">
   <div class="resume-hero-strip">
@@ -28,12 +25,14 @@
       <div>
         <p class="rh-eye">Curriculum Vitae</p>
         <h1 class="rh-name">Sarvesh<br><em>Shridhar Patil</em></h1>
-        <p class="rh-role">Mechanical Engineering · IIT Bombay · B.Tech 2026</p>
+        <p class="rh-role">Management Consultant Associate · Accenture Strategy & Consulting</p>
         <div class="rh-meta">
-          <span class="meta-pill">🎓 <strong>CPI 9.23</strong> · IIT Bombay</span>
+          <span class="meta-pill">📍 Pune, India · Since July 2026</span>
+          <span class="meta-pill">✦ <strong>Technology consulting</strong> · Agentic AI solutions</span>
+          <span class="meta-pill">🎓 <strong>CPI 9.1</strong> · IIT Bombay</span>
           <span class="meta-pill">🚀 <strong>Structural Lead</strong> · Rocket Corp, Austria</span>
           <span class="meta-pill">🏔️ <strong>ETH Zürich</strong> Exchange 2026</span>
-          <span class="meta-pill">📊 DS Minor · CMInDS | CFA L1 Candidate</span>
+          <span class="meta-pill">📊 DS Minor · CMInDS · CFA L1 Candidate</span>
         </div>
       </div>
       <div class="rh-stats-right">
@@ -44,7 +43,7 @@
   </div>
 
   <div class="stats-bar">
-    <div class="sp"><span class="sp-num">9.23</span><span class="sp-label">Current CPI</span></div>
+    <div class="sp"><span class="sp-num">9.1</span><span class="sp-label">Current CPI</span></div>
     <div class="sp"><span class="sp-num">99.7%</span><span class="sp-label">JEE Mains</span></div>
     <div class="sp"><span class="sp-num">19 AA/AP</span><span class="sp-label">Top Grades</span></div>
     <div class="sp"><span class="sp-num">150+</span><span class="sp-label">Teams beaten</span></div>
@@ -56,7 +55,7 @@
     <div class="resume-two-col">
       <!-- Sidebar -->
       <aside class="res-sidebar">
-        <nav class="res-sidebar-nav">
+        <nav class="res-sidebar-nav" aria-label="Resume sections">
           <a class="res-sidebar-link rs-active" href="#res-edu"><span class="sdot"></span>Education</a>
           <a class="res-sidebar-link" href="#res-exp"><span class="sdot"></span>Experience</a>
           <a class="res-sidebar-link" href="#res-tech"><span class="sdot"></span>Technical</a>
@@ -65,7 +64,7 @@
           <a class="res-sidebar-link" href="#res-lead"><span class="sdot"></span>Leadership</a>
           <a class="res-sidebar-link" href="#res-extra"><span class="sdot"></span>Extracurriculars</a>
         </nav>
-        <a href="#" class="res-dl" download>↓ Download PDF Resume</a>
+        <button class="res-dl" id="resumePrint" type="button">Print or save as PDF</button>
         <div class="tag-cloud-wrap">
           <span class="tag-cloud-label">Tech Stack</span>
           <div class="tag-cloud">
@@ -80,7 +79,7 @@
         <section class="res-section reveal" id="res-edu">
           <div class="sec-head"><span class="sec-head-label">🎓 Education</span><div class="sec-head-line"></div></div>
           <div class="timeline">
-            <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-accent" style="background:var(--gold)"></div><div class="tl-header"><div class="tl-title">B.Tech — Mechanical Engineering</div><span class="tl-badge b-gold">2022 – 2026</span></div><div class="tl-org">Indian Institute of Technology Bombay · Mumbai, India</div><div class="tl-bullets"><div class="tl-bullet"><strong>CPI: 9.23</strong> · Core 186 | Total 204 credits</div><div class="tl-bullet">SPI of <strong>9.78 & 9.50</strong> in consecutive semesters; 1 AP + 18 AA grades over 6 semesters</div><div class="tl-bullet">Pursuing <strong>DS Minor</strong> by CMInDS · <strong>CFA Level 1</strong> candidate</div></div></div></div>
+            <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-accent" style="background:var(--gold)"></div><div class="tl-header"><div class="tl-title">B.Tech — Mechanical Engineering</div><span class="tl-badge b-gold">2022 – 2026</span></div><div class="tl-org">Indian Institute of Technology Bombay · Mumbai, India</div><div class="tl-bullets"><div class="tl-bullet"><strong>CPI: 9.1</strong> · Core 186 | Total 204 credits</div><div class="tl-bullet">SPI of <strong>9.78 & 9.50</strong> in consecutive semesters; 1 AP + 18 AA grades over 6 semesters</div><div class="tl-bullet">Pursuing <strong>DS Minor</strong> by CMInDS · <strong>CFA Level 1</strong> candidate</div></div></div></div>
             <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--blue)"></div><div class="tl-header"><div class="tl-title">Semester Exchange</div><span class="tl-badge b-blue">2026</span></div><div class="tl-org">ETH Zürich · Zürich, Switzerland</div><div class="tl-bullets"><div class="tl-bullet">Selected for competitive international exchange at one of Europe's top engineering universities</div></div></div></div>
             <div class="tl-item"><div class="tl-dot" style="background:var(--ink3)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--ink3)"></div><div class="tl-header"><div class="tl-title">HSC — Maharashtra Board</div><span class="tl-badge b-gray">2022</span></div><div class="tl-org">Chh. Shahu Jr. College, Satara</div><div class="tl-bullets"><div class="tl-bullet"><strong>88.83%</strong> · AIR 974 JEE Advanced · <strong>99.7%ile</strong> JEE Mains · 99.91%ile MHT-CET</div><div class="tl-bullet">NTSE top 200 · KVPY SX top ranks</div></div></div></div>
             <div class="tl-item"><div class="tl-dot" style="background:var(--ink3)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--ink3)"></div><div class="tl-header"><div class="tl-title">SSC — Maharashtra Board</div><span class="tl-badge b-gray">2020</span></div><div class="tl-org">New English School, Satara</div><div class="tl-bullets"><div class="tl-bullet"><strong>99.60%</strong> · Certificate of merit NFLAT by RBI · A grade Drawing Grade Exam</div></div></div></div>
@@ -91,6 +90,7 @@
         <section class="res-section reveal" id="res-exp">
           <div class="sec-head"><span class="sec-head-label">💼 Professional Experience</span><div class="sec-head-line"></div></div>
           <div class="timeline">
+            <div class="tl-item"><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--gold)"></div><div class="tl-header"><div class="tl-title">Management Consultant Associate</div><span class="tl-badge b-blue">Jul 2026 – Present</span></div><div class="tl-org">Accenture Strategy & Consulting · Pune, India</div><div class="tl-sub">Technology consulting with a focus on Agentic AI solutions.</div><div class="tl-bullets"><div class="tl-bullet">Managing end-to-end client transformation projects.</div><div class="tl-bullet">Improving process speed by <strong>100%</strong>.</div></div></div></div>
             <div class="tl-item"><div class="tl-dot" style="background:var(--red)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--red)"></div><div class="tl-header"><div class="tl-title">Structural Lead</div><span class="tl-badge b-red">Feb 2025 – Present</span></div><div class="tl-org">The Rocket Corporation GmbH · Austria 🇦🇹</div><div class="tl-sub">Building the first heavy reusable rocket with 50 ton LEO payload capacity.</div><div class="tl-bullets"><div class="tl-bullet">Led structural design of a <strong>120 m tall heavy reusable rocket</strong> through stress analysis & aerodynamics</div><div class="tl-bullet">Reduced structural mass factor error to <strong>&lt;3%</strong> via empirical analysis & linear regression</div><div class="tl-bullet">Driving <strong>50% launch cost reduction</strong> through financial analysis of component procurement</div></div></div></div>
             <div class="tl-item"><div class="tl-dot" style="background:var(--green)"></div><div class="tl-card"><div class="tl-accent" style="background:var(--green)"></div><div class="tl-header"><div class="tl-title">Data Analyst</div><span class="tl-badge b-green">Jun – Jul 2025</span></div><div class="tl-org">Cogoport Private Limited · India 🇮🇳</div><div class="tl-sub">Digital shipment platform for international freight and logistics.</div><div class="tl-bullets"><div class="tl-bullet">Analyzed <strong>4M+ shipment records</strong> for RFM segmentation improving customer targeting</div><div class="tl-bullet">Saved <strong>3 hrs/week per user</strong> with FastAPI-based backend for agentic calls & mail pipelines</div><div class="tl-bullet">Boosted outreach effectiveness by <strong>5%</strong> via Lusha API integration</div></div></div></div>
           </div>

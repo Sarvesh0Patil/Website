@@ -12,8 +12,8 @@
     <li><a href="resources.html" data-page="resources">Resources</a></li>
     <li><a href="contact.html"   data-page="contact" class="nav-cta">Book a call</a></li>
   </ul>
-  <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu">
-    <span></span><span></span><span></span>
+  <button class="nav-mobile-btn" id="mobileBtn" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
   </button>
 </nav>`;
   document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
@@ -30,44 +30,43 @@
   };
   const currentPage = PAGE_MAP[file] || 'home';
   document.querySelectorAll('.nav-links a[data-page]').forEach(function (a) {
-    if (a.dataset.page === currentPage) a.classList.add('active');
+    if (a.dataset.page === currentPage) {
+      a.classList.add('active');
+      a.setAttribute('aria-current', 'page');
+    }
   });
 
   /* ── 3. Mobile menu toggle ── */
-  document.getElementById('mobileBtn').addEventListener('click', function () {
-    document.getElementById('navLinks').classList.toggle('open');
-  });
+  var mobileBtn = document.getElementById('mobileBtn');
+  var navLinks = document.getElementById('navLinks');
 
-  /* ── 4. Custom cursor ── */
-  var cursor = document.getElementById('cursor');
-  if (cursor) {
-    /* Hide until mouse enters so it doesn't sit at (0,0) on load */
-    cursor.style.opacity = '0';
-
-    document.addEventListener('mousemove', function (e) {
-      cursor.style.left    = e.clientX + 'px';
-      cursor.style.top     = e.clientY + 'px';
-      cursor.style.opacity = '1';
-    });
-
-    /* Hide when mouse leaves the window, show when it returns */
-    document.addEventListener('mouseleave', function () { cursor.style.opacity = '0'; });
-    document.addEventListener('mouseenter', function () { cursor.style.opacity = '1'; });
-
-    function attachCursorHovers() {
-      document.querySelectorAll(
-        'a,button,.country-card,.proj-card,.highlight-card,.social-link,.tl-card'
-      ).forEach(function (el) {
-        el.addEventListener('mouseenter', function () { cursor.classList.add('big'); });
-        el.addEventListener('mouseleave', function () { cursor.classList.remove('big'); });
-      });
-    }
-    attachCursorHovers();
-    /* Re-attach after dynamic content is added (e.g. travel cards) */
-    window.reattachCursorHovers = attachCursorHovers;
+  function setMobileMenuOpen(open) {
+    navLinks.classList.toggle('open', open);
+    mobileBtn.setAttribute('aria-expanded', String(open));
+    mobileBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('menu-open', open);
   }
 
-  /* ── 5. Scroll: nav shrink + progress bar + hero parallax ── */
+  mobileBtn.addEventListener('click', function () {
+    setMobileMenuOpen(!navLinks.classList.contains('open'));
+  });
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () { setMobileMenuOpen(false); });
+  });
+  navLinks.addEventListener('click', function (event) {
+    if (event.target === navLinks) setMobileMenuOpen(false);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && navLinks.classList.contains('open')) {
+      setMobileMenuOpen(false);
+      mobileBtn.focus();
+    }
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900) setMobileMenuOpen(false);
+  });
+
+  /* ── 4. Scroll: nav shrink + progress bar + hero parallax ── */
   var scrollProg = document.getElementById('scroll-progress');
   var nav = document.getElementById('mainNav');
   window.addEventListener('scroll', function () {
@@ -88,7 +87,7 @@
     }
   }, { passive: true });
 
-  /* ── 6. Reveal on scroll ── */
+  /* ── 5. Reveal on scroll ── */
   function triggerReveals() {
     var reveals = document.querySelectorAll('.reveal');
     var obs = new IntersectionObserver(function (entries) {
@@ -99,7 +98,7 @@
     reveals.forEach(function (r) { r.classList.remove('visible'); obs.observe(r); });
   }
 
-  /* ── 7. Stagger grid animation ── */
+  /* ── 6. Stagger grid animation ── */
   function triggerStaggerGrids() {
     var grids = document.querySelectorAll('.stagger-grid');
     grids.forEach(function (grid) {
@@ -131,4 +130,27 @@
 
   triggerReveals();
   triggerStaggerGrids();
+
+  /* Keep the resume section navigation in sync with the visible section. */
+  var resumeSections = document.querySelectorAll('.res-section[id]');
+  if (resumeSections.length && 'IntersectionObserver' in window) {
+    var sectionLinks = document.querySelectorAll('.res-sidebar-link[href^="#"]');
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        sectionLinks.forEach(function (link) {
+          var active = link.getAttribute('href') === '#' + entry.target.id;
+          link.classList.toggle('rs-active', active);
+          if (active) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-96px 0px -68% 0px', threshold: 0 });
+    resumeSections.forEach(function (section) { sectionObserver.observe(section); });
+  }
+
+  var printResumeButton = document.getElementById('resumePrint');
+  if (printResumeButton) {
+    printResumeButton.addEventListener('click', function () { window.print(); });
+  }
 })();
